@@ -12,3 +12,4 @@
 */
 
 Route::get('/', "TopicController@index");
+Route::get('/topic/add', "AdminController@addTopic");

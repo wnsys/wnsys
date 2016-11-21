@@ -1,6 +1,7 @@
 <?php
-namespace App\Module\Topic;
+namespace App\Module\Topic\Controllers;
 use App\Http\Controllers\Controller;
+use App\Model\TopicModel;
 
 /**
  * Created by PhpStorm.
@@ -10,6 +11,6 @@ use App\Http\Controllers\Controller;
  */
 class TopicController extends Controller{
     function index(){
-        echo 1;
+      
     }
 }
