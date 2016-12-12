@@ -11,6 +11,6 @@ use App\Model\TopicModel;
  */
 class TopicController extends Controller{
     function index(){
-      
+      echo "index";
     }
 }
