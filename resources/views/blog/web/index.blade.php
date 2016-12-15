@@ -12,6 +12,5 @@
 </head>
 <body>
 欢迎来到我的博客
-<input type="button" class="btn btn-" value="添加">
 </body>
 </html>

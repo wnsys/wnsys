@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ch">
 <head>
     <meta charset="UTF-8">
     <title>登录</title>
@@ -11,12 +11,31 @@
     <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-<form class="form-group">
-    <label>账号</label>
-    <input type="text" class="form-control" value="" />
-    <label>密码</label>
-    <input type="password" class="form-control" value=""/>
-    <input type="button" class="btn btn-default" value="提交">
-</form>
+<div class="container ">
+    <div class="row col-sm-5">
+        <div class="panel panel-default">
+            <div class="panel-heading text-center">后台系统</div>
+            <div class="panel-body">
+                <form role="form" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">账号</label>
+                        <div class="col-sm-8 ">
+                            <input type="text" class="form-control" value=""/>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">密码</label>
+                        <div class="col-sm-8 ">
+                            <input type="password" class="form-control" value=""/>
+                        </div>
+                    </div>
+                    <input type="button" class="btn btn-default" value="提交">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
