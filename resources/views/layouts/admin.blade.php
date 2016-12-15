@@ -1,6 +1,7 @@
 <html>
 <head>
     <title>应用程序名称 - @yield('title')</title>
+
 </head>
 <body>
 @section('sidebar')

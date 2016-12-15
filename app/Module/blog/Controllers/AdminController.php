@@ -1,5 +1,5 @@
 <?php
-namespace App\Module\Topic\Controllers;
+namespace App\Module\Blog\Controllers;
 use App\Http\Controllers\Controller;
 use App\Model\TopicModel;
 
@@ -13,5 +13,9 @@ class TopicController extends Controller{
     function index(){
        echo "欢迎来到韦宁的空间";
 
+    }
+    function addBlog(){
+        echo "添加博客";
+        return view("blog.admin.add");
     }
 }
