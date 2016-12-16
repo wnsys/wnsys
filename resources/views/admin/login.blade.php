@@ -12,25 +12,27 @@
 </head>
 <body>
 <div class="container ">
-    <div class="row col-sm-5">
+    <div class="row center-block" style="width:500px;margin-top:100px;">
         <div class="panel panel-default">
             <div class="panel-heading text-center">后台系统</div>
             <div class="panel-body">
                 <form role="form" class="form-horizontal">
                     <div class="form-group">
-                        <label class="col-lg-2 control-label">账号</label>
-                        <div class="col-sm-8 ">
-                            <input type="text" class="form-control" value=""/>
+                        <label class="col-xs-2 control-label">账号</label>
+                        <div class="col-xs-8 ">
+                            <input type="text" class="form-control" name="info[user_name]" value=""/>
                         </div>
 
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">密码</label>
-                        <div class="col-sm-8 ">
-                            <input type="password" class="form-control" value=""/>
+                        <label class="col-xs-2 control-label">密码</label>
+                        <div class="col-xs-8 ">
+                            <input type="password" class="form-control" name="info[password]" value=""/>
                         </div>
                     </div>
-                    <input type="button" class="btn btn-default" value="提交">
+                    <div class="text-center">
+                    <input type="submit" class="btn btn-primary " style="width:100px;" name="dosubmit" value="登录">
+                    </div>
                 </form>
             </div>
         </div>

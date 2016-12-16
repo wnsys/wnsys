@@ -10,6 +10,7 @@
 | to using a Closure or controller method. Build something great!
 |
 */
+Route::get('login', "Auth\LoginController@showLoginForm");
+Route::get('register', "Auth\RegisterController@showRegistrationForm");
+Route::post('register', "Auth\RegisterController@register");
 
-Route::get('/topic', "TopicController@index");
-Route::get('/topic/add', "AdminController@addTopic");

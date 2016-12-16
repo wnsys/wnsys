@@ -53,21 +53,27 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::group([
             'middleware' => 'web',
+            'namespace' => $this->namespace,
+        ], function ($router) {
+            require base_path('routes/module/web.php');
+        });
+        Route::group([
+            'middleware' => 'web',
             'namespace' => "App\Module\Topic\Controllers",
         ], function ($router) {
-            require base_path('routes/topic.php');
+            require base_path('routes/module/topic.php');
         });
         Route::group([
             'middleware' => 'web',
             'namespace' => "App\Module\Blog\Controllers",
         ], function ($router) {
-            require base_path('routes/blog.php');
+            require base_path('routes/module/blog.php');
         });
         Route::group([
             'middleware' => 'web',
             'namespace' => "App\Module\Admin\Controllers",
         ], function ($router) {
-            require base_path('routes/admin.php');
+            require base_path('routes/module/admin.php');
         });
     }
 
