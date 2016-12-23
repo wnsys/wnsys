@@ -1,5 +1,5 @@
 <?php
-namespace App\Module\Topic\Controllers;
+namespace App\Module\Teacher\Controllers;
 
 /**
  * Created by PhpStorm.
@@ -9,7 +9,7 @@ namespace App\Module\Topic\Controllers;
  */
 class AdminController extends \App\Http\Controllers\AdminController{
     function addPaper(){
-        echo 1;
+
     }
     function addTopic(){
         return view("topic.admin.addTopic");

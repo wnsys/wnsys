@@ -1,5 +1,5 @@
 <?php
-namespace App\Module\Topic\Controllers;
+namespace App\Module\Teacher\Controllers;
 use App\Http\Controllers\Controller;
 
 /**
@@ -10,6 +10,6 @@ use App\Http\Controllers\Controller;
  */
 class PaperController extends Controller{
     function index(){
-        echo 1;
+       
     }
 }
