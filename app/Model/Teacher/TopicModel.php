@@ -1,5 +1,5 @@
 <?php
-namespace App\Model;
+namespace App\Model\Teacher;
 use Illuminate\Database\Eloquent\Model;
 
 class TopicModel extends Model
