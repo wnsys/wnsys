@@ -1,5 +1,5 @@
 <?php
-namespace App\Model;
+namespace App\Model\Blog;
 use Illuminate\Database\Eloquent\Model;
 
 class BlogArticleModel extends Model

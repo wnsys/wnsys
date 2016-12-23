@@ -1,7 +1,8 @@
 <?php
 namespace App\Module\Blog\Controllers;
+
 use App\Http\Controllers\Controller;
-use App\Model\TopicModel;
+use App\Model\Blog\BlogArticleModel;
 use Illuminate\Http\Request;
 
 /**
@@ -10,14 +11,24 @@ use Illuminate\Http\Request;
  * Date: 2016/10/26 0026
  * Time: 11:36
  */
-class AdminController extends Controller{
-    function index(){
-
-        return view("blog.admin.list");
+class AdminController extends Controller
+{
+    function index()
+    {
+        $data = BlogArticleModel::all();
+        return view("blog.admin.list", [
+            "data" => $data
+        ]);
     }
-    function addBlog(Request $request){
-        if($request["dosubmit"]){
-            
+    function editBlog(Request $request){
+       
+
+        return view("blog.admin.edit");
+    }
+    function addBlog(Request $request)
+    {
+        if ($request["dosubmit"]) {
+            BlogArticleModel::create($request["info"]);
         }
         return view("blog.admin.add");
     }

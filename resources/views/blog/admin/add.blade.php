@@ -10,7 +10,6 @@
                 initialFrameHeight:400
             });
         })
-
     </script>
     @endsection
 @section('left')
@@ -18,26 +17,27 @@
 @endsection
 @section('content')
     <div >
-        <form class="form-horizontal">
+        <form class="form-horizontal" method="post">
+            {{ csrf_field() }}
             <div class="form-group">
                 <label class="control-label col-md-1">标题</label>
                 <div class="col-md-5">
-                    <input type="text" class="form-control" value="">
+                    <input type="text" class="form-control" name="info[title]" value="">
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-md-1">分类</label>
                 <div class="col-md-2">
-                    <select class="form-control">
-                        <option>生活</option>
-                        <option>技术</option>
+                    <select class="form-control" name="info[category]">
+                        <option value="1">生活</option>
+                        <option value="2">技术</option>
                     </select>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-md-1">内容</label>
                 <div class="col-md-10">
-                    <script id="container" name="content" type="text/plain">
+                    <script id="container" name="info[content]" type="text/plain">
         这里写你的初始化内容
     </script>
                 </div>
