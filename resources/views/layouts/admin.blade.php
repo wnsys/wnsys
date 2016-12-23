@@ -9,10 +9,12 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
     <!-- Styles -->
     <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
+    @yield("css")
     <script src="/js/jquery-3.1.1/jquery-3.1.1.min.js"></script>
     <!-- Scripts -->
     <script src="/bootstrap/js/bootstrap.min.js"></script>
     @yield("js")
+
     <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([

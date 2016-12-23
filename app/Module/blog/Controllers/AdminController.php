@@ -2,6 +2,7 @@
 namespace App\Module\Blog\Controllers;
 use App\Http\Controllers\Controller;
 use App\Model\TopicModel;
+use Illuminate\Http\Request;
 
 /**
  * Created by PhpStorm.
@@ -14,8 +15,11 @@ class AdminController extends Controller{
 
         return view("blog.admin.list");
     }
-    function addBlog(){
-        
+    function addBlog(Request $request){
+        if($request["dosubmit"]){
+            
+        }
         return view("blog.admin.add");
     }
+
 }

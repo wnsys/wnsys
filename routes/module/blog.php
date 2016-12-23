@@ -12,4 +12,4 @@
 */
 
 Route::get('/admin/blog', "AdminController@index");
-Route::get('/admin/blog/add', "AdminController@addBlog");
+Route::any('/admin/blog/add', "AdminController@addBlog");
