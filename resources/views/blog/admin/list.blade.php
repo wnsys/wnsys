@@ -2,8 +2,9 @@
 
 @extends('layouts.app')
 
-@section('title', 'Page Title')
-
+@section('left')
+    @include('blog.admin.left')
+@endsection
 @section('content')
-    <p>This is my body content.</p>
+    <p>博客列表</p>
 @endsection

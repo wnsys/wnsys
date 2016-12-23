@@ -11,5 +11,5 @@
 |
 */
 
-Route::get('/admin/blog', "IndexController@index");
+Route::get('/admin/blog', "AdminController@index");
 Route::get('/admin/blog/add', "AdminController@addBlog");

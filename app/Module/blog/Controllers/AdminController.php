@@ -11,11 +11,11 @@ use App\Model\TopicModel;
  */
 class AdminController extends Controller{
     function index(){
-       echo "欢迎来到韦宁的空间";
-        return view("blog.web.index");
+
+        return view("blog.admin.list");
     }
     function addBlog(){
-        echo "添加博客";
+        
         return view("blog.admin.add");
     }
 }

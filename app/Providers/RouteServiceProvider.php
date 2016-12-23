@@ -55,7 +55,7 @@ class RouteServiceProvider extends ServiceProvider
             'middleware' => 'web',
             'namespace' => $this->namespace,
         ], function ($router) {
-            require base_path('routes/module/web.php');
+            require base_path('routes/module/base.php');
         });
         Route::group([
             'middleware' => 'web',
@@ -77,9 +77,9 @@ class RouteServiceProvider extends ServiceProvider
         });
         Route::group([
             'middleware' => 'web',
-            'namespace' => "App\Module\Admin\Controllers",
+            'namespace' => "App\Module\Web\Controllers",
         ], function ($router) {
-            require base_path('routes/module/admin.php');
+            require base_path('routes/module/web.php');
         });
     }
 

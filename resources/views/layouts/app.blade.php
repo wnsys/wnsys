@@ -75,7 +75,8 @@
     <div class="col-md-2">
         <div class="panel panel-default">
             <div class="panel-body">
-                @yield('left')
+                @section('left')
+                @show
             </div>
         </div>
 
@@ -83,7 +84,8 @@
     <div class="col-md-10">
         <div class="panel panel-default">
             <div class="panel-body">
-                @yield('content')
+                @section('content')
+                    @show
             </div>
         </div>
 

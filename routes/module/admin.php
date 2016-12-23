@@ -1,2 +1,2 @@
 <?php
-Route::get('admin', "IndexController@Index");
+Route::get('/admin', "IndexController@Index");
