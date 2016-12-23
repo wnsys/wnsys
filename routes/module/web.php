@@ -11,6 +11,8 @@
 |
 */
 Route::get('login', "Auth\LoginController@showLoginForm");
-Route::get('register', "Auth\RegisterController@showRegistrationForm");
-Route::post('register', "Auth\RegisterController@register");
+Route::get('logout', "Auth\LoginController@showLoginForm");
+Route::post('logout', "Auth\LoginController@logout");
+/*Route::get('register', "Auth\RegisterController@showRegistrationForm");
+Route::post('register', "Auth\RegisterController@register");*/
 

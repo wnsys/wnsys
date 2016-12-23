@@ -9,9 +9,8 @@ class IndexController extends Controller{
     use AuthenticatesUsers;
     private $redirectTo;
     public function index(){
-        
+
+        return view("admin.index");
     }
-    public function username(){
-        return "user_name";
-    }
+
 }

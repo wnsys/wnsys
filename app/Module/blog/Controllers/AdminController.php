@@ -9,10 +9,10 @@ use App\Model\TopicModel;
  * Date: 2016/10/26 0026
  * Time: 11:36
  */
-class TopicController extends Controller{
+class AdminController extends Controller{
     function index(){
        echo "欢迎来到韦宁的空间";
-
+        return view("blog.web.index");
     }
     function addBlog(){
         echo "添加博客";
