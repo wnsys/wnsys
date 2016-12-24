@@ -24,6 +24,9 @@ class BlogController extends AdminController
     function edit(Request $request)
     {
         $data = BlogArticleModel::where("id", $request["id"])->first();
+        if ($request["dosubmit"]) {
+            $data->update($request["info"]);
+        }
         return view("blog.blog.add", [
             "data" => $data
         ]);

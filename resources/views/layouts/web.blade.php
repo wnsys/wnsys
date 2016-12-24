@@ -47,7 +47,7 @@
     </div>
 </nav>
 <div class="container center-block">
-    <div class="col-md-2">
+    <div class="col-md-3">
         <div class="panel panel-default">
             <div class="panel-body">
                 @section("left")
@@ -56,13 +56,9 @@
         </div>
 
     </div>
-    <div class="col-md-10">
-        <div class="panel panel-default">
-            <div class="panel-body">
+    <div class="col-md-9">
                 @section('content')
                 @show
-            </div>
-        </div>
     </div>
 
 </div>
