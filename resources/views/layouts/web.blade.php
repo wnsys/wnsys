@@ -22,7 +22,8 @@
         <div class="navbar-header">
 
             <!-- Collapsed Hamburger -->
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#app-navbar-collapse">
                 <span class="sr-only">Toggle Navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -38,7 +39,7 @@
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
-                <li ><a href="/blog">博客</a></li>
+                <li><a href="/">博客</a></li>
             </ul>
 
 
@@ -46,7 +47,24 @@
     </div>
 </nav>
 <div class="container center-block">
-    @yield('content')
+    <div class="col-md-2">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                @section("left")
+                @show
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-10">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                @section('content')
+                @show
+            </div>
+        </div>
+    </div>
+
 </div>
 
 </body>

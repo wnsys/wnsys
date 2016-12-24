@@ -13,7 +13,7 @@
     </script>
     @endsection
 @section('left')
-    @include('blog.admin.left')
+    @include('blog.left')
 @endsection
 @section('content')
     <div >
@@ -22,7 +22,7 @@
             <div class="form-group">
                 <label class="control-label col-md-1">标题</label>
                 <div class="col-md-5">
-                    <input type="text" class="form-control" name="info[title]" value="">
+                    <input type="text" class="form-control" name="info[title]" value="{{$data["title"]}}">
                 </div>
             </div>
             <div class="form-group">
@@ -38,7 +38,7 @@
                 <label class="control-label col-md-1">内容</label>
                 <div class="col-md-10">
                     <script id="container" name="info[content]" type="text/plain">
-        这里写你的初始化内容
+        {!!$data["content"]!!}
     </script>
                 </div>
             </div>

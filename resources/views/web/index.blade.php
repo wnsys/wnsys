@@ -1,4 +1,15 @@
 @extends('layouts.web')
+@section("left")
+    韦宁的博客
+@stop
 @section("content")
-    <div class="text-center">欢迎来到我的系统主页</div>
+
+    <ul class="list-group">
+        @foreach($bloglist as $blog)
+            <li class="list-group-item">
+                <a href="/blog/{{$blog["id"]}}">{{$blog["title"]}}</a>
+            </li>
+        @endforeach
+    </ul>
+
 @endsection

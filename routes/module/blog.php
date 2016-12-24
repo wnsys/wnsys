@@ -11,5 +11,12 @@
 |
 */
 
-Route::get('/admin/blog', "AdminController@index");
-Route::any('/admin/blog/add', "AdminController@addBlog");
+Route::get('/admin/blog', "BlogController@index");
+Route::any('/admin/blog/add', "BlogController@add");
+Route::any('/admin/blog/edit', "BlogController@edit");
+
+Route::get('/admin/blog/category', "CategoryController@index");
+Route::any('/admin/blog/category/add', "CategoryController@add");
+Route::any('/admin/blog/category/edit', "CategoryController@edit");
+
+Route::get("/blog/{id}","IndexController@show");

@@ -1,8 +1,8 @@
 <?php
 namespace App\Model\Blog;
-use Illuminate\Database\Eloquent\Model;
+use App\Model\WnModel;
 
-class BlogCategoryModel extends Model
+class BlogCategoryModel extends WnModel
 {
     protected $table = "blog_category";
     protected $fillable = [

@@ -1,6 +1,7 @@
 <?php
 namespace App\Module\Blog\Controllers;
 use App\Http\Controllers\Controller;
+use App\Model\Blog\BlogArticleModel;
 use App\Model\TopicModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
@@ -12,7 +13,10 @@ use Illuminate\Support\Facades\Response;
  * Time: 11:36
  */
 class IndexController extends Controller{
-    function index(Request $request){
-        return view("blog.web.index");
+    function show($id){
+        $blog = BlogArticleModel::find($id);
+        return view("blog.web.show",[
+            "blog"=>$blog
+        ]);
     }
 }

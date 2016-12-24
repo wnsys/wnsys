@@ -3,7 +3,7 @@
 @extends('layouts.admin')
 
 @section('left')
-    @include('blog.admin.left')
+    @include('blog.left')
 @endsection
 @section('content')
     <p>博客列表</p>
