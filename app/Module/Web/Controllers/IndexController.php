@@ -12,7 +12,6 @@ use App\Model\Blog\BlogArticleModel;
 class IndexController extends Controller{
     public function index(){
         $bloglist = BlogArticleModel::all();
-
         return view("web.index",[
             "bloglist"=>$bloglist
         ]);

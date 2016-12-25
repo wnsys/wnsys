@@ -7,16 +7,16 @@
     <script type="text/javascript">
         $(function () {
             var ue = UE.getEditor('container', {
-                initialFrameHeight:400
+                initialFrameHeight: 400
             });
         })
     </script>
-    @endsection
+@endsection
 @section('left')
     @include('blog.left')
 @endsection
 @section('content')
-    <div >
+    <div>
         <form class="form-horizontal" method="post">
             {{ csrf_field() }}
             <div class="form-group">
@@ -29,8 +29,7 @@
                 <label class="control-label col-md-1">分类</label>
                 <div class="col-md-2">
                     <select class="form-control" name="info[category]">
-                        <option value="1">生活</option>
-                        <option value="2">技术</option>
+                        {!!$options!!}
                     </select>
                 </div>
             </div>
@@ -38,11 +37,11 @@
                 <label class="control-label col-md-1">内容</label>
                 <div class="col-md-10">
                     <script id="container" name="info[content]" type="text/plain">
-        {!!$data["content"]!!}
-    </script>
+                        {!!$data["content"]!!}
+                    </script>
                 </div>
             </div>
-            <div class="center-block text-center" >
+            <div class="center-block text-center">
                 <input type="submit" class="btn btn-primary " style="width:100px;" name="dosubmit" value="提交">
             </div>
 

@@ -14,10 +14,23 @@ class BlogCategoryModel extends WnModel
 
     ];
 
-    static public function options()
+    static public function options($selected = 0)
     {
         $data = static::all()->toArray();
+        $result = [];
+        foreach ($data as $item){
+            $result[$item["id"]] = $item;
+        }
+        $first = ' <option value="0">未选择</option>';
         $str = "<option value=\$id \$selected>\$spacer\$name</option>";
+        $tree = new Tree();
+        $tree->init($result);
+        return $first.$tree->get_tree(0,$str,$selected);
+    }
+    static public function lists()
+    {
+        $data = static::all()->toArray();
+        $str = "\$spacer<a href='/admin/blog/category/edit/\$id'>\$name</a><br>";
         $tree = new Tree();
         $tree->init($data);
         return $tree->get_tree(0,$str);

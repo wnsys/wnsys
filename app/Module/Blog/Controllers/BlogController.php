@@ -3,6 +3,7 @@ namespace App\Module\Blog\Controllers;
 
 use App\Http\Controllers\AdminController;
 use App\Model\Blog\BlogArticleModel;
+use App\Model\Blog\BlogCategoryModel;
 use Illuminate\Http\Request;
 
 /**
@@ -16,8 +17,10 @@ class BlogController extends AdminController
     function index()
     {
         $data = BlogArticleModel::all();
+        $options = BlogCategoryModel::options();
         return view("blog.blog.list", [
-            "data" => $data
+            "data" => $data,
+            'options' => $options
         ]);
     }
 
@@ -27,8 +30,10 @@ class BlogController extends AdminController
         if ($request["dosubmit"]) {
             $data->update($request["info"]);
         }
+        $options = BlogCategoryModel::options();
         return view("blog.blog.add", [
-            "data" => $data
+            "data" => $data,
+            'options' => $options
         ]);
     }
 
@@ -38,9 +43,14 @@ class BlogController extends AdminController
         if ($request["dosubmit"]) {
             BlogArticleModel::create($request["info"]);
         }
-        return view("blog.blog.add");
+        $options = BlogCategoryModel::options();
+        return view("blog.blog.add", [
+            'options' => $options
+        ]);
     }
-    function delete(){
+
+    function delete()
+    {
 
     }
 }

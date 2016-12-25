@@ -17,6 +17,6 @@ Route::any('/admin/blog/edit', "BlogController@edit");
 
 Route::get('/admin/blog/category', "CategoryController@index");
 Route::any('/admin/blog/category/add', "CategoryController@add");
-Route::any('/admin/blog/category/edit', "CategoryController@edit");
+Route::any('/admin/blog/category/edit/{id}', "CategoryController@edit");
 
 Route::get("/blog/{id}","IndexController@show");

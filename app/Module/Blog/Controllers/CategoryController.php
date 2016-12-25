@@ -8,15 +8,16 @@
  */
 namespace App\Module\Blog\Controllers;
 use App\Http\Controllers\AdminController;
-use App\Model\Blog\BlogArticleModel;
 use App\Model\Blog\BlogCategoryModel;
 use Illuminate\Http\Request;
 
 class CategoryController extends AdminController{
-    public function index(){
+    public function index(Request $request){
         $data = [];
+        $lists = BlogCategoryModel::lists();
         return view("blog.category.list", [
-            "data" => $data
+            "data" => $data,
+            "lists" => $lists
         ]);
     }
     public function add(Request $request){
@@ -30,9 +31,13 @@ class CategoryController extends AdminController{
             "options" => $options
         ]);
     }
-    public function edit(Request $request){
-        $data = BlogCategoryModel::find($request["id"]);
-        $options = BlogCategoryModel::options();
+    public function edit($id,Request $request){
+        $data = BlogCategoryModel::find($id);
+        if($request["dosubmit"]){
+            $data->update($request["info"]);
+            return redirect("/admin/blog/category");
+        }
+        $options = BlogCategoryModel::options($data["parentid"]);
         return view("blog.category.add", [
             "data" => $data,
             "options" => $options

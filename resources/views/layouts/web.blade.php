@@ -9,6 +9,11 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
     <!-- Styles -->
     <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
+    @yield("css")
+    @yield("js")
+    <script src="/js/jquery-3.1.1/jquery-3.1.1.min.js"></script>
+    <!-- Scripts -->
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
     <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([
@@ -29,7 +34,18 @@
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
-                <li><a href="/">博客</a></li>
+                <li class="dropdown">
+                    <a href="/" class="dropdown-toggle" data-toggle="dropdown">
+                        博客
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        @foreach($blog_category as $item)
+                            <li><a href="#">{{$item[name]}}</a></li>
+                        @endforeach
+
+                    </ul>
+                </li>
             </ul>
 
 
@@ -47,8 +63,8 @@
 
     </div>
     <div class="col-md-9">
-                @section('content')
-                @show
+        @section('content')
+        @show
     </div>
 
 </div>
