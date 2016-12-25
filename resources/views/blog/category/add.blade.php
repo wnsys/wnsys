@@ -20,28 +20,21 @@
         <form class="form-horizontal" method="post">
             {{ csrf_field() }}
             <div class="form-group">
-                <label class="control-label col-md-1">标题</label>
+                <label class="control-label col-md-1">名称</label>
                 <div class="col-md-5">
-                    <input type="text" class="form-control" name="info[title]" value="{{$data["title"]}}">
+                    <input type="text" class="form-control" name="info[name]" value="{{$data["name"]}}">
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-md-1">分类</label>
                 <div class="col-md-2">
-                    <select class="form-control" name="info[category]">
-                        <option value="1">生活</option>
-                        <option value="2">技术</option>
+                    <select class="form-control" name="info[parentid]">
+                        <option value="0">未选择</option>
+                        {!!$options!!}
                     </select>
                 </div>
             </div>
-            <div class="form-group">
-                <label class="control-label col-md-1">内容</label>
-                <div class="col-md-10">
-                    <script id="container" name="info[content]" type="text/plain">
-        {!!$data["content"]!!}
-    </script>
-                </div>
-            </div>
+
             <div class="center-block text-center" >
                 <input type="submit" class="btn btn-primary " style="width:100px;" name="dosubmit" value="提交">
             </div>

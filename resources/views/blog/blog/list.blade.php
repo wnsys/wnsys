@@ -8,7 +8,7 @@
 @section('content')
     <p>博客列表</p>
     <div>
-        <table class="table">
+        <table class="table table-striped">
             <tr>
                 <th>标题</th>
                 <th>创建时间</th>
