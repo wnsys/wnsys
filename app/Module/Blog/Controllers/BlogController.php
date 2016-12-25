@@ -14,13 +14,16 @@ use Illuminate\Http\Request;
  */
 class BlogController extends AdminController
 {
+    function __construct()
+    {
+        view()->share("options",BlogCategoryModel::options());
+    }
+
     function index()
     {
         $data = BlogArticleModel::all();
-        $options = BlogCategoryModel::options();
         return view("blog.blog.list", [
             "data" => $data,
-            'options' => $options
         ]);
     }
 
@@ -30,7 +33,7 @@ class BlogController extends AdminController
         if ($request["dosubmit"]) {
             $data->update($request["info"]);
         }
-        $options = BlogCategoryModel::options();
+        $options = BlogCategoryModel::options($data["catid"]);
         return view("blog.blog.add", [
             "data" => $data,
             'options' => $options
@@ -43,10 +46,7 @@ class BlogController extends AdminController
         if ($request["dosubmit"]) {
             BlogArticleModel::create($request["info"]);
         }
-        $options = BlogCategoryModel::options();
-        return view("blog.blog.add", [
-            'options' => $options
-        ]);
+        return view("blog.blog.add");
     }
 
     function delete()

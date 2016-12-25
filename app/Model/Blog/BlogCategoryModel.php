@@ -21,7 +21,7 @@ class BlogCategoryModel extends WnModel
         foreach ($data as $item){
             $result[$item["id"]] = $item;
         }
-        $first = ' <option value="0">未选择</option>';
+        $first = ' <option value="0">顶级</option>';
         $str = "<option value=\$id \$selected>\$spacer\$name</option>";
         $tree = new Tree();
         $tree->init($result);
@@ -30,6 +30,9 @@ class BlogCategoryModel extends WnModel
     static public function lists()
     {
         $data = static::all()->toArray();
+        foreach ($data as $item){
+            $result[$item["id"]] = $item;
+        }
         $str = "\$spacer<a href='/admin/blog/category/edit/\$id'>\$name</a><br>";
         $tree = new Tree();
         $tree->init($data);

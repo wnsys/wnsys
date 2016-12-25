@@ -6,7 +6,7 @@ class BlogArticleModel extends WnModel
 {
     protected $table = "blog_article";
     protected $fillable = [
-        'title', 'category', 'content',
+        'title', 'catid', 'content',
     ];
     protected $hidden = [
 

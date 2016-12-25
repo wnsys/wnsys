@@ -28,7 +28,7 @@
             <div class="form-group">
                 <label class="control-label col-md-1">分类</label>
                 <div class="col-md-2">
-                    <select class="form-control" name="info[category]">
+                    <select class="form-control" name="info[catid]">
                         {!!$options!!}
                     </select>
                 </div>
