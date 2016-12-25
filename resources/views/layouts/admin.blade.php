@@ -38,6 +38,7 @@
                 <ul class="nav navbar-nav">
                     <li ><a href="/admin/blog">博客管理</a></li>
                     <li ><a href="/admin/teacher">教师管理</a></li>
+                    <li ><a href="/admin/system">系统管理</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->

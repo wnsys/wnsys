@@ -35,7 +35,7 @@
             </div>
             <div class="form-group">
                 <label class="control-label col-md-1">内容</label>
-                <div class="col-md-10">
+                <div class="col-md-11">
                     <script id="container" name="info[content]" type="text/plain">
                         {!!$data["content"]!!}
                     </script>

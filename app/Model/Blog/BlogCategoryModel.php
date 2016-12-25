@@ -21,7 +21,7 @@ class BlogCategoryModel extends WnModel
         foreach ($data as $item){
             $result[$item["id"]] = $item;
         }
-        $first = ' <option value="0">顶级</option>';
+        $first = ' <option value="0">未选择</option>';
         $str = "<option value=\$id \$selected>\$spacer\$name</option>";
         $tree = new Tree();
         $tree->init($result);

@@ -227,5 +227,13 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],
+    "modules"=>[
+        "Base"=>["namespace"=>"App\Module\Base\Controllers","route"=>"base"],
+        "Admin"=>["namespace"=>"App\Module\Admin\Controllers","route"=>"admin"],
+        "Blog"=>["namespace"=>"App\Module\Blog\Controllers","route"=>"blog"],
+        "Member"=>["namespace"=>"App\Module\Member\Controllers","route"=>"member"],
+        "System"=>["namespace"=>"App\Module\System\Controllers","route"=>"system"],
+        "Web"=>["namespace"=>"App\Module\Web\Controllers","route"=>"web"],
 
+    ]
 ];

@@ -51,36 +51,16 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapWebRoutes()
     {
-        Route::group([
-            'middleware' => 'web',
-            'namespace' => $this->namespace,
-        ], function ($router) {
-            require base_path('routes/module/base.php');
-        });
-        Route::group([
-            'middleware' => 'web',
-            'namespace' => "App\Module\Admin\Controllers",
-        ], function ($router) {
-            require base_path('routes/module/admin.php');
-        });
-        Route::group([
-            'middleware' => 'web',
-            'namespace' => "App\Module\Topic\Controllers",
-        ], function ($router) {
-            require base_path('routes/module/topic.php');
-        });
-        Route::group([
-            'middleware' => 'web',
-            'namespace' => "App\Module\Blog\Controllers",
-        ], function ($router) {
-            require base_path('routes/module/blog.php');
-        });
-        Route::group([
-            'middleware' => 'web',
-            'namespace' => "App\Module\Web\Controllers",
-        ], function ($router) {
-            require base_path('routes/module/web.php');
-        });
+        $modules = config("app.modules");
+        foreach ($modules as $k=>$module){
+            Route::group([
+                'middleware' => 'web',
+                'namespace' => $module["namespace"],
+            ], function ($router) use($module) {
+                require base_path('routes/module/'.$module["route"].'.php');
+            });
+        }
+
     }
 
     /**
