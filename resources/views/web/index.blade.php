@@ -8,8 +8,8 @@
         @foreach($bloglist as $blog)
             <li class="list-group-item">
                 <a href="/blog/{{$blog->id}}">{{$blog->title}}</a>
-                [ {{$blog->cat->name}} ]
-
+                [{{$blog->cat->name}}]
+                {{$blog->created_at}}
             </li>
         @endforeach
     </ul>
