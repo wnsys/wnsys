@@ -10,6 +10,7 @@ namespace App\Module\Blog\Controllers;
 use App\Http\Controllers\AdminController;
 use App\Model\Blog\BlogCategoryModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends AdminController{
     public function index(Request $request){

@@ -13,9 +13,9 @@ use App\Model\Blog\BlogCategoryModel;
 class IndexController extends WebController{
 
     public function index(){
-        $bloglist = BlogArticleModel::all();
+        $data = BlogArticleModel::orderBy('id','desc')->paginate(10);
         return view("web.index",[
-            "bloglist"=>$bloglist
+            "bloglist"=>$data
         ]);
     }
 }

@@ -7,9 +7,7 @@
     <ul class="list-group">
         @foreach($bloglist as $blog)
             <li class="list-group-item">
-                <a href="/blog/{{$blog->id}}">{{$blog->title}}</a>
-                [ {{$blog->cat->name}} ]
-
+                <a href="/blog/{{$blog["id"]}}">{{$blog["title"]}}</a>
             </li>
         @endforeach
     </ul>

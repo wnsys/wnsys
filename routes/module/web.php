@@ -13,6 +13,5 @@
 Route::get("/","IndexController@index");
 
 
-/*Route::get('register', "Auth\RegisterController@showRegistrationForm");
-Route::post('register', "Auth\RegisterController@register");*/
+
 

@@ -1,17 +1,11 @@
 <?php
 namespace App\Module\Blog\Controllers;
-
 use App\Http\Controllers\AdminController;
 use App\Model\Blog\BlogArticleModel;
 use App\Model\Blog\BlogCategoryModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-/**
- * Created by PhpStorm.
- * User: Administrator
- * Date: 2016/10/26 0026
- * Time: 11:36
- */
 class BlogController extends AdminController
 {
     function __construct()
@@ -19,9 +13,9 @@ class BlogController extends AdminController
         view()->share("options",BlogCategoryModel::options());
     }
 
-    function index()
+    function index(Request $request)
     {
-        $data = BlogArticleModel::all();
+        $data = BlogArticleModel::orderBy('id','desc')->paginate(10);
         return view("blog.blog.list", [
             "data" => $data,
         ]);
@@ -42,15 +36,15 @@ class BlogController extends AdminController
 
     function add(Request $request)
     {
-
         if ($request["dosubmit"]) {
             BlogArticleModel::create($request["info"]);
         }
         return view("blog.blog.add");
     }
 
-    function delete()
+    function delete(Request $request)
     {
-
+       $rs =  BlogArticleModel::destroy($request["id"]);
+        return redirect("/admin/blog");
     }
 }

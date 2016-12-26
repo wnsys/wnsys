@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => '天高任鸟飞',
+    'name' => 'wnsys',
 
     /*
     |--------------------------------------------------------------------------
@@ -228,11 +228,8 @@ return [
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],
     "modules"=>[
-        "Base"=>["namespace"=>"App\Module\Base\Controllers","route"=>"base"],
         "Admin"=>["namespace"=>"App\Module\Admin\Controllers","route"=>"admin"],
         "Blog"=>["namespace"=>"App\Module\Blog\Controllers","route"=>"blog"],
-        "Member"=>["namespace"=>"App\Module\Member\Controllers","route"=>"member"],
-        "System"=>["namespace"=>"App\Module\System\Controllers","route"=>"system"],
         "Web"=>["namespace"=>"App\Module\Web\Controllers","route"=>"web"],
 
     ]
