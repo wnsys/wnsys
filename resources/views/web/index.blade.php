@@ -9,7 +9,7 @@
             <li class="list-group-item">
                 <a href="/blog/{{$blog->id}}">{{$blog->title}}</a>
                 [{{$blog->cat->name}}]
-                {{$blog->created_at}}
+                {{$blog->created_at->toDateString()}}
             </li>
         @endforeach
     </ul>
