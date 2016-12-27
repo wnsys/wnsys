@@ -16,4 +16,7 @@ class IndexController extends Controller{
 
         return view("admin.setting");
     }
+    public function  avatar(){
+
+    }
 }

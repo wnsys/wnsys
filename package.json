@@ -4,6 +4,7 @@
     "prod": "gulp --production",
     "dev": "gulp watch"
   },
+  "registry":"https://registry.npm.taobao.org",
   "devDependencies": {
     "bootstrap-sass": "^3.3.7",
     "gulp": "^3.9.1",
