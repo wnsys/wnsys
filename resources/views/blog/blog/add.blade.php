@@ -1,7 +1,4 @@
 @extends('layouts.admin')
-@section("css")
-
-@stop
 @section("js")
     <script type="text/javascript" src="/ueditor/ueditor.config.js"></script>
     <!-- 编辑器源码文件 -->
@@ -12,7 +9,6 @@
             var ue = UE.getEditor('container', {
                 initialFrameHeight: 400
             });
-
         })
     </script>
 @endsection
@@ -48,7 +44,7 @@
             <div class="form-group">
                 <label class="control-label col-md-1">附件</label>
                 <div class="col-md-11">
-                    @include("common.upload")
+                    @include("common.jqUpload")
                 </div>
             </div>
 

@@ -3,6 +3,7 @@ namespace App\Module\Blog\Controllers;
 use App\Http\Controllers\AdminController;
 use App\Model\Blog\BlogArticleModel;
 use App\Model\Blog\BlogCategoryModel;
+use Barryvdh\Debugbar\Middleware\Debugbar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,7 +16,11 @@ class BlogController extends AdminController
 
     function index(Request $request)
     {
-        $data = BlogArticleModel::orderBy('id','desc')->paginate(10);
+        $query = new BlogArticleModel();
+        if($catid = $request["catid"]){
+            $query = $query->where("catid",$catid);
+        }
+        $data = $query->orderBy('id','desc')->paginate(10);
         return view("blog.blog.list", [
             "data" => $data,
         ]);
