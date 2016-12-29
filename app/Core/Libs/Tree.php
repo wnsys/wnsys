@@ -1,5 +1,5 @@
 <?php
-namespace App\Libs;
+namespace App\Core\Libs;
 /**
  * 通用的树型类，可以生成任何树型结构
  */

@@ -1,9 +1,9 @@
 <?php
 namespace App\Model\Blog;
-use App\Model\WnModel;
+use App\Model\AppModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class BlogArticleModel extends WnModel
+class BlogArticleModel extends AppModel
 {
     use SoftDeletes;
     protected $table = "blog_article";

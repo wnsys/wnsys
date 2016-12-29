@@ -1,5 +1,5 @@
 <?php
-namespace App\Libs;
+namespace App\Core\Libs;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Upload\File;

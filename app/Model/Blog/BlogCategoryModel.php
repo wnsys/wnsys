@@ -1,10 +1,10 @@
 <?php
 namespace App\Model\Blog;
 
-use App\Libs\Tree;
-use App\Model\WnModel;
+use App\Core\Libs\Tree;
+use App\Model\AppModel;
 
-class BlogCategoryModel extends WnModel
+class BlogCategoryModel extends AppModel
 {
     protected $table = "blog_category";
     protected $fillable = [

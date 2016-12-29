@@ -1,9 +1,9 @@
 <?php
 namespace App\Model\Teacher;
-use App\Model\WnModel;
+use App\Model\AppModel;
 use Illuminate\Database\Eloquent\Model;
 
-class TopicModel extends WnModel
+class TopicModel extends AppModel
 {
     protected $table = "topic";
     protected $fillable = [

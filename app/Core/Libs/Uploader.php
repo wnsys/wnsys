@@ -1,5 +1,5 @@
 <?php
-namespace App\Libs;
+namespace App\Core\Libs;
 /**
  * Created by JetBrains PhpStorm.
  * User: taoqili
