@@ -7,7 +7,6 @@
 @endsection
 @section('content')
     <div class="panel panel-default">
-        <div class="panel-heading">博客列表</div>
         <div class="panel-body">
             <form class="form-inline">
                 <div class="form-group">

@@ -1,10 +1,13 @@
 <?php
 namespace App\Module\Blog\Controllers;
 use App\Http\Controllers\AdminController;
+use App\Libs\Uploader;
+use App\Libs\WebUploader;
 use App\Model\Blog\BlogArticleModel;
 use App\Model\Blog\BlogCategoryModel;
 use Barryvdh\Debugbar\Middleware\Debugbar;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
 
 class BlogController extends AdminController
@@ -13,7 +16,10 @@ class BlogController extends AdminController
     {
         view()->share("options",BlogCategoryModel::options());
     }
-
+    function upload(){
+        $upload = new Uploader("file");
+        echo json_encode($upload->getFileInfo());
+    }
     function index(Request $request)
     {
         $query = new BlogArticleModel();

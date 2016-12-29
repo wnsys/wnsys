@@ -1,0 +1,174 @@
+
+#picker {
+    display: inline-block;
+    line-height: 1.42857;
+    margin: 0 12px 0 0;
+    vertical-align: middle;
+}
+#picker .webuploader-pick {
+    display: block;
+    padding: 6px 12px;
+}
+#uploader-demo .thumbnail {
+    height: 110px;
+    width: 110px;
+}
+#uploader-demo .thumbnail img {
+    width: 100%;
+}
+.uploader-list {
+    overflow: hidden;
+    width: 100%;
+}
+.file-item {
+    float: left;
+    margin: 0 20px 20px 0;
+    padding: 4px;
+    position: relative;
+}
+.file-item .error {
+    background: red none repeat scroll 0 0;
+    color: white;
+    font-size: 14px;
+    height: 20px;
+    left: 4px;
+    line-height: 23px;
+    position: absolute;
+    right: 4px;
+    text-align: center;
+    top: 4px;
+}
+.file-item .info {
+    background: rgba(0, 0, 0, 0.6) none repeat scroll 0 0;
+    bottom: 4px;
+    color: white;
+    font-size: 12px;
+    height: 20px;
+    left: 4px;
+    line-height: 20px;
+    overflow: hidden;
+    position: absolute;
+    right: 4px;
+    text-indent: 5px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    z-index: 10;
+}
+.upload-state-done::after {
+    bottom: 0;
+    color: #4cae4c;
+    content: "";
+    font-family: FontAwesome;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    position: absolute;
+    right: 4px;
+    z-index: 99;
+}
+
+.file-item .success {
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 40px;
+    width: 100%;
+    z-index: 200;
+    background: url(./images/success.png) no-repeat right bottom;
+}
+.file-item .progress {
+    background: transparent none repeat scroll 0 0;
+    border-radius: 0;
+    bottom: 4px;
+    height: 4px;
+    left: 4px;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    right: 4px;
+    z-index: 15;
+}
+.file-item .progress span {
+    animation: 2s linear 0s normal none infinite running progressmove;
+    background: #d14 url("images/progress.png") repeat-x scroll 0 0;
+    display: block;
+    height: 100%;
+    overflow: hidden;
+    transform: translateZ(0px);
+    transition: width 200ms linear 0s;
+    width: 0;
+}
+@keyframes progressmove {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 17px 0;
+    }
+}
+@keyframes progressmove {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 17px 0;
+    }
+}
+@keyframes progressmove {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 17px 0;
+    }
+}
+a.travis {
+    position: relative;
+    right: 15px;
+    top: -4px;
+}
+#uploader-demo div.file-panel {
+    background: rgba(0, 0, 0, 0.5) none repeat scroll 0 0;
+    height: 0;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 300;
+}
+#uploader-demo div.file-panel span {
+    width: 24px;
+    height: 24px;
+    display: inline;
+    float: right;
+    text-indent: -9999px;
+    overflow: hidden;
+    background: url(./images/icons.png) no-repeat;
+    margin: 5px 1px 1px;
+    cursor: pointer;
+}
+
+#uploader-demo div.file-panel span.rotateLeft {
+    background-position: 0 -24px;
+}
+#uploader-demo div.file-panel span.rotateLeft:hover {
+    background-position: 0 0;
+}
+
+#uploader-demo div.file-panel span.rotateRight {
+    background-position: -24px -24px;
+}
+#uploader-demo div.file-panel span.rotateRight:hover {
+    background-position: -24px 0;
+}
+
+#uploader-demo div.file-panel span.cancel {
+    background-position: -48px -24px;
+}
+#uploader-demo div.file-panel span.cancel:hover {
+    background-position: -48px 0;
+}

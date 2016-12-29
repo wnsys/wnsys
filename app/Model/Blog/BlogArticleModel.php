@@ -8,7 +8,7 @@ class BlogArticleModel extends WnModel
     use SoftDeletes;
     protected $table = "blog_article";
     protected $fillable = [
-        'title', 'catid', 'content',
+        'title', 'catid', 'content',"attach",
     ];
     protected $hidden = [
 
