@@ -1,5 +1,5 @@
 <?php
-namespace App\Model\Blog;
+namespace App\Module\Blog\Model;
 use App\Model\AppModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -14,6 +14,9 @@ class BlogArticleModel extends AppModel
 
     ];
     public function cat(){
-       return  $this->hasOne("App\Model\Blog\BlogCategoryModel","id","catid");
+       return  $this->hasOne("App\Module\Blog\Model\BlogCategoryModel","id","catid");
+    }
+    public function image(){
+        
     }
 }

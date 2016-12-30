@@ -69,7 +69,7 @@ uploader.on( 'uploadProgress', function( file, percentage ) {
 
 // 文件上传成功，给item添加成功class, 用样式标记上传成功。
 uploader.on( 'uploadSuccess', function( file ,data) {
-    attch += "|"+data.url;
+    attch += ","+data.image_id;
     console.log("attach"+attch);
     $( '#'+file.id ).append( '<span class="success"></span>' );
 
@@ -94,6 +94,5 @@ uploader.on( 'uploadComplete', function( file,data ) {
 });
 // 完成上传完了，成功或者失败，先删除进度条。
 uploader.on( 'uploadFinished', function( file,data ) {
-    console.log("attach2:"+attch);
     $("#attach").val(attch.slice(1))
 });

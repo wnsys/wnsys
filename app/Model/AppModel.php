@@ -5,5 +5,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class AppModel extends Model
 {
-    
+    static function newInstance(){
+
+    }
 }

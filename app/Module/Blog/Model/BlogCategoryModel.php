@@ -1,5 +1,5 @@
 <?php
-namespace App\Model\Blog;
+namespace App\Module\Blog\Model;
 
 use App\Core\Libs\Tree;
 use App\Model\AppModel;

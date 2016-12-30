@@ -1,6 +1,6 @@
 <?php
 namespace App\Module\Blog\Bll;
-use App\Model\Blog\BlogCategoryModel;
+use App\Module\Blog\Model\BlogCategoryModel;
 
 class CategoryBll{
     static public function formSelect($name = "",$selected = 0){

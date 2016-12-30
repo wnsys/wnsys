@@ -7,7 +7,7 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
-class UserModel extends WnModel implements
+class UserModel extends AppModel implements
     AuthenticatableContract,
     AuthorizableContract,
     CanResetPasswordContract

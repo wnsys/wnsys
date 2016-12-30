@@ -1,8 +1,7 @@
 <?php
 namespace App\Module\Web\Controllers;
 use App\Http\Controllers\Controller;
-use App\Model\Blog\BlogArticleModel;
-use App\Model\Blog\BlogCategoryModel;
+use App\Module\Blog\Model\BlogCategoryModel;
 
 /**
  * Created by PhpStorm.

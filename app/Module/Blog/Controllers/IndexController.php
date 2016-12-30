@@ -1,12 +1,7 @@
 <?php
 namespace App\Module\Blog\Controllers;
-
-use App\Http\Controllers\Controller;
-use App\Model\Blog\BlogArticleModel;
-use App\Model\Blog\BlogCategoryModel;
-use App\Model\TopicModel;
+use App\Module\Blog\Model\BlogArticleModel;
 use App\Module\Web\Controllers\WebController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 
 /**
