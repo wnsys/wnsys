@@ -13,6 +13,7 @@ class ImageModel extends AppModel{
         "state",
         "type",
         'original',
+        'url',
         "size",
     ];
     protected $hidden = [

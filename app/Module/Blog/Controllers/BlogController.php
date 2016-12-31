@@ -21,7 +21,7 @@ class BlogController extends AdminController
     {
         $upload = new Uploader("file");
         $info = $upload->getFileInfo();
-        $info["user_id"] =  Auth::id();
+        $info["user_id"] = Auth::id();
         $image = ImageModel::create($info);
         $info["image_id"] = $image->id;
         echo json_encode($info);
@@ -45,9 +45,9 @@ class BlogController extends AdminController
         if ($request["dosubmit"]) {
             $data->update($request["info"]);
             if ($image_ids = $request["info"]["attach"]) {
-                $ids = explode(",",$image_ids);
-                BlogImageModel::newInstance()->blogSave($ids,$request["id"]);
-                }
+                $ids = explode(",", $image_ids);
+                BlogImageModel::model()->blogSave($ids, $request["id"]);
+            }
         }
         $options = BlogCategoryModel::options($data["catid"]);
         return view("blog.blog.add", [
@@ -61,8 +61,8 @@ class BlogController extends AdminController
         if ($request["dosubmit"]) {
             BlogArticleModel::create($request["info"]);
             if ($image_ids = $request["info"]["attach"]) {
-                $ids = explode(",",$image_ids);
-                BlogImageModel::blogSave($ids,$request["id"]);
+                $ids = explode(",", $image_ids);
+                BlogImageModel::model()->blogSave($ids, $request["id"]);
             }
         }
         return view("blog.blog.add");
