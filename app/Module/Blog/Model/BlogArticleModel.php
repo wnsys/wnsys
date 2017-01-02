@@ -1,6 +1,7 @@
 <?php
 namespace App\Module\Blog\Model;
 use App\Model\AppModel;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class BlogArticleModel extends AppModel
@@ -17,6 +18,11 @@ class BlogArticleModel extends AppModel
        return  $this->hasOne("App\Module\Blog\Model\BlogCategoryModel","id","catid");
     }
     public function image(){
-        
+        $condtion["module"] = "blog";
+        $condtion["pk_type"] = "article";
+        $condtion["pk_id"] = $this->id;
+        $condtion["user_id"] = Auth::id();
+        $image = BlogImageModel::Where($condtion)->get();
+        return $image;
     }
 }

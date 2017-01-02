@@ -12,6 +12,7 @@
 #uploader-demo .thumbnail {
     height: 110px;
     width: 110px;
+    overflow: hidden;
 }
 #uploader-demo .thumbnail img {
     width: 100%;

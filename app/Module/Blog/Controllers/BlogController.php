@@ -54,6 +54,7 @@ class BlogController extends AdminController
             "data" => $data,
             'options' => $options
         ]);
+        
     }
 
     function add(Request $request)
