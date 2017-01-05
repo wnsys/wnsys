@@ -7,8 +7,10 @@ use App\Module\Blog\Model\BlogArticleModel;
 use App\Module\Blog\Model\BlogCategoryModel;
 use App\Module\Blog\Model\BlogImageModel;
 use App\Model\ImageModel;
+use DebugBar\DebugBar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class BlogController extends AdminController
 {
@@ -44,7 +46,9 @@ class BlogController extends AdminController
         $data = BlogArticleModel::where("id", $request["id"])->first();
         if ($request["dosubmit"]) {
             $data->update($request["info"]);
-            if ($add_ids = $request["info"]["attach_add"] || $del_ids = $request["info"]["attach_del"]) {
+            $add_ids = $request["info"]["attach_add"];
+            $del_ids = $request["info"]["attach_del"];
+            if ($add_ids  || $del_ids ) {
                 BlogImageModel::model()->blogSave($request["id"],$add_ids, $del_ids);
             }
         }
