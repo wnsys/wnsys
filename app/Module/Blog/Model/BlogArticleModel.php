@@ -18,11 +18,15 @@ class BlogArticleModel extends AppModel
        return  $this->hasOne("App\Module\Blog\Model\BlogCategoryModel","id","catid");
     }
     public function image(){
-        $condtion["module"] = "blog";
-        $condtion["pk_type"] = "article";
-        $condtion["pk_id"] = $this->id;
-        $condtion["user_id"] = Auth::id();
-        $image = BlogImageModel::Where($condtion)->get();
+        if($this->id){
+            $condtion["module"] = "blog";
+            $condtion["pk_type"] = "article";
+            $condtion["pk_id"] = $this->id;
+            $condtion["user_id"] = Auth::id();
+            $image = BlogImageModel::Where($condtion)->get();
+        }else{
+            $image = new BlogImageModel();
+        }
         return $image;
     }
 }

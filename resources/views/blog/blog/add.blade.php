@@ -20,7 +20,7 @@
         <div class="panel-body">
         <form class="form-horizontal" method="post">
             {{ csrf_field() }}
-            <input type="hidden" name="info[attach]" id="attach">
+
             <div class="form-group">
                 <label class="control-label col-md-1">标题</label>
                 <div class="col-md-5">

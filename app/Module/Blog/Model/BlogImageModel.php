@@ -7,13 +7,25 @@ use Illuminate\Support\Facades\Auth;
 class BlogImageModel extends ImageModel
 {
     private $module = "blog";
-    function blogSave(array $ids, $blogid)
-    {
-        return ImageModel::whereIn("id", $ids)->update(["user_id" => Auth::id(),
-            "module" => $this->module,
-            "pk_type" => "article",
-            "pk_id" => $blogid]);
 
+    /**
+     * @param $blogid
+     * @param array $add_ids "1,2,3"
+     * @param array $del_ids "1,2,4"
+     */
+    function blogSave($blogid,  $add_ids = "",  $del_ids = "")
+    {
+        $add_ids = $add_ids ? explode(",", $add_ids) : [];
+        $del_ids = $del_ids ? explode(",", $del_ids) : [];
+        if ($add_ids) {
+            ImageModel::whereIn("id", $add_ids)->update(["user_id" => Auth::id(),
+                "module" => $this->module,
+                "pk_type" => "article",
+                "pk_id" => $blogid]);
+        }
+        if ($del_ids) {
+            ImageModel::destroy($del_ids);
+        }
     }
 
 }

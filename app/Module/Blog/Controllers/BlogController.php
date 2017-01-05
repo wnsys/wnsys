@@ -44,9 +44,8 @@ class BlogController extends AdminController
         $data = BlogArticleModel::where("id", $request["id"])->first();
         if ($request["dosubmit"]) {
             $data->update($request["info"]);
-            if ($image_ids = $request["info"]["attach"]) {
-                $ids = explode(",", $image_ids);
-                BlogImageModel::model()->blogSave($ids, $request["id"]);
+            if ($add_ids = $request["info"]["attach_add"] || $del_ids = $request["info"]["attach_del"]) {
+                BlogImageModel::model()->blogSave($request["id"],$add_ids, $del_ids);
             }
         }
         $options = BlogCategoryModel::options($data["catid"]);

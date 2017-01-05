@@ -9,12 +9,12 @@
     display: block;
     padding: 6px 12px;
 }
-#uploader-demo .thumbnail {
+#uploader .thumbnail {
     height: 110px;
     width: 110px;
     overflow: hidden;
 }
-#uploader-demo .thumbnail img {
+#uploader .thumbnail img {
     width: 100%;
 }
 .uploader-list {
@@ -131,7 +131,7 @@ a.travis {
     right: 15px;
     top: -4px;
 }
-#uploader-demo div.file-panel {
+#uploader div.file-panel {
     background: rgba(0, 0, 0, 0.5) none repeat scroll 0 0;
     height: 0;
     left: 0;
@@ -141,7 +141,7 @@ a.travis {
     width: 100%;
     z-index: 300;
 }
-#uploader-demo div.file-panel span {
+#uploader div.file-panel span {
     width: 24px;
     height: 24px;
     display: inline;
@@ -153,23 +153,23 @@ a.travis {
     cursor: pointer;
 }
 
-#uploader-demo div.file-panel span.rotateLeft {
+#uploader div.file-panel span.rotateLeft {
     background-position: 0 -24px;
 }
-#uploader-demo div.file-panel span.rotateLeft:hover {
+#uploader div.file-panel span.rotateLeft:hover {
     background-position: 0 0;
 }
 
-#uploader-demo div.file-panel span.rotateRight {
+#uploader div.file-panel span.rotateRight {
     background-position: -24px -24px;
 }
-#uploader-demo div.file-panel span.rotateRight:hover {
+#uploader div.file-panel span.rotateRight:hover {
     background-position: -24px 0;
 }
 
-#uploader-demo div.file-panel span.cancel {
+#uploader div.file-panel span.cancel {
     background-position: -48px -24px;
 }
-#uploader-demo div.file-panel span.cancel:hover {
+#uploader div.file-panel span.cancel:hover {
     background-position: -48px 0;
 }

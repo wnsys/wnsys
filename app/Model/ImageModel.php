@@ -15,6 +15,7 @@ class ImageModel extends AppModel{
         'original',
         'url',
         "size",
+        "sort"
     ];
     protected $hidden = [
 
