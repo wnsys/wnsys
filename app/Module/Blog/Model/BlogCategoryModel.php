@@ -14,7 +14,7 @@ class BlogCategoryModel extends AppModel
     ];
     static function subIds($catid){
         $cats = static::all();
-        $result = [];
+        $result = [$catid];
         foreach ($cats as $cat){
             if(in_array($catid,explode(",",$cat["parentids"]))){
                 $result[] = $cat["id"];

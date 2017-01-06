@@ -21,7 +21,10 @@ class IndexController extends WebController
             "blog" => $blog,
         ]);
     }
-    function lists(){
-        BlogArticleModel::
+    function lists($id){
+        $data = BlogArticleModel::lists($id);
+        return view("web.index",[
+            "bloglist"=>$data
+        ]);
     }
 }
