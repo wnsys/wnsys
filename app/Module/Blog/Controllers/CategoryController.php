@@ -25,7 +25,7 @@ class CategoryController extends AdminController{
     public function add(Request $request){
         $data = [];
         if($request["dosubmit"]){
-            BlogCategoryModel::create($request["info"]);
+            BlogCategoryModel::modelCreate($request["info"]);
         }
         $options = CategoryBll::options();
         return view("blog.category.add", [
@@ -36,7 +36,7 @@ class CategoryController extends AdminController{
     public function edit($id,Request $request){
         $data = BlogCategoryModel::find($id);
         if($request["dosubmit"]){
-            $data->update($request["info"]);
+            $data->modelSave($data->id,$request["info"]["name"],$request["info"]["parentid"]);
             return redirect("/admin/blog/category");
         }
         $options = CategoryBll::options($data["parentid"]);

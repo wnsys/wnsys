@@ -8,23 +8,30 @@ class BlogCategoryModel extends AppModel
 {
     protected $table = "blog_category";
     protected $fillable = [
-        'name', 'parent_id', 'parent_ids',
+        'name', 'parentid', 'parentids',
     ];
     protected $hidden = [
 
     ];
-
-   static function modelSave($catid, $cat_name, $parent_id)
+    static function modelCreate($data){
+        $data["parentids"] = static::createParentids($data["parentid"]);
+        return static::create($data);
+    }
+    static function createParentids($parentid){
+        $parent = static::find($parentid);
+        if ($parent) {
+            $parentids = $parent->parentids . "," . $parentid;
+        } else {
+            $parentids = 0;
+        }
+        return $parentids;
+    }
+   static function modelSave($catid, $cat_name, $parentid)
     {
         $cat = static::find($catid);
-        $parent = static::find($parent_id);
-        if ($parent) {
-            $parent_ids = $parent->parent_ids . "," . $parent_id;
-        } else {
-            $parent_ids = 0;
-        }
-        $cat->parent_id = $parent_id;
-        $cat->parent_ids = $parent_ids;
+        $parentids = static::createParentids($parentid);
+        $cat->parentid = $parentid;
+        $cat->parentids = $parentids;
         $cat->name = $cat_name;
         return $cat->save();
     }

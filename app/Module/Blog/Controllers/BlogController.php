@@ -66,7 +66,7 @@ class BlogController extends AdminController
             BlogArticleModel::create($request["info"]);
             if ($image_ids = $request["info"]["attach"]) {
                 $ids = explode(",", $image_ids);
-                BlogImageModel::model()->blogSave($ids, $request["id"]);
+                BlogImageModel::model()->modelSave($ids, $request["id"]);
             }
         }
         return view("blog.blog.add");
