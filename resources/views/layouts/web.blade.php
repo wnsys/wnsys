@@ -41,7 +41,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         @foreach($blog_category as $item)
-                            <li><a href="#">{{$item[name]}}</a></li>
+                            <li><a href="/blog/cat/{{$item[id]}}">{{$item[name]}}</a></li>
                         @endforeach
 
                     </ul>

@@ -82,7 +82,6 @@ uploader.on('uploadComplete', function (file, data) {
 // 完成上传完了，成功或者失败，先删除进度条。
 uploader.on('uploadFinished', function (file, data) {
     var add = addAttch.join(",");
-    console.log(add);
     $("#attach_add").val(add);
 
 });
@@ -97,7 +96,6 @@ $('#uploader').on('click','.add .cancel', function () {
     var thumb = $(this).parent().parent();
     addAttch.remove(thumb.attr("image_id"));
     var tt = addAttch.join(",");
-    console.log(tt);
     $(this).parent().parent().remove();
 });
 $('#uploader').on('click','.list .cancel', function () {
@@ -105,7 +103,6 @@ $('#uploader').on('click','.list .cancel', function () {
     delAttch.push(thumb.attr("image_id"));
     var del = delAttch.join(",");
     $("#attach_del").val(del)
-    console.log(del);
     $(this).parent().parent().remove();
 });
 // 初始化Web Uploader

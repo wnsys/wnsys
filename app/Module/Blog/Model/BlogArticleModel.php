@@ -15,7 +15,7 @@ class BlogArticleModel extends AppModel
 
     ];
     public function lists($catid){
-        
+        BlogCategoryModel::
     }
     public function cat(){
        return  $this->hasOne("App\Module\Blog\Model\BlogCategoryModel","id","catid");

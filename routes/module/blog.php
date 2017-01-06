@@ -14,3 +14,4 @@ Route::any('/admin/blog/category/edit/{id}', "CategoryController@edit");
 
 /*web*/
 Route::get("/blog/{id}","IndexController@show");
+Route::get("/blog/cat/{id}","IndexController@lists");

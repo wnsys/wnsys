@@ -1,6 +1,7 @@
 <?php
 namespace App\Module\Blog\Controllers;
 use App\Module\Blog\Model\BlogArticleModel;
+use App\Module\Blog\Model\BlogCategoryModel;
 use App\Module\Blog\Model\BlogImageModel;
 use App\Module\Web\Controllers\WebController;
 use Illuminate\Support\Facades\Response;
@@ -21,6 +22,6 @@ class IndexController extends WebController
         ]);
     }
     function lists(){
-        
+        BlogArticleModel::
     }
 }
