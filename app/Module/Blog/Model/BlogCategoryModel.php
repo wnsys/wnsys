@@ -1,7 +1,6 @@
 <?php
 namespace App\Module\Blog\Model;
 
-use App\Core\Libs\Tree;
 use App\Model\AppModel;
 
 class BlogCategoryModel extends AppModel
@@ -29,9 +28,8 @@ class BlogCategoryModel extends AppModel
    static function modelSave($catid, $cat_name, $parentid)
     {
         $cat = static::find($catid);
-        $parentids = static::createParentids($parentid);
         $cat->parentid = $parentid;
-        $cat->parentids = $parentids;
+        $cat->parentids = static::createParentids($parentid);
         $cat->name = $cat_name;
         return $cat->save();
     }
