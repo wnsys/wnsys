@@ -14,28 +14,19 @@ class BlogCategoryModel extends AppModel
 
     ];
 
-    static public function options($selected = 0)
+   static function modelSave($catid, $cat_name, $parent_id)
     {
-        $data = static::all()->toArray();
-        $result = [];
-        foreach ($data as $item){
-            $result[$item["id"]] = $item;
+        $cat = static::find($catid);
+        $parent = static::find($parent_id);
+        if ($parent) {
+            $parent_ids = $parent->parent_ids . "," . $parent_id;
+        } else {
+            $parent_ids = 0;
         }
-        $first = ' <option value="0">未选择</option>';
-        $str = "<option value=\$id \$selected>\$spacer\$name</option>";
-        $tree = new Tree();
-        $tree->init($result);
-        return $first.$tree->get_tree(0,$str,$selected);
+        $cat->parent_id = $parent_id;
+        $cat->parent_ids = $parent_ids;
+        $cat->name = $cat_name;
+        return $cat->save();
     }
-    static public function lists()
-    {
-        $data = static::all()->toArray();
-        foreach ($data as $item){
-            $result[$item["id"]] = $item;
-        }
-        $str = "\$spacer<a href='/admin/blog/category/edit/\$id'>\$name</a><br>";
-        $tree = new Tree();
-        $tree->init($data);
-        return $tree->get_tree(0,$str);
-    }
+
 }

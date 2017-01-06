@@ -1,6 +1,7 @@
 <?php
 namespace App\Module\Blog\Controllers;
 use App\Module\Blog\Model\BlogArticleModel;
+use App\Module\Blog\Model\BlogImageModel;
 use App\Module\Web\Controllers\WebController;
 use Illuminate\Support\Facades\Response;
 
@@ -18,5 +19,8 @@ class IndexController extends WebController
         return view("blog.web.show", [
             "blog" => $blog,
         ]);
+    }
+    function lists(){
+        
     }
 }

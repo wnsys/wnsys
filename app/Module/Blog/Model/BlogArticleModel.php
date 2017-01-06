@@ -14,6 +14,9 @@ class BlogArticleModel extends AppModel
     protected $hidden = [
 
     ];
+    public function lists($catid){
+        
+    }
     public function cat(){
        return  $this->hasOne("App\Module\Blog\Model\BlogCategoryModel","id","catid");
     }

@@ -3,6 +3,7 @@ namespace App\Module\Blog\Controllers;
 
 use App\Core\Libs\Uploader;
 use App\Http\Controllers\AdminController;
+use App\Module\Blog\Bll\CategoryBll;
 use App\Module\Blog\Model\BlogArticleModel;
 use App\Module\Blog\Model\BlogCategoryModel;
 use App\Module\Blog\Model\BlogImageModel;
@@ -15,7 +16,7 @@ class BlogController extends AdminController
 {
     function __construct()
     {
-        view()->share("options", BlogCategoryModel::options());
+        view()->share("options", CategoryBll::options());
     }
 
     function upload()
@@ -48,10 +49,10 @@ class BlogController extends AdminController
             $add_ids = $request["info"]["attach_add"];
             $del_ids = $request["info"]["attach_del"];
             if ($add_ids  || $del_ids ) {
-                BlogImageModel::model()->blogSave($request["id"],$add_ids, $del_ids);
+                BlogImageModel::model()->modelSave($request["id"],$add_ids, $del_ids);
             }
         }
-        $options = BlogCategoryModel::options($data["catid"]);
+        $options = CategoryBll::options($data["catid"]);
         return view("blog.blog.add", [
             "data" => $data,
             'options' => $options

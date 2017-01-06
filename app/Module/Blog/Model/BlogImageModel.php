@@ -13,7 +13,7 @@ class BlogImageModel extends ImageModel
      * @param array $add_ids "1,2,3"
      * @param array $del_ids "1,2,4"
      */
-    function blogSave($blogid,  $add_ids = "",  $del_ids = "")
+    function modelSave($blogid,  $add_ids = "",  $del_ids = "")
     {
         $add_ids = $add_ids ? explode(",", $add_ids) : [];
         $del_ids = $del_ids ? explode(",", $del_ids) : [];

@@ -8,6 +8,7 @@
  */
 namespace App\Module\Blog\Controllers;
 use App\Http\Controllers\AdminController;
+use App\Module\Blog\Bll\CategoryBll;
 use App\Module\Blog\Model\BlogCategoryModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +16,7 @@ use Illuminate\Support\Facades\Auth;
 class CategoryController extends AdminController{
     public function index(Request $request){
         $data = [];
-        $lists = BlogCategoryModel::lists();
+        $lists = CategoryBll::lists();
         return view("blog.category.list", [
             "data" => $data,
             "lists" => $lists
@@ -26,7 +27,7 @@ class CategoryController extends AdminController{
         if($request["dosubmit"]){
             BlogCategoryModel::create($request["info"]);
         }
-        $options = BlogCategoryModel::options();
+        $options = CategoryBll::options();
         return view("blog.category.add", [
             "data" => $data,
             "options" => $options
@@ -38,7 +39,7 @@ class CategoryController extends AdminController{
             $data->update($request["info"]);
             return redirect("/admin/blog/category");
         }
-        $options = BlogCategoryModel::options($data["parentid"]);
+        $options = CategoryBll::options($data["parentid"]);
         return view("blog.category.add", [
             "data" => $data,
             "options" => $options
