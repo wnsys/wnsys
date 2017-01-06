@@ -12,6 +12,16 @@ class BlogCategoryModel extends AppModel
     protected $hidden = [
 
     ];
+    static function subIds($catid){
+        $cats = static::all();
+        $result = [];
+        foreach ($cats as $cat){
+            if(in_array($catid,explode(",",$cat["parentids"]))){
+                $result[] = $cat["id"];
+            }
+        }
+        return $result;
+    }
     static function modelCreate($data){
         $data["parentids"] = static::createParentids($data["parentid"]);
         return static::create($data);

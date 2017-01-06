@@ -15,7 +15,8 @@ class BlogArticleModel extends AppModel
 
     ];
     public function lists($catid){
-        
+       $rs = static::whereIn("catid",BlogCategoryModel::subIds($catid))->get();
+       return $rs;
     }
     public function cat(){
        return  $this->hasOne("App\Module\Blog\Model\BlogCategoryModel","id","catid");
