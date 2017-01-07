@@ -1,5 +1,7 @@
 <?php
 namespace App\Module\Blog\Controllers;
+use App\Module\Blog\Bll\BlogArticleBll;
+use App\Module\Blog\Bll\CategoryBll;
 use App\Module\Blog\Model\BlogArticleModel;
 use App\Module\Blog\Model\BlogCategoryModel;
 use App\Module\Blog\Model\BlogImageModel;
@@ -17,14 +19,18 @@ class IndexController extends WebController
     function show($id)
     {
         $blog = BlogArticleModel::find($id);
+        $breadcrumb = BlogArticleBll::breadcrumb($id);
         return view("blog.web.show", [
             "blog" => $blog,
+            "breadcrumb" => $breadcrumb
         ]);
     }
     function lists($id){
         $data = BlogArticleModel::lists($id);
-        return view("web.index",[
-            "bloglist"=>$data
+        $breadcrumb = CategoryBll::breadcrumb($id,false);
+        return view("blog.web.index",[
+            "bloglist"=>$data,
+            "breadcrumb" => $breadcrumb
         ]);
     }
 }

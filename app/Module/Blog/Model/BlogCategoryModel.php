@@ -12,6 +12,20 @@ class BlogCategoryModel extends AppModel
     protected $hidden = [
 
     ];
+    static function parents($catid,$self = true){
+        $result = [];
+        $rs = static::find($catid);
+        $arr_parentids = explode(",",$rs["parentids"]);
+        unset($arr_parentids[0]);
+        if($self){
+            $arr_parentids[] = $catid;
+        }
+        foreach ($arr_parentids as $cid){
+            $result[$cid] = static::find($cid);
+            $result[$cid]["url"] = "/blog/cat/$cid";
+        }
+        return $result;
+    }
     static function subIds($catid){
         $cats = static::all();
         $result = [$catid];
