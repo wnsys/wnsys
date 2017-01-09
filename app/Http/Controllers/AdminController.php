@@ -9,5 +9,8 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class AdminController extends Controller
 {
-    
+    function __construct()
+    {
+        $this->middleware('auth');
+    }
 }
