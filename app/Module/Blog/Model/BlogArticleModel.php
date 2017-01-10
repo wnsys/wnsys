@@ -14,8 +14,8 @@ class BlogArticleModel extends AppModel
     protected $hidden = [
 
     ];
-    public function lists($catid){
-       $rs = static::whereIn("catid",BlogCategoryModel::subIds($catid))->get();
+   static public function lists($catid){
+       $rs = static::whereIn("catid",BlogCategoryModel::subIds($catid))->paginate(10);
        return $rs;
     }
     public function cat(){
