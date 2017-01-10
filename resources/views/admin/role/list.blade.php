@@ -3,12 +3,13 @@
     <script>
         $().ready(function(){
             $(".edit").click(function () {
-                self = $(this)
+                item = $(this)
                 $.ajax({
-                    url:"/admin/role/get?id="+self.data("id"),
+                    url:"/admin/role/get?id="+item.data("id"),
                     dataType:"json",
                     success:function (data) {
                         $("#edit #name").val(data.name);
+                        $("#edit #id").val(item.data("id"))
                         $('#edit').modal('show');
                     }
                 })
@@ -17,12 +18,10 @@
     </script>
 @stop
 @section('content')
-
     <div class="panel panel-default">
         <div class="panel-body">
             <div class="form-group">
                 <input type="button" class="btn btn-primary" data-toggle="modal" data-target="#add" value="新增">
-
             </div>
             <table class="table table-striped">
                 <tr>
@@ -42,9 +41,9 @@
             {{$data->links()}}
         </div>
     </div>
-@append
+@stop
 
 @section("modal")
-    @include("admin.role.add",["id"=>"add","action"=>"add"])
-    @include("admin.role.add",["id"=>"edit","action"=>"edit"])
-@stop
+    @include("admin.role.add",["id"=>"add","action"=>"add","title"=>"新增角色"])
+    @include("admin.role.add",["id"=>"edit","action"=>"edit","title"=>"编辑角色"])
+@append

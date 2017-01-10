@@ -13,7 +13,7 @@
     <script src="/js/jquery-3.1.1/jquery-3.1.1.min.js"></script>
     <!-- Scripts -->
     <script src="/bootstrap/js/bootstrap.min.js"></script>
-    @yield("js")
+@yield("js")
 
 <!-- Scripts -->
     <script>
@@ -74,17 +74,13 @@
 </nav>
 <div class="col-md-2">
     @section('left')
-
     @show
-
 </div>
 <div class="col-md-10">
     @section('content')
     @show
-
 </div>
-@section('modal')
-@show
-
+    @section('modal')
+    @show
 </body>
 </html>

@@ -32,7 +32,7 @@ class RoleController extends AdminController
     {
         $model = RoleModel::find($request["id"]);
         if ($model && $request["id"]) {
-            $model->name = $request["name"];
+            $model->name = $request["info"]["name"];
             $model->save();
         }
         return redirect("admin/role");
@@ -40,6 +40,7 @@ class RoleController extends AdminController
 
     public function delete(Request $request)
     {
-
+        RoleModel::destroy($request["id"]);
+        return redirect("admin/role");
     }
 }
