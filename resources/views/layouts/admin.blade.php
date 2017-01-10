@@ -13,7 +13,7 @@
     <script src="/js/jquery-3.1.1/jquery-3.1.1.min.js"></script>
     <!-- Scripts -->
     <script src="/bootstrap/js/bootstrap.min.js"></script>
-@yield("js")
+    @yield("js")
 
 <!-- Scripts -->
     <script>
@@ -83,7 +83,8 @@
     @show
 
 </div>
-
+@section('modal')
+@show
 
 </body>
 </html>

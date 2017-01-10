@@ -2,10 +2,12 @@
 @section("left")
     韦宁的博客
 @stop
-@section("content")
+@section("css")
     <style>img {
             width: 100%;
         }</style>
+    @stop
+@section("content")
     <ol class="breadcrumb">
         @foreach($breadcrumb as $item)
             <li class="{{$item['class']}}">
