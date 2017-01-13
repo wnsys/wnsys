@@ -13,8 +13,7 @@
                 $.ajax({
                     url:"/admin/role/get?id="+item.data("id"),
                     success:function (data) {
-                        $("#permission .name").val(data.name);
-                        $("#permission .name").val(data.name);
+                        $("#permission .name").text(item.data("name"));
                         $('#permission').modal('show');
                     }
                 })

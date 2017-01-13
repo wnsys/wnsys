@@ -1,7 +1,5 @@
 @extends('layouts.web')
-@section("left")
-    韦宁的博客
-@stop
+
 @section("css")
     <style>img {
             width: 100%;
@@ -22,7 +20,11 @@
     </ol>
 
     <h1>{{$blog[title]}}</h1>
-
+<ul class="list-inline">
+    <li>
+        <span class="glyphicon glyphicon-calendar"></span>
+        {{$blog["created_at"]}}</li>
+</ul>
     {!!$blog[content]!!}
 
 @endsection

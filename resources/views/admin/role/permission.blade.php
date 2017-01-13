@@ -10,7 +10,7 @@
             <div class="form-group">
                 <label class="control-label col-md-4">角色名称</label>
                 <div class="col-md-5">
-                   <label class="name"></label>
+                   <label class="control-label name"></label>
                 </div>
             </div>
             <div class="form-group">

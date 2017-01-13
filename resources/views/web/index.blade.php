@@ -1,7 +1,5 @@
 @extends('layouts.web')
-@section("left")
-    韦宁的博客
-@stop
+
 @section("content")
 
     <ul class="list-group">

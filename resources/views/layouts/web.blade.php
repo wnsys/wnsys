@@ -55,6 +55,7 @@
         <div class="panel panel-default">
             <div class="panel-body">
                 @section("left")
+                    @include("web.left")
                 @show
             </div>
         </div>

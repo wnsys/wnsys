@@ -15,7 +15,7 @@ class BlogArticleModel extends AppModel
 
     ];
    static public function lists($catid){
-       $rs = static::whereIn("catid",BlogCategoryModel::subIds($catid))->paginate(10);
+       $rs = static::whereIn("catid",BlogCategoryModel::subIds($catid))->orderBy("id","desc")->paginate(10);
        return $rs;
     }
     public function cat(){

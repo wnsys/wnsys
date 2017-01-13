@@ -2,6 +2,7 @@
 namespace App\Module\Admin\Controllers;
 
 use App\Model\PermissionModel;
+use App\Model\PermissionRelateModel;
 use App\Model\RoleModel;
 use App\Module\Teacher\Controllers\AdminController;
 use Illuminate\Http\Request;
@@ -10,7 +11,10 @@ class RoleController extends AdminController
 {
     public function get(Request $request)
     {
-        echo json_encode(RoleModel::find($request["id"])->toArray());
+        $role = RoleModel::find($request["id"])->toArray();
+        $permission = PermissionRelateModel::model()->get($request["id"]);
+        $role["permission_id"] = $permission["permission_id"]?explode(",",$permission["permission_id"]):[];
+        echo json_encode($role);
     }
 
     public function index(Request $request)
