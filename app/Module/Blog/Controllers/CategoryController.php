@@ -39,7 +39,7 @@ class CategoryController extends AdminController{
             $data->modelSave($data->id,$request["info"]["name"],$request["info"]["parentid"]);
             return redirect("/admin/blog/category");
         }
-        $options = CategoryBll::options($data["parentid"]);
+        $options = BlogCategoryModel::options($data["parentid"]);
         return view("blog.category.add", [
             "data" => $data,
             "options" => $options
