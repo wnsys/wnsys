@@ -3,17 +3,23 @@
     <script>
         $().ready(function(){
             $(".edit").click(function () {
-                item = $(this)
+                $("#edit .name").val($(this).data("name"));
+                $("#edit .id").val($(this).data("id"))
+                $('#edit').modal('show');
+            });
+
+            $(".permission").click(function () {
+                item = $(this);
                 $.ajax({
                     url:"/admin/role/get?id="+item.data("id"),
-                    dataType:"json",
                     success:function (data) {
-                        $("#edit .name").val(data.name);
-                        $("#edit .id").val(item.data("id"))
-                        $('#edit').modal('show');
+                        $("#permission .name").val(data.name);
+                        $("#permission .name").val(data.name);
+                        $('#permission').modal('show');
                     }
                 })
-            });
+
+            })
         })
     </script>
 @stop
@@ -33,10 +39,10 @@
                         <td>{{$item["name"]}}</td>
 
                         <td><span class="glyphicon glyphicon-pencil"></span>
-                            <a data-id="{{$item["id"]}}" class="edit" href="javascript:void(0)" >编辑</a>
+                            <a data-id="{{$item["id"]}}" data-name="{{$item["name"]}}" class="edit" href="javascript:void(0)" >编辑</a>
                             &nbsp;&nbsp;
                             <span class="glyphicon glyphicon-glass"></span>
-                            <a data-id="{{$item["id"]}}" class="permission" href="javascript:void(0)" >权限</a>
+                            <a data-id="{{$item["id"]}}" data-name="{{$item["name"]}}" class="permission" href="javascript:void(0)" >权限</a>
                             &nbsp;&nbsp;
                             <span class=" glyphicon glyphicon-minus"></span>
                            <a href="/admin/role/delete?id={{$item["id"]}}" href="javascript:void(0)" >删除</a></td>
@@ -51,4 +57,5 @@
 @section("modal")
     @include("admin.role.add",["id"=>"add","action"=>"add","title"=>"新增角色"])
     @include("admin.role.add",["id"=>"edit","action"=>"edit","title"=>"编辑角色"])
+    @include("admin.role.permission",["id"=>"permission","options"=>$options,"title"=>"选择权限"])
 @append

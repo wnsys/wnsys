@@ -6,7 +6,7 @@ class PermissionRelateModel extends AppModel{
     protected $fillable = [
         "permission_id",
         "pk_id",
-        "type",
+        "pk_type",
     ];
     protected $hidden = [
 

@@ -27,7 +27,7 @@ class CategoryController extends AdminController{
         if($request["dosubmit"]){
             BlogCategoryModel::modelCreate($request["info"]);
         }
-        $options = CategoryBll::options();
+        $options = BlogCategoryModel::options();
         return view("blog.category.add", [
             "data" => $data,
             "options" => $options

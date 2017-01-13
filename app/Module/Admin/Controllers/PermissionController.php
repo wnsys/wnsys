@@ -8,6 +8,9 @@ use Symfony\Component\HttpFoundation\Request;
 
 class PermissionController extends AdminController
 {
+    function saveRelate(Request $request){
+        
+    }
     function index()
     {
         $data = PermissionBll::indexList();
@@ -40,7 +43,6 @@ class PermissionController extends AdminController
         if ($model && $request["id"]) {
             $info = $request["info"];
             $info["parentids"] = PermissionModel::createParentids($info["parentid"]);
-
             $model->update($info);
         }
         return redirect("admin/permission");

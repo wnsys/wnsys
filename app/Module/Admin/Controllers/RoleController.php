@@ -1,6 +1,7 @@
 <?php
 namespace App\Module\Admin\Controllers;
 
+use App\Model\PermissionModel;
 use App\Model\RoleModel;
 use App\Module\Teacher\Controllers\AdminController;
 use Illuminate\Http\Request;
@@ -15,8 +16,10 @@ class RoleController extends AdminController
     public function index(Request $request)
     {
         $data = RoleModel::paginate(10);
+        $options = PermissionModel::options();
         return view("admin.role.index", [
-            "data" => $data
+            "data" => $data,
+            'options' => $options
         ]);
     }
 
