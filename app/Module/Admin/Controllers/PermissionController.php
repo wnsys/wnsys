@@ -10,7 +10,7 @@ class PermissionController extends AdminController
 {
     function index()
     {
-        $data = PermissionModel::paginate(10);
+        $data = PermissionBll::indexList();
         $options = PermissionModel::options();
         return view("admin.permission.index", [
             "data" => $data,
@@ -21,6 +21,7 @@ class PermissionController extends AdminController
     function get(Request $request)
     {
         $data = PermissionModel::find($request["id"]);
+        $data["options"] = PermissionModel::options($data["parentid"]);
         echo json_encode($data);
     }
 

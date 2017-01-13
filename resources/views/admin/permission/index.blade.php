@@ -11,6 +11,7 @@
                         $("#edit .name").val(data.name);
                         $("#edit .code").val(data.code);
                         $("#edit .id").val(item.data("id"))
+                        $("#edit .parentid").html(data.options)
                         $('#edit').modal('show');
                     }
                 })
@@ -29,19 +30,9 @@
                     <th width="80%">权限名</th>
                     <td>操作</td>
                 </tr>
-                @foreach($data as $item)
-                    <tr>
-                        <td>{{$item["name"]}}</td>
-
-                        <td><span class="glyphicon glyphicon-pencil"></span>
-                            <a data-id="{{$item["id"]}}" class="edit" href="javascript:void(0)" >编辑</a>
-                            &nbsp;&nbsp;
-                            <span class=" glyphicon glyphicon-minus"></span>
-                           <a href="/admin/role/delete?id={{$item["id"]}}" href="javascript:void(0)" >删除</a></td>
-                    </tr>
-                @endforeach
+               {!! $data !!}
             </table>
-            {{$data->links()}}
+
         </div>
     </div>
 @stop

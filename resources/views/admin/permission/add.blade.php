@@ -22,7 +22,7 @@
             <div class="form-group">
                 <label class="control-label col-md-4">上级权限</label>
                 <div class="col-md-5">
-                    <select class="form-control" name="info[parentid]">
+                    <select class="form-control parentid" name="info[parentid]" >
                         {!!$options!!}
                     </select>
                 </div>

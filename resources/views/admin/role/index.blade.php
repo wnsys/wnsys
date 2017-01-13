@@ -23,7 +23,7 @@
             <div class="form-group">
                 <input type="button" class="btn btn-primary" data-toggle="modal" data-target="#add" value="新增">
             </div>
-            <table class="table table-striped">
+            <table class="table table-striped col-md-4" >
                 <tr>
                     <th width="80%">角色名</th>
                     <td>操作</td>
@@ -34,6 +34,9 @@
 
                         <td><span class="glyphicon glyphicon-pencil"></span>
                             <a data-id="{{$item["id"]}}" class="edit" href="javascript:void(0)" >编辑</a>
+                            &nbsp;&nbsp;
+                            <span class="glyphicon glyphicon-glass"></span>
+                            <a data-id="{{$item["id"]}}" class="permission" href="javascript:void(0)" >权限</a>
                             &nbsp;&nbsp;
                             <span class=" glyphicon glyphicon-minus"></span>
                            <a href="/admin/role/delete?id={{$item["id"]}}" href="javascript:void(0)" >删除</a></td>
