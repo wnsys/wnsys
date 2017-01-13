@@ -11,12 +11,10 @@ class PermissionController extends AdminController
 {
     function saveRelate(Request $request){
         $info = $request["info"];
-        $info["permission_id"] = implode(",",$request["info"]["permission_id"]);
-        print_r($info);
-        $data = PermissionRelateModel::query()->firstOrNew($info);
-        print_r($data);
+        $data = PermissionRelateModel::query()->firstOrCreate($info);
+        $info["permission_id"] = implode(",",$request["permission_id"]);
         $data->update($info);
-       // return redirect("admin/role");
+        return redirect("admin/role");
     }
     function index()
     {

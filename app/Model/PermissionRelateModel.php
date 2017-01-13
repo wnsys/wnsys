@@ -1,8 +1,11 @@
 <?php
 namespace App\Model;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 class PermissionRelateModel extends AppModel
 {
+    use SoftDeletes;
     protected $table = "permission_relate";
     protected $pk_type = "role";
     protected $fillable = [

@@ -16,7 +16,7 @@
             <div class="form-group">
                 <label class="control-label col-md-4">选择权限</label>
                 <div class="col-md-5">
-                    <select multiple="multiple" name="info[permission_id][]" class="form-control" id="permission_id" style="height:300px">
+                    <select multiple="multiple" name="permission_id[]" class="form-control permission_id"  style="height:300px">
                         {!! $options !!}
                     </select>
                 </div>

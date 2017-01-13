@@ -14,8 +14,9 @@
                 $("#permission .pk_id").val(item.data("id"));
                 $.ajax({
                     url:"/admin/role/get?id="+item.data("id"),
+                    dataType:"json",
                     success:function (data) {
-                        $("#permission .permission_id").text(data.permission_id);
+                        $("#permission .permission_id").val(data.permission_id);
                         $('#permission').modal('show');
                     }
                 })
