@@ -26,7 +26,13 @@
 <nav class="navbar navbar-default navbar-static-top">
     <div class="container" style="width:90%">
         <div class="navbar-header">
-
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#app-navbar-collapse">
+                <span class="sr-only">切换导航</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
             <!-- Branding Image -->
             <a class="navbar-brand" href="{{ url('/') }}">
                 {{ config('app.name', 'Laravel') }}

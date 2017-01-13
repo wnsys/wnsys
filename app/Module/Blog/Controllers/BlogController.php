@@ -53,7 +53,7 @@ class BlogController extends AdminController
                 BlogImageModel::model()->modelSave($request["id"],$add_ids, $del_ids);
             }
         }
-        $options = CategoryBll::options($data["catid"]);
+        $options = BlogCategoryModel::options($data["catid"]);
         return view("blog.blog.add", [
             "data" => $data,
             'options' => $options

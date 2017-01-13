@@ -24,9 +24,9 @@
         <div class="panel-body">
             <table class="table table-striped">
                 <tr>
-                    <th>标题</th>
-                    <th>创建时间</th>
-                    <td>操作</td>
+                    <th class="col-xs-4 col-md-7">标题</th>
+                    <th class="col-xs-4 col-md-3">创建时间</th>
+                    <td class="col-xs-4 col-md-2">操作</td>
                 </tr>
                 @foreach($data as $item)
                     <tr>

@@ -33,7 +33,7 @@
             </div>
             <table class="table table-striped col-md-4" >
                 <tr>
-                    <th width="80%">角色名</th>
+                    <th class="col-xs-4 col-lg-8">角色名</th>
                     <td>操作</td>
                 </tr>
                 @foreach($data as $item)
