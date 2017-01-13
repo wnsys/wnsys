@@ -8,8 +8,8 @@
                     url:"/admin/role/get?id="+item.data("id"),
                     dataType:"json",
                     success:function (data) {
-                        $("#edit #name").val(data.name);
-                        $("#edit #id").val(item.data("id"))
+                        $("#edit .name").val(data.name);
+                        $("#edit .id").val(item.data("id"))
                         $('#edit').modal('show');
                     }
                 })
@@ -25,16 +25,19 @@
             </div>
             <table class="table table-striped">
                 <tr>
-                    <th>角色名</th>
-                    <th>创建时间</th>
+                    <th width="80%">角色名</th>
+
                     <td>操作</td>
                 </tr>
                 @foreach($data as $item)
                     <tr>
                         <td>{{$item["name"]}}</td>
-                        <td>{{$item["created_at"]}}</td>
-                        <td><a data-id="{{$item["id"]}}" class="edit" >编辑</a>
-                            | <a href="/admin/role/delete?id={{$item["id"]}}">删除</a></td>
+
+                        <td><span class="glyphicon glyphicon-pencil"></span>
+                            <a data-id="{{$item["id"]}}" class="edit" href="javascript:void(0)" >编辑</a>
+                            &nbsp;&nbsp;
+                            <span class=" glyphicon glyphicon-minus"></span>
+                           <a href="/admin/role/delete?id={{$item["id"]}}" href="javascript:void(0)" >删除</a></td>
                     </tr>
                 @endforeach
             </table>
