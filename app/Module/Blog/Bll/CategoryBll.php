@@ -12,24 +12,12 @@ class CategoryBll{
    }
     static public function formSelect($name = "",$selected = 0){
         $select = "<select id='$name' name='$name' class='form-control'>";
-        $options = static::options($selected);
+        $options = BlogCategoryModel::options($selected);
         $select .=  $options;
         $select .= "</select>";
         return $select;
     }
-    static public function options($selected = 0)
-    {
-        $data = BlogCategoryModel::all()->toArray();
-        $result = [];
-        foreach ($data as $item){
-            $result[$item["id"]] = $item;
-        }
-        $first = ' <option value="0">未选择</option>';
-        $str = "<option value=\$id \$selected>\$spacer\$name</option>";
-        $tree = new Tree();
-        $tree->init($result);
-        return $first.$tree->get_tree(0,$str,$selected);
-    }
+
     static public function lists()
     {
         $data = BlogCategoryModel::all()->toArray();

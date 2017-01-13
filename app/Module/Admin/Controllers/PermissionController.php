@@ -11,7 +11,7 @@ class PermissionController extends AdminController
     function index()
     {
         $data = PermissionModel::paginate(10);
-        $options = PermissionBll::options();
+        $options = PermissionModel::options();
         return view("admin.permission.index", [
             "data" => $data,
             "options" => $options
@@ -27,6 +27,7 @@ class PermissionController extends AdminController
     function add(Request $request)
     {
         if ($request["dosubmit"]) {
+            $request["info"]["parentids"] = PermissionModel::createParentids($request["info"]["parentid"]);
             PermissionModel::create($request["info"]);
         }
         return redirect("admin/permission");
@@ -36,7 +37,10 @@ class PermissionController extends AdminController
     {
         $model = PermissionModel::find($request["id"]);
         if ($model && $request["id"]) {
-            $model->save($request["info"]);
+            $info = $request["info"];
+            $info["parentids"] = PermissionModel::createParentids($info["parentid"]);
+
+            $model->update($info);
         }
         return redirect("admin/permission");
     }

@@ -2,9 +2,11 @@
 namespace App\Module\Blog\Model;
 
 use App\Model\AppModel;
+use App\Model\Common\ParentModel;
 
 class BlogCategoryModel extends AppModel
 {
+    use ParentModel;
     protected $table = "blog_category";
     protected $fillable = [
         'name', 'parentid', 'parentids',
@@ -12,20 +14,7 @@ class BlogCategoryModel extends AppModel
     protected $hidden = [
 
     ];
-    static function parents($catid,$self = true){
-        $result = [];
-        $rs = static::find($catid);
-        $arr_parentids = explode(",",$rs["parentids"]);
-        unset($arr_parentids[0]);
-        if($self){
-            $arr_parentids[] = $catid;
-        }
-        foreach ($arr_parentids as $cid){
-            $result[$cid] = static::find($cid);
-            $result[$cid]["url"] = "/blog/cat/$cid";
-        }
-        return $result;
-    }
+
     static function subIds($catid){
         $cats = static::all();
         $result = [$catid];
@@ -40,15 +29,7 @@ class BlogCategoryModel extends AppModel
         $data["parentids"] = static::createParentids($data["parentid"]);
         return static::create($data);
     }
-    static function createParentids($parentid){
-        $parent = static::find($parentid);
-        if ($parent) {
-            $parentids = $parent->parentids . "," . $parentid;
-        } else {
-            $parentids = 0;
-        }
-        return $parentids;
-    }
+   
    static function modelSave($catid, $cat_name, $parentid)
     {
         $cat = static::find($catid);
