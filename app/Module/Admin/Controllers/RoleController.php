@@ -15,7 +15,7 @@ class RoleController extends AdminController
     public function index(Request $request)
     {
         $data = RoleModel::paginate(10);
-        return view("admin.role.list", [
+        return view("admin.role.index", [
             "data" => $data
         ]);
     }

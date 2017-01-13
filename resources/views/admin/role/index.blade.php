@@ -26,7 +26,6 @@
             <table class="table table-striped">
                 <tr>
                     <th width="80%">角色名</th>
-
                     <td>操作</td>
                 </tr>
                 @foreach($data as $item)
