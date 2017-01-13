@@ -10,10 +10,12 @@
 
             $(".permission").click(function () {
                 item = $(this);
+                $("#permission .name").text(item.data("name"));
+                $("#permission .pk_id").val(item.data("id"));
                 $.ajax({
                     url:"/admin/role/get?id="+item.data("id"),
                     success:function (data) {
-                        $("#permission .name").text(item.data("name"));
+                        $("#permission .permission_id").text(data.permission_id);
                         $('#permission').modal('show');
                     }
                 })

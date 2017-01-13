@@ -3,8 +3,8 @@
     {{$title}}
 @overwrite
 @section("form")
-    <form class="form-horizontal" method="post" action="/admin/permission/{{$action}}">
-        <input type="hidden" name="id" class="id" value="">
+    <form class="form-horizontal" method="post" action="/admin/permission/save">
+        <input type="hidden" name="info[pk_id]" class="pk_id" value="">
         @overwrite
         @section('message')
             <div class="form-group">
@@ -16,7 +16,7 @@
             <div class="form-group">
                 <label class="control-label col-md-4">选择权限</label>
                 <div class="col-md-5">
-                    <select multiple="multiple" name="permissionid" class="form-control" id="permissionid" style="height:300px">
+                    <select multiple="multiple" name="info[permission_id][]" class="form-control" id="permission_id" style="height:300px">
                         {!! $options !!}
                     </select>
                 </div>

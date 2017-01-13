@@ -3,13 +3,20 @@ namespace App\Module\Admin\Controllers;
 
 use App\Http\Controllers\AdminController;
 use App\Model\PermissionModel;
+use App\Model\PermissionRelateModel;
 use App\Module\Admin\Bll\PermissionBll;
 use Symfony\Component\HttpFoundation\Request;
 
 class PermissionController extends AdminController
 {
     function saveRelate(Request $request){
-        
+        $info = $request["info"];
+        $info["permission_id"] = implode(",",$request["info"]["permission_id"]);
+        print_r($info);
+        $data = PermissionRelateModel::query()->firstOrNew($info);
+        print_r($data);
+        $data->update($info);
+       // return redirect("admin/role");
     }
     function index()
     {

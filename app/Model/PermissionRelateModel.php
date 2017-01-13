@@ -16,7 +16,7 @@ class PermissionRelateModel extends AppModel
 
      function get($id)
     {
-        $data = static::where(["pk_id" => $id, "pk_type" => $this->pk_type]);
+        $data = static::where(["pk_id" => $id, "pk_type" => $this->pk_type])->first();
         return $data;
     }
 }
