@@ -33,7 +33,7 @@
                         <td>{{$item["title"]}}</td>
                         <td>{{$item["created_at"]}}</td>
                         <td><a href="/admin/blog/edit?id={{$item["id"]}}">编辑</a>
-                            | <a href="/admin/blog/delete?id={{$item["id"]}}">删除</a></td>
+                            | <a href="/admin/blog/delete?id={{$item["id"]}}" onclick="return confirm('确定删除吗？')">删除</a></td>
                     </tr>
                 @endforeach
             </table>

@@ -1,4 +1,4 @@
 <?php
-function test(){
-    echo 1;
+function is_mobile(){
+    return (new \Mobile_Detect())->isMobile();
 }

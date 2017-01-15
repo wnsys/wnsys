@@ -46,12 +46,13 @@ class BlogController extends AdminController
     {
         $data = BlogArticleModel::where("id", $request["id"])->first();
         if ($request["dosubmit"]) {
-            $data->update($request["info"]);
+            $data->modelSave($request["info"]);
             $add_ids = $request["info"]["attach_add"];
             $del_ids = $request["info"]["attach_del"];
             if ($add_ids  || $del_ids ) {
                 BlogImageModel::model()->modelSave($request["id"],$add_ids, $del_ids);
             }
+            return redirect("/admin/blog");
         }
         $options = BlogCategoryModel::options($data["catid"]);
         return view("blog.blog.add", [
@@ -64,7 +65,7 @@ class BlogController extends AdminController
     function add(Request $request)
     {
         if ($request["dosubmit"]) {
-            BlogArticleModel::create($request["info"]);
+            (new BlogArticleModel())->modelSave($request["info"]);
             if ($image_ids = $request["info"]["attach"]) {
                 $ids = explode(",", $image_ids);
                 BlogImageModel::model()->modelSave($ids, $request["id"]);
