@@ -60,7 +60,7 @@
         </div>
     </div>
 </nav>
-<div class="container center-block">
+<div class="container center-block blog-container">
     <div class="col-md-3">
         <div class="panel panel-default">
             <div class="panel-body">
