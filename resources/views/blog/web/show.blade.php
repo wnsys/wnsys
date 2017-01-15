@@ -26,6 +26,9 @@
             {{$blog["created_at"]}}
         </li>
     </ul>
-    {!!$blog[content]!!}
+    <div class="blog-content">
+        {!!$blog[content]!!}
+    </div>
+
 
 @endsection

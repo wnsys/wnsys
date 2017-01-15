@@ -89,5 +89,6 @@
 </div>
     @section('modal')
     @show
+
 </body>
 </html>

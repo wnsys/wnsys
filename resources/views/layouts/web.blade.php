@@ -9,6 +9,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
     <!-- Styles -->
     <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/web.css" rel="stylesheet">
     @yield("css")
     @yield("js")
     <script src="/js/jquery-3.1.1/jquery-3.1.1.min.js"></script>
@@ -25,39 +26,39 @@
 <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
 
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#app-navbar-collapse">
+                <span class="sr-only">切换导航</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse"
-                        data-target="#app-navbar-collapse">
-                    <span class="sr-only">切换导航</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <div class="navbar-header">
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
-                </div>
-            </div>
-            <div class="collapse navbar-collapse " id="app-navbar-collapse">
-                <!-- Left Side Of Navbar -->
-                <ul class="nav navbar-nav">
-                    <li class="dropdown">
-                        <a href="/" class="dropdown-toggle" data-toggle="dropdown">
-                            博客
-                            <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu">
-                            @foreach($blog_category as $item)
-                                <li><a href="/blog/cat/{{$item[id]}}">{{$item[name]}}</a></li>
-                            @endforeach
-
-                        </ul>
-                    </li>
-                </ul>
+                <!-- Branding Image -->
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    {{ config('app.name', 'Laravel') }}
+                </a>
             </div>
         </div>
+        <div class="collapse navbar-collapse " id="app-navbar-collapse">
+            <!-- Left Side Of Navbar -->
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="/" class="dropdown-toggle" data-toggle="dropdown">
+                        博客
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        @foreach($blog_category as $item)
+                            <li><a href="/blog/cat/{{$item[id]}}">{{$item[name]}}</a></li>
+                        @endforeach
+
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
 </nav>
 <div class="container center-block">
     <div class="col-md-3">
@@ -76,6 +77,10 @@
     </div>
 
 </div>
-
+<nav class="navbar navbar-default  text-center footer" >
+    <div class="container">
+        梦想能仗剑走天涯
+    </div>
+</nav>
 </body>
 </html>

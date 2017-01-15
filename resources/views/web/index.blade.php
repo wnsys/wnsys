@@ -13,5 +13,8 @@
             </li>
         @endforeach
     </ul>
-    {{$bloglist->links()}}
+    <div class="text-center">
+        {{$bloglist->links()}}
+    </div>
+
 @endsection
