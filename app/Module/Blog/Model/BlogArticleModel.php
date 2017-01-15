@@ -24,6 +24,7 @@ class BlogArticleModel extends AppModel
             $rs = $this->update($info);
         }else{
             $rs = $this->create($info);
+            $rs = $rs->id;
         }
         return $rs;
     }

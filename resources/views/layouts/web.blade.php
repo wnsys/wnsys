@@ -79,7 +79,7 @@
 </div>
 <nav class="navbar navbar-default  text-center footer" >
     <div class="container">
-        曾梦想能仗剑走天涯
+        仗剑走天涯<br>做最简单的系统
         <div>
             github：
             <a href="https://github.com/178441367/wnsys" target="_blank">https://github.com/178441367/wnsys</a>
