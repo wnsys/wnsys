@@ -30,7 +30,7 @@
                 </tr>
                 @foreach($data as $item)
                     <tr>
-                        <td>{{$item["title"]}}</td>
+                        <td><a href="/blog/{{$item["id"]}}" target="_blank">{{$item["title"]}}</a></td>
                         <td>{{$item["created_at"]}}</td>
                         <td><a href="/admin/blog/edit?id={{$item["id"]}}">编辑</a>
                             | <a href="/admin/blog/delete?id={{$item["id"]}}" onclick="return confirm('确定删除吗？')">删除</a></td>

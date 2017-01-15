@@ -79,7 +79,7 @@
 </div>
 <nav class="navbar navbar-default  text-center footer" >
     <div class="container">
-        梦想能仗剑走天涯
+        曾梦想能仗剑走天涯
     </div>
 </nav>
 </body>
