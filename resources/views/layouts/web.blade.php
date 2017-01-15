@@ -7,15 +7,12 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
-    <!-- Styles -->
     <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="/css/web.css" rel="stylesheet">
     @yield("css")
-    @yield("js")
     <script src="/js/jquery-3.1.1/jquery-3.1.1.min.js"></script>
-    <!-- Scripts -->
     <script src="/bootstrap/js/bootstrap.min.js"></script>
-    <!-- Scripts -->
+    @yield("js")
     <script>
         window.Laravel = <?php echo json_encode([
                 'csrfToken' => csrf_token(),
@@ -79,7 +76,7 @@
 </div>
 <nav class="navbar navbar-default  text-center footer" >
     <div class="container">
-        仗剑走天涯<br>做最简单的系统
+        仗剑走天涯,坚持自己的梦想<br>做最简单的系统
         <div>
             github：
             <a href="https://github.com/178441367/wnsys" target="_blank">https://github.com/178441367/wnsys</a>
