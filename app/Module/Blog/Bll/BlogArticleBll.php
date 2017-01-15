@@ -12,8 +12,8 @@ use App\Module\Blog\Model\BlogCategoryModel;
  */
 class BlogArticleBll{
    static function breadcrumb($id){
-        $blog = BlogArticleModel::find($id);
         $parents[] = ["url"=>"/","name"=>"首页","class"=>""];
+        $blog = BlogArticleModel::find($id);
         $parents = $parents + BlogCategoryModel::parents($blog["catid"]);
         $parents[] = ["url"=>"","name"=>$blog["title"],"class"=>"active"];
         $breadcrumb = $parents;
