@@ -6,18 +6,7 @@
         }</style>
 @stop
 @section("content")
-    <ol class="breadcrumb">
-        @foreach($breadcrumb as $item)
-            <li class="{{$item['class']}}">
-                @if($item["url"])
-                    <a href="{{$item[url]}}">{{$item[name]}}</a>
-                @else
-                    {{$item[name]}}
-                @endif
-
-            </li>
-        @endforeach
-    </ol>
+    @include("blog.web.components.breadcrumb")
 
     <h1>{{$blog[title]}}</h1>
     <ul class="list-inline">

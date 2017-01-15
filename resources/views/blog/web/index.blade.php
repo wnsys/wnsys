@@ -1,18 +1,7 @@
 @extends('layouts.web')
 
 @section("content")
-    <ol class="breadcrumb">
-        @foreach($breadcrumb as $item)
-            <li class="{{$item['class']}}">
-                @if($item["url"])
-                    <a  href="{{$item[url]}}">{{$item[name]}}</a>
-                @else
-                    {{$item[name]}}
-                @endif
-
-            </li>
-        @endforeach
-    </ol>
+@include("blog.web.components.breadcrumb")
     <ul class="list-group">
         @foreach($bloglist as $blog)
             <li class="list-group-item">
