@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>韦宁的博客</title>
     <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="/css/web.css" rel="stylesheet">
     @yield("css")
