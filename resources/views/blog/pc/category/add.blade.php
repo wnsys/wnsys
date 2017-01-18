@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('left')
-    @include('blog.left')
+    @include('left')
 @endsection
 @section('content')
     <div class="panel panel-default">

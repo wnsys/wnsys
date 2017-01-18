@@ -21,7 +21,7 @@
 @endsection
 @section('left')
     @if(!is_mobile())
-        @include('blog.left')
+        @include('left')
     @endif
 @endsection
 @section('content')

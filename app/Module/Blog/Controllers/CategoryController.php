@@ -17,7 +17,7 @@ class CategoryController extends AdminController{
     public function index(Request $request){
         $data = [];
         $lists = CategoryBll::lists();
-        return view("blog.category.list", [
+        return view("category.list", [
             "data" => $data,
             "lists" => $lists
         ]);
@@ -28,7 +28,7 @@ class CategoryController extends AdminController{
             BlogCategoryModel::modelCreate($request["info"]);
         }
         $options = BlogCategoryModel::options();
-        return view("blog.category.add", [
+        return view("category.add", [
             "data" => $data,
             "options" => $options
         ]);
@@ -40,7 +40,7 @@ class CategoryController extends AdminController{
             return redirect("/admin/blog/category");
         }
         $options = BlogCategoryModel::options($data["parentid"]);
-        return view("blog.category.add", [
+        return view("category.add", [
             "data" => $data,
             "options" => $options
         ]);

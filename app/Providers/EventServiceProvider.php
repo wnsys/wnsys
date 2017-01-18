@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Listeners\QueryListener;
+use App\Listeners\ViewListener;
 use Illuminate\Database\Events\QueryExecuted;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -21,6 +22,9 @@ class EventServiceProvider extends ServiceProvider
         QueryExecuted::class => [
            QueryListener::class
         ],
+    /*    "composing:*" => [
+            ViewListener::class
+        ]*/
     ];
 
     /**

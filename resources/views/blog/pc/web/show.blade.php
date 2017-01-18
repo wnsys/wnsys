@@ -6,8 +6,7 @@
         }</style>
 @stop
 @section("content")
-    @include("blog.web.components.breadcrumb")
-
+    @include("web.components.breadcrumb")
     <h1>{{$blog[title]}}</h1>
     <ul class="list-inline">
         <li>
