@@ -1,9 +1,9 @@
 <!-- Stored in resources/views/child.blade.php -->
 
-@extends('blog.blog.list')
+@extends('pc.blog.list')
 
 @section('left')
-    @include('blog.left')
+    @include('left')
 @endsection
 @section('content')
     <div class="panel panel-default">
@@ -25,15 +25,21 @@
             <table class="table table-striped">
                 <tr>
                     <th class="col-xs-4 col-md-7">标题</th>
-                    <th class="col-xs-4 col-md-3">创建时间</th>
-                    <td class="col-xs-4 col-md-2">操作</td>
+                    {{--<th class="col-xs-4 col-md-3">创建时间</th>
+                    <td class="col-xs-4 col-md-2">操作</td>--}}
                 </tr>
                 @foreach($data as $item)
                     <tr>
-                        <td><a href="/blog/{{$item["id"]}}" target="_blank">{{$item["title"]}}</a></td>
-                        <td>{{$item["created_at"]}}</td>
-                        <td><a href="/admin/blog/edit?id={{$item["id"]}}">编辑</a>
-                            | <a href="/admin/blog/delete?id={{$item["id"]}}" onclick="return confirm('确定删除吗？')">删除</a></td>
+                        <td><a href="/blog/{{$item["id"]}}" target="_blank">{{$item["title"]}}</a>
+                        <div>
+                            {{$item["created_at"]}}
+                            <div class="col-xs-5">
+                            <a href="/admin/blog/edit?id={{$item["id"]}}">编辑</a>
+                            | <a href="/admin/blog/delete?id={{$item["id"]}}" onclick="return confirm('确定删除吗？')">删除</a>
+                                </div>
+                        </div>
+                        </td>
+
                     </tr>
                 @endforeach
             </table>
