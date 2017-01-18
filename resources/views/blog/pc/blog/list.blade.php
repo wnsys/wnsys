@@ -11,7 +11,7 @@
             <form class="form-inline">
                 <div class="form-group">
                     <label for="cat_name">栏目</label>
-                   <?php echo \App\Module\Blog\Bll\CategoryBll::formSelect("catid",$_GET["catid"]);?>
+                   <?php echo $catlist;?>
                 </div>
 
                 <input type="submit" class="btn btn-primary" value="搜索">

@@ -36,9 +36,11 @@ class BlogController extends AdminController
         if ($catid = $request["catid"]) {
             $query = $query->where("catid", $catid);
         }
+        $catlist = CategoryBll::formSelect("catid",$_GET["catid"]);
         $data = $query->orderBy('id', 'desc')->paginate(10);
         return view("blog.list", [
             "data" => $data,
+            "catlist" => $catlist
         ]);
     }
 

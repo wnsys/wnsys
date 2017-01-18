@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Auth;
 class CategoryController extends AdminController{
     public function index(Request $request){
         $data = [];
-        $lists = CategoryBll::lists();
+        $lists = CategoryBll::treeLists();
         return view("category.list", [
             "data" => $data,
             "lists" => $lists
@@ -45,7 +45,9 @@ class CategoryController extends AdminController{
             "options" => $options
         ]);
     }
-    public function delete(){
-        $data = [];
+    function delete(Request $request)
+    {
+        BlogCategoryModel::destroy($request["id"]);
+        return redirect("/admin/blog/category");
     }
 }

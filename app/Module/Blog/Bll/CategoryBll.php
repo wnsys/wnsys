@@ -6,6 +6,7 @@ use App\Core\Libs\Tree;
 
 class CategoryBll
 {
+
     static public function breadcrumb($id)
     {
         $cat = BlogCategoryModel::find($id);
@@ -24,15 +25,23 @@ class CategoryBll
         return $select;
     }
 
-    static public function lists()
+    static public function treeLists()
     {
+        $str = "<tr>
+                        <td>\$spacer\$name</td>
+                        <td><span class='glyphicon glyphicon-pencil'></span>
+                            <a data-id='\$id' class='edit' href='/admin/blog/category/edit/\$id' >编辑</a>
+                            &nbsp;&nbsp;
+                            <span class='glyphicon glyphicon-minus'></span>
+                           <a href='/admin/blog/category/delete?id=\$id' onclick='return confirm(\\\"确定删除吗\\\")' >删除</a></td>
+                 </tr>";
+
         $data = BlogCategoryModel::all()->toArray();
         foreach ($data as $item) {
             $result[$item["id"]] = $item;
         }
-        $str = "\$spacer<a href='/admin/blog/category/edit/\$id'>\$name</a><br>";
         $tree = new Tree();
-        $tree->init($data);
+        $tree->init($result);
         return $tree->get_tree(0, $str);
     }
 }
