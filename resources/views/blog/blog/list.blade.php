@@ -22,7 +22,7 @@
 
     <div class="panel panel-default">
         <div class="panel-body">
-            <table class="table table-striped">
+            <table class="table table-striped " >
                 <tr>
                     <th class="col-xs-4 col-md-7">标题</th>
                     <th class="col-xs-4 col-md-3">创建时间</th>
