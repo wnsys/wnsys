@@ -33,32 +33,26 @@ class Factory extends CoreFactory
         return $view;
     }
     public function moduleView($view){
-
         if(is_mobile()){
             $paths = [
-                app()["module"].".wap.$view",
-                app()["module"].".$view",
-                app()["module"].".pc.$view",
-                $view
+                app()["module"].".wap",
+                app()["module"],
+                app()["module"].".pc",
+                ""
             ];
-            foreach ($paths as $path){
-                if($this->exists($path)){
-                    $view = $path;
-                    break;
-                }
-            }
         }else{
             $paths = [
-                app()["module"].".$view",
-                app()["module"].".pc.$view",
-                app()["module"].".wap.$view",
-                $view
+                app()["module"],
+                app()["module"].".pc",
+                app()["module"].".wap",
+                ""
             ];
-            foreach ($paths as $path){
-                if($this->exists($path)){
-                    $view = $path;
-                    break;
-                }
+        }
+        foreach ($paths as $path){
+            $filePath = $path.".$view";
+            if($this->exists($filePath)){
+                $view = $filePath;
+                break;
             }
         }
         return $view;
