@@ -9,6 +9,8 @@ class Module{
         $paths = explode("\\",$action["namespace"]);
         if(in_array("Module",$paths)){
             app()["module"] = strtolower($paths[2]);
+        }else{
+            app()["module"] = "";
         }
         return $next($request);
     }
