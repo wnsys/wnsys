@@ -21,7 +21,7 @@ class Factory extends CoreFactory
         }
 
         $view = $this->normalizeName($view);
-
+        //加上模块目录，扫描多个文件夹
         $view = $this->moduleView($view);
 
         $path = $this->finder->find($view);
