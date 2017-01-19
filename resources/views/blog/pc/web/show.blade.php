@@ -16,7 +16,14 @@
     </ul>
     <div class="blog-content">
         {!!$blog[content]!!}
+        <ul class="list-inline">
+            @foreach($blog->image() as $item)
+                <li><img class="img-thumbnail" src="{{$item->thumb(120,120)}}"></li>
+            @endforeach
+        </ul>
     </div>
+
+
 
 
 @endsection

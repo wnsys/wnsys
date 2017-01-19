@@ -4,6 +4,7 @@ namespace App\Module\Blog\Model;
 use App\Model\AppModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Intervention\Image\Facades\Image;
 
 class BlogArticleModel extends AppModel
 {

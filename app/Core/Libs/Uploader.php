@@ -14,7 +14,7 @@ class Uploader
     private $base64; //文件上传对象
     private  $config = array(
         "pathFormat" => "/upload/image/{yyyy}{mm}{dd}/{time}{rand:6}",
-        "maxSize" => 2048000,
+        "maxSize" => 4048000,
         "allowFiles" => [".png", ".jpg", ".jpeg", ".gif", ".bmp"]
     );
     private $oriName; //原始文件名
