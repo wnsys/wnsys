@@ -1,6 +1,7 @@
 <?php
 namespace App\Module\Web\Controllers;
 use App\Module\Blog\Model\BlogArticleModel;
+use App\Module\Web\Bll\IndexBll;
 use Intervention\Image\ImageManagerStatic;
 
 /**
@@ -12,10 +13,11 @@ use Intervention\Image\ImageManagerStatic;
 class IndexController extends WebController{
 
     public function index(){
-        ImageManagerStatic::make("a3.jpg")->resize(300, 200)->save("test.jpg");
-        $data = BlogArticleModel::orderBy('id','desc')->paginate(16);
+
+        $bloglist = BlogArticleModel::orderBy('id','desc')->paginate(15);
+        IndexBll::stripDate($bloglist);
         return view("web.index",[
-            "bloglist"=>$data
+            "bloglist"=>$bloglist
         ]);
     }
 }
