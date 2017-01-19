@@ -1,7 +1,8 @@
 @extends('layouts.web')
 
 @section("css")
-    <style>img {
+    <style>
+        img {
             max-width: 100%;
         }</style>
 @stop
