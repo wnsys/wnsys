@@ -18,12 +18,8 @@
         {!!$blog[content]!!}
         <ul class="list-inline">
             @foreach($blog->image() as $item)
-                <li><img class="img-thumbnail" src="{{$item->thumb(120,120)}}"></li>
+                <li><a href="{{$item->url}}"><img class="img-thumbnail" src="{{$item->thumb(120,120)}}"></a></li>
             @endforeach
         </ul>
     </div>
-
-
-
-
 @endsection
