@@ -26,9 +26,9 @@ class BlogArticleBll{
         $parents[] = ["url"=>"/","name"=>"首页","class"=>""];
         $blog = BlogArticleModel::find($id);
         $parents = $parents + BlogCategoryModel::parents($blog["catid"]);
-    /*    if(!is_mobile()){
+        if(!is_mobile()){
             $parents[] = ["url"=>"","name"=>$blog["title"],"class"=>"active"];
-        }*/
+        }
         $breadcrumb = $parents;
         return $breadcrumb;
     }

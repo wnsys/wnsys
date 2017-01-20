@@ -19,7 +19,7 @@ class BlogArticleModel extends AppModel
     public function modelSave($info)
     {
         if(!$info["title"]){
-            $info["title"] = mb_substr(strip_tags($info["content"]),0,20);
+            $info["title"] = mb_substr(strip_tags($info["content"]),0,30);
         }
         if($this->id){
             $rs = $this->update($info);

@@ -7,3 +7,9 @@
 .blog-content{
     padding-bottom: 50px;
 }
+.list-group-item-1{
+    border:0;
+    border-bottom: 1px solid #ddd;
+    padding-left:5px;
+    margin-bottom: 0;
+}

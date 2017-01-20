@@ -23,7 +23,7 @@ class IndexController extends WebController
         $breadcrumb = BlogArticleBll::breadcrumb($id);
         return view("web.show", [
             "blog" => $blog,
-            "breadcrumb" => $breadcrumb
+            "breadcrumb" => $breadcrumb,
         ]);
     }
     function lists($id){
