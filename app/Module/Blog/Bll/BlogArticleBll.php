@@ -11,11 +11,24 @@ use App\Module\Blog\Model\BlogCategoryModel;
  * Time: 8:13
  */
 class BlogArticleBll{
+    static public function stripDate(&$bloglist){
+        $dates = [];
+        foreach ($bloglist as $k=>$blog){
+            if($dates[$blog->created_at->toDateString()]){
+                $bloglist[$k]->created_at = null;
+            }else{
+                $dates[$blog->created_at->toDateString()] = 1;
+            }
+        }
+
+    }
    static function breadcrumb($id){
         $parents[] = ["url"=>"/","name"=>"首页","class"=>""];
         $blog = BlogArticleModel::find($id);
         $parents = $parents + BlogCategoryModel::parents($blog["catid"]);
-        $parents[] = ["url"=>"","name"=>$blog["title"],"class"=>"active"];
+    /*    if(!is_mobile()){
+            $parents[] = ["url"=>"","name"=>$blog["title"],"class"=>"active"];
+        }*/
         $breadcrumb = $parents;
         return $breadcrumb;
     }

@@ -1,5 +1,6 @@
 <?php
 namespace App\Module\Web\Controllers;
+use App\Module\Blog\Bll\BlogArticleBll;
 use App\Module\Blog\Model\BlogArticleModel;
 use App\Module\Web\Bll\IndexBll;
 use Intervention\Image\ImageManagerStatic;
@@ -15,7 +16,7 @@ class IndexController extends WebController{
     public function index(){
 
         $bloglist = BlogArticleModel::orderBy('id','desc')->paginate(15);
-        IndexBll::stripDate($bloglist);
+        BlogArticleBll::stripDate($bloglist);
         return view("web.index",[
             "bloglist"=>$bloglist
         ]);

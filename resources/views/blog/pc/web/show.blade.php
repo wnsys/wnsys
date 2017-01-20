@@ -8,7 +8,12 @@
 @stop
 @section("content")
     @include("web.components.breadcrumb")
-    <h1>{{$blog[title]}}</h1>
+    @if(is_mobile())
+        <h3>{{$blog[title]}}</h3>
+    @else
+        <h1>{{$blog[title]}}</h1>
+    @endif
+
     <ul class="list-inline">
         <li>
             <span class="glyphicon glyphicon-calendar"></span>

@@ -5,6 +5,7 @@ use App\Module\Blog\Bll\CategoryBll;
 use App\Module\Blog\Model\BlogArticleModel;
 use App\Module\Blog\Model\BlogCategoryModel;
 use App\Module\Blog\Model\BlogImageModel;
+use App\Module\Web\Bll\IndexBll;
 use App\Module\Web\Controllers\WebController;
 use Illuminate\Support\Facades\Response;
 
@@ -27,7 +28,8 @@ class IndexController extends WebController
     }
     function lists($id){
         $data = BlogArticleModel::lists($id);
-        $breadcrumb = CategoryBll::breadcrumb($id,false);
+        BlogArticleBll::stripDate($data);
+        $breadcrumb = CategoryBll::breadcrumb($id);
         return view("web.index",[
             "bloglist"=>$data,
             "breadcrumb" => $breadcrumb

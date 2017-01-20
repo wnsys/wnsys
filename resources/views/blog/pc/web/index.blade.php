@@ -10,8 +10,6 @@
                 @endif
                 <a href="/blog/{{$blog->id}}">{{$blog->title}}</a>
                 [{{$blog->cat->name}}]
-
-
             </li>
         @endforeach
     </ul>

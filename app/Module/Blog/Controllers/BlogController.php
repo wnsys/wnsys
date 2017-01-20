@@ -8,6 +8,7 @@ use App\Module\Blog\Model\BlogArticleModel;
 use App\Module\Blog\Model\BlogCategoryModel;
 use App\Module\Blog\Model\BlogImageModel;
 use App\Model\ImageModel;
+use App\Module\Web\Bll\IndexBll;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;

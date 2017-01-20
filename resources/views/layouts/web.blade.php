@@ -57,6 +57,11 @@
     </div>
 </nav>
 <div class="container center-block blog-container">
+
+    <div class="col-md-9">
+        @section('content')
+        @show
+    </div>
     <div class="col-md-3">
         <div class="panel panel-default">
             <div class="panel-body">
@@ -67,11 +72,6 @@
         </div>
 
     </div>
-    <div class="col-md-9">
-        @section('content')
-        @show
-    </div>
-
 </div>
 <nav class="navbar navbar-default  text-center footer">
     <div class="container">
