@@ -6,6 +6,7 @@
             max-width: 100%;
         }</style>
 @stop
+
 @section("content")
     @include("web.components.breadcrumb")
     @if(is_mobile())
