@@ -9,12 +9,9 @@
 
 @section("content")
     @include("web.components.breadcrumb")
-    @if(is_mobile())
-        <h3>{{$blog[title]}}</h3>
-    @else
-        <h1>{{$blog[title]}}</h1>
+    @if(!in_array($blog["catid"],app("config")["module"]["blog"]["hide_title"]))
+     <h3>{{$blog[title]}}</h3>
     @endif
-
     <ul class="list-inline">
         <li>
             <span class="glyphicon glyphicon-calendar"></span>

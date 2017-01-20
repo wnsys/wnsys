@@ -9,10 +9,8 @@
 
 @section("content")
     @include("web.components.breadcrumb")
-    @if(is_mobile())
+    @if(!in_array($blog["catid"],app("config")["module"]["blog"]["hide_title"]))
         <h3>{{$blog[title]}}</h3>
-    @else
-        <h1>{{$blog[title]}}</h1>
     @endif
 
     <ul class="list-inline">
