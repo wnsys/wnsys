@@ -30,9 +30,9 @@ class BlogArticleModel extends AppModel
         return $rs;
     }
 
-    static public function lists($catid)
+    static public function lists($catid,$pagesize = 10)
     {
-        $rs = static::whereIn("catid", BlogCategoryModel::subIds($catid))->orderBy("id", "desc")->paginate(10);
+        $rs = static::whereIn("catid", BlogCategoryModel::subIds($catid))->orderBy("id", "desc")->paginate($pagesize);
         return $rs;
     }
 
