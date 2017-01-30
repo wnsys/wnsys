@@ -22,7 +22,7 @@
             {!!$blog[content]!!}
             <ul class="list-inline">
                 @foreach($blog->image() as $item)
-                    <li><a href="{{$item->url}}"><img class="img-thumbnail" src="{{$item->thumb(120,120)}}"></a></li>
+                    <li><a href="{{$item->url}}"><img class="img-thumbnail" src="{{$item->url}}"></a></li>
                 @endforeach
             </ul>
     </div>

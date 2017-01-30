@@ -16,6 +16,7 @@
     </script>
 @stop
 @section('content')
+
     <div class="panel panel-default">
         <div class="panel-body">
             <div class="form-group">
@@ -43,7 +44,7 @@
                 @foreach($data as $item)
                     <tr>
                         <td><a href="" target="_blank">{{$item["user_name"]}}</a></td>
-                        <td><a href="/admin/member/edit?id={{$item["id"]}}">编辑</a>
+                        <td><a href="/admin/member/edit?id={{$item["id"]}}" class="edit">编辑</a>
                             | <a href="/admin/member/delete?id={{$item["id"]}}"
                                  onclick="return confirm('确定删除吗？')">删除</a></td>
                     </tr>
@@ -56,4 +57,5 @@
 
 @section("modal")
     @include("member.member.add",["id"=>"modelAdd","action"=>"add","title"=>"新增用户"])
+    @include("member.member.add",["id"=>"modelEdit","action"=>"add","title"=>"编辑用户"])
 @append

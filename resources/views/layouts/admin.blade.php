@@ -13,6 +13,7 @@
     <script src="/js/jquery-3.1.1/jquery-3.1.1.min.js"></script>
     <!-- Scripts -->
     <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/js/angular-1.6.0/angular.min.js"></script>
     @yield("js")
 
 <!-- Scripts -->
