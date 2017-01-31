@@ -7,20 +7,42 @@
 @endsection
 @section("js")
     <script>
-        $().ready(function () {
-            $("#add").on("click",function () {
-                $("#modelAdd").modal("show");
-            })
-        })
 
+        var app = new Vue({
+            el: '#app',
+            data: {
+                id: 0,
+                user_name:""
+            },
+            methods:{
+                get:function (id) {
+                    t = this;
+                    $.ajax({
+                        url:"/admin/member/get?id="+id,
+                        dataType:"json",
+                        success:function (data) {
+                            t.user_name = data.user_name;
+                            t.id = data.id;
+                            $("#modelEdit").modal("show");
+                        }
+                    })
+                },
+                add:function () {
+                    $("#modelAdd").modal("show");
+                },
+                save:function () {
+
+                }
+            }
+        })
     </script>
 @stop
 @section('content')
 
-    <div class="panel panel-default">
+    <div class="panel panel-default" >
         <div class="panel-body">
             <div class="form-group">
-                <input type="submit" class="btn btn-primary" id="add" value="新增">
+                <input type="submit" v-on:click="add" class="btn btn-primary" id="add" value="新增">
             </div>
             <form class="form-inline">
                 <div class="form-group">
@@ -44,7 +66,7 @@
                 @foreach($data as $item)
                     <tr>
                         <td><a href="" target="_blank">{{$item["user_name"]}}</a></td>
-                        <td><a href="/admin/member/edit?id={{$item["id"]}}" class="edit">编辑</a>
+                        <td><a  class="edit" v-on:click="get({{$item["id"]}})" >编辑</a>
                             | <a href="/admin/member/delete?id={{$item["id"]}}"
                                  onclick="return confirm('确定删除吗？')">删除</a></td>
                     </tr>
@@ -56,6 +78,11 @@
 @endsection
 
 @section("modal")
-    @include("member.member.add",["id"=>"modelAdd","action"=>"add","title"=>"新增用户"])
-    @include("member.member.add",["id"=>"modelEdit","action"=>"add","title"=>"编辑用户"])
+    @include("member.member.add",["id"=>"modelAdd","action"=>"save","title"=>"新增用户"])
+    @include("member.member.add",["id"=>"modelEdit","action"=>"save","title"=>"编辑用户"])
 @append
+
+@section("footer")
+    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+    <input type="button" class="btn btn-primary" name="dosubmit" value="提交" />
+@show
