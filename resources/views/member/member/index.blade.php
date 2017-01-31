@@ -11,8 +11,15 @@
         var app = new Vue({
             el: '#app',
             data: {
-                id: 0,
-                user_name:""
+                add_id:"",
+                add_user_name:"",
+                add_password:"",
+                add_check_password:"",
+                edit_id:"",
+                edit_user_name:"",
+                edit_password:"",
+                edit_check_password:"",
+
             },
             methods:{
                 get:function (id) {
@@ -21,8 +28,8 @@
                         url:"/admin/member/get?id="+id,
                         dataType:"json",
                         success:function (data) {
-                            t.user_name = data.user_name;
-                            t.id = data.id;
+                            t.edit_user_name = data.user_name;
+                            t.edit_id = data.id;
                             $("#modelEdit").modal("show");
                         }
                     })
@@ -30,8 +37,15 @@
                 add:function () {
                     $("#modelAdd").modal("show");
                 },
-                save:function () {
-
+                save:function (formid) {
+                    $.ajax({
+                        url: "/admin/member/save?_token="+window.Laravel.csrfToken,
+                        data: $('#' + formid).serialize(),
+                        type: "post",
+                        success: function (data) {
+                            alert(data)
+                        }
+                    })
                 }
             }
         })
@@ -78,11 +92,7 @@
 @endsection
 
 @section("modal")
-    @include("member.member.add",["id"=>"modelAdd","action"=>"save","title"=>"新增用户"])
-    @include("member.member.add",["id"=>"modelEdit","action"=>"save","title"=>"编辑用户"])
+    @include("member.member.add",["id"=>"modelAdd","action"=>"add","title"=>"新增用户"])
+    @include("member.member.add",["id"=>"modelEdit","action"=>"edit","title"=>"编辑用户"])
 @append
 
-@section("footer")
-    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-    <input type="button" class="btn btn-primary" name="dosubmit" value="提交" />
-@show

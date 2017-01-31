@@ -5,6 +5,7 @@ namespace App\Exceptions;
 use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Validation\ValidationException;
 
 class Handler extends ExceptionHandler
 {
@@ -61,5 +62,19 @@ class Handler extends ExceptionHandler
         }
 
         return redirect()->guest('login');
+    }
+    protected function convertValidationExceptionToResponse(ValidationException $e, $request)
+    {
+        if ($e->response) {
+            return $e->response;
+        }
+        $errors = $e->validator->errors()->getMessages();
+        return response()->json($errors);
+        /*
+        if ($request->expectsJson()) {
+            return response()->json($errors);
+        }*/
+
+        //return redirect()->back()->withInput($request->input())->withErrors($errors);
     }
 }
