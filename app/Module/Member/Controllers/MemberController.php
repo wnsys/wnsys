@@ -33,10 +33,12 @@ class MemberController extends AdminController
             $user = UserModel::find($request["id"]);
             $user->password = bcrypt($request["info"]['password']);
             $user->save();
+            $message = "修改成功";
         } else {
             UserModel::create($request["info"]);
+            $message = "添加成功";
         }
-        return $this->response("修改成功");
+        return $this->response($message);
     }
 
     public function get(Request $request)
