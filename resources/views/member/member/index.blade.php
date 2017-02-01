@@ -11,14 +11,11 @@
         var app = new Vue({
             el: '#app',
             data: {
-                add_id:"",
+                id:"",
                 add_user_name:"",
                 add_password:"",
-                add_check_password:"",
-                edit_id:"",
                 edit_user_name:"",
                 edit_password:"",
-                edit_check_password:"",
 
             },
             methods:{
@@ -43,7 +40,11 @@
                         data: $('#' + formid).serialize(),
                         type: "post",
                         success: function (data) {
-                            alert(data)
+                            if(data.error == 0){
+                                alert(data.message)
+                            }else{
+                                alert(data.error);
+                            }
                         }
                     })
                 }

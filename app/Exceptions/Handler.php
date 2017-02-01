@@ -65,16 +65,15 @@ class Handler extends ExceptionHandler
     }
     protected function convertValidationExceptionToResponse(ValidationException $e, $request)
     {
-        if ($e->response) {
-            return $e->response;
-        }
+        $str_error = "";
         $errors = $e->validator->errors()->getMessages();
-        return response()->json($errors);
-        /*
-        if ($request->expectsJson()) {
-            return response()->json($errors);
-        }*/
-
-        //return redirect()->back()->withInput($request->input())->withErrors($errors);
+        foreach ($errors as $error) {
+            $str_error .= $error[0]."\n";
+        }
+        $result = [
+            "status" => 1,
+            "error" => $str_error
+        ];
+        return response()->json($result);
     }
 }
