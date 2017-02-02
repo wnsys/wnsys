@@ -19,7 +19,6 @@ class MemberController extends AdminController
     public function index()
     {
         $users = UserModel::paginate(10);
-
         $roles = RoleModel::get();
         return view("member.member.index", [
             "data" => $users,

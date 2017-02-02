@@ -6,7 +6,9 @@ use App\Core\Libs\Tree;
 
 class CategoryBll
 {
-
+    static public function template(){
+        $template = [];
+    }
     static public function breadcrumb($id)
     {
         $cat = BlogCategoryModel::find($id);

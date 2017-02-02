@@ -21,7 +21,14 @@
                         </select>
                     </div>
                 </div>
-
+                <div class="form-group">
+                    <label class="control-label col-md-1">模板</label>
+                    <div class="col-md-2">
+                        <select class="form-control" name="info[template]">
+                            {!!$template!!}
+                        </select>
+                    </div>
+                </div>
                 <div class="col-md-offset-1">
                     <input type="submit" class="btn btn-primary " style="width:100px;" name="dosubmit" value="提交">
                 </div>

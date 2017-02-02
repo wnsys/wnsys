@@ -17,6 +17,9 @@ class CategoryController extends AdminController{
     public function index(Request $request){
         $data = [];
         $lists = CategoryBll::treeLists();
+        $path = config("view.paths")[0];
+
+        //print_r(app()["files"]->files($path."/".app()["module"]."/pc/blog"));
         return view("category.list", [
             "data" => $data,
             "lists" => $lists
