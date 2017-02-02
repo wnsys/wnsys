@@ -11,11 +11,12 @@
         var app = new Vue({
             el: '#app',
             data: {
-                id:"",
+                add_id:"",
+                add_role_id:"",
                 add_user_name:"",
-                add_password:"",
+                edit_id:"",
                 edit_user_name:"",
-                edit_password:"",
+                edit_role_id:""
 
             },
             methods:{
@@ -27,6 +28,7 @@
                         success:function (data) {
                             t.edit_user_name = data.user_name;
                             t.edit_id = data.id;
+                            t.edit_role_id = data.role_id;
                             $("#modelEdit").modal("show");
                         }
                     })
@@ -42,6 +44,8 @@
                         success: function (data) {
                             if(data.error == 0){
                                 alert(data.message)
+                                $("#modelAdd").modal("hide");
+                                $("#modelEdit").modal("hide");
                             }else{
                                 alert(data.error);
                             }
@@ -81,9 +85,9 @@
                 @foreach($data as $item)
                     <tr>
                         <td><a href="" target="_blank">{{$item["user_name"]}}</a></td>
-                        <td><a  class="edit" v-on:click="get({{$item["id"]}})" >编辑</a>
+                        <td><a  class="edit" v-on:click="get({{$item["id"]}})" href="javascript:void(0)">编辑</a>
                             | <a href="/admin/member/delete?id={{$item["id"]}}"
-                                 onclick="return confirm('确定删除吗？')">删除</a></td>
+                                 onclick="return confirm('确定删除吗？')" href="javascript:void(0)">删除</a></td>
                     </tr>
                 @endforeach
             </table>

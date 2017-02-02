@@ -10,4 +10,8 @@ class RoleUserModel extends AppModel
     protected $hidden = [
 
     ];
+    public function role()
+    {
+        return $this->hasOne("App\Model\RoleUserModel", "role_id", "id");
+    }
 }
