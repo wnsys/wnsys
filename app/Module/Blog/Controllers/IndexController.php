@@ -21,7 +21,7 @@ class IndexController extends WebController
     {
         $blog = BlogArticleModel::find($id);
         $breadcrumb = BlogArticleBll::breadcrumb($id);
-        return view("web.show", [
+        return view("index.show", [
             "blog" => $blog,
             "breadcrumb" => $breadcrumb,
         ]);
@@ -29,8 +29,10 @@ class IndexController extends WebController
     function lists($id){
         $data = BlogArticleModel::lists($id);
         BlogArticleBll::stripDate($data);
+        $cat = BlogCategoryModel::find($id);
+        $template = $cat["template"]?:"list";
         $breadcrumb = CategoryBll::breadcrumb($id);
-        return view("web.index",[
+        return view("index.$template",[
             "bloglist"=>$data,
             "breadcrumb" => $breadcrumb
         ]);

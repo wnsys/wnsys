@@ -29,7 +29,7 @@ class CategoryController extends AdminController{
         if($request["dosubmit"]){
             BlogCategoryModel::modelCreate($request["info"]);
         }
-        $templates = CategoryBll::templates("web","list");
+        $templates = CategoryBll::templates("index","list");
         $options = BlogCategoryModel::options();
         return view("category.add", [
             "data" => $data,
@@ -39,7 +39,7 @@ class CategoryController extends AdminController{
     }
     public function edit($id,Request $request){
         $data = BlogCategoryModel::find($id);
-        $templates = CategoryBll::templates("web","list");
+        $templates = CategoryBll::templates("index","list");
         if($request["dosubmit"]){
             $data->modelSave($id,$request["info"]);
             return redirect("/admin/blog/category");

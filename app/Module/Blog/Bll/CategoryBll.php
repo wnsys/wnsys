@@ -10,14 +10,15 @@ class CategoryBll
         $result = [];
         $path = config("view.paths")[0];
         foreach (["pc","","wap"] as $device){
-            $templates = app()["files"]->files($path."/".app()["module"]."/$device/$controller");
+            $_path = $path."/".app()["module"]."/$device/$controller";
+            $templates = app()["files"]->files($_path);
             if($templates)
                 break;
         }
         $files = array_map("basename",$templates);
         foreach ($files as $file){
             if(strpos($file,$contain) !== false){
-                $result[] = $file;
+                $result[] = substr($file,0,strpos($file,"."));
             }
         }
         return $result;

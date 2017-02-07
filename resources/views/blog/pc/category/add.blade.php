@@ -26,7 +26,7 @@
                     <div class="col-md-2">
                         <select class="form-control" name="info[template]">
                             @foreach($templates as $template)
-                                <option value="{{$template}}" @if($template == $data["template"]) @endif>{{$template}}</option>
+                                <option value="{{$template}}" @if($template == $data["template"]) selected @endif>{{$template}}</option>
                                 @endforeach
                         </select>
                     </div>

@@ -1,17 +1,19 @@
-@extends('layouts.wap.web')
+@extends('layouts.web')
 
 @section("css")
     <style>
         img {
             max-width: 100%;
-        }</style>
+        }
+    </style>
 @stop
 
 @section("content")
-    @include("web.components.breadcrumb")
+    @include("index.components.breadcrumb")
     @if(!in_array($blog["catid"],app("config")["module"]["blog"]["hide_title"]))
-     <h3>{{$blog[title]}}</h3>
+        <h3>{{$blog[title]}}</h3>
     @endif
+
     <ul class="list-inline">
         <li>
             <span class="glyphicon glyphicon-calendar"></span>
