@@ -17,9 +17,6 @@ class CategoryController extends AdminController{
     public function index(Request $request){
         $data = [];
         $lists = CategoryBll::treeLists();
-        $path = config("view.paths")[0];
-
-        //print_r(app()["files"]->files($path."/".app()["module"]."/pc/blog"));
         return view("category.list", [
             "data" => $data,
             "lists" => $lists
@@ -38,6 +35,7 @@ class CategoryController extends AdminController{
     }
     public function edit($id,Request $request){
         $data = BlogCategoryModel::find($id);
+        $templates = CategoryBll::templates("web","list");
         if($request["dosubmit"]){
             $data->modelSave($data->id,$request["info"]["name"],$request["info"]["parentid"]);
             return redirect("/admin/blog/category");

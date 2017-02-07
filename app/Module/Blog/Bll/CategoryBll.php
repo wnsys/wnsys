@@ -6,8 +6,17 @@ use App\Core\Libs\Tree;
 
 class CategoryBll
 {
-    static public function template(){
-        $template = [];
+    static public function templates($controller,$contain){
+        $path = config("view.paths")[0];
+        $device = is_mobile()?"wap":"pc";
+        $templates = app()["files"]->files($path."/".app()["module"]."/$device/$controller");
+        $files = array_map("basename",$templates);
+        foreach ($files as $file){
+            if(strpos($file,$contain) > 0){
+
+            }
+        }
+        return $templates;
     }
     static public function breadcrumb($id)
     {
