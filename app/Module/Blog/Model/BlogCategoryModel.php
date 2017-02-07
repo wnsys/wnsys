@@ -9,7 +9,7 @@ class BlogCategoryModel extends AppModel
     use ParentModel;
     protected $table = "blog_category";
     protected $fillable = [
-        'name', 'parentid', 'parentids',
+        'name', 'parentid', 'parentids',"template"
     ];
     protected $hidden = [
 
@@ -30,12 +30,11 @@ class BlogCategoryModel extends AppModel
         return static::create($data);
     }
    
-   static function modelSave($catid, $cat_name, $parentid)
+   static function modelSave($catid, $info)
     {
         $cat = static::find($catid);
-        $cat->parentid = $parentid;
-        $cat->parentids = static::createParentids($parentid);
-        $cat->name = $cat_name;
+        $info["parentids"] = static::createParentids($info["parentid"]);
+        $cat->attributes = $info;
         return $cat->save();
     }
 

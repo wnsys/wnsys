@@ -41,13 +41,14 @@ class CategoryController extends AdminController{
         $data = BlogCategoryModel::find($id);
         $templates = CategoryBll::templates("web","list");
         if($request["dosubmit"]){
-            $data->modelSave($data->id,$request["info"]["name"],$request["info"]["parentid"]);
+            $data->modelSave($id,$request["info"]);
             return redirect("/admin/blog/category");
         }
         $options = BlogCategoryModel::options($data["parentid"]);
         return view("category.add", [
             "data" => $data,
-            "options" => $options
+            "options" => $options,
+            "templates" => $templates
         ]);
     }
     function delete(Request $request)
