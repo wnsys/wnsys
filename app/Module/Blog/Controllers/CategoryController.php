@@ -16,10 +16,12 @@ use Illuminate\Support\Facades\Auth;
 class CategoryController extends AdminController{
     public function index(Request $request){
         $data = [];
+
         $lists = CategoryBll::treeLists();
         return view("category.list", [
             "data" => $data,
-            "lists" => $lists
+            "lists" => $lists,
+
         ]);
     }
     public function add(Request $request){
@@ -27,10 +29,12 @@ class CategoryController extends AdminController{
         if($request["dosubmit"]){
             BlogCategoryModel::modelCreate($request["info"]);
         }
+        $templates = CategoryBll::templates("web","list");
         $options = BlogCategoryModel::options();
         return view("category.add", [
             "data" => $data,
-            "options" => $options
+            "options" => $options,
+            "templates" => $templates
         ]);
     }
     public function edit($id,Request $request){

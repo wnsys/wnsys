@@ -25,7 +25,9 @@
                     <label class="control-label col-md-1">模板</label>
                     <div class="col-md-2">
                         <select class="form-control" name="info[template]">
-                            {!!$template!!}
+                            @foreach($templates as $template)
+                                <option value="">{{$template}}</option>
+                                @endforeach
                         </select>
                     </div>
                 </div>
