@@ -1,6 +1,6 @@
 <ul class="list-group">
-    <li class="list-group-item"><a href="/admin/blog">文章列表</a></li>
-    <li class="list-group-item"><a href="/admin/blog/add">添加文章</a></li>
-    <li class="list-group-item"><a href="/admin/blog/category">栏目管理</a></li>
-    <li class="list-group-item"><a href="/admin/blog/category/add">添加栏目</a></li>
+    <li class="list-group-item"><a href="/admin/shop">产品列表</a></li>
+    <li class="list-group-item"><a href="/admin/shop/add">添加产品</a></li>
+    <li class="list-group-item"><a href="/admin/shop/category">分类管理</a></li>
+    <li class="list-group-item"><a href="/admin/shop/category/add">添加分类</a></li>
 </ul>

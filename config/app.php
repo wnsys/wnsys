@@ -234,6 +234,6 @@ return [
         "Blog"=>["namespace"=>"App\Module\Blog\Controllers","route"=>"blog"],
         "Web"=>["namespace"=>"App\Module\Web\Controllers","route"=>"web"],
         "Member"=>["namespace"=>"App\Module\Member\Controllers","route"=>"member"],
-
+        "Shop"=>["namespace"=>"App\Module\Shop\Controllers","route"=>"shop"],
     ]
 ];

@@ -10,7 +10,7 @@
         <div class="panel-body">
             <form class="form-inline">
                 <div class="form-group">
-                    <label for="cat_name">栏目</label>
+                    <label for="cat_name">分类</label>
                    <?php echo $catlist;?>
                 </div>
 
@@ -24,7 +24,7 @@
         <div class="panel-body">
             <table class="table table-striped " >
                 <tr>
-                    <th class="col-xs-4 col-md-7">标题</th>
+                    <th class="col-xs-4 col-md-7">产品名称</th>
                     <th class="col-xs-4 col-md-3">创建时间</th>
                     <td class="col-xs-4 col-md-2">操作</td>
                 </tr>

@@ -1,5 +1,6 @@
 <?php
 namespace App\Module\Shop\Controllers;
+use App\Module\Shop\Bll\ShopCategoryBll;
 use App\Module\Shop\Model\ShopProductModel;
 use App\Module\Web\Controllers\WebController;
 use Illuminate\Support\Facades\Response;
@@ -18,7 +19,7 @@ class IndexController extends WebController
         if ($catid = $request["catid"]) {
             $query = $query->where("catid", $catid);
         }
-        $catlist = CategoryBll::formSelect("catid",$_GET["catid"]);
+        $catlist = ShopCategoryBll::formSelect("catid",$_GET["catid"]);
         $data = $query->orderBy('id', 'desc')->paginate(10);
         return view("blog.list", [
             "data" => $data,

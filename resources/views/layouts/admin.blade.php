@@ -47,6 +47,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="/admin/blog">博客管理</a></li>
                     <li><a href="/admin/member">会员管理</a></li>
+                    <li><a href="/admin/shop">商城</a></li>
                     <li><a href="/admin/setting">系统管理</a></li>
                 </ul>
 

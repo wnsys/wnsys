@@ -8,7 +8,7 @@
 @section('content')
     <div class="panel panel-default">
         <div class="panel-body">
-            <p>栏目列表</p>
+            <p>分类列表</p>
             <div>
                 <table class="table table-striped">
                     <tr>

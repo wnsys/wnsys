@@ -37,7 +37,7 @@
                 {{ csrf_field() }}
 
                 <div class="form-group">
-                    <label class="control-label col-md-1">标题</label>
+                    <label class="control-label col-md-1">产品名称</label>
                     <div class="col-md-5">
                         <input type="text" class="form-control" name="info[title]" value="{{$data["title"]}}">
                     </div>
