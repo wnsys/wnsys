@@ -21,7 +21,7 @@ class IndexController extends WebController
         }
         $catlist = ShopCategoryBll::formSelect("catid",$_GET["catid"]);
         $data = $query->orderBy('id', 'desc')->paginate(10);
-        return view("blog.list", [
+        return view("shop.list", [
             "data" => $data,
             "catlist" => $catlist
         ]);

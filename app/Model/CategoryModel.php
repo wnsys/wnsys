@@ -7,7 +7,7 @@ class CategoryModel extends AppModel
 {
     use ParentModel;
     protected $table = "category";
-    protected $module = "";
+    public $module = "";
     protected $fillable = [
         'name', 'parentid', 'parentids',"template","module"
     ];

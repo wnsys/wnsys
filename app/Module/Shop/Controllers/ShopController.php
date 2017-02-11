@@ -44,7 +44,7 @@ class ShopController extends AdminController
         }
         $catlist = ShopCategoryBll::formSelect("catid",$_GET["catid"]);
         $data = $query->orderBy('id', 'desc')->paginate(10);
-        return view("blog.list", [
+        return view("shop.list", [
             "data" => $data,
             "catlist" => $catlist
         ]);
@@ -63,7 +63,7 @@ class ShopController extends AdminController
             return redirect("/admin/blog");
         }
         $options = BlogCategoryModel::options($data["catid"]);
-        return view("blog.add", [
+        return view("shop.add", [
             "data" => $data,
             'options' => $options
         ]);
@@ -79,7 +79,7 @@ class ShopController extends AdminController
             }
             return redirect("/admin/blog");
         }
-        return view("blog.add");
+        return view("shop.add");
     }
 
     function delete(Request $request)

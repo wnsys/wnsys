@@ -30,7 +30,7 @@ trait ParentModel
         return $parentids;
     }
     static function options($selected = 0){
-        $data = static::all()->toArray();
+        $data = static::where(["module"=>self::module])->get()->toArray();
         $result = [];
         foreach ($data as $item){
             $result[$item["id"]] = $item;
