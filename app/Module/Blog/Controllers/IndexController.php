@@ -1,6 +1,7 @@
 <?php
 namespace App\Module\Blog\Controllers;
 use App\Module\Blog\Bll\BlogArticleBll;
+use App\Module\Blog\Bll\BlogCategoryBll;
 use App\Module\Blog\Bll\CategoryBll;
 use App\Module\Blog\Model\BlogArticleModel;
 use App\Module\Blog\Model\BlogCategoryModel;
@@ -31,7 +32,7 @@ class IndexController extends WebController
         BlogArticleBll::stripDate($data);
         $cat = BlogCategoryModel::find($id);
         $template = $cat["template"]?:"list";
-        $breadcrumb = CategoryBll::breadcrumb($id);
+        $breadcrumb = BlogCategoryBll::breadcrumb($id);
         return view("index.$template",[
             "bloglist"=>$data,
             "breadcrumb" => $breadcrumb

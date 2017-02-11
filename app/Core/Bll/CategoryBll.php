@@ -1,8 +1,8 @@
 <?php
-namespace App\Module\Blog\Bll;
+namespace App\Core\Bll;
 
-use App\Module\Blog\Model\BlogCategoryModel;
 use App\Core\Libs\Tree;
+use App\Model\CategoryModel;
 
 class CategoryBll
 {
@@ -25,9 +25,9 @@ class CategoryBll
     }
     static public function breadcrumb($id)
     {
-        $cat = BlogCategoryModel::find($id);
+        $cat = CategoryModel::find($id);
         $parents[] = ["url" => "/", "name" => "首页", "class" => ""];
-        $parents = $parents + BlogCategoryModel::parents($id, false);
+        $parents = $parents + CategoryModel::parents($id, false);
         $parents[] = ["url" => "", "name" => $cat["name"], "class" => "active"];
         return $parents;
     }
@@ -35,7 +35,7 @@ class CategoryBll
     static public function formSelect($name = "", $selected = 0)
     {
         $select = "<select id='$name' name='$name' class='form-control'>";
-        $options = BlogCategoryModel::options($selected);
+        $options = CategoryModel::options($selected);
         $select .= $options;
         $select .= "</select>";
         return $select;
@@ -52,7 +52,7 @@ class CategoryBll
                            <a href='/admin/blog/category/delete?id=\$id' onclick='return confirm(\\\"确定删除吗\\\")' >删除</a></td>
                  </tr>";
 
-        $data = BlogCategoryModel::all()->toArray();
+        $data = CategoryModel::all()->toArray();
         foreach ($data as $item) {
             $result[$item["id"]] = $item;
         }

@@ -3,6 +3,7 @@ namespace App\Module\Blog\Controllers;
 
 use App\Core\Libs\Uploader;
 use App\Http\Controllers\AdminController;
+use App\Module\Blog\Bll\BlogCategoryBll;
 use App\Module\Blog\Bll\CategoryBll;
 use App\Module\Blog\Model\BlogArticleModel;
 use App\Module\Blog\Model\BlogCategoryModel;
@@ -36,7 +37,7 @@ class BlogController extends AdminController
         if ($catid = $request["catid"]) {
             $query = $query->where("catid", $catid);
         }
-        $catlist = CategoryBll::formSelect("catid",$_GET["catid"]);
+        $catlist = BlogCategoryBll::formSelect("catid",$_GET["catid"]);
         $data = $query->orderBy('id', 'desc')->paginate(10);
         return view("blog.list", [
             "data" => $data,

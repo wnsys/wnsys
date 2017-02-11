@@ -8,6 +8,7 @@
  */
 namespace App\Module\Blog\Controllers;
 use App\Http\Controllers\AdminController;
+use App\Module\Blog\Bll\BlogCategoryBll;
 use App\Module\Blog\Bll\CategoryBll;
 use App\Module\Blog\Model\BlogCategoryModel;
 use Illuminate\Http\Request;
@@ -17,7 +18,7 @@ class CategoryController extends AdminController{
     public function index(Request $request){
         $data = [];
 
-        $lists = CategoryBll::treeLists();
+        $lists = BlogCategoryBll::treeLists();
         return view("category.list", [
             "data" => $data,
             "lists" => $lists,
@@ -29,7 +30,7 @@ class CategoryController extends AdminController{
         if($request["dosubmit"]){
             BlogCategoryModel::modelCreate($request["info"]);
         }
-        $templates = CategoryBll::templates("index","list");
+        $templates = BlogCategoryBll::templates("index","list");
         $options = BlogCategoryModel::options();
         return view("category.add", [
             "data" => $data,
@@ -39,7 +40,7 @@ class CategoryController extends AdminController{
     }
     public function edit($id,Request $request){
         $data = BlogCategoryModel::find($id);
-        $templates = CategoryBll::templates("index","list");
+        $templates = BlogCategoryBll::templates("index","list");
         if($request["dosubmit"]){
             $data->modelSave($id,$request["info"]);
             return redirect("/admin/blog/category");
