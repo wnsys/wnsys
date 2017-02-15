@@ -2,6 +2,7 @@
 namespace App\Module\Shop\Model;
 
 use App\Model\AppModel;
+use Illuminate\Http\Request;
 
 class ShopProductModel extends AppModel
 {
@@ -12,4 +13,7 @@ class ShopProductModel extends AppModel
     protected $hidden = [
 
     ];
+    public function modelSave(Request $request){
+
+    }
 }

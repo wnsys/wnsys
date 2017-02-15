@@ -39,7 +39,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1">产品名称</label>
                     <div class="col-md-5">
-                        <input type="text" class="form-control" name="info[title]" value="{{$data["title"]}}">
+                        <input type="text" class="form-control" name="info[name]" value="{{$data["name"]}}">
                     </div>
                 </div>
                 <div class="form-group">
@@ -48,6 +48,12 @@
                         <select class="form-control" name="info[catid]">
                             {!!$options!!}
                         </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-1">价格</label>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" name="info[price]" value="{{$data["price"]}}">元
                     </div>
                 </div>
                 <div class="form-group">

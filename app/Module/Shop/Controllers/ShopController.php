@@ -6,6 +6,8 @@ use App\Module\Blog\Model\BlogArticleModel;
 use App\Module\Blog\Model\BlogCategoryModel;
 use App\Module\Blog\Model\BlogImageModel;
 use App\Module\Shop\Bll\ShopCategoryBll;
+use App\Module\Shop\Model\ShopCategoryModel;
+use App\Module\Shop\Model\ShopProductModel;
 use App\Module\Teacher\Controllers\AdminController;
 use App\Module\Web\Controllers\WebController;
 use Illuminate\Http\Request;
@@ -23,7 +25,7 @@ class ShopController extends AdminController
     function __construct()
     {
         parent::__construct();
-        view()->share("options", BlogCategoryModel::options());
+        view()->share("options", ShopCategoryModel::options());
     }
 
     function upload()
@@ -38,7 +40,7 @@ class ShopController extends AdminController
 
     function index(Request $request)
     {
-        $query = new BlogArticleModel();
+        $query = new ShopProductModel();
         if ($catid = $request["catid"]) {
             $query = $query->where("catid", $catid);
         }
@@ -52,7 +54,7 @@ class ShopController extends AdminController
 
     function edit(Request $request)
     {
-        $data = BlogArticleModel::where("id", $request["id"])->first();
+        $data = ShopProductModel::where("id", $request["id"])->first();
         if ($request["dosubmit"]) {
             $data->modelSave($request["info"]);
             $add_ids = $request["info"]["attach_add"];
@@ -73,7 +75,7 @@ class ShopController extends AdminController
     function add(Request $request)
     {
         if ($request["dosubmit"]) {
-            $newid = (new BlogArticleModel())->modelSave($request["info"]);
+            $newid = (new ShopProductModel())->modelSave($request);
             if ($add_ids = $request["info"]["attach_add"]) {
                 BlogImageModel::model()->modelSave($newid,$add_ids);
             }
