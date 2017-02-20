@@ -29,13 +29,11 @@
         #container img {
             width: 100%;
         }
-
     </style>
     <div class="panel panel-default">
         <div class="panel-body">
             <form class="form-horizontal" method="post">
                 {{ csrf_field() }}
-
                 <div class="form-group">
                     <label class="control-label col-md-1">标题</label>
                     <div class="col-md-5">
@@ -54,7 +52,6 @@
                     <label class="control-label col-md-1">内容</label>
                     <div class="col-md-11">
                         <script id="container" name="info[content]" type="text/plain">
-
                             {!!$data["content"]!!}
                         </script>
                     </div>

@@ -14,4 +14,5 @@ Route::any('/admin/shop/category/edit/{id}', "CategoryController@edit");
 Route::get('/admin/shop/category/delete', "CategoryController@delete");
 /*web*/
 Route::get("/shop/{id}","IndexController@show");
-Route::get("/shop/cat/{id}","IndexController@lists");
+Route::get("/shop/cat/{id}","IndexController@index");
+Route::get("/shop","IndexController@index");

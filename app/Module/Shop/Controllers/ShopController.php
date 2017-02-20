@@ -1,5 +1,6 @@
 <?php
 namespace App\Module\Shop\Controllers;
+
 use App\Core\Libs\Uploader;
 use App\Model\ImageModel;
 use App\Module\Blog\Model\BlogArticleModel;
@@ -7,6 +8,7 @@ use App\Module\Blog\Model\BlogCategoryModel;
 use App\Module\Blog\Model\BlogImageModel;
 use App\Module\Shop\Bll\ShopCategoryBll;
 use App\Module\Shop\Model\ShopCategoryModel;
+use App\Module\Shop\Model\ShopImageModel;
 use App\Module\Shop\Model\ShopProductModel;
 use App\Module\Teacher\Controllers\AdminController;
 use App\Module\Web\Controllers\WebController;
@@ -25,26 +27,15 @@ class ShopController extends AdminController
     function __construct()
     {
         parent::__construct();
-        view()->share("options", ShopCategoryModel::options());
+        view()->share("options", ShopCategoryModel::n()->options());
     }
-
-    function upload()
-    {
-        $upload = new Uploader("file");
-        $info = $upload->getFileInfo();
-        $info["user_id"] = Auth::id();
-        $image = ImageModel::create($info);
-        $info["image_id"] = $image->id;
-        echo json_encode($info);
-    }
-
     function index(Request $request)
     {
         $query = new ShopProductModel();
         if ($catid = $request["catid"]) {
             $query = $query->where("catid", $catid);
         }
-        $catlist = ShopCategoryBll::formSelect("catid",$_GET["catid"]);
+        $catlist = ShopCategoryBll::n()->formSelect("catid", $_GET["catid"]);
         $data = $query->orderBy('id', 'desc')->paginate(10);
         return view("shop.list", [
             "data" => $data,
@@ -56,15 +47,11 @@ class ShopController extends AdminController
     {
         $data = ShopProductModel::where("id", $request["id"])->first();
         if ($request["dosubmit"]) {
-            $data->modelSave($request["info"]);
-            $add_ids = $request["info"]["attach_add"];
-            $del_ids = $request["info"]["attach_del"];
-            if ($add_ids  || $del_ids ) {
-                BlogImageModel::model()->modelSave($request["id"],$add_ids, $del_ids);
-            }
-            return redirect("/admin/blog");
+            $data->modelSave($request);
+            ImageModel::n()->modelSave($request, "shop", "product");
+            return redirect("/admin/shop");
         }
-        $options = BlogCategoryModel::options($data["catid"]);
+        $options = ShopCategoryModel::n()->options($data["catid"]);
         return view("shop.add", [
             "data" => $data,
             'options' => $options
@@ -75,18 +62,16 @@ class ShopController extends AdminController
     function add(Request $request)
     {
         if ($request["dosubmit"]) {
-            $newid = (new ShopProductModel())->modelSave($request);
-            if ($add_ids = $request["info"]["attach_add"]) {
-                BlogImageModel::model()->modelSave($newid,$add_ids);
-            }
-            return redirect("/admin/blog");
+            (new ShopProductModel())->modelSave($request);
+            ImageModel::n()->modelSave($request, "shop", "product");
+            return redirect("/admin/shop");
         }
         return view("shop.add");
     }
 
     function delete(Request $request)
     {
-        $rs = BlogArticleModel::destroy($request["id"]);
-        return redirect("/admin/blog");
+        $rs = ShopProductModel::destroy($request["id"]);
+        return redirect("/admin/shop");
     }
 }

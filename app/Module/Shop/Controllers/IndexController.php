@@ -16,18 +16,18 @@ class IndexController extends WebController
 {
     function index(Request $request){
         $query = new ShopProductModel();
-        if ($catid = $request["catid"]) {
-            $query = $query->where("catid", $catid);
-        }
-        $catlist = ShopCategoryBll::formSelect("catid",$_GET["catid"]);
         $data = $query->orderBy('id', 'desc')->paginate(10);
-        return view("shop.list", [
+        return view("index.index", [
             "data" => $data,
-            "catlist" => $catlist
         ]);
     }
     function show($id)
     {
-        
+        $data = ShopProductModel::find($id);
+        $breadcrumb = ShopCategoryBll::n()->breadcrumb($id);
+        return view("index.show", [
+            "data" => $data,
+            "breadcrumb" => $breadcrumb,
+        ]);
     }
 }

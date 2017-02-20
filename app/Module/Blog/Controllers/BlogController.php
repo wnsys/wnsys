@@ -17,7 +17,7 @@ class BlogController extends AdminController
     function __construct()
     {
         parent::__construct();
-        view()->share("options", BlogCategoryModel::options());
+        view()->share("options", BlogCategoryModel::n()->options());
     }
 
     function upload()
@@ -36,7 +36,7 @@ class BlogController extends AdminController
         if ($catid = $request["catid"]) {
             $query = $query->where("catid", $catid);
         }
-        $catlist = BlogCategoryBll::formSelect("catid",$_GET["catid"]);
+        $catlist = BlogCategoryBll::n()->formSelect("catid",$_GET["catid"]);
         $data = $query->orderBy('id', 'desc')->paginate(10);
         return view("blog.list", [
             "data" => $data,
@@ -49,14 +49,10 @@ class BlogController extends AdminController
         $data = BlogArticleModel::where("id", $request["id"])->first();
         if ($request["dosubmit"]) {
             $data->modelSave($request["info"]);
-            $add_ids = $request["info"]["attach_add"];
-            $del_ids = $request["info"]["attach_del"];
-            if ($add_ids  || $del_ids ) {
-                BlogImageModel::model()->modelSave($request["id"],$add_ids, $del_ids);
-            }
+            ImageModel::n()->modelSave($request,"blog","article");
             return redirect("/admin/blog");
         }
-        $options = BlogCategoryModel::options($data["catid"]);
+        $options = BlogCategoryModel::n()->options($data["catid"]);
         return view("blog.add", [
             "data" => $data,
             'options' => $options
@@ -67,9 +63,9 @@ class BlogController extends AdminController
     function add(Request $request)
     {
         if ($request["dosubmit"]) {
-            $newid = (new BlogArticleModel())->modelSave($request["info"]);
+            BlogArticleModel::n()->modelSave($request["info"]);
             if ($add_ids = $request["info"]["attach_add"]) {
-                BlogImageModel::model()->modelSave($newid,$add_ids);
+                ImageModel::n()->modelSave($request,"blog","article");
             }
             return redirect("/admin/blog");
         }

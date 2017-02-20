@@ -10,20 +10,19 @@
 
 @section("content")
     @include("index.components.breadcrumb")
-    @if(!in_array($blog["catid"],app("config")["module"]["blog"]["hide_title"]))
-        <h3>{{$blog[title]}}</h3>
-    @endif
+
+    <h3>{{$data[name]}}</h3>
 
     <ul class="list-inline">
         <li>
             <span class="glyphicon glyphicon-calendar"></span>
-            {{$blog["created_at"]}}
+            {{$data["created_at"]}}
         </li>
     </ul>
     <div class="blog-content ">
-            {!!$blog[content]!!}
+            {!!$data[content]!!}
             <ul class="list-inline">
-                @foreach($blog->image() as $item)
+                @foreach($data->image() as $item)
                     <li><a href="{{$item->url}}"><img class="img-thumbnail" src="{{$item->url}}"></a></li>
                 @endforeach
             </ul>

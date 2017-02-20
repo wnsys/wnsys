@@ -10,7 +10,7 @@
 @section("content")
     @include("index.components.breadcrumb")
     @if(!in_array($blog["catid"],app("config")["module"]["blog"]["hide_title"]))
-     <h3>{{$blog[title]}}</h3>
+     <h3>{{$blog[shop]}}</h3>
     @endif
     <ul class="list-inline">
         <li>

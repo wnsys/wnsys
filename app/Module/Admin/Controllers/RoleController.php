@@ -12,7 +12,7 @@ class RoleController extends AdminController
     public function get(Request $request)
     {
         $role = RoleModel::find($request["id"])->toArray();
-        $permission = PermissionRelateModel::model()->get($request["id"]);
+        $permission = PermissionRelateModel::n()->get($request["id"]);
         $role["permission_id"] = $permission["permission_id"]?explode(",",$permission["permission_id"]):[];
         echo json_encode($role);
     }

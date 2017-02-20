@@ -2,12 +2,11 @@
 namespace App\Model;
 
 use App\Core\Libs\Tree;
-use App\Model\Common\ParentModel;
 
 class CategoryModel extends AppModel
 {
     protected $table = "category";
-    static $module = "blog";
+    public $module = "blog";
     protected $fillable = [
         'name', 'parentid', 'parentids',"template","module"
     ];
@@ -15,7 +14,7 @@ class CategoryModel extends AppModel
 
     ];
 
-    static function subIds($catid){
+    public function subIds($catid){
         $cats = static::all();
         $result = [$catid];
         foreach ($cats as $cat){
@@ -25,20 +24,20 @@ class CategoryModel extends AppModel
         }
         return $result;
     }
-    static function modelCreate($data){
-        $data["parentids"] = static::createParentids($data["parentid"]);
-        $data["module"] = static::$module;
+    public function modelCreate($data){
+        $data["parentids"] = $this->createParentids($data["parentid"]);
+        $data["module"] = $this->module;
         return static::create($data);
     }
-   
-   static function modelSave($catid, $info)
+
+    public function modelSave($catid, $info)
     {
         $cat = static::find($catid);
-        $info["parentids"] = static::createParentids($info["parentid"]);
+        $info["parentids"] = $this->createParentids($info["parentid"]);
         $cat->attributes = $info;
         return $cat->save();
     }
-    static function parents($id,$self = true){
+    public function parents($id,$self = true){
         $result = [];
         $rs = static::find($id);
         $arr_parentids = explode(",",$rs["parentids"]);
@@ -48,11 +47,11 @@ class CategoryModel extends AppModel
         }
         foreach ($arr_parentids as $cid){
             $result[$cid] = static::find($cid);
-            $result[$cid]["url"] = "/blog/cat/$cid";
+            $result[$cid]["url"] = "/$this->module/cat/$cid";
         }
         return $result;
     }
-    static function createParentids($parentid){
+    public function createParentids($parentid){
         $parent = static::find($parentid);
         if ($parent) {
             $parentids = $parent->parentids . "," . $parentid;
@@ -61,8 +60,8 @@ class CategoryModel extends AppModel
         }
         return $parentids;
     }
-    static function options($selected = 0){
-        $data = static::where(["module"=>static::$module])->get()->toArray();
+    public function options($selected = 0){
+        $data = static::where(["module"=>$this->module])->get()->toArray();
         $result = [];
         foreach ($data as $item){
             $result[$item["id"]] = $item;

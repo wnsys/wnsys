@@ -6,32 +6,29 @@
  * Date: 2016/12/24
  * Time: 16:38
  */
-namespace App\Module\Blog\Controllers;
+namespace App\Module\Shop\Controllers;
 use App\Http\Controllers\AdminController;
-use App\Module\Blog\Bll\BlogCategoryBll;
-use App\Module\Blog\Bll\CategoryBll;
-use App\Module\Blog\Model\BlogCategoryModel;
+use App\Module\Shop\Bll\ShopCategoryBll;
+use App\Module\Shop\Model\ShopCategoryModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends AdminController{
-    public function index(Request $request){
+    public function index(){
         $data = [];
-
-        $lists = BlogCategoryBll::n()->treeLists();
+        $lists = ShopCategoryBll::n()->treeLists();
         return view("category.list", [
             "data" => $data,
             "lists" => $lists,
-
         ]);
     }
     public function add(Request $request){
         $data = [];
         if($request["dosubmit"]){
-            BlogCategoryModel::n()->modelCreate($request["info"]);
+            ShopCategoryModel::n()->modelCreate($request["info"]);
         }
-        $templates = BlogCategoryBll::n()->templates("index","list");
-        $options = BlogCategoryModel::n()->options();
+        $templates = ShopCategoryBll::n()->templates("index","list");
+        $options = ShopCategoryModel::n()->options();
         return view("category.add", [
             "data" => $data,
             "options" => $options,
@@ -39,13 +36,13 @@ class CategoryController extends AdminController{
         ]);
     }
     public function edit($id,Request $request){
-        $data = BlogCategoryModel::find($id);
-        $templates = BlogCategoryBll::n()->templates("index","list");
+        $data = ShopCategoryModel::find($id);
+        $templates = ShopCategoryBll::n()->templates("index","list");
         if($request["dosubmit"]){
             $data->modelSave($id,$request["info"]);
-            return redirect("/admin/blog/category");
+            return redirect("/admin/shop/category");
         }
-        $options = BlogCategoryModel::n()->options($data["parentid"]);
+        $options = ShopCategoryModel::n()->options($data["parentid"]);
         return view("category.add", [
             "data" => $data,
             "options" => $options,
@@ -54,7 +51,7 @@ class CategoryController extends AdminController{
     }
     function delete(Request $request)
     {
-        BlogCategoryModel::destroy($request["id"]);
+        ShopCategoryModel::destroy($request["id"]);
         return redirect("/admin/blog/category");
     }
 }

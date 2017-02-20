@@ -12,11 +12,12 @@ class AppModel extends Model
     protected $hidden = [
 
     ];
-    static function model(){
+    static function n(){
         static $install;
         if($install)
             return $install;
         else
             return new static();
     }
+   
 }

@@ -32,7 +32,7 @@ class IndexController extends WebController
         BlogArticleBll::stripDate($data);
         $cat = BlogCategoryModel::find($id);
         $template = $cat["template"]?:"list";
-        $breadcrumb = BlogCategoryBll::breadcrumb($id);
+        $breadcrumb = BlogCategoryBll::n()->breadcrumb($id);
         return view("index.$template",[
             "bloglist"=>$data,
             "breadcrumb" => $breadcrumb

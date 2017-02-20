@@ -12,7 +12,7 @@
             <div>
                 <table class="table table-striped">
                     <tr>
-                        <th class="col-xs-7 col-lg-8">权限名</th>
+                        <th class="col-xs-7 col-lg-8">名称</th>
                         <td>操作</td>
                     </tr>
                     {!! $lists !!}

@@ -5,6 +5,5 @@ use App\Model\CategoryModel;
 
 class ShopCategoryModel extends CategoryModel
 {
-    static $module = "shop";
-
+    public $module = "shop";
 }

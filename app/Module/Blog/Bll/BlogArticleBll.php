@@ -25,7 +25,7 @@ class BlogArticleBll{
    static function breadcrumb($id){
         $parents[] = ["url"=>"/","name"=>"首页","class"=>""];
         $blog = BlogArticleModel::find($id);
-        $parents = $parents + BlogCategoryModel::parents($blog["catid"]);
+        $parents = $parents + BlogCategoryModel::n()->parents($blog["catid"]);
         $breadcrumb = $parents;
         return $breadcrumb;
     }
