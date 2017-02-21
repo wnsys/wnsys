@@ -132,7 +132,7 @@ a.travis {
     top: -4px;
 }
 #uploader div.file-panel {
-    background: rgba(0, 0, 0, 0.5) none repeat scroll 0 0;
+    background: rgba(255, 255, 255, 0.75) none repeat scroll 0 0;
     height: 0;
     left: 0;
     overflow: hidden;
@@ -146,9 +146,6 @@ a.travis {
     height: 24px;
     display: inline;
     float: right;
-    text-indent: -9999px;
-    overflow: hidden;
-    background: url(./images/icons.png) no-repeat;
     margin: 5px 1px 1px;
     cursor: pointer;
 }

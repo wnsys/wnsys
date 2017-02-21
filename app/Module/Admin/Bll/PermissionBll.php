@@ -1,12 +1,13 @@
 <?php
 namespace App\Module\Admin\Bll;
 
-use App\Core\Libs\Tree;
+use App\Core\Bll\FormBll;
+use App\Core\Framework\Object;
 use App\Model\PermissionModel;
 
-class PermissionBll
+class PermissionBll extends Object
 {
-    static function treeLists()
+    function treeLists()
     {
         $str = "<tr>
                         <td>\$spacer\$name</td>
@@ -21,8 +22,6 @@ class PermissionBll
         foreach ($data as $item) {
             $result[$item["id"]] = $item;
         }
-        $tree = new Tree();
-        $tree->init($result);
-        return $tree->get_tree(0, $str);
+        return FormBll::n()->treeLists($result, $str);
     }
 }

@@ -39,8 +39,8 @@
                     </select>
                 </div>
             </div>
-        @overwrite
-        @section("footer")
+@overwrite
+@section("footer")
             <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
             <input type="button" class="btn btn-primary" name="dosubmit" v-on:click="save('form{{$action}}')"
                    value="提交"/>

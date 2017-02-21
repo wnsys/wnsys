@@ -6,19 +6,21 @@
     <input type="hidden" name="info[attach_add]" id="attach_add">
     <input type="hidden" name="info[attach_del]" id="attach_del">
     @if($data)
-    <div class="uploader-list list">
-        @foreach($data->image() as $img)
-            <div class="file-item thumbnail" image_id="{{$img["id"]}}">
-                <img src="{{$img->url}}">
-                <div class="info">{{$img->title}}</div>
-                <div class="file-panel">
-                    <span class="cancel">删除</span>
+        <div class="uploader-list list">
+            @foreach($data->image() as $img)
+                <div class="file-item thumbnail" image_id="{{$img["id"]}}">
+                    <img src="{{$img->url}}">
+                    <div class="info">{{$img->title}}</div>
+                    <div class="file-panel">
+                        <span class="glyphicon glyphicon-minus cancel"></span>
+                        <span class="glyphicon glyphicon-pencil edit"  v-on:click="imageEdit"></span>
+
+                    </div>
                 </div>
-            </div>
-        @endforeach
-    </div>
-    @endif
-    <!--用来存放item-->
+            @endforeach
+        </div>
+@endif
+<!--用来存放item-->
     <div id="fileList" class="uploader-list add"></div>
     <div id="filePicker">选择图片</div>
 </div>

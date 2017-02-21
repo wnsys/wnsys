@@ -18,7 +18,7 @@ class PermissionController extends AdminController
     }
     function index()
     {
-        $data = PermissionBll::treeLists();
+        $data = PermissionBll::n()->treeLists();
         $options = PermissionModel::options();
         return view("admin.permission.index", [
             "data" => $data,

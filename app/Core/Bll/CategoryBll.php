@@ -58,12 +58,9 @@ class CategoryBll extends Object
                  </tr>";
 
         $data = CategoryModel::where(["module" => $this->module])->get()->toArray();
-
         foreach ($data as $item) {
             $result[$item["id"]] = $item;
         }
-        $tree = new Tree();
-        $tree->init($result);
-        return $tree->get_tree(0, $str);
+        return FormBll::n()->treeLists($result,$str);
     }
 }
