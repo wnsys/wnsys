@@ -63,7 +63,8 @@ class BlogController extends AdminController
     function add(Request $request)
     {
         if ($request["dosubmit"]) {
-            BlogArticleModel::n()->modelSave($request["info"]);
+            $newid = BlogArticleModel::n()->modelSave($request["info"]);
+            $request["id"] = $newid;
             if ($add_ids = $request["info"]["attach_add"]) {
                 ImageModel::n()->modelSave($request,"blog","article");
             }
