@@ -13,7 +13,7 @@
                     <div class="info">{{$img->title}}</div>
                     <div class="file-panel">
                         <span class="glyphicon glyphicon-minus cancel"></span>
-                        <span class="glyphicon glyphicon-pencil edit"  v-on:click="imageEdit"></span>
+                        <span class="glyphicon glyphicon-pencil edit"  v-on:click="imageEdit({{$img[id]}})"></span>
 
                     </div>
                 </div>

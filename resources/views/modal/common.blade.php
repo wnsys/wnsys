@@ -3,7 +3,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             @section("form")
-                <form class="form-horizontal" method="post">
+                <form class="form-horizontal model-form" method="post">
                     @show
                     {{ csrf_field() }}
                     <div class="modal-header">
@@ -25,3 +25,5 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
 </div>
+@section("modeljs")
+    @show

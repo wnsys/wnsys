@@ -5,19 +5,19 @@
     <script type="text/javascript" src="/ueditor/ueditor.all.min.js"></script>
     <!-- 实例化编辑器 -->
     <script type="text/javascript">
-        $(function () {
-             @if(is_mobile())
-                        var ue = UE.getEditor('container', {
-                        initialFrameHeight: 150,
-                        toolbars: [['bold', 'italic', 'underline', 'simpleupload', 'forecolor', 'backcolor']],
-                    });
-                    @else
-                         var ue = UE.getEditor('container', {
-                        initialFrameHeight: 400
-                    });
-            @endif
 
-        })
+                @if(is_mobile())
+        var ue = UE.getEditor('container', {
+                    initialFrameHeight: 150,
+                    toolbars: [['bold', 'italic', 'underline', 'simpleupload', 'forecolor', 'backcolor']],
+                });
+                @else
+        var ue = UE.getEditor('container', {
+                    initialFrameHeight: 400
+                });
+                @endif
+
+
     </script>
 @endsection
 
@@ -43,7 +43,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1">产品名称</label>
                     <div class="col-md-5">
-                        <input type="text" class="form-control" name="name" value="{{$data["name"]}}" >
+                        <input type="text" class="form-control" name="name" value="{{$data["name"]}}">
                     </div>
                 </div>
                 <div class="form-group">
@@ -57,7 +57,8 @@
                 <div class="form-group">
                     <label class="control-label col-md-1">价格</label>
                     <div class="col-md-4">
-                        <input type="text" class="form-control" style="width:80%;display: inline-block" name="price" value="{{$data["price"]}}">元
+                        <input type="text" class="form-control" style="width:80%;display: inline-block" name="price"
+                               value="{{$data["price"]}}">元
                     </div>
 
                 </div>

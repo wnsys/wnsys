@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-    public function response($message = "",$data = "",$status = 0,$error = ""){
+    public function response($data = "",$status = 0,$error = "",$message = ""){
         $result = [
             "status" => $status,
             "data" => $data,

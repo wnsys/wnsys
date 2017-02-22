@@ -33,8 +33,7 @@ $().ready(function () {
             ),
             $img = $li.find('img');
         $btns = $('<div class="file-panel">' +
-            '<span class="glyphicon glyphicon-minus cancel"></span>' +
-            '<span class="glyphicon glyphicon-pencil edit"></span>').appendTo($li);
+            '<span class="glyphicon glyphicon-minus cancel"></span>' ).appendTo($li);
         // $list为容器jQuery实例
         $("#fileList").append($li);
         // 创建缩略图
@@ -89,6 +88,9 @@ $().ready(function () {
         $("#attach_add").val(add);
 
     });
+    upload()
+})
+function upload() {
     $('#uploader').on('mouseenter','.thumbnail', function () {
         $(this).find(".file-panel").stop().animate({height: 30});
     });
@@ -110,16 +112,9 @@ $().ready(function () {
         $(this).parent().parent().remove();
     });
     $('#uploader').on('click','.edit', function () {
-        $.ajax({
-            url:"",
-            success:function (data) {
-                
-            }
-        })
         $("#imageEdit").modal("show");
     });
-})
-
+}
 // 初始化Web Uploader
 Array.prototype.indexOf = function(val) {
     for (var i = 0; i < this.length; i++) {
