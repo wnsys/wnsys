@@ -3,7 +3,6 @@
 @section("css")
     <link href="/js/unslider/css/unslider.css" rel="stylesheet">
     <link href="/js/unslider/css/unslider-dots.css" rel="stylesheet">
-
     <style>
         .banner { position: relative; overflow: auto; }
         .banner li { list-style: none; }
@@ -12,7 +11,6 @@
 @stop
 @section("js")
     <script src="/js/unslider/js/unslider-min.js"></script>
-
     <script src="/js/unslider/js/jquery.event.move.js"></script>
     <script src="/js/unslider/js/jquery.event.swipe.js"></script>
     <script>
