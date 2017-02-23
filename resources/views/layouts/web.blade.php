@@ -55,29 +55,15 @@
                 <li class="">
                     <a href="/shop" >
                         商城
-
                     </a>
-
                 </li>
             </ul>
         </div>
     </div>
 </nav>
-<div class="container center-block blog-container">
-    <div class="col-md-3">
-        <div class="panel panel-default">
-            <div class="panel-body">
-                @section("left")
-                    @include("web.left")
-                @show
-            </div>
-        </div>
-    </div>
-    <div class="col-md-9">
+<div class="container center-block ">
         @section('content')
         @show
-    </div>
-
 </div>
 <nav class="navbar navbar-default  text-center footer">
     <div class="container">

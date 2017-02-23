@@ -1,4 +1,4 @@
-@extends('layouts.web')
+@extends('layouts.blog')
 
 @section("css")
     <style>
@@ -8,7 +8,7 @@
     </style>
 @stop
 
-@section("content")
+@section("blog")
     @include("index.components.breadcrumb")
     @if(!in_array($blog["catid"],app("config")["module"]["blog"]["hide_title"]))
         <h3>{{$blog[title]}}</h3>

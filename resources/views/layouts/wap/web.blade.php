@@ -52,6 +52,11 @@
 
                     </ul>
                 </li>
+                <li class="">
+                    <a href="/shop" >
+                        商城
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

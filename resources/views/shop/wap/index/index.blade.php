@@ -1,17 +1,16 @@
 @extends('layouts.wap.web')
 
 @section("content")
-    @include("index.components.breadcrumb")
     <ul class="list-group">
-        @foreach($bloglist as $blog)
+        @foreach($data as $item)
             <li class="list-group-item list-group-item-1">
-                @if($blog->created_at)
-                    <span class="badge"> {{$blog->created_at->toDateString()}}</span>
+                @if($item->created_at)
+                    <span class="badge"> {{$item->created_at->toDateString()}}</span>
                 @endif
-                <a href="/blog/{{$blog->id}}">{{$blog->title}}</a>
-                [{{$blog->cat->name}}]
+                <a href="/shop/{{$item->id}}">{{$item->name}}</a>
+                [{{$item->cat->name}}]
             </li>
         @endforeach
     </ul>
-    {{$bloglist->links()}}
+    {{$data->links()}}
 @endsection
