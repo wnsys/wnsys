@@ -20,6 +20,7 @@
     </script>
 </head>
 <body  style="background:{{config("style.bg_color")}}">
+<example></example>
 @include("common.header")
 <div class="container center-block pad5">
         @section('content')

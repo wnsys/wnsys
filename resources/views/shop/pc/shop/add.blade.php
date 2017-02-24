@@ -62,6 +62,15 @@
                     </div>
 
                 </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-1">描述</label>
+                    <div class="col-md-11">
+                        <textarea type="text" class="form-control" name="description"
+                               >{{$data["description"]}}</textarea>
+                    </div>
+
+                </div>
                 <div class="form-group">
                     <label class="control-label col-md-1">内容</label>
                     <div class="col-md-11">

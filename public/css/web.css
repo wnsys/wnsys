@@ -29,3 +29,47 @@
 .navbar{
     margin-bottom:5px;
 }
+/* 订单详情页 */
+.big-price {
+    display: inline-block;
+    font-size: 23px;
+    line-height: 23px;
+    color: #f23030;
+    font-family: "Helvetica";
+}
+.small-price {
+    display: inline-block;
+    font-size: 17px;
+    line-height: 17px;
+    color: #f23030;
+    font-family: "Helvetica";
+}
+.top-boder1{
+    border-top: 1px solid #ddd;
+}
+.pd-t7{
+    padding-top:7px;
+}
+.basic-info .prod-title {
+    margin-top: 7px;
+    position: relative;
+}
+.basic-info .title-text {
+    color: #232326;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 20px;
+    margin-right: 10px;
+    text-align: left;
+}
+.basic-info .prod-act{
+    color: #81838e;
+    font-size: 13px;
+    line-height: 17px;
+    margin: 11px 10px 0 0;
+    text-align: justify;
+}
+.content img{
+    max-width: 100%;
+}
+/* 订单详情页 */
