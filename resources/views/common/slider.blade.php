@@ -6,7 +6,7 @@
         .banner li { list-style: none; }
         .banner ul li { float: left; }
     </style>
-@stop
+@append
 @section("js")
     <script src="/js/unslider/js/unslider-min.js"></script>
     <script src="/js/unslider/js/jquery.event.move.js"></script>
@@ -25,4 +25,4 @@
         })
 
     </script>
-@stop
+@append
