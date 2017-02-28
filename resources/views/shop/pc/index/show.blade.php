@@ -65,26 +65,29 @@
         });
     </script>
 
-    <div id="cart1" class="">
-        <div class="concern-cart">
 
-            <a class="" >
-					<span class="focus-info">客服</span>
+@endsection
+@section("footer")
+    <div id="cart1" class="row container" style="position: fixed;bottom: 0;">
+        <div class="concern-cart col-xs-6">
+
+            <a class="col-xs-4" >
+                <span class="focus-info">客服</span>
             </a>
-            <a class="" id="focusOn" >
+            <a class="col-xs-4" id="focusOn" >
                 <span class="focus-info"> 关注  </span>
             </a>
-            <a class="" id="toCartNew" >
+            <a class="col-xs-4" id="toCartNew" >
                 <span class="focus-info">购物车</span>
             </a>
         </div>
-        <div class="action-list">
-            <a class="yellow-color add_cart">
+        <div class="action-list col-xs-6">
+            <a class="yellow-color add_cart col-xs-6">
                 加入购物车
             </a>
-            <a class="red-color directorder">
+            <a class="red-color directorder col-xs-6">
                 立即购买
             </a>
         </div>
     </div>
-@endsection
+@show

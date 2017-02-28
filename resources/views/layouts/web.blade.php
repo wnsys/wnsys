@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>韦宁的博客</title>
-    <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/web.css" rel="stylesheet">
     @section("css")
     @show
@@ -22,12 +22,15 @@
     </script>
 </head>
 <body  style="background:{{config("style.bg_color")}}">
-<example></example>
+
 @include("common.header")
 <div class="container center-block pad5">
         @section('content')
         @show
 </div>
-@include("common.footer")
+@section("footer")
+    @include("common.footer")
+@show
+
 </body>
 </html>
