@@ -8,7 +8,7 @@ trait ImageTrait{
     {
         if ($this->id) {
             $condtion["pk_id"] = $this->id;
-            $condtion["user_id"] = Auth::id();
+            $condtion["pk_type"] = $this->pk_type;
             $image = ImageModel::where($condtion)->orderBy("sort","desc")->get();
         } else {
             $image = new ImageModel();

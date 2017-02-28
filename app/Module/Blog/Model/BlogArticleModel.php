@@ -12,6 +12,7 @@ class BlogArticleModel extends AppModel
     use SoftDeletes;
     use ImageTrait;
     protected $table = "blog_article";
+    protected $pk_type = "article";
     protected $fillable = [
         'title', 'catid', 'content', "attach",
     ];

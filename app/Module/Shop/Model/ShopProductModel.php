@@ -9,6 +9,7 @@ class ShopProductModel extends AppModel
 {
     use ImageTrait;
     protected $table = "shop_product";
+    protected $pk_type = "product";
     protected $fillable = [
         "name","content","catid","price","description"
     ];
