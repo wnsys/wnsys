@@ -1,6 +1,13 @@
 @extends('layouts.shop')
 @section("css")
-    <link href="/css/shop/common.css" rel="stylesheet" type="text/css">
+    <link href="/css/shop/show.css" rel="stylesheet" type="text/css">
+@append
+@section("js")
+    <script>
+        $(function () {
+            $('#myTab li:eq(0) a').tab('show');
+        });
+    </script>
 @append
 @include("common.slider")
 @section("shop")
@@ -20,7 +27,8 @@
                     <div class="banner">
                         <ul class="list-inline">
                             @foreach($data->image() as $item)
-                                <li class="text-center"><a><img style="width:100%;max-width: 500px" class="img-rounded"
+                                <li class="text-center">
+                                    <a><img style="width:100%;max-width: 500px" class="img-rounded"
                                                                 src="{{$item->thumb(500,500)}}"></a></li>
                             @endforeach
                         </ul>
@@ -59,35 +67,28 @@
 
         </div>
     </div>
-    <script>
-        $(function () {
-            $('#myTab li:eq(0) a').tab('show');
-        });
-    </script>
-
-
 @endsection
 @section("footer")
-    <div id="cart1" class="row container" style="position: fixed;bottom: 0;">
-        <div class="concern-cart col-xs-6">
+    <div id="cart1" class="text-center cart-concern-btm-fixed five-column" >
+        <div class="concern-cart col-xs-6 col ">
 
-            <a class="col-xs-4" >
+            <a class="col-xs-4 col" >
                 <span class="focus-info">客服</span>
             </a>
-            <a class="col-xs-4" id="focusOn" >
+            <a class="col-xs-4 col" id="focusOn" >
                 <span class="focus-info"> 关注  </span>
             </a>
-            <a class="col-xs-4" id="toCartNew" >
+            <a class="col-xs-4 col" id="toCartNew" >
                 <span class="focus-info">购物车</span>
             </a>
         </div>
-        <div class="action-list col-xs-6">
-            <a class="yellow-color add_cart col-xs-6">
+        <div class="action-list col-xs-6 col">
+            <a class="yellow-color add_cart col-xs-6 col">
                 加入购物车
             </a>
-            <a class="red-color directorder col-xs-6">
+            <a class="red-color directorder col-xs-6 col">
                 立即购买
             </a>
         </div>
     </div>
-@show
+@stop
