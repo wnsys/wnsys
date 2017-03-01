@@ -15,5 +15,3 @@
     </div>
 <div>
 @include("common.footer")
-</body>
-</html>

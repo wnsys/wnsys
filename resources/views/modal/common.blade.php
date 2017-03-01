@@ -16,7 +16,7 @@
                         @show
                     </div>
                     <div class="modal-footer">
-                        @section("footer")
+                        @section("modal-footer")
                             <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
                             <input type="submit" class="btn btn-primary" name="dosubmit" value="提交" />
                         @show

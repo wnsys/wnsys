@@ -4,8 +4,16 @@
 @append
 @section("js")
     <script>
+        var price = {{$data[price]}};
+        var item_id = {{$data[id]}};
         $(function () {
             $('#myTab li:eq(0) a').tab('show');
+            $("#toCartNew").on("click",function () {
+                $(".cart-list").slideToggle()
+            })
+            $(".add_cart").on("click",function () {
+                layer.msg('添加成功',{time:1000});
+            })
         });
     </script>
 @append
@@ -69,7 +77,23 @@
     </div>
 @endsection
 @section("footer")
+
     <div id="cart1" class="text-center cart-concern-btm-fixed five-column" >
+        <div class="cart-list " style="display: none;">
+            <ul class="list-group text-left">
+                <li class="list-group-item">
+                    <div class="col-xs-10 col">
+                        <span></span>精炖牛肉单人超值餐
+                        <span class="big-price">￥<span class="pro-price">{{$data[price]}}</span></span>
+                    </div>
+                    <div class="col-xs-2 col">
+                        <span class="glyphicon glyphicon-minus"></span>
+                        <span>1</span>
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </div>
+                </li>
+            </ul>
+        </div>
         <div class="concern-cart col-xs-6 col ">
 
             <a class="col-xs-4 col" >

@@ -9,10 +9,13 @@
     <title>韦宁的博客</title>
     <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="/css/web.css" rel="stylesheet">
-    @yield("css")
+    @section("css")
+    @show
     <script src="/js/jquery-3.1.1/jquery-3.1.1.min.js"></script>
     <script src="/bootstrap/js/bootstrap.min.js"></script>
-    @yield("js")
+    <script src="/js/layer/layer.js"></script>
+    @section("js")
+    @show
     <script>
         window.Laravel = <?php echo json_encode([
                 'csrfToken' => csrf_token(),
