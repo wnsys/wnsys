@@ -6,13 +6,20 @@
     <script>
         var price = {{$data[price]}};
         var item_id = {{$data[id]}};
+        console.log(Cookies.get("website"))
         $(function () {
             $('#myTab li:eq(0) a').tab('show');
-            $("#toCartNew").on("click",function () {
+            $("#toCartNew").on("click", function () {
                 $(".cart-list").slideToggle()
             })
-            $(".add_cart").on("click",function () {
-                layer.msg('添加成功',{time:1000});
+
+            $(".add_cart").on("click", function () {
+                $.get("/shop/addCart",
+                        {item_id: item_id},
+                        function (data) {
+
+                        })
+                layer.msg('添加成功', {time: 1000});
             })
         });
     </script>
@@ -37,7 +44,7 @@
                             @foreach($data->image() as $item)
                                 <li class="text-center">
                                     <a><img style="width:100%;max-width: 500px" class="img-rounded"
-                                                                src="{{$item->thumb(500,500)}}"></a></li>
+                                            src="{{$item->thumb(500,500)}}"></a></li>
                             @endforeach
                         </ul>
                     </div>
@@ -78,7 +85,7 @@
 @endsection
 @section("footer")
 
-    <div id="cart1" class="text-center cart-concern-btm-fixed five-column" >
+    <div id="cart1" class="text-center cart-concern-btm-fixed five-column">
         <div class="cart-list " style="display: none;">
             <ul class="list-group text-left">
                 <li class="list-group-item">
@@ -96,13 +103,13 @@
         </div>
         <div class="concern-cart col-xs-6 col ">
 
-            <a class="col-xs-4 col" >
+            <a class="col-xs-4 col">
                 <span class="focus-info">客服</span>
             </a>
-            <a class="col-xs-4 col" id="focusOn" >
+            <a class="col-xs-4 col" id="focusOn">
                 <span class="focus-info"> 关注  </span>
             </a>
-            <a class="col-xs-4 col" id="toCartNew" >
+            <a class="col-xs-4 col" id="toCartNew">
                 <span class="focus-info">购物车</span>
             </a>
         </div>

@@ -4,6 +4,9 @@ namespace App\Providers;
 
 use App\Listeners\QueryListener;
 use App\Listeners\ViewListener;
+use App\Module\Shop\Listeners\AuthenticateListener;
+use Illuminate\Auth\Events\Authenticated;
+use Illuminate\Auth\Events\Login;
 use Illuminate\Database\Events\QueryExecuted;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -16,15 +19,12 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'App\Events\SomeEvent' => [
-            'App\Listeners\EventListener',
-        ],
         QueryExecuted::class => [
            QueryListener::class
         ],
-    /*    "composing:*" => [
-            ViewListener::class
-        ]*/
+        Authenticated::class => [
+            AuthenticateListener::class
+        ]
     ];
 
     /**

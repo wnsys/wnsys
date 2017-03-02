@@ -1,10 +1,14 @@
 <?php
 namespace App\Module\Shop\Controllers;
+
+use App\Module\Shop\Bll\CartBll;
 use App\Module\Shop\Bll\ShopCategoryBll;
+use App\Module\Shop\Model\ShopCartModel;
 use App\Module\Shop\Model\ShopProductModel;
 use App\Module\Web\Controllers\WebController;
-use Illuminate\Support\Facades\Response;
-use Symfony\Component\HttpFoundation\Request;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Created by PhpStorm.
@@ -14,14 +18,16 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class IndexController extends WebController
 {
-    function index(Request $request){
+    function index(Request $request)
+    {
         $query = new ShopProductModel();
         $data = $query->orderBy('id', 'desc')->paginate(10);
         return view("index.index", [
             "data" => $data,
         ]);
     }
-    function show($id)
+
+    function show($id, Request $request)
     {
         $data = ShopProductModel::find($id);
         $breadcrumb = ShopCategoryBll::n()->breadcrumb($id);
@@ -29,5 +35,19 @@ class IndexController extends WebController
             "data" => $data,
             "breadcrumb" => $breadcrumb,
         ]);
+    }
+
+    //添加到购物车
+    function addCart(Request $request)
+    {
+        $this->validate($request->all(),[
+            "item_id" => "require",
+        ]);
+        CartBll::n()->add($request->item_id);
+        $response = new Response();
+        return $response;
+    }
+    public function getCart(){
+        
     }
 }

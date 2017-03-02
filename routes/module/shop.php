@@ -13,6 +13,7 @@ Route::any('/admin/shop/category/add', "CategoryController@add");
 Route::any('/admin/shop/category/edit/{id}', "CategoryController@edit");
 Route::get('/admin/shop/category/delete', "CategoryController@delete");
 /*web*/
-Route::get("/shop/{id}","IndexController@show");
+Route::get("/shop/show/{id}","IndexController@show");
 Route::get("/shop/cat/{id}","IndexController@index");
 Route::get("/shop","IndexController@index");
+Route::get("/shop/addCart","IndexController@addCart");

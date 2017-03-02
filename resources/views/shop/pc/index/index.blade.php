@@ -6,7 +6,7 @@
                 @if($item->created_at)
                     <span class="badge"> {{$item->created_at->toDateString()}}</span>
                 @endif
-                <a href="/shop/{{$item->id}}">{{$item->name}}</a>
+                <a href="/shop/show/{{$item->id}}">{{$item->name}}</a>
                 [{{$item->cat->name}}]
             </li>
         @endforeach
