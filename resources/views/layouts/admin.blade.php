@@ -14,8 +14,8 @@
     <!-- Scripts -->
     <script src="/bootstrap/js/bootstrap.min.js"></script>
     <script src="/js/vue.js"></script>
-
-    <!-- Scripts -->
+    @section("js")
+    @show
     <script>
 
         window.Laravel = <?php echo json_encode([
