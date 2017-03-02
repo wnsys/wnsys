@@ -2,16 +2,29 @@
 namespace App\Module\Shop\Bll;
 
 use App\Core\Bll\Bll;
+use App\Module\Shop\Cart\Cart;
 use App\Module\Shop\Model\ShopCartModel;
+use Illuminate\Session\SessionManager;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\EventDispatcher\Event;
 
 class CartBll extends Bll
 {
+    public $session;
+    private $cart;
+    function __construct()
+    {
+        $session = new SessionManager(app());
+        $session->driver("cookie");
+        $this->cart = new Cart($session,)
+    }
+
     function login(){
         if(cookie("cart")){
 
         }
     }
+
     function add($product_id)
     {
         if ($cart = cookie("cart")) {
