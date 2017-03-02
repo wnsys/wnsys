@@ -8,7 +8,9 @@ use Illuminate\Support\Facades\Auth;
 class CartBll extends Bll
 {
     function login(){
-        
+        if(cookie("cart")){
+
+        }
     }
     function add($product_id)
     {
@@ -36,7 +38,6 @@ class CartBll extends Bll
                 $product->save();
             }
         }
-
         return true;
     }
 

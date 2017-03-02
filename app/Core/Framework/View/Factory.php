@@ -13,24 +13,21 @@ use Illuminate\View\Factory as CoreFactory;
 use Illuminate\View\View;
 class Factory extends CoreFactory
 {
-
     public function make($view, $data = [], $mergeData = [])
     {
-        if (isset($this->aliases[$view])) {
-            $view = $this->aliases[$view];
-        }
-
-        $view = $this->normalizeName($view);
-        //加上模块目录，扫描多个文件夹
         $view = $this->moduleView($view);
+        $path = $this->finder->find(
+            $view = $this->normalizeName($view)
+        );
 
-        $path = $this->finder->find($view);
-
+        // Next, we will create the view instance and call the view creator for the view
+        // which can set any data, etc. Then we will return the view instance back to
+        // the caller for rendering or performing other view manipulations on this.
         $data = array_merge($mergeData, $this->parseData($data));
 
-        $this->callCreator($view = new View($this, $this->getEngineFromPath($path), $view, $path, $data));
-
-        return $view;
+        return tap($this->viewInstance($view, $path, $data), function ($view) {
+            $this->callCreator($view);
+        });
     }
     public function moduleView($view){
         if(is_mobile()){

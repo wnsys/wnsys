@@ -1,17 +1,11 @@
 <?php
 namespace App\Module\Shop\Controllers;
 
-use App\Core\Libs\Uploader;
+use App\Http\Controllers\AdminController;
 use App\Model\ImageModel;
-use App\Module\Blog\Model\BlogArticleModel;
-use App\Module\Blog\Model\BlogCategoryModel;
-use App\Module\Blog\Model\BlogImageModel;
 use App\Module\Shop\Bll\ShopCategoryBll;
 use App\Module\Shop\Model\ShopCategoryModel;
-use App\Module\Shop\Model\ShopImageModel;
 use App\Module\Shop\Model\ShopProductModel;
-use App\Module\Teacher\Controllers\AdminController;
-use App\Module\Web\Controllers\WebController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Response;

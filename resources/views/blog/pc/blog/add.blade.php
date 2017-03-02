@@ -62,7 +62,12 @@
                         @include("common.webUploadSimple")
                     </div>
                 </div>
-
+                <div class="form-group">
+                    <label class="control-label col-md-1">创建时间</label>
+                    <div class="col-md-11">
+                        {{$data["created_at"]}}
+                    </div>
+                </div>
                 <div class="center-block text-center">
                     <input type="submit" class="btn btn-primary " style="width:100px;" name="dosubmit" value="提交">
                 </div>
