@@ -5,8 +5,8 @@
 @section("js")
     <script>
         var price = {{$data[price]}};
-        var item_id = {{$data[id]}};
-        console.log(Cookies.get("website"))
+        var id = {{$data[id]}};
+        var name = "{{$data[name]}}";
         $(function () {
             $('#myTab li:eq(0) a').tab('show');
             $("#toCartNew").on("click", function () {
@@ -15,9 +15,9 @@
 
             $(".add_cart").on("click", function () {
                 $.get("/shop/addCart",
-                        {item_id: item_id},
+                        {id: id,price:price,qty:1,name:name},
                         function (data) {
-
+                            console.log(data);
                         })
                 layer.msg('添加成功', {time: 1000});
             })

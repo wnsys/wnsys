@@ -7,42 +7,37 @@ use Illuminate\Support\Facades\Auth;
 
 class CartBll extends Bll
 {
-    function login(){
-        if(cookie("cart")){
-
-        }
-    }
-    function add($product_id)
+    function add($id)
     {
         if ($cart = cookie("cart")) {
             $cart = json_decode($cart);
-            if ($cart[$product_id]) {
-                $cart[$product_id]["count"] += 1;
+            if ($cart[$id]) {
+                $cart[$id]["count"] += 1;
             } else {
-                $cart[$product_id]["count"] = 1;
+                $cart[$id]["count"] = 1;
             }
         } else {
-            $cart[$product_id]["count"] = 1;
+            $cart[$id]["count"] = 1;
         }
         cookie("cart", json_encode($cart));
-        //登录情况
         if ($userid = Auth::id()) {
-            $product = ShopCartModel::where(["user_id" => $userid, "product_id" => $product_id])->first();
-            if ($product) {
-                $product->count += 1;
-                $product->save();
-            } else {
-                $product = new ShopCartModel();
-                $product->user_id = $userid;
-                $product->product_id = $product_id;
-                $product->save();
-            }
+            $this->store($userid,$id);
         }
         return true;
     }
-
-    function get($skuid, $userid = 0)
-    {
+    function store($userid,$id){
+        //登录情况
+        $product = ShopCartModel::where(["user_id" => $userid, "product_id" => $id])->first();
+        if ($product) {
+            $product->count += 1;
+            $product->save();
+        } else {
+            $product = new ShopCartModel();
+            $product->user_id = $userid;
+            $product->product_id = $id;
+            $product->save();
+        }
 
     }
+
 }

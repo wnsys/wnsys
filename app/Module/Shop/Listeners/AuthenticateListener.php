@@ -7,6 +7,6 @@ use Illuminate\Support\Facades\Log;
 class AuthenticateListener{
     public function handle(Authenticated $event)
     {
-          CartBll::n()->login();
+          
     }
 }
