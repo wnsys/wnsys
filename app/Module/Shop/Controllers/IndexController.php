@@ -6,6 +6,7 @@ use App\Module\Shop\Bll\ShopCategoryBll;
 use App\Module\Shop\Model\ShopCartModel;
 use App\Module\Shop\Model\ShopProductModel;
 use App\Module\Web\Controllers\WebController;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
@@ -40,11 +41,14 @@ class IndexController extends WebController
     //添加到购物车
     function addCart(Request $request)
     {
-        $this->validate($request->all(),[
-            "item_id" => "require",
+        $this->validate($request,[
+            "id" => "required",
+            "price" => "required",
+            "name" => "required",
         ]);
-        CartBll::n()->add($request->item_id);
-        $response = new Response();
+        $item = Cart::add($request->id,$request->name,$request->qty,$request->price,[]);
+        
+        $response = new Response($item->toArray());
         return $response;
     }
     public function getCart(){
