@@ -1,4 +1,4 @@
-@extends('layouts.wap.web')
+@extends('layouts.blog')
 @section("css")
     <style>
         img {
@@ -6,8 +6,7 @@
         }
     </style>
 @stop
-
-@section("content")
+@section("blog")
     @include("index.components.breadcrumb")
     <div class="panel panel-default" id="show">
         <div class="panel-body">

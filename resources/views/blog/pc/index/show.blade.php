@@ -11,7 +11,7 @@
     <div class="panel panel-default">
         <div class="panel-body">
             @if(!in_array($blog["catid"],app("config")["module"]["blog"]["hide_title"]))
-                <h3>{{$blog[title]}}</h3>
+                <h3 class="text-center">{{$blog[title]}}</h3>
             @endif
             <div class="blog-content ">
                 {!!$blog[content]!!}

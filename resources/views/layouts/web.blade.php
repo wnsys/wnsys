@@ -3,8 +3,9 @@
         @section('content')
         @show
 </div>
-@section('modal')
-@show
 @section("footer")
     @include("common.footer")
+@show
+
+@section('modal')
 @show

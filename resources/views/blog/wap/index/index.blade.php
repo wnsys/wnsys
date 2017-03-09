@@ -1,6 +1,5 @@
-@extends('layouts.wap.web')
-
-@section("content")
+@extends('layouts.blog')
+@section("blog")
     @include("index.components.breadcrumb")
     <ul class="list-group">
         @foreach($bloglist as $blog)
