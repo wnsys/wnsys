@@ -46,8 +46,10 @@ class IndexController extends WebController
             "price" => "required",
             "name" => "required",
         ]);
+
+        app("session")->put("test",1);
         $item = Cart::add($request->id,$request->name,$request->qty,$request->price,[]);
-        print_r($item->toArray());
+
         $response = new Response($item->toArray());
         return $response;
     }

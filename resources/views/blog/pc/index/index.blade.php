@@ -1,5 +1,4 @@
 @extends('blog')
-
 @section("right")
 @include("index.components.breadcrumb")
     <ul class="list-group">
