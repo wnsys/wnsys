@@ -1,10 +1,10 @@
 <?php
 namespace App\Module\Member\Controllers;
 
+use App\Http\Controllers\AdminController;
 use App\Model\RoleModel;
 use App\Model\RoleUserModel;
 use App\Model\UserModel;
-use App\Module\Teacher\Controllers\AdminController;
 use App\User;
 use Symfony\Component\HttpFoundation\Request;
 
