@@ -1,11 +1,15 @@
 <?php
 namespace App\Module\Shop\Cart;
 use App\Core\Framework\Object;
+use Illuminate\Support\Collection;
+
 class Cart extends Object
 {
     function add(CartItem $cartItem){
-       $rs = app("session")->get();
-        app("session")->put("test",1);
-        app("session")->store();
+       if($item = app("session")->get($cartItem->id)){
+           $cartItem->qty += $item->qty;
+       }
+        app("session")->put($cartItem->id,$cartItem);
+        return $cartItem;
     }
 }

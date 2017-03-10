@@ -10,7 +10,7 @@ class CartItem extends Object
     public $qty;//数量
     public $options;//选项
     public $userid;//用户id
-    function __construct($id,$name,$qty,$options = [],$userid = 0)
+    function __construct($id,$name,$qty,$price,$options = [],$userid = 0)
     {
         $this->id = $id;
         $this->name = $name;
@@ -23,5 +23,16 @@ class CartItem extends Object
     {
         ksort($options);
         return md5($id . serialize($options));
+    }
+    public function toArray()
+    {
+        return [
+            'rowId'    => $this->rowId,
+            'id'       => $this->id,
+            'name'     => $this->name,
+            'qty'      => $this->qty,
+            'price'    => $this->price,
+            'options'  => $this->options,
+        ];
     }
 }

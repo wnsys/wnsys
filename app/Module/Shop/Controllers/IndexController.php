@@ -3,10 +3,11 @@ namespace App\Module\Shop\Controllers;
 
 use App\Module\Shop\Bll\CartBll;
 use App\Module\Shop\Bll\ShopCategoryBll;
+use App\Module\Shop\Cart\Cart;
+use App\Module\Shop\Cart\CartItem;
 use App\Module\Shop\Model\ShopCartModel;
 use App\Module\Shop\Model\ShopProductModel;
 use App\Module\Web\Controllers\WebController;
-use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
@@ -46,10 +47,8 @@ class IndexController extends WebController
             "price" => "required",
             "name" => "required",
         ]);
-
-        app("session")->put("test",1);
-        $item = Cart::add($request->id,$request->name,$request->qty,$request->price,[]);
-
+        $catItem = new CartItem($request->id,$request->name,$request->qty,$request->price,[]);
+        $item = Cart::n()->add($catItem);
         $response = new Response($item->toArray());
         return $response;
     }
