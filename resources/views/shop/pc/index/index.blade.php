@@ -1,5 +1,5 @@
-@extends('layouts.blog')
-@section("blog")
+@extends('shop')
+@section("content")
     <ul class="list-group">
         @foreach($data as $item)
             <li class="list-group-item">

@@ -1,7 +1,4 @@
 @extends('layouts.web')
-@section("css")
-    <link href="/css/blog/common.css" rel="stylesheet" type="text/css">
-@append
 @section("content")
     <div class="col-md-3">
         <div class="panel panel-default">
@@ -13,7 +10,11 @@
         </div>
     </div>
     <div class="col-md-9">
-        @section('blog')
+        @section('right')
         @show
     </div>
 @endsection
+
+@section("css")
+    <link href="/css/blog/common.css" rel="stylesheet" type="text/css">
+@append

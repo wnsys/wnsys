@@ -1,4 +1,4 @@
-@extends('layouts.shop')
+@extends('shop')
 @section("css")
     <link href="/css/shop/show.css" rel="stylesheet" type="text/css">
 @append
@@ -25,7 +25,7 @@
     </script>
 @append
 @include("common.slider")
-@section("shop")
+@section("content")
 
     <ul id="myTab" class="nav nav-tabs">
         <li class="active"><a href="#home" data-toggle="tab">商品</a>

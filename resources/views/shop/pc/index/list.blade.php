@@ -1,6 +1,5 @@
-@extends('layouts.blog')
-
-@section("blog")
+@extends('shop')
+@section("right")
 @include("index.components.breadcrumb")
     <ul class="list-group">
         @foreach($bloglist as $blog)

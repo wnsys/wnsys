@@ -1,4 +1,4 @@
-@extends('layouts.blog')
+@extends('blog')
 
 @section("blog")
 @include("index.components.breadcrumb")

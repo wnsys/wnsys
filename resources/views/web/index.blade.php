@@ -1,7 +1,5 @@
-@extends('layouts.blog')
-
-@section("blog")
-
+@extends('blog.blog')
+@section("right")
     <ul class="list-group">
         @foreach($bloglist as $blog)
             <li class="list-group-item ">
@@ -13,7 +11,5 @@
             </li>
         @endforeach
     </ul>
-
   {{--  {{$bloglist->links()}}--}}
-
 @endsection
