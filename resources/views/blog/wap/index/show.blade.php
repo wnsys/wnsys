@@ -10,9 +10,6 @@
     @include("index.components.breadcrumb")
     <div class="panel panel-default" id="show">
         <div class="panel-body">
-            @if(!in_array($blog["catid"],app("config")["module"]["blog"]["hide_title"]))
-                <h3>{{$blog[title]}}</h3>
-            @endif
 
             <div class="blog-content ">
                 {!!$blog[content]!!}
@@ -24,14 +21,12 @@
                     </ul>
                 </div>
             </div>
-
-            <ul class="list-inline text-right">
-                <li>
-                    <span class="glyphicon glyphicon-calendar"></span>
-                    {{$blog["created_at"]}}
-                </li>
-            </ul>
-
         </div>
     </div>
+    <ul class="list-inline text-right" style="color:#ccc">
+        <li>
+            <span class="glyphicon glyphicon-calendar"></span>
+            {{$blog["created_at"]}}
+        </li>
+    </ul>
 @endsection
