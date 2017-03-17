@@ -39,9 +39,9 @@ class Cart extends Object
         return $item;
     }
 
-    function get($productid){
+    function get($id){
         $cart = $this->getCart();
-        return $cart[$productid]?:"";
+        return $cart[$id]?:"";
     }
     public function getCart()
     {
