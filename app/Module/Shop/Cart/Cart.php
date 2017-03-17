@@ -8,48 +8,44 @@ class Cart extends Object
 {
     private $instance = "cart.default";
     private $session;
+    public $items;
     function __construct()
     {
         $this->session = app("session");
+        $this->items = $this->session->has($this->instance)
+            ? $this->session->get($this->instance)
+            : [];
     }
 
     function add(CartItem $cartItem)
     {
-        $cart = $this->getCart();
-        $item = $cart[$cartItem->id];
+        $item = $this->items[$cartItem->id];
         if ($item) {
             $item["qty"] += $cartItem->qty;
         }else{
             $item = $cartItem->toArray();
         }
-        $cart[$cartItem->id] = $item;
-        $this->session->put($this->instance, $cart);
-        return $cart[$cartItem->id];
+        $this->set($item);
+        return $item;
     }
     function update($id,$qty){
-        $cart = $this->getCart();
-        $item = $this->get($id);
+        $item = $this->items[$id];
         $item["qty"] = $qty;
         if ($item->qty <= 0) {
-            unset($cart[$item["id"]]);
+            unset($this->items[$item["id"]]);
         } else {
             $cart[$id] = $item;
         }
-        $this->session->put($this->instance, $cart);
+        $this->set($item);
         return $item;
     }
 
     function get($id){
-        $cart = $this->getCart();
-        return $cart[$id]?:"";
+        return $this->items[$id]?:"";
     }
-    public function getCart()
-    {
-        $content = $this->session->has($this->instance)
-            ? $this->session->get($this->instance)
-            : [];
-
-        return $content;
+    function set($item){
+        $this->items[$item["id"]] = $item;
+        $this->session->put($this->instance, $this->items);
     }
 
     public function destroy()
