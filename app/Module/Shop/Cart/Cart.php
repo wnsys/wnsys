@@ -26,14 +26,14 @@ class Cart extends Object
         $this->session->put($this->instance, $cart);
         return $cart[$cartItem->id];
     }
-    function update($productid,$qty){
+    function update($id,$qty){
         $cart = $this->getCart();
-        $item = $this->get($productid);
+        $item = $this->get($id);
         $item["qty"] = $qty;
         if ($item->qty <= 0) {
-            unset($cart[$item->id]);
+            unset($cart[$item["id"]]);
         } else {
-            $cart[$productid] = $item;
+            $cart[$id] = $item;
         }
         $this->session->put($this->instance, $cart);
         return $item;
