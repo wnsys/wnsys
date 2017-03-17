@@ -17,7 +17,6 @@ class CartItem extends Object
         $this->qty = $qty;
         $this->options = $options;
         $this->userid = $userid;
-        $this->rowId = $this->generateRowId($id, $options);
     }
     protected function generateRowId($id, array $options)
     {
@@ -27,7 +26,6 @@ class CartItem extends Object
     public function toArray()
     {
         return [
-            'rowId'    => $this->rowId,
             'id'       => $this->id,
             'name'     => $this->name,
             'qty'      => $this->qty,

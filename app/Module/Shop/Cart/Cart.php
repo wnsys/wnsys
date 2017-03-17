@@ -16,24 +16,27 @@ class Cart extends Object
     function add(CartItem $cartItem)
     {
         $cart = $this->getCart();
-        if ($cart[$cartItem->id]) {
-            $cart[$cartItem->id]->qty += $cartItem->qty;
+        $item = $cart[$cartItem->id];
+        if ($item) {
+            $item["qty"] += $cartItem->qty;
         }else{
-            $cart[$cartItem->id] = $cartItem;
+            $item = $cartItem->toArray();
         }
+        $cart[$cartItem->id] = $item;
         $this->session->put($this->instance, $cart);
-        return $cartItem;
+        return $cart[$cartItem->id];
     }
     function update($productid,$qty){
         $cart = $this->getCart();
         $item = $this->get($productid);
-        $item->qty = $qty;
+        $item["qty"] = $qty;
         if ($item->qty <= 0) {
             unset($cart[$item->id]);
         } else {
             $cart[$productid] = $item;
         }
         $this->session->put($this->instance, $cart);
+        return $item;
     }
 
     function get($productid){
@@ -48,6 +51,7 @@ class Cart extends Object
 
         return $content;
     }
+
     public function destroy()
     {
         $this->session->remove($this->instance);

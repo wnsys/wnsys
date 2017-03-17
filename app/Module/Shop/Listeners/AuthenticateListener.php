@@ -12,25 +12,20 @@ class AuthenticateListener
     public function handle(Authenticated $event)
     {
         $userid = $event->user->getAuthIdentifier();
-        myLog("AuthenticateListener:userid:".$userid);
         $cart = Cart::n()->getCart();
-        myLog("AuthenticateListener:cart:".$cart);
-        foreach ($cart as $prodcutid=>$item){
-            $prodcut = ShopCartModel::where(["prodcutid" => $prodcutid,"user_id"=>$userid])->first();
-            if($prodcut){
-                $prodcut->qty = $item->qty;
+        foreach ($cart as $id=>$item){
+            $product = ShopCartModel::where(["product_id" => $id,"user_id"=>$userid])->first();
+            if($product){
+                $product->qty = $item["qty"];
             }else{
-                $prodcut = new ShopCartModel();
-                $prodcut->product_id = $item->id;
-                $prodcut->user_id = $userid;
-                $prodcut->qty = $item->id;
+                $product = new ShopCartModel();
+                $product->product_id = $item["id"];
+                $product->user_id = $userid;
+                $product->qty = $item["qty"];
 
             }
-            $f = $prodcut->save();
-            myLog("AuthenticateListener:save:".$f);
-            $prodcut->save();
+            $product->save();
         }
         Cart::n()->destroy();
-
     }
 }

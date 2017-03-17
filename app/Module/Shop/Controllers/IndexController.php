@@ -49,7 +49,7 @@ class IndexController extends WebController
         ]);
         $catItem = new CartItem($request->id,$request->name,$request->qty,$request->price,[]);
         $item = Cart::n()->add($catItem);
-        $response = new Response($item->toArray());
+        $response = new Response($item);
         return $response;
     }
     public function getCart(){
