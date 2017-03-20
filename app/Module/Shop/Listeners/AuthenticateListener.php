@@ -12,7 +12,7 @@ class AuthenticateListener
     public function handle(Authenticated $event)
     {
         $userid = $event->user->getAuthIdentifier();
-        $cart = Cart::n()->getCart();
+        $cart = Cart::n()->items;
         foreach ($cart as $id=>$item){
             $product = ShopCartModel::where(["product_id" => $id,"user_id"=>$userid])->first();
             if($product){
