@@ -33,9 +33,11 @@ class IndexController extends WebController
     {
         $data = ShopProductModel::find($id);
         $breadcrumb = ShopCategoryBll::n()->breadcrumb($id);
+        $cart = Cart::n()->items;
         return view("index.show", [
             "data" => $data,
             "breadcrumb" => $breadcrumb,
+            "cart"=>$cart
         ]);
     }
 
@@ -48,11 +50,11 @@ class IndexController extends WebController
             "name" => "required",
         ]);
         $catItem = new CartItem($request->id,$request->name,$request->qty,$request->price,[]);
-        $item = Cart::n()->add($catItem);
-        $response = new Response($item);
+        Cart::n()->add($catItem);
+        $response = new Response(Cart::n()->items);
         return $response;
     }
-    public function getCart(){
-        
+    function getCart(Request $request){
+        return new Response(Cart::n()->items);
     }
 }

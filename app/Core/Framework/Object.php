@@ -6,7 +6,7 @@ class Object{
         if($self){
             return $self;
         }else{
-          return  new static();
+          return  $self = new static();
         }
     }
 }
