@@ -43,11 +43,12 @@ class IndexController extends WebController
     function addCart(Request $request)
     {
         $this->validate($request,[
-            "id" => "required",
+            "product_id" => "required",
             "price" => "required",
             "name" => "required",
+            "qty" => "required",
         ]);
-        $catItem = new CartItem($request->id,$request->name,$request->qty,$request->price,[]);
+        $catItem = new CartItem($request->product_id,$request->name,$request->qty,$request->price,[]);
         $item = Cart::n()->add($catItem);
         $response = new Response($item);
         return $response;

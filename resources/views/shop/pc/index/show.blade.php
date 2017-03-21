@@ -15,7 +15,7 @@
 
             $(".add_cart").on("click", function () {
                 $.get("/shop/addCart",
-                        {id: id,price:price,qty:1,name:name},
+                        {product_id: id,price:price,qty:1,name:name},
                         function (data) {
                             console.log(data);
                         })

@@ -9,14 +9,14 @@ class CartItem extends Object
     public $name;//产品名称
     public $qty;//数量
     public $options;//选项
-    public $userid;//用户id
+    public $user_id;//用户id
     function __construct($id,$name,$qty,$price,$options = [],$userid = 0)
     {
-        $this->id = $id;
+        $this->product_id = $id;
         $this->name = $name;
         $this->qty = $qty;
         $this->options = $options;
-        $this->userid = $userid;
+        $this->user_id = $userid;
     }
     protected function generateRowId($id, array $options)
     {
