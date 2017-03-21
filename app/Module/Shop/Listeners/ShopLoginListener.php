@@ -19,10 +19,7 @@ class ShopLoginListener
             if($product){
                 $product->qty = $item["qty"];
             }else{
-                $product = new ShopCartModel();
-                $product->product_id = $item["id"];
-                $product->user_id = $userid;
-                $product->qty = $item["qty"];
+                $product = new ShopCartModel($item);
 
             }
             $product->save();
