@@ -21,9 +21,11 @@
             },
             methods:{
                 toCartNew:function () {
+                    alert(1);
                     $(".cart-list").slideToggle()
                 },
                 add_cart:function () {
+                    alert(2);
                     $.get("/shop/addCart",
                             {product_id: id,price:price,qty:1,name:name},
                             function (data) {

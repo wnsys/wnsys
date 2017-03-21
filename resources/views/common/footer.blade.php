@@ -8,5 +8,3 @@
 
     </div>
 </nav>
-</body>
-</html>
