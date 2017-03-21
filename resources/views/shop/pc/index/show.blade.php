@@ -31,7 +31,15 @@
                                 layer.msg('添加成功', {time: 1000});
                             })
 
-                }
+                },
+                calculate:function (id,operator) {
+                    $.get("/shop/calculate",
+                            {id: id, operator:operator},
+                            function (data) {
+                                app.items = data
+                                layer.msg('添加成功', {time: 1000});
+                            })
+                },
             }
         })
     </script>
@@ -107,9 +115,9 @@
                         <span class="big-price">￥<span class="pro-price">@{{item.price}}</span></span>
                     </div>
                     <div class="col-xs-2 col">
-                        <span class="glyphicon glyphicon-minus"></span>
+                        <span class="glyphicon glyphicon-minus" v-on:click="calculate({{$item[id]}},1)"></span>
                         <span>@{{item.qty}}</span>
-                        <span class="glyphicon glyphicon-plus"></span>
+                        <span class="glyphicon glyphicon-plus" v-on:click="calculate({{$item[id]}}),2"></span>
                     </div>
                 </li>
             </ul>

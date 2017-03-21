@@ -31,4 +31,5 @@ class ShopProductModel extends AppModel
     {
         return $this->hasOne(ShopCategoryModel::class, "id", "catid");
     }
+    
 }
