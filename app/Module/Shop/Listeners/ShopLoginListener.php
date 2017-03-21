@@ -13,7 +13,7 @@ class ShopLoginListener
     public function handle(Login $event)
     {
         $userid = $event->user->getAuthIdentifier();
-        $cart = Cart::n()->items;
+        $cart = Cart::n()->getItems("session");
         foreach ($cart as $id=>$item){
             $product = ShopCartModel::where(["product_id" => $id,"user_id"=>$userid])->first();
             if($product){

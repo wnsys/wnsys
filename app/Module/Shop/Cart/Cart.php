@@ -51,9 +51,9 @@ class Cart extends Object
         return $item;
     }
 
-    function getItems()
+    function getItems($from="model")
     {
-        if (Auth::check()) {
+        if (Auth::check() && $from == "model") {
             $rs = ShopCartModel::where(["user_id" => Auth::id()])->get();
             foreach ($rs as $item) {
                 $items[$item["id"]] = $item->toArray();
