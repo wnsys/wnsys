@@ -11,9 +11,10 @@
     <link href="/css/web.css" rel="stylesheet">
     @section("css")
     @show
+    <script src="/js/vue.js"></script>
+    <script src="/js/vue/vue-resource.min.js"></script>
     <script src="/js/jquery-3.1.1/jquery-3.1.1.min.js"></script>
     <script src="/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/js/js.cookie.js"></script>
     <script src="/js/layer/layer.js"></script>
     @section("js")
     @show

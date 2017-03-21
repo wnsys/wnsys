@@ -7,10 +7,34 @@
         var price = {{$data[price]}};
         var id = {{$data[id]}};
         var name = "{{$data[name]}}";
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            mounted:function () {
+                this.$http.jsonp("shop/getCart")
+                        .then(function(res) {
+                            var rtnData = res.data;
+                            if (rtnData.status == 0) {
+                                console.log(rtnData);
+                            }
+                        })
+                        .catch(function(res) {
+                            console.info('网络失败');
+                        });
+
+            },
+            methods:{
+
+            }
+        })
         $(function () {
             $('#myTab li:eq(0) a').tab('show');
             $("#toCartNew").on("click", function () {
                 $(".cart-list").slideToggle()
+
             })
 
             $(".add_cart").on("click", function () {
@@ -21,7 +45,7 @@
                         })
                 layer.msg('添加成功', {time: 1000});
             })
-        });
+        })
     </script>
 @append
 @include("common.slider")
@@ -88,17 +112,19 @@
     <div id="cart1" class="text-center cart-concern-btm-fixed five-column">
         <div class="cart-list " style="display: none;">
             <ul class="list-group text-left">
-                <li class="list-group-item">
+                @foreach($cart as $item)
+                <li class="list-group-item" v-for="item in items">
                     <div class="col-xs-10 col">
-                        <span></span>精炖牛肉单人超值餐
-                        <span class="big-price">￥<span class="pro-price">{{$data[price]}}</span></span>
+                        <span></span>{{ $item[name] }}
+                        <span class="big-price">￥<span class="pro-price">{{ $item[price] }}</span></span>
                     </div>
                     <div class="col-xs-2 col">
                         <span class="glyphicon glyphicon-minus"></span>
-                        <span>1</span>
+                        <span>{{ $item[qty] }}</span>
                         <span class="glyphicon glyphicon-plus"></span>
                     </div>
                 </li>
+                    @endforeach
             </ul>
         </div>
         <div class="concern-cart col-xs-6 col ">

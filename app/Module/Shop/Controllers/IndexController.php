@@ -33,9 +33,11 @@ class IndexController extends WebController
     {
         $data = ShopProductModel::find($id);
         $breadcrumb = ShopCategoryBll::n()->breadcrumb($id);
+        $cart = Cart::n()->items;
         return view("index.show", [
             "data" => $data,
             "breadcrumb" => $breadcrumb,
+            "cart"=>$cart
         ]);
     }
 
