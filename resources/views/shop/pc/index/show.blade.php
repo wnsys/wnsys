@@ -9,29 +9,28 @@
         var name = "{{$data[name]}}";
 
         var app = new Vue({
-            el: '#app',
+            el: '#cart1',
             data: {
-
+                items: {},
             },
-            mounted:function () {
+            mounted: function () {
                 $('#myTab li:eq(0) a').tab('show');
-                $.get("/shop/getCart",function (data) {
-                            console.log(data);
-                        })
+                $.get("/shop/getCart", function (data) {
+                    app.items = data
+                })
             },
-            methods:{
-                toCartNew:function () {
-                    alert(1);
+            methods: {
+                toCartNew: function () {
                     $(".cart-list").slideToggle()
                 },
-                add_cart:function () {
-                    alert(2);
+                add_cart: function () {
                     $.get("/shop/addCart",
-                            {product_id: id,price:price,qty:1,name:name},
+                            {"cart[product_id]": id, "cart[price]": price, "cart[qty]": 1, "cart[name]": name},
                             function (data) {
-                                console.log(data);
+                                app.items = data
+                                layer.msg('添加成功', {time: 1000});
                             })
-                    layer.msg('添加成功', {time: 1000});
+
                 }
             }
         })
@@ -104,12 +103,12 @@
 
                 <li class="list-group-item" v-for="item in items">
                     <div class="col-xs-10 col">
-                        <span></span>牛肉拉面
-                        <span class="big-price">￥<span class="pro-price">11</span></span>
+                        <span></span>@{{item.name}}
+                        <span class="big-price">￥<span class="pro-price">@{{item.price}}</span></span>
                     </div>
                     <div class="col-xs-2 col">
                         <span class="glyphicon glyphicon-minus"></span>
-                        <span>1</span>
+                        <span>@{{item.qty}}</span>
                         <span class="glyphicon glyphicon-plus"></span>
                     </div>
                 </li>

@@ -15,28 +15,28 @@
     <script src="/js/jquery-3.1.1/jquery-3.1.1.min.js"></script>
     <script src="/bootstrap/js/bootstrap.min.js"></script>
     <script src="/js/layer/layer.js"></script>
-    @section("js")
-    @show
+
     <script>
         window.Laravel = <?php echo json_encode([
                 'csrfToken' => csrf_token(),
         ]); ?>
     </script>
 </head>
-<body style="background:{{config("style.bg_color")}}" >
+<body style="background:{{config("style.bg_color")}}">
 <div id="app">
-@include("common.nav")
-<div class="container center-block pad5 <?php echo app()["module"]?"container-".app()["module"]:"";?>">
+    @include("common.nav")
+    <div class="container center-block pad5 <?php echo app()["module"] ? "container-" . app()["module"] : "";?>">
         @section('content')
         @show
-</div>
-@section("footer")
-    @include("common.footer")
-@show
+    </div>
+    @section("footer")
+        @include("common.footer")
+    @show
 
-@section('modal')
-@show
-
+    @section('modal')
+    @show
+    @section("js")
+    @show
 </div>
 </body>
 </html>

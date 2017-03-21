@@ -5,11 +5,12 @@ use App\Module\Shop\Bll\CartBll;
 use App\Module\Shop\Cart\Cart;
 use App\Module\Shop\Model\ShopCartModel;
 use Illuminate\Auth\Events\Authenticated;
+use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Log;
 
 class ShopLoginListener
 {
-    public function handle(Authenticated $event)
+    public function handle(Login $event)
     {
         $userid = $event->user->getAuthIdentifier();
         $cart = Cart::n()->items;

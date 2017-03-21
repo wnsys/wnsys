@@ -3,6 +3,7 @@ namespace App\Module\Shop\Cart;
 
 use App\Core\Framework\Object;
 use App\Module\Shop\Model\ShopCartModel;
+use App\Module\Shop\Model\ShopProductModel;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 
@@ -31,7 +32,7 @@ class Cart extends Object
             $this->store($cartItem["product_id"], $cartItem["qty"]);
         }
 
-        return $item;
+        return $this->items;
     }
 
     function update($id, $qty)
@@ -56,6 +57,9 @@ class Cart extends Object
             $rs = ShopCartModel::where(["user_id" => Auth::id()])->get()->toArray();
             foreach ($rs as $item) {
                 $items[$item["id"]] = $item;
+                $product = ShopProductModel::find($item["id"]);
+                $items[$item["id"]]["name"] = $product["name"];
+                $items[$item["id"]]["price"] = $product["price"];
             }
         } else {
             $items = $this->session->has($this->instance)
