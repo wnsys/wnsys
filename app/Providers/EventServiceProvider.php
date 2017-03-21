@@ -5,7 +5,7 @@ namespace App\Providers;
 use App\Listeners\QueryListener;
 use App\Listeners\ViewListener;
 use App\Module\Shop\Listeners\AuthenticateListener;
-use Illuminate\Auth\Events\Authenticated;
+use App\Module\Shop\Listeners\ShopLoginListener;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Database\Events\QueryExecuted;
 use Illuminate\Support\Facades\Event;
@@ -22,8 +22,8 @@ class EventServiceProvider extends ServiceProvider
         QueryExecuted::class => [
            QueryListener::class
         ],
-        Authenticated::class => [
-            AuthenticateListener::class
+        Login::class => [
+            ShopLoginListener::class
         ]
     ];
 

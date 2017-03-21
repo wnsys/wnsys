@@ -3,6 +3,7 @@ namespace App\Module\Web\Controllers;
 use App\Module\Blog\Bll\BlogArticleBll;
 use App\Module\Blog\Model\BlogArticleModel;
 use App\Module\Web\Bll\IndexBll;
+use Illuminate\Support\Facades\Auth;
 use Intervention\Image\ImageManagerStatic;
 
 /**

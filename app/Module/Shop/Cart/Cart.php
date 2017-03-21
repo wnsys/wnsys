@@ -4,6 +4,7 @@ namespace App\Module\Shop\Cart;
 use App\Core\Framework\Object;
 use App\Module\Shop\Model\ShopCartModel;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 
 class Cart extends Object
 {
@@ -14,22 +15,20 @@ class Cart extends Object
     function __construct()
     {
         $this->session = app("session");
-        $this->items = $this->session->has($this->instance)
-            ? $this->session->get($this->instance)
-            : [];
+        $this->items = $this->getItems();
     }
 
-    function add(CartItem $cartItem)
+    function add(array  $cartItem)
     {
-        $item = $this->items[$cartItem->product_id];
+        $item = $this->items[$cartItem["product_id"]];
         if ($item) {
-            $item["qty"] += $cartItem->qty;
+            $item["qty"] += $cartItem["qty"];
         } else {
-            $item = $cartItem->toArray();
+            $item = $cartItem;
         }
         $this->set($item);
         if (Auth::check()) {
-            $this->store($cartItem->product_id,$cartItem->qty);
+            $this->store($cartItem["product_id"], $cartItem["qty"]);
         }
 
         return $item;
@@ -46,14 +45,30 @@ class Cart extends Object
         }
         $this->set($item);
         if (Auth::check()) {
-            $this->store($id,$qty);
+            $this->store($id, $qty);
         }
         return $item;
     }
 
+    function getItems()
+    {
+        if (Auth::check()) {
+            $rs = ShopCartModel::where(["user_id" => Auth::id()])->get()->toArray();
+            foreach ($rs as $item) {
+                $items[$item["id"]] = $item;
+            }
+        } else {
+            $items = $this->session->has($this->instance)
+                ? $this->session->get($this->instance)
+                : [];
+        }
+        return $items;
+    }
+
     function get($id)
     {
-        return $this->items[$id] ?: "";
+        $result = $this->items[$id];
+        return $result;
     }
 
     function set($item)
@@ -75,7 +90,7 @@ class Cart extends Object
             $item->save();
         } else {
             $item = new ShopCartModel();
-            $item->product_id = $item->product_id;
+            $item->product_id = $id;
             $item->user_id = Auth::id();
             $item->qty = $qty;
             $item->save();

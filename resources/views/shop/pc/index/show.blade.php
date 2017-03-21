@@ -14,37 +14,24 @@
 
             },
             mounted:function () {
-                this.$http.jsonp("shop/getCart")
-                        .then(function(res) {
-                            var rtnData = res.data;
-                            if (rtnData.status == 0) {
-                                console.log(rtnData);
-                            }
-                        })
-                        .catch(function(res) {
-                            console.info('网络失败');
-                        });
-
-            },
-            methods:{
-
-            }
-        })
-        $(function () {
-            $('#myTab li:eq(0) a').tab('show');
-            $("#toCartNew").on("click", function () {
-                $(".cart-list").slideToggle()
-
-            })
-
-            $(".add_cart").on("click", function () {
-                $.get("/shop/addCart",
-                        {product_id: id,price:price,qty:1,name:name},
-                        function (data) {
+                $('#myTab li:eq(0) a').tab('show');
+                $.get("/shop/getCart",function (data) {
                             console.log(data);
                         })
-                layer.msg('添加成功', {time: 1000});
-            })
+            },
+            methods:{
+                toCartNew:function () {
+                    $(".cart-list").slideToggle()
+                },
+                add_cart:function () {
+                    $.get("/shop/addCart",
+                            {product_id: id,price:price,qty:1,name:name},
+                            function (data) {
+                                console.log(data);
+                            })
+                    layer.msg('添加成功', {time: 1000});
+                }
+            }
         })
     </script>
 @append
@@ -112,19 +99,18 @@
     <div id="cart1" class="text-center cart-concern-btm-fixed five-column">
         <div class="cart-list " style="display: none;">
             <ul class="list-group text-left">
-                @foreach($cart as $item)
+
                 <li class="list-group-item" v-for="item in items">
                     <div class="col-xs-10 col">
-                        <span></span>{{ $item[name] }}
-                        <span class="big-price">￥<span class="pro-price">{{ $item[price] }}</span></span>
+                        <span></span>牛肉拉面
+                        <span class="big-price">￥<span class="pro-price">11</span></span>
                     </div>
                     <div class="col-xs-2 col">
                         <span class="glyphicon glyphicon-minus"></span>
-                        <span>{{ $item[qty] }}</span>
+                        <span>1</span>
                         <span class="glyphicon glyphicon-plus"></span>
                     </div>
                 </li>
-                    @endforeach
             </ul>
         </div>
         <div class="concern-cart col-xs-6 col ">
@@ -135,12 +121,12 @@
             <a class="col-xs-4 col" id="focusOn">
                 <span class="focus-info"> 关注  </span>
             </a>
-            <a class="col-xs-4 col" id="toCartNew">
+            <a class="col-xs-4 col" id="toCartNew" v-on:click="toCartNew">
                 <span class="focus-info">购物车</span>
             </a>
         </div>
         <div class="action-list col-xs-6 col">
-            <a class="yellow-color add_cart col-xs-6 col">
+            <a class="yellow-color add_cart col-xs-6 col" v-on:click="add_cart">
                 加入购物车
             </a>
             <a class="red-color directorder col-xs-6 col">

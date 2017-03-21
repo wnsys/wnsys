@@ -7,7 +7,7 @@ use App\Module\Shop\Model\ShopCartModel;
 use Illuminate\Auth\Events\Authenticated;
 use Illuminate\Support\Facades\Log;
 
-class AuthenticateListener
+class ShopLoginListener
 {
     public function handle(Authenticated $event)
     {
