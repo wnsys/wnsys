@@ -28,18 +28,8 @@ class Cart extends Object
             $item = $cartItem->toArray();
         }
         $this->set($item);
-        if(Auth::check()){
-            $item = ShopCartModel::where(["user_id"=>Auth::id(),"product_id"=>$cartItem->id])->first();
-            if($item){
-                $item->qty += $cartItem->qty;
-                $item->save();
-            } else{
-                $item = new ShopCartModel();
-                $item->product_id = $item->product_id;
-                $item->user_id = Auth::id();
-                $item->qty = $cartItem->qty;
-                $item->save();
-            }
+        if (Auth::check()) {
+            $this->store($cartItem->product_id,$cartItem->qty);
         }
 
         return $item;
@@ -55,18 +45,8 @@ class Cart extends Object
             $cart[$id] = $item;
         }
         $this->set($item);
-        if(Auth::check()){
-            $item = ShopCartModel::where(["user_id"=>Auth::id(),"product_id"=>$id])->first();
-            if($item){
-                $item->qty += $qty;
-                $item->save();
-            } else{
-                $item = new ShopCartModel();
-                $item->product_id = $item->product_id;
-                $item->user_id = Auth::id();
-                $item->qty = $qty;
-                $item->save();
-            }
+        if (Auth::check()) {
+            $this->store($id,$qty);
         }
         return $item;
     }
@@ -85,5 +65,20 @@ class Cart extends Object
     public function destroy()
     {
         $this->session->remove($this->instance);
+    }
+
+    public function store($id, $qty)
+    {
+        $item = ShopCartModel::where(["user_id" => Auth::id(), "product_id" => $id])->first();
+        if ($item) {
+            $item->qty += $qty;
+            $item->save();
+        } else {
+            $item = new ShopCartModel();
+            $item->product_id = $item->product_id;
+            $item->user_id = Auth::id();
+            $item->qty = $qty;
+            $item->save();
+        }
     }
 }

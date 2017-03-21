@@ -50,7 +50,7 @@ class IndexController extends WebController
             "name" => "required",
             "qty" => "required",
         ]);
-        $catItem = new CartItem($request->product_id,$request->name,$request->qty,$request->price,[]);
+        $catItem = new CartItem($request->product_id,$request->qty,[]);
         $item = Cart::n()->add($catItem);
         $response = new Response($item);
         return $response;

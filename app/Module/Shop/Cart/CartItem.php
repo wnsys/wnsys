@@ -2,18 +2,22 @@
 namespace App\Module\Shop\Cart;
 
 use App\Core\Framework\Object;
+use App\Module\Shop\Model\ShopProductModel;
 
 class CartItem extends Object
 {
-    public $id;//产品id
+    public $product_id;//产品id
     public $name;//产品名称
+    public $price;
     public $qty;//数量
     public $options;//选项
     public $user_id;//用户id
-    function __construct($id,$name,$qty,$price,$options = [],$userid = 0)
+    function __construct($id,$qty,$options = [],$userid = 0)
     {
+        $product = ShopProductModel::find($id);
         $this->product_id = $id;
-        $this->name = $name;
+        $this->name = $product->name;
+        $this->price = $product->price;
         $this->qty = $qty;
         $this->options = $options;
         $this->user_id = $userid;
@@ -26,7 +30,7 @@ class CartItem extends Object
     public function toArray()
     {
         return [
-            'id'       => $this->id,
+            'product_id' => $this->product_id,
             'name'     => $this->name,
             'qty'      => $this->qty,
             'price'    => $this->price,
