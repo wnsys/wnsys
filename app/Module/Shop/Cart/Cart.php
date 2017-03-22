@@ -28,11 +28,9 @@ class Cart extends Object
             $item = $newItem;
         }
         $this->set($item);
-        if (Auth::check()) {
-            $this->store($item);
-        }
 
-        return $this->items;
+
+        return $this;
     }
 
     function update($id, $qty)
@@ -45,13 +43,10 @@ class Cart extends Object
             $cart[$id] = $item;
         }
         $this->set($item);
-        if (Auth::check()) {
-            $this->store($id, $qty);
-        }
-        return $item;
+        return $this;
     }
 
-    function getItems($from="model")
+    function getItems($from="model",$toArray = false)
     {
         if (Auth::check() && $from == "model") {
             $rs = ShopCartModel::where(["user_id" => Auth::id()])->get();
@@ -62,6 +57,11 @@ class Cart extends Object
             $items = $this->session->has($this->instance)
                 ? $this->session->get($this->instance)
                 : [];
+        }
+        if($toArray){
+            foreach ($items as $item) {
+                $items[$item["id"]] = $item->toArray();
+            }
         }
         return $items;
     }
@@ -77,6 +77,9 @@ class Cart extends Object
         $item->amount();
         $this->items[$item["product_id"]] = $item;
         $this->session->put($this->instance, $this->items);
+        if (Auth::check()) {
+            $this->store($item);
+        }
     }
 
     public function destroy()

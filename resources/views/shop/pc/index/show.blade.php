@@ -15,8 +15,8 @@
             },
             mounted: function () {
                 $('#myTab li:eq(0) a').tab('show');
-                $.get("/shop/getCart", function (data) {
-                    app.items = data
+                $.get("/shop/getCart", function (res) {
+                    app.items = res.data
                 })
             },
             methods: {
@@ -26,8 +26,8 @@
                 add_cart: function (id,qty) {
                     $.get("/shop/addCart",
                             {"cart[product_id]": id, "cart[price]": price, "cart[qty]": qty, "cart[name]": name},
-                            function (data) {
-                                app.items = data
+                            function (res) {
+                                app.items = res.data
                                 layer.msg('添加成功', {time: 1000});
                             })
 
