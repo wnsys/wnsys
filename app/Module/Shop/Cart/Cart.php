@@ -19,13 +19,13 @@ class Cart extends Object
         $this->items = $this->getItems();
     }
 
-    function add(ShopCartModel $cartItem)
+    function add(ShopCartModel $newItem)
     {
-        $item = $this->items[$cartItem["product_id"]];
+        $item = $this->items[$newItem["product_id"]];
         if ($item) {
-            $item["qty"] += $cartItem["qty"];
+            $item["qty"] += $newItem["qty"];
         } else {
-            $item = $cartItem;
+            $item = $newItem;
         }
         $this->set($item);
         if (Auth::check()) {
@@ -56,8 +56,7 @@ class Cart extends Object
         if (Auth::check() && $from == "model") {
             $rs = ShopCartModel::where(["user_id" => Auth::id()])->get();
             foreach ($rs as $item) {
-                $items[$item["id"]] = $item->toArray();
-                $items[$item["id"]]["amount"] = $item->amount();
+                $items[$item["id"]] = $item;
             }
         } else {
             $items = $this->session->has($this->instance)
@@ -75,8 +74,8 @@ class Cart extends Object
 
     function set(ShopCartModel $item)
     {
-        $this->items[$item["product_id"]] = $item->toArray();
-        $this->items[$item["product_id"]]["amount"] = $item->amount();
+        $item->amount();
+        $this->items[$item["product_id"]] = $item;
         $this->session->put($this->instance, $this->items);
     }
 
@@ -85,14 +84,16 @@ class Cart extends Object
         $this->session->remove($this->instance);
     }
 
-    public function store(ShopCartModel$cartItem)
+    public function store(ShopCartModel $cartItem)
     {
         $item = ShopCartModel::where(["user_id" => Auth::id(), "product_id" => $cartItem["product_id"]])->first();
         if ($item) {
             $item->qty += $cartItem["qty"];
+            $item->amount();
             $item->save();
         } else {
             $cartItem->user_id = Auth::id();
+            $cartItem->amount();
             $cartItem->save();
         }
     }

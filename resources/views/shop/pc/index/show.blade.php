@@ -23,22 +23,14 @@
                 toCartNew: function () {
                     $(".cart-list").slideToggle()
                 },
-                add_cart: function () {
+                add_cart: function (id,qty) {
                     $.get("/shop/addCart",
-                            {"cart[product_id]": id, "cart[price]": price, "cart[qty]": 1, "cart[name]": name},
+                            {"cart[product_id]": id, "cart[price]": price, "cart[qty]": qty, "cart[name]": name},
                             function (data) {
                                 app.items = data
                                 layer.msg('添加成功', {time: 1000});
                             })
 
-                },
-                calculate:function (id,operator) {
-                    $.get("/shop/calculate",
-                            {id: id, operator:operator},
-                            function (data) {
-                                app.items = data
-                                layer.msg('添加成功', {time: 1000});
-                            })
                 },
             }
         })
@@ -115,9 +107,9 @@
                         <span class="big-price">￥<span class="pro-price">@{{item.price}}</span></span>
                     </div>
                     <div class="col-xs-2 col">
-                        <span class="glyphicon glyphicon-minus" v-on:click="calculate({{$item[id]}},1)"></span>
+                        <span class="glyphicon glyphicon-minus" v-on:click="add_cart({{$item[id]}},-1)"></span>
                         <span>@{{item.qty}}</span>
-                        <span class="glyphicon glyphicon-plus" v-on:click="calculate({{$item[id]}}),2"></span>
+                        <span class="glyphicon glyphicon-plus" v-on:click="add_cart({{$item[id]}}),1"></span>
                     </div>
                 </li>
             </ul>
@@ -135,7 +127,7 @@
             </a>
         </div>
         <div class="action-list col-xs-6 col">
-            <a class="yellow-color add_cart col-xs-6 col" v-on:click="add_cart">
+            <a class="yellow-color add_cart col-xs-6 col" v-on:click="add_cart(id,1)">
                 加入购物车
             </a>
             <a class="red-color directorder col-xs-6 col">

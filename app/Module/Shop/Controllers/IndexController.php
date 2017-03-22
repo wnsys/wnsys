@@ -57,11 +57,5 @@ class IndexController extends WebController
         $response = new Response(Cart::n()->items);
         return $response;
     }
-    public function calculate(Request $request){
-        if($request["operator"] == 1){//加法
-            $result = Cart::n()->add($request["cart"]);
-        }else if($request["operator"] == 2){
-            $result = Cart::n()->add($request["cart"]);
-        }
-    }
+   
 }
