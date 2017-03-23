@@ -12,11 +12,13 @@
             el: '#cart1',
             data: {
                 items: {},
+                sum:0
             },
             mounted: function () {
                 $('#myTab li:eq(0) a').tab('show');
                 $.get("/shop/getCart", function (res) {
-                    app.items = res.data
+                    app.items = res.data.list;
+                    app.sum = res.data.sum;
                 })
             },
             methods: {
@@ -27,7 +29,8 @@
                     $.get("/shop/addCart",
                             {"cart[product_id]": id, "cart[price]": price, "cart[qty]": qty, "cart[name]": name},
                             function (res) {
-                                app.items = res.data
+                                app.items = res.data.list;
+                                app.sum = res.data.sum;
                                 layer.msg('添加成功', {time: 1000});
                             })
 
@@ -103,13 +106,21 @@
 
                 <li class="list-group-item" v-for="item in items">
                     <div class="col-xs-10 col">
-                        <span></span>@{{item.name}}
+                        <span>@{{item.name}}</span>
                         <span class="big-price">￥<span class="pro-price">@{{item.price}}</span></span>
                     </div>
                     <div class="col-xs-2 col">
                         <span class="glyphicon glyphicon-minus" v-on:click="add_cart(item.product_id,-1)"></span>
                         <span>@{{item.qty}}</span>
                         <span class="glyphicon glyphicon-plus" v-on:click="add_cart(item.product_id,1)"></span>
+                    </div>
+                </li>
+                <li class="list-group-item" >
+                    <div class="col-xs-10 col">
+                        总价
+                    </div>
+                    <div class="col-xs-2 col">
+                        <span class="big-price">￥<span class="pro-price">@{{sum}}</span></span>
                     </div>
                 </li>
             </ul>

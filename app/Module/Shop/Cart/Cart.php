@@ -52,7 +52,13 @@ class Cart extends Object
         $item = $item?new ShopCartModel($item):[];
         return $item;
     }
-
+    function sum(){
+        $sum = 0;
+        foreach ($this->items as $item){
+            $sum += $item["amount"];
+        }
+        return $sum;
+    }
     function set(ShopCartModel $item)
     {
         if($item["qty"] <= 0){
@@ -76,16 +82,15 @@ class Cart extends Object
     {
         $item = ShopCartModel::where(["user_id" => Auth::id(), "product_id" => $cartItem["product_id"]])->first();
         if ($item) {
-            $item->qty = $cartItem["qty"];
-            if($item["qty"] <= 0){
+            if($cartItem["qty"] <= 0){
                 $item->delete();
             }else{
+                $item->qty = $cartItem["qty"];
                 $item->amount();
                 $item->save();
             }
         } else {
             $cartItem->user_id = Auth::id();
-            $cartItem->amount();
             $cartItem->save();
         }
     }

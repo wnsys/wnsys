@@ -48,14 +48,11 @@ class IndexController extends WebController
             "cart.name" => "required",
             "cart.qty" => "required",
         ]);
-
-        $cart = Cart::n()->add(new ShopCartModel($request["cart"]));
-        $rs = $cart->getItems("model",true);
-        return $this->response($rs);
+        Cart::n()->add(new ShopCartModel($request["cart"]));
+        return $this->response(["list"=>Cart::n()->getItems(),"sum"=>Cart::n()->sum()]);
     }
     public function getCart(){
-        $rs = Cart::n()->getItems("model",true);
-        return $this->response($rs);
+        return $this->response(["list"=>Cart::n()->getItems(),"sum"=>Cart::n()->sum()]);
     }
    
 }
