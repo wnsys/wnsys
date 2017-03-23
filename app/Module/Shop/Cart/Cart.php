@@ -76,12 +76,13 @@ class Cart extends Object
     {
         $item = ShopCartModel::where(["user_id" => Auth::id(), "product_id" => $cartItem["product_id"]])->first();
         if ($item) {
-            $item->qty += $cartItem["qty"];
+            $item->qty = $cartItem["qty"];
             if($item["qty"] <= 0){
-                unset($this->items[$item["product_id"]]);
+                $item->delete();
+            }else{
+                $item->amount();
+                $item->save();
             }
-            $item->amount();
-            $item->save();
         } else {
             $cartItem->user_id = Auth::id();
             $cartItem->amount();
