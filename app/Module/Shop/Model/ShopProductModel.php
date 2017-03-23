@@ -20,12 +20,7 @@ class ShopProductModel extends AppModel
         if(!$request["name"]){
             $request["name"] = mb_substr(strip_tags($request["content"]),0,30);
         }
-        if($this->id){
-            $rs = $this->update($request->all());
-        }else{
-            $rs = $this->create($request->all());
-            $rs = $rs->id;
-        }
+        $rs = $this->save($request->all());
     }
     public function cat()
     {
