@@ -31,7 +31,7 @@
                             function (res) {
                                 app.items = res.data.list;
                                 app.sum = res.data.sum;
-                                layer.msg('添加成功', {time: 1000});
+                                layer.msg('操作成功', {time: 500});
                             })
 
                 },
