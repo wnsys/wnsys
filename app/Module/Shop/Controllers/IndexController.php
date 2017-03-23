@@ -42,17 +42,25 @@ class IndexController extends WebController
     //添加到购物车
     function addCart(Request $request)
     {
-        $this->validate($request,[
+        $this->validate($request, [
             "cart.product_id" => "required",
             "cart.price" => "required",
             "cart.name" => "required",
             "cart.qty" => "required",
         ]);
         Cart::n()->add(new ShopCartModel($request["cart"]));
-        return $this->response(["list"=>Cart::n()->getItems(),"sum"=>Cart::n()->sum()]);
+        return $this->response(["list" => Cart::n()->getItems(), "sum" => Cart::n()->sum()]);
     }
-    public function getCart(){
-        return $this->response(["list"=>Cart::n()->getItems(),"sum"=>Cart::n()->sum()]);
+
+    public function getCart()
+    {
+        return $this->response(["list" => Cart::n()->getItems(), "sum" => Cart::n()->sum()]);
     }
-   
+
+    public function buy()
+    {
+        return view("index.buy", [
+
+        ]);
+    }
 }
