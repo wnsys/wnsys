@@ -21,61 +21,46 @@ class Cart extends Object
 
     function add(ShopCartModel $newItem)
     {
-        $item = $this->items[$newItem["product_id"]];
+        $item = $this->get($newItem["product_id"]);
         if ($item) {
             $item["qty"] += $newItem["qty"];
+
         } else {
             $item = $newItem;
         }
         $this->set($item);
-
-
         return $this;
     }
-
-    function update($id, $qty)
+    function getItems()
     {
-        $item = $this->items[$id];
-        $item["qty"] = $qty;
-        if ($item->qty <= 0) {
-            unset($this->items[$item["product_id"]]);
-        } else {
-            $cart[$id] = $item;
-        }
-        $this->set($item);
-        return $this;
-    }
-
-    function getItems($from="model",$toArray = false)
-    {
-        if (Auth::check() && $from == "model") {
+        if (Auth::check()) {
             $rs = ShopCartModel::where(["user_id" => Auth::id()])->get();
             foreach ($rs as $item) {
-                $items[$item["id"]] = $item;
+                $items[$item["product_id"]] = $item->toArray();
             }
         } else {
             $items = $this->session->has($this->instance)
                 ? $this->session->get($this->instance)
                 : [];
         }
-        if($toArray){
-            foreach ($items as $item) {
-                $items[$item["id"]] = $item->toArray();
-            }
-        }
         return $items;
     }
 
     function get($id)
     {
-        $result = $this->items[$id];
-        return $result;
+        $item = $this->items[$id];
+        $item = $item?new ShopCartModel($item):[];
+        return $item;
     }
 
     function set(ShopCartModel $item)
     {
-        $item->amount();
-        $this->items[$item["product_id"]] = $item;
+        if($item["qty"] <= 0){
+            unset($this->items[$item["product_id"]]);
+        }else{
+            $item->amount();
+            $this->items[$item["product_id"]] = $item->toArray();
+        }
         $this->session->put($this->instance, $this->items);
         if (Auth::check()) {
             $this->store($item);
@@ -92,6 +77,9 @@ class Cart extends Object
         $item = ShopCartModel::where(["user_id" => Auth::id(), "product_id" => $cartItem["product_id"]])->first();
         if ($item) {
             $item->qty += $cartItem["qty"];
+            if($item["qty"] <= 0){
+                unset($this->items[$item["product_id"]]);
+            }
             $item->amount();
             $item->save();
         } else {

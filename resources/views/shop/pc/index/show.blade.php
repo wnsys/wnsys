@@ -107,9 +107,9 @@
                         <span class="big-price">￥<span class="pro-price">@{{item.price}}</span></span>
                     </div>
                     <div class="col-xs-2 col">
-                        <span class="glyphicon glyphicon-minus" v-on:click="add_cart(@{{item.product_id}},-1)"></span>
+                        <span class="glyphicon glyphicon-minus" v-on:click="add_cart(item.product_id,-1)"></span>
                         <span>@{{item.qty}}</span>
-                        <span class="glyphicon glyphicon-plus" v-on:click="add_cart(@{{item.product_id}},1)"></span>
+                        <span class="glyphicon glyphicon-plus" v-on:click="add_cart(item.product_id,1)"></span>
                     </div>
                 </li>
             </ul>
