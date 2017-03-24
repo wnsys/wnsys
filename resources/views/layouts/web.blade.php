@@ -8,7 +8,6 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>wnsys系统</title>
     <link href="/statics/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="/statics/vue/mint-ui.css" rel="stylesheet">
     <link href="/statics/css/web.css" rel="stylesheet">
     @section("css")
     @show
