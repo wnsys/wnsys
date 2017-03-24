@@ -1,6 +1,6 @@
 @extends('shop')
 @section("css")
-    <link href="/statics/css/shop/show.css" rel="stylesheet" type="text/css">
+<link href="/statics/css/shop/show.css" rel="stylesheet" type="text/css">
 @append
 @section("js")
     <script>
@@ -35,7 +35,7 @@
                                 app.$toast({
                                     message: '操作成功',
                                     position: 'middle',
-                                    duration: 600
+                                    duration: 1000
                                 })
                             })
 
