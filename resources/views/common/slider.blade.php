@@ -1,6 +1,6 @@
 @section("css")
-    <link href="/js/unslider/css/unslider.css" rel="stylesheet">
-    <link href="/js/unslider/css/unslider-dots.css" rel="stylesheet">
+    <link href="/statics/js/unslider/css/unslider.css" rel="stylesheet">
+    <link href="/statics/js/unslider/css/unslider-dots.css" rel="stylesheet">
     <style>
         .banner { position: relative; overflow: auto; }
         .banner li { list-style: none; }
@@ -8,9 +8,9 @@
     </style>
 @append
 @section("js")
-    <script src="/js/unslider/js/unslider-min.js"></script>
-    <script src="/js/unslider/js/jquery.event.move.js"></script>
-    <script src="/js/unslider/js/jquery.event.swipe.js"></script>
+    <script src="/statics/js/unslider/js/unslider-min.js"></script>
+    <script src="/statics/js/unslider/js/jquery.event.move.js"></script>
+    <script src="/statics/js/unslider/js/jquery.event.swipe.js"></script>
     <script>
         $(function () {
             $('.banner').unslider({

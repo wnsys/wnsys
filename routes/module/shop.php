@@ -18,3 +18,4 @@ Route::get("/shop/cat/{id}","IndexController@index");
 Route::get("/shop","IndexController@index");
 Route::get("/shop/addCart","IndexController@addCart");
 Route::get("/shop/getCart","IndexController@getCart");
+Route::get("/shop/buy","IndexController@buy");

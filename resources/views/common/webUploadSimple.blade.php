@@ -1,5 +1,5 @@
-<link rel="stylesheet" type="text/css" href="/js/webuploader/webuploader.css"/>
-<link rel="stylesheet" type="text/css" href="/js/webuploader/style.css"/>
+<link rel="stylesheet" type="text/css" href="/statics/js/webuploader/webuploader.css"/>
+<link rel="stylesheet" type="text/css" href="/statics/js/webuploader/style.css"/>
 <script type="text/javascript" src="/js/webuploader/webuploader.min.js"></script>
 <!--dom结构部分-->
 <div id="uploader">
@@ -24,6 +24,6 @@
     <div id="fileList" class="uploader-list add"></div>
     <div id="filePicker">选择图片</div>
 </div>
-<script type="text/javascript" src="/js/webuploader/simple.js"></script>
+<script type="text/javascript" src="/statics/js/webuploader/simple.js"></script>
 
 

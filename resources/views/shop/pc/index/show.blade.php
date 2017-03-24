@@ -1,6 +1,6 @@
 @extends('shop')
 @section("css")
-    <link href="/css/shop/show.css" rel="stylesheet" type="text/css">
+    <link href="/statics/css/shop/show.css" rel="stylesheet" type="text/css">
 @append
 @section("js")
     <script>
@@ -20,6 +20,7 @@
                     app.items = res.data.list;
                     app.sum = res.data.sum;
                 })
+
             },
             methods: {
                 toCartNew: function () {
@@ -31,7 +32,11 @@
                             function (res) {
                                 app.items = res.data.list;
                                 app.sum = res.data.sum;
-                                layer.msg('操作成功', {time: 500});
+                                app.$toast({
+                                    message: '操作成功',
+                                    position: 'middle',
+                                    duration: 600
+                                })
                             })
 
                 },
@@ -141,7 +146,7 @@
             <a class="yellow-color add_cart col-xs-6 col" v-on:click="add_cart(id,1)">
                 加入购物车
             </a>
-            <a class="red-color directorder col-xs-6 col">
+            <a class="red-color directorder col-xs-6 col" href="/shop/buy">
                 立即购买
             </a>
         </div>
