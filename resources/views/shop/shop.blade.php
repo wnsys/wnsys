@@ -1,15 +1,9 @@
 @extends('layouts.web')
 @section("content")
-    <div class="col-md-3">
-        <div class="panel panel-default">
-            <div class="panel-body">
-                @section("left")
-                    @include("web.left")
-                @show
-            </div>
-        </div>
-    </div>
-    <div class="col-md-9">
+    <div class="container center-block pad5 container-shop">
+        @section("left")
+            @include("web.left")
+        @show
         @section("right")
         @show
     </div>

@@ -59,8 +59,7 @@
         <div class="tab-pane fade in active" id="home">
             <div class="panel panel-default basic-info ">
                 <div class="panel-body">
-                    <div class="banner">
-                        <ul class="list-inline">
+                    <div class="banner">                        <ul class="list-inline">
                             @foreach($data->image() as $item)
                                 <li class="text-center">
                                     <a><img style="width:100%;max-width: 500px" class="img-rounded"

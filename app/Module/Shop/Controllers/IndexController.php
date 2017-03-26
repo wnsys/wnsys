@@ -55,8 +55,6 @@ class IndexController extends WebController
         return $this->response(["list"=>Cart::n()->getItems(),"sum"=>Cart::n()->sum()]);
     }
    public function buy(){
-       return view("index.buy", [
-           
-       ]);
+       return view("index.buy", ["items"=>Cart::n()->getItems(),"sum"=>Cart::n()->sum()]);
    }
 }

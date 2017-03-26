@@ -8,6 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>wnsys系统</title>
     <link href="/statics/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="/statics/vue/mint-ui.css" rel="stylesheet">
     <link href="/statics/css/web.css" rel="stylesheet">
     @section("css")
     @show
@@ -26,10 +27,9 @@
 <body style="background:{{config("style.bg_color")}}">
 <div id="app">
     @include("common.nav")
-    <div class="container center-block pad5 <?php echo app()["module"] ? "container-" . app()["module"] : "";?>">
-        @section('content')
-        @show
-    </div>
+    @section('content')
+    @show
+
     @section("footer")
         @include("common.footer")
     @show
