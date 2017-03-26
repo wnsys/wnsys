@@ -27,7 +27,7 @@
                 </div>
             </div>
             <div class="form-group text-center">
-                <label class="col-md-3 control-label"></label>
+                <label class="col-md-3 control-label hidden-xs"></label>
                 <div class="col-md-9">
                     <input type="button" class="btn btn-primary btn-lg" value="提交" style="width:40%;">
                 </div>
