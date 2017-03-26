@@ -8,12 +8,12 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
     <!-- Styles -->
-    <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="/statics/bootstrap/css/bootstrap.css" rel="stylesheet">
     @yield("css")
-    <script src="/js/jquery-3.1.1/jquery-3.1.1.min.js"></script>
+    <script src="/statics/js/jquery-3.1.1/jquery-3.1.1.min.js"></script>
     <!-- Scripts -->
-    <script src="/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/js/vue.js"></script>
+    <script src="/statics/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/statics/js/vue.js"></script>
     @section("js")
     @show
     <script>

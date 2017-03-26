@@ -6,6 +6,8 @@ use App\Module\Shop\Bll\ShopCategoryBll;
 use App\Module\Shop\Cart\Cart;
 use App\Module\Shop\Cart\CartItem;
 use App\Module\Shop\Model\ShopCartModel;
+use App\Module\Shop\Model\ShopOrderDetailModel;
+use App\Module\Shop\Model\ShopOrderModel;
 use App\Module\Shop\Model\ShopProductModel;
 use App\Module\Web\Controllers\WebController;
 use Illuminate\Http\Request;
@@ -42,28 +44,42 @@ class IndexController extends WebController
     //添加到购物车
     function addCart(Request $request)
     {
-        $this->validate($request,[
+        $this->validate($request, [
             "cart.product_id" => "required",
             "cart.price" => "required",
             "cart.name" => "required",
             "cart.qty" => "required",
         ]);
         Cart::n()->add(new ShopCartModel($request["cart"]));
-        return $this->response(["list"=>Cart::n()->getItems(),"sum"=>Cart::n()->sum()]);
+        return $this->response(["list" => Cart::n()->getItems(), "sum" => Cart::n()->sum()]);
     }
-    public function getCart(){
-        return $this->response(["list"=>Cart::n()->getItems(),"sum"=>Cart::n()->sum()]);
-    }
-   public function buy(Request $request){
-       if($request["dosubmit"]){
-           $this->validate($request,[
-               "user_name" => "required",
-               "phone" => "required",
-               "address" => "required",
-           ]);
-           
-       }
 
-       return view("index.buy");
-   }
+    public function getCart()
+    {
+        return $this->response(["list" => Cart::n()->getItems(), "sum" => Cart::n()->sum()]);
+    }
+
+    public function buy(Request $request)
+    {
+        if ($request["dosubmit"]) {
+            $this->validate($request, [
+                "user_name" => "required",
+                "phone" => "required",
+                "address" => "required",
+            ]);
+            $cart = Cart::n()->getItems();
+            $order = $request->all();
+            $order["user_id"] = Auth::id();
+            $order["amount"] = Cart::n()->sum();
+            $order = ShopOrderModel::create($order);
+            echo $order["id"];
+            foreach ($cart as $item) {
+                $detail = $item;
+                $detail["order_id"] = $order["id"];
+                ShopOrderDetailModel::create($detail);
+            }
+        }
+
+        return view("index.buy");
+    }
 }
