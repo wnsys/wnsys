@@ -54,7 +54,16 @@ class IndexController extends WebController
     public function getCart(){
         return $this->response(["list"=>Cart::n()->getItems(),"sum"=>Cart::n()->sum()]);
     }
-   public function buy(){
-       return view("index.buy", ["items"=>Cart::n()->getItems(),"sum"=>Cart::n()->sum()]);
+   public function buy(Request $request){
+       if($request["dosubmit"]){
+           $this->validate($request,[
+               "user_name" => "required",
+               "phone" => "required",
+               "address" => "required",
+           ]);
+           
+       }
+
+       return view("index.buy");
    }
 }

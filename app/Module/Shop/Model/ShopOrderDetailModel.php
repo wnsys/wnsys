@@ -5,9 +5,9 @@ use App\Model\AppModel;
 
 class ShopOrderModel extends AppModel
 {
-    protected $table = "shop_order";
+    protected $table = "shop_order_detail";
     protected $fillable = [
-        "userid","product_id,user_name,phone,address"
+        "orderi_id","product_id,qty"
     ];
     protected $hidden = [
 

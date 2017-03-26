@@ -38,29 +38,29 @@
 @stop
 @section("right")
     <div class="col-md-9">
-        <form class="form-horizontal ">
+        <form class="form-horizontal " method="post">
             <div class="form-group ">
                 <label class="col-md-3 control-label">姓名</label>
                 <div class="col-md-9 ">
-                    <input type="text" class="form-control input-lg " placeholder="请输入姓名">
+                    <input type="text" name="user_name" class="form-control input-lg " placeholder="请输入姓名">
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-md-3 control-label">手机号</label>
                 <div class="col-md-9">
-                    <input type="text" class="form-control input-lg " placeholder="请输入手机号">
+                    <input type="text" name="phone" class="form-control input-lg " placeholder="请输入手机号">
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-md-3 control-label">收货地址</label>
                 <div class="col-md-9">
-                    <input type="text" class="form-control input-lg" placeholder="请输入收货地址">
+                    <input type="text" name="address" class="form-control input-lg" placeholder="请输入收货地址">
                 </div>
             </div>
             <div class="form-group text-center">
                 <label class="col-md-3 control-label hidden-xs"></label>
                 <div class="col-md-9">
-                    <input type="button" class="btn btn-primary btn-lg" value="提交" style="width:40%;">
+                    <input type="button" name="dosubmit" class="btn btn-primary btn-lg" value="提交" style="width:40%;">
                 </div>
             </div>
         </form>
