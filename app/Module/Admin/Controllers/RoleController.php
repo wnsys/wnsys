@@ -1,10 +1,10 @@
 <?php
 namespace App\Module\Admin\Controllers;
 
-use App\Model\PermissionModel;
-use App\Model\PermissionRelateModel;
-use App\Model\RoleModel;
-use App\Module\Teacher\Controllers\AdminController;
+use App\Module\Admin\Model\PermissionModel;
+use App\Module\Admin\Model\PermissionRelateModel;
+use App\Module\Admin\Model\RoleModel;
+use App\Http\Controllers\AdminController;
 use Illuminate\Http\Request;
 
 class RoleController extends AdminController

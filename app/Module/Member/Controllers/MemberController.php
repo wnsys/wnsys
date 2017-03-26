@@ -2,8 +2,8 @@
 namespace App\Module\Member\Controllers;
 
 use App\Http\Controllers\AdminController;
-use App\Model\RoleModel;
-use App\Model\RoleUserModel;
+use App\Module\Admin\Model\RoleModel;
+use App\Module\Admin\Model\RoleUserModel;
 use App\Model\UserModel;
 use App\User;
 use Symfony\Component\HttpFoundation\Request;

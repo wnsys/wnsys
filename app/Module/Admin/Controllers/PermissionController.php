@@ -2,8 +2,8 @@
 namespace App\Module\Admin\Controllers;
 
 use App\Http\Controllers\AdminController;
-use App\Model\PermissionModel;
-use App\Model\PermissionRelateModel;
+use App\Module\Admin\Model\PermissionModel;
+use App\Module\Admin\Model\PermissionRelateModel;
 use App\Module\Admin\Bll\PermissionBll;
 use Symfony\Component\HttpFoundation\Request;
 

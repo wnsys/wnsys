@@ -1,6 +1,6 @@
 <?php
-namespace App\Model;
-
+namespace App\Module\Admin\Model;
+use App\Model\AppModel;
 class RoleModel extends AppModel
 {
     protected $table = "role";

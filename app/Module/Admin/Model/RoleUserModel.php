@@ -1,6 +1,6 @@
 <?php
-namespace App\Model;
-
+namespace App\Module\Admin\Model;
+use App\Model\AppModel;
 class RoleUserModel extends AppModel
 {
     protected $table = "role_user";
@@ -12,6 +12,6 @@ class RoleUserModel extends AppModel
     ];
     public function role()
     {
-        return $this->hasOne("App\Model\RoleUserModel", "role_id", "id");
+        return $this->hasOne(RoleModel::class, "role_id", "id");
     }
 }

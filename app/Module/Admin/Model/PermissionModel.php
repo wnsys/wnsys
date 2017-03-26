@@ -1,7 +1,7 @@
 <?php
-namespace App\Model;
+namespace App\Module\Admin\Model;
 
-
+use App\Model\AppModel;
 use App\Model\Common\ParentModel;
 
 class PermissionModel extends AppModel{

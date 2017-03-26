@@ -3,8 +3,7 @@ namespace App\Module\Admin\Bll;
 
 use App\Core\Bll\FormBll;
 use App\Core\Framework\Object;
-use App\Model\PermissionModel;
-
+use App\Module\Admin\Model\PermissionModel;
 class PermissionBll extends Object
 {
     function treeLists()

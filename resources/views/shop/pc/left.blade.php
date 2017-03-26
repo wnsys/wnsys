@@ -1,4 +1,5 @@
 <ul class="list-group">
+    <li class="list-group-item"><a href="/admin/order">订单管理</a></li>
     <li class="list-group-item"><a href="/admin/shop">产品列表</a></li>
     <li class="list-group-item"><a href="/admin/shop/add">添加产品</a></li>
     <li class="list-group-item"><a href="/admin/shop/category">分类管理</a></li>

@@ -1,8 +1,8 @@
 <?php
-namespace App\Model;
+namespace App\Module\Admin\Model;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
-
+use App\Model\AppModel;
 class PermissionRelateModel extends AppModel
 {
     use SoftDeletes;
