@@ -1,7 +1,4 @@
 @extends('shop')
-@section("css")
-<link href="/statics/css/shop/show.css" rel="stylesheet" type="text/css">
-@append
 @section("js")
     <script>
         var price = {{$data[price]}};

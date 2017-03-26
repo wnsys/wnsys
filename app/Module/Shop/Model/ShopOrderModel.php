@@ -7,7 +7,7 @@ class ShopOrderModel extends AppModel
 {
     protected $table = "shop_order";
     protected $fillable = [
-        "userid","productid"
+        "userid","productid,user_name,phone,address"
     ];
     protected $hidden = [
 
