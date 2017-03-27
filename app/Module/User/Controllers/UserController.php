@@ -1,5 +1,5 @@
 <?php
-namespace App\Module\Member\Controllers;
+namespace App\Module\User\Controllers;
 
 use App\Http\Controllers\AdminController;
 use App\Module\Admin\Model\RoleModel;
@@ -8,7 +8,7 @@ use App\Model\UserModel;
 use App\User;
 use Symfony\Component\HttpFoundation\Request;
 
-class MemberController extends AdminController
+class UserController extends AdminController
 {
     public function delete(Request $request)
     {
@@ -20,7 +20,7 @@ class MemberController extends AdminController
     {
         $users = UserModel::paginate(10);
         $roles = RoleModel::get();
-        return view("member.member.index", [
+        return view("user.user.index", [
             "data" => $users,
             "roles" => $roles
         ]);

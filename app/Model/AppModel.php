@@ -17,7 +17,7 @@ class AppModel extends Model
         if($install)
             return $install;
         else
-            return new static();
+            return $install = new static();
     }
    
 }

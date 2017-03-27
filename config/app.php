@@ -234,7 +234,7 @@ return [
         "Admin"=>["namespace"=>"App\Module\Admin\Controllers","route"=>"admin"],
         "Blog"=>["namespace"=>"App\Module\Blog\Controllers","route"=>"blog"],
         "Web"=>["namespace"=>"App\Module\Web\Controllers","route"=>"web"],
-        "Member"=>["namespace"=>"App\Module\Member\Controllers","route"=>"member"],
+        "User"=>["namespace"=>"App\Module\User\Controllers","route"=>"user"],
         "Shop"=>["namespace"=>"App\Module\Shop\Controllers","route"=>"shop"],
     ]
 ];

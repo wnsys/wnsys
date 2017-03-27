@@ -23,7 +23,7 @@
                 get:function (id) {
                     t = this;
                     $.ajax({
-                        url:"/admin/member/get?id="+id,
+                        url:"/admin/user/get?id="+id,
                         dataType:"json",
                         success:function (data) {
                             t.edit_user_name = data.user_name;
@@ -38,7 +38,7 @@
                 },
                 save:function (formid) {
                     $.ajax({
-                        url: "/admin/member/save?_token="+window.Laravel.csrfToken,
+                        url: "/admin/user/save?_token="+window.Laravel.csrfToken,
                         data: $('#' + formid).serialize(),
                         type: "post",
                         success: function (data) {
@@ -97,7 +97,7 @@
 @endsection
 
 @section("modal")
-    @include("member.member.add",["id"=>"modelAdd","action"=>"add","title"=>"新增用户"])
-    @include("member.member.add",["id"=>"modelEdit","action"=>"edit","title"=>"编辑用户"])
+    @include("user.user.add",["id"=>"modelAdd","action"=>"add","title"=>"新增用户"])
+    @include("user.user.add",["id"=>"modelEdit","action"=>"edit","title"=>"编辑用户"])
 @append
 

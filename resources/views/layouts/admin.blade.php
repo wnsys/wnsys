@@ -13,7 +13,7 @@
     <script src="/statics/js/jquery-3.1.1/jquery-3.1.1.min.js"></script>
     <!-- Scripts -->
     <script src="/statics/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/statics/js/vue.js"></script>
+    <script src="/statics/vue/vue.js"></script>
     @section("js")
     @show
     <script>
@@ -46,7 +46,7 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     <li><a href="/admin/blog">博客管理</a></li>
-                    <li><a href="/admin/member">会员管理</a></li>
+                    <li><a href="/admin/user">会员管理</a></li>
                     <li><a href="/admin/shop">商城</a></li>
                     <li><a href="/admin/setting">系统管理</a></li>
                 </ul>
