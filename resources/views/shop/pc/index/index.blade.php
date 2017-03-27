@@ -1,5 +1,6 @@
 @extends('shop')
 @section("content")
+    <div class="col-md-9">
     <ul class="list-group">
         @foreach($data as $item)
             <li class="list-group-item">
@@ -12,4 +13,5 @@
         @endforeach
     </ul>
     {{$data->links()}}
+    </div>
 @endsection
