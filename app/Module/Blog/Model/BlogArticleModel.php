@@ -14,7 +14,7 @@ class BlogArticleModel extends AppModel
     protected $table = "blog_article";
     protected $pk_type = "article";
     protected $fillable = [
-        'title', 'catid', 'content', "attach",
+        'title', 'catid', 'content', "attach","user_id"
     ];
     protected $hidden = [
 
@@ -24,6 +24,7 @@ class BlogArticleModel extends AppModel
         if(!$info["title"]){
             $info["title"] = mb_substr(strip_tags($info["content"]),0,30);
         }
+        $info["user_id"] = Auth::id();
         if($this->id){
             $rs = $this->update($info);
         }else{

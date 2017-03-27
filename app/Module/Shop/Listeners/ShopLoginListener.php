@@ -14,16 +14,19 @@ class ShopLoginListener
     {
         $userid = $event->user->getAuthIdentifier();
         $cart = Cart::n()->getItems("session");
-        foreach ($cart as $id=>$item){
-            $product = ShopCartModel::where(["product_id" => $id,"user_id"=>$userid])->first();
-            if($product){
-                $product->qty = $item["qty"];
-            }else{
-                $product = new ShopCartModel($item);
+        if($cart){
+            foreach ($cart as $id=>$item){
+                $product = ShopCartModel::where(["product_id" => $id,"user_id"=>$userid])->first();
+                if($product){
+                    $product->qty = $item["qty"];
+                }else{
+                    $product = new ShopCartModel($item);
 
+                }
+                $product->save();
             }
-            $product->save();
+            Cart::n()->destroy();
         }
-        Cart::n()->destroy();
+
     }
 }

@@ -8,7 +8,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
     <!-- Styles -->
-    <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="/statics/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <script src="/statics/js/jquery-3.1.1/jquery-3.1.1.min.js"></script>
+    <script src="/statics/bootstrap/js/bootstrap.min.js"></script>
     <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([
@@ -17,19 +19,10 @@
     </script>
 </head>
 <body>
-<nav class="navbar navbar-default navbar-static-top">
-    <div class="container">
-        <div class="navbar-header">
-            <!-- Branding Image -->
-            <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name', 'Laravel') }}
-            </a>
-        </div>
-    </div>
-</nav>
+@include("common.nav")
 <div class="container">
     <div class="row">
-        <div class=" col-xs-12 col-md-6 col-md-offset-3 " >
+        <div class=" col-xs-12 col-md-6 col-md-offset-3 ">
             <div class="panel panel-default">
                 <div class="panel-heading">登录界面</div>
                 <div class="panel-body">
@@ -40,7 +33,8 @@
                             <label for="user_name" class="col-md-3 control-label">账号</label>
 
                             <div class="col-md-7">
-                                <input id="user_name"  class="form-control" name="user_name" value="{{ old('user_name') }}" required autofocus>
+                                <input id="user_name" class="form-control" name="user_name"
+                                       value="{{ old('user_name') }}" required autofocus>
 
                                 @if ($errors->has('user_name'))
                                     <span class="help-block">

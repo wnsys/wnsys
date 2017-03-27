@@ -12,7 +12,6 @@ use App\Module\Blog\Model\BlogCategoryModel;
 class WebController extends Controller{
     public function __construct()
     {
-        
         $blog_category = BlogCategoryModel::where(["parentid"=>0,"module"=>"blog"])->get();
         view()->share('blog_category', $blog_category);
     }
