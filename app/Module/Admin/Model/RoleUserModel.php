@@ -12,6 +12,6 @@ class RoleUserModel extends AppModel
     ];
     public function role()
     {
-        return $this->hasOne(RoleModel::class, "role_id", "id");
+        return $this->hasOne(RoleModel::class,"id","role_id");
     }
 }

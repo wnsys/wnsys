@@ -4,9 +4,8 @@
 @overwrite
 @section("form")
     <form class="form-horizontal" id="form{{$action}}">
-
-        @overwrite
-        @section('message')
+@overwrite
+@section('message')
             <input type="hidden" name="id" class="id" v-model="{{$action}}_id">
             <div class="form-group">
                 <label class="control-label col-md-4">账号</label>
@@ -40,8 +39,8 @@
                 </div>
             </div>
 @overwrite
-@section("footer")
+@section("modal-footer")
             <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-            <input type="button" class="btn btn-primary" name="dosubmit" v-on:click="save('form{{$action}}')"
+            <input type="button" class="btn btn-primary" name="button" v-on:click="save('form{{$action}}')"
                    value="提交"/>
 @overwrite

@@ -13,6 +13,9 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    public function message($message = "",$data = "",$status = 0,$error = ""){
+        return $this->response($data,$status,$error,$message);
+    }
     public function response($data = "",$status = 0,$error = "",$message = ""){
         $result = [
             "status" => $status,

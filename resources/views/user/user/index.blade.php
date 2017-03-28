@@ -1,13 +1,9 @@
-<!-- Stored in resources/views/child.blade.php -->
-
 @extends('layouts.admin')
-
 @section('left')
     @include('left')
 @endsection
 @section("js")
     <script>
-
         var app = new Vue({
             el: '#app',
             data: {
@@ -86,7 +82,7 @@
                     <tr>
                         <td><a href="" target="_blank">{{$item["user_name"]}}</a></td>
                         <td><a  class="edit" v-on:click="get({{$item["id"]}})" href="javascript:void(0)">编辑</a>
-                            | <a href="/admin/member/delete?id={{$item["id"]}}"
+                            | <a href="/admin/user/delete?id={{$item["id"]}}"
                                  onclick="return confirm('确定删除吗？')" href="javascript:void(0)">删除</a></td>
                     </tr>
                 @endforeach

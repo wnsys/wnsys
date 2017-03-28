@@ -13,7 +13,7 @@ class UserController extends AdminController
     public function delete(Request $request)
     {
         $rs = UserModel::destroy($request["id"]);
-        return redirect("/admin/member");
+        return redirect("/admin/user");
     }
 
     public function index()
@@ -49,7 +49,7 @@ class UserController extends AdminController
             RoleUserModel::Create(["user_id"=>$request["id"],"role_id"=>$request["role_id"]]);
             $message = "添加成功";
         }
-        return $this->response($message);
+        return $this->message($message);
     }
 
     public function get(Request $request)
