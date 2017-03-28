@@ -1,9 +1,9 @@
 @extends('shop')
-@section("content")
+@section("right")
     <div class="col-md-9">
     <ul class="list-group">
         @foreach($data as $item)
-            <li class="list-group-item">
+            <li class="list-group-item list-group-item-1">
                 @if($item->created_at)
                     <span class="badge"> {{$item->created_at->toDateString()}}</span>
                 @endif

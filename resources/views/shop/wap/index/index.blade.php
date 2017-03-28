@@ -1,5 +1,5 @@
 @extends('shop')
-@section("right")
+@section("content")
     <div class="col-md-9">
     <ul class="list-group">
         @foreach($data as $item)

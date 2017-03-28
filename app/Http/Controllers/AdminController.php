@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Routing\Controller as BaseController;
-use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use App\Module\User\Bll\UserBll;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
     function __construct()
     {
         $this->middleware('auth');
+        if(!UserBll::n()->isAdmin(Auth::id())){
+            header('Location: /');
+            exit;
+        }
     }
 }

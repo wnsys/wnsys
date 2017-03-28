@@ -52,6 +52,13 @@ class LoginController extends WebController
     public function username(){
         return "user_name";
     }
+    public function showLoginForm()
+    {
+        $urlLogin = "/login";
+        return view('auth.login',[
+            "urlLogin" => $urlLogin
+        ]);
+    }
     /**
      * Validate the user login request.
      *
@@ -66,4 +73,5 @@ class LoginController extends WebController
         ]);
 
     }
+
 }

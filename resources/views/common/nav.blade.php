@@ -25,10 +25,11 @@
                         <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
+                        @if($blog_category)
                         @foreach($blog_category as $item)
                             <li><a href="/blog/cat/{{$item[id]}}">{{$item[name]}}</a></li>
                         @endforeach
-
+                        @endif
                     </ul>
                 </li>
                 <li class="">

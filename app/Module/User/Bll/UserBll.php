@@ -6,8 +6,12 @@ use App\Module\Admin\Model\RoleUserModel;
 
 class UserBll extends CrmBll
 {
-    function getRole($user_id){
-        $rs = RoleUserModel::where(["user_id"=>$user_id])->first();
+    function getRole($userId){
+        $rs = RoleUserModel::where(["user_id"=>$userId])->first();
         return $rs->role;
+    }
+    function isAdmin($userId){
+        $role = $this->getRole($userId);
+        return $role["name"] == "管理员";
     }
 }
