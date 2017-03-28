@@ -72,7 +72,6 @@ class IndexController extends WebController
             $order["user_id"] = Auth::id();
             $order["amount"] = Cart::n()->sum();
             $order = ShopOrderModel::create($order);
-            echo $order["id"];
             foreach ($cart as $item) {
                 $detail = $item;
                 $detail["order_id"] = $order["id"];

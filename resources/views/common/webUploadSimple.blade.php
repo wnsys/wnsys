@@ -1,6 +1,6 @@
 <link rel="stylesheet" type="text/css" href="/statics/js/webuploader/webuploader.css"/>
 <link rel="stylesheet" type="text/css" href="/statics/js/webuploader/style.css"/>
-<script type="text/javascript" src="/js/webuploader/webuploader.min.js"></script>
+<script type="text/javascript" src="/statics/js/webuploader/webuploader.min.js"></script>
 <!--dom结构部分-->
 <div id="uploader">
     <input type="hidden" name="info[attach_add]" id="attach_add">
