@@ -7,12 +7,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class IndexController extends AdminController{
-    use AuthenticatesUsers;
-    private $redirectTo;
-    protected function authenticated(Request $request, $user)
-    {
-        //
-    }
     public function index(){
 
         return view("admin.index");

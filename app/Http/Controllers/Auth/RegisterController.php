@@ -37,7 +37,7 @@ class RegisterController extends WebController
      * @return void
      */
     public function __construct()
-    {return true;
+    {
         parent::__construct();
         $this->middleware('guest');
     }

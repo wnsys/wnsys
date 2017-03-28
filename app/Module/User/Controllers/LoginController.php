@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends WebController{
     use AuthenticatesUsers;
-    protected $redirectTo = '/user/home';
+    protected $redirectTo = '/home';
     public function showLoginForm(){
         $urlLogin = "/user/login";
         return view("auth.login",[
