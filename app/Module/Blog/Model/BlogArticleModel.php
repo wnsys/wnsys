@@ -25,7 +25,11 @@ class BlogArticleModel extends AppModel
             $info["title"] = mb_substr(strip_tags($info["content"]),0,30);
         }
         $info["user_id"] = Auth::id();
-        $this->save($info);
+        if($this->id){
+            $this->update($info);
+        }else{
+            $this->create($info);
+        }
         return $this;
     }
 
