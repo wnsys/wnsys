@@ -25,12 +25,14 @@ class BlogArticleModel extends AppModel
             $info["title"] = mb_substr(strip_tags($info["content"]),0,30);
         }
         $info["user_id"] = Auth::id();
-        if($this->id){
-            $this->update($info);
+        if($id = $info["id"]){
+            $model = self::find($id);
+            $model->fill($info);
+            $model->save();
         }else{
-            $this->create($info);
+            $model = self::firstOrCreate($info);
         }
-        return $this;
+        return $model;
     }
 
     static public function lists($catid)

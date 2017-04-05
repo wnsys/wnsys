@@ -51,8 +51,8 @@ class ImageModel extends AppModel
      */
     function modelSave(Request $request, $module, $pk_type)
     {
-        $add_ids = $request["info"]["attach_add"];
-        $del_ids = $request["info"]["attach_del"];
+        $add_ids = $request["attach_add"];
+        $del_ids = $request["attach_del"];
         $add_ids = $add_ids ? explode(",", $add_ids) : [];
         $del_ids = $del_ids ? explode(",", $del_ids) : [];
         if ($add_ids) {

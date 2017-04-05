@@ -47,8 +47,8 @@ class BlogController extends AdminController
     function edit(Request $request)
     {
         $data = BlogArticleModel::where("id", $request["id"])->first();
-        if ($request["dosubmit"]) {
-            $data->modelSave($request["info"]);
+        if ($request["dosubmit"] && $info = $request["info"]) {
+            $data->modelSave($info);
             ImageModel::n()->modelSave($request,"blog","article");
             return redirect("/admin/blog");
         }
@@ -65,7 +65,7 @@ class BlogController extends AdminController
         if ($request["dosubmit"]) {
             $blog = BlogArticleModel::n()->modelSave($request["info"]);
             $request["id"] = $blog["id"];
-            if ($add_ids = $request["info"]["attach_add"]) {
+            if ($add_ids = $request["attach_add"]) {
                 ImageModel::n()->modelSave($request,"blog","article");
             }
             return redirect("/admin/blog");
