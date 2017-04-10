@@ -56,7 +56,8 @@ class ShopController extends AdminController
     function add(Request $request)
     {
         if ($request["dosubmit"]) {
-            (new ShopProductModel())->modelSave($request);
+            $rs = (new ShopProductModel())->modelSave($request);
+            $request["id"] = $rs->id;
             ImageModel::n()->modelSave($request, "shop", "product");
             return redirect("/admin/shop");
         }

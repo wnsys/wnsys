@@ -20,7 +20,16 @@ class ShopProductModel extends AppModel
         if(!$request["name"]){
             $request["name"] = mb_substr(strip_tags($request["content"]),0,30);
         }
-        $rs = $this->save($request->all());
+        if($id = $request["id"]){
+            $model = self::find($id);
+            $model->fill($request->all());
+            $model->save();
+        }else{
+            $model = new self;
+            $model->fill($request->all());
+            $model->save();
+        }
+        return $model;
     }
     public function cat()
     {
