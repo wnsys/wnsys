@@ -78,7 +78,9 @@ class IndexController extends WebController
                 ShopOrderDetailModel::create($detail);
             }
         }
-
-        return view("index.buy");
+        $ip = $request->getClientIp();
+        return view("index.buy",[
+            "ip"=>$ip
+        ]);
     }
 }
