@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Model\ImageModel;
 use App\Module\Shop\Bll\ShopCategoryBll;
 use App\Module\Shop\Model\ShopCategoryModel;
+use App\Module\Shop\Model\ShopOrderModel;
 use App\Module\Shop\Model\ShopProductModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -66,7 +67,16 @@ class ShopController extends AdminController
 
     function delete(Request $request)
     {
-        $rs = ShopProductModel::destroy($request["id"]);
+
+        ShopProductModel::destroy($request["id"]);
         return redirect("/admin/shop");
+    }
+    function order(Request $request){
+        $catlist = ShopCategoryBll::n()->formSelect("catid",$_GET["catid"]);
+        $data = ShopOrderModel::orderBy('id', 'desc')->paginate(10);
+        return view("shop.order",[
+            "data" => $data,
+            "catlist" => $catlist
+        ]);
     }
 }

@@ -12,4 +12,7 @@ class ShopOrderDetailModel extends AppModel
     protected $hidden = [
 
     ];
+    public function product(){
+        $this->hasOne(ShopProductModel::class,"id","product_id");
+    }
 }

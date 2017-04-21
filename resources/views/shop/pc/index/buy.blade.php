@@ -1,6 +1,5 @@
 @extends('shop')
 @section("js")
-    <script src="/statics/js/mtjsencrypt.min.js"></script>
     <script>
         var app = new Vue({
             el: '#app',
@@ -28,75 +27,7 @@
                 },
             }
         })
-        function submit1() {
-            var version='pc_NoEncrypt';//传此值时，明天云返回明文参数，否则返回密文参数
-            var subject="test";
-            var mchntOrderNo='No112324';
-            var amount='1';
-            var appid="{{config("module.shop.itppay.appid")}}";
-            var key="{{config("module.shop.itppay.key")}}";
-            var payChannelId='';
-            var body='花千骨';
-            var clientIp="{{$ip}}";
-            var notifyUrl="{{config("module.shop.itppay.notifyUrl")}}";
-            var returnUrl="{{config("module.shop.itppay.returnUrl")}}";
-            var signature='';
-            var jsonStr='{';
-            //请求参数都按照名称字符升序排列
-            if(amount!=''&&$.trim(amount).length>0){
-                jsonStr+='"amount":"'+amount+'",';
-                signature+='amount='+amount+'&'
-            }
-            if(appid!=''&&$.trim(appid).length>0){
-                jsonStr+='"appid":"'+appid+'",';
-                signature+='appid='+appid+'&'
-            }
-            if(body!=''&&$.trim(body).length>0){
-                jsonStr+='"body":"'+body+'",';
-                signature+='body='+body+'&'
-            }
-            if(clientIp!=''&&$.trim(clientIp).length>0){
-                jsonStr+='"clientIp":"'+clientIp+'",';
-                signature+='clientIp='+clientIp+'&'
-            }
-            if(mchntOrderNo!=''&&$.trim(mchntOrderNo).length>0){
-                jsonStr+='"mchntOrderNo":"'+mchntOrderNo+'",';
-                signature+='mchntOrderNo='+mchntOrderNo+'&'
-            }
 
-            if(notifyUrl!=''&&$.trim(notifyUrl).length>0){
-                jsonStr+='"notifyUrl":"'+notifyUrl+'",';
-                signature+='notifyUrl='+notifyUrl+'&'
-            }
-            if(payChannelId!=''&&$.trim(payChannelId).length>0){
-                jsonStr+='"payChannelId":"'+payChannelId+'",';
-                signature+='payChannelId='+payChannelId+'&'
-            }
-            if(returnUrl!=''&&$.trim(returnUrl).length>0){
-                jsonStr+='"returnUrl":"'+returnUrl+'",';
-                signature+='returnUrl='+returnUrl+'&'
-            }
-            if(subject!=''&&$.trim(subject).length>0){
-                jsonStr+='"subject":"'+subject+'",';
-                signature+='subject='+subject+'&'
-            }
-            if(version!=''&&$.trim(version).length>0){
-                jsonStr+='"version":"'+version+'",';
-                signature+='version='+version+'&'
-            }
-            if(key!=''&&$.trim(key).length>0){
-                signature+='key='+key
-            }
-            if(signature!=''&&$.trim(signature).length>0){
-                jsonStr+='"signature":"'+signature+'",';
-            }
-
-            jsonStr=jsonStr.substring(0,jsonStr.length-1);
-            jsonStr+='}';
-            var result =mtEncryptAndMD5(jsonStr);
-            $("#orderInfo").val(result);
-            $('#form').submit();
-        }
     </script>
 @stop
 @section("left")
@@ -158,8 +89,4 @@
             </table>
         </div>
     </div>
-    <form id="form" action="http://trans.itppay.com/newsdk/api/v1.0/cli/order_h5/0" method="post">
-        <input type="hidden" id="orderInfo" name="orderInfo" value="">
-    </form>
-    
 @endsection
