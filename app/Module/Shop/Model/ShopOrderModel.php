@@ -13,6 +13,6 @@ class ShopOrderModel extends AppModel
 
     ];
     public function detail(){
-        $this->hasOne(ShopOrderDetailModel::class,"order_id","id");
+       return $this->hasOne(ShopOrderDetailModel::class,"order_id","id");
     }
 }

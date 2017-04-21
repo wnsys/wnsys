@@ -32,6 +32,9 @@
                 @foreach($data as $item)
                     <tr>
                         <td><a href="/admin/shop/order/{{$item["id"]}}" target="_blank">{{$item["id"]}}</a></td>
+                        <td>{{$item->detail->product->name}}</td>
+                        <td>{{$item["amount"]}}</td>
+                        <td>{{$item["user_name"]}}</td>
                         <td>{{$item["created_at"]}}</td>
                         <td><a href="/admin/blog/edit?id={{$item["id"]}}">编辑</a>
                             | <a href="/admin/blog/delete?id={{$item["id"]}}" onclick="return confirm('确定删除吗？')">删除</a></td>
