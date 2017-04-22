@@ -3,6 +3,7 @@
 namespace App\Core\Framework\View;
 
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Str;
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Contracts\Support\Arrayable;
@@ -30,18 +31,19 @@ class Factory extends CoreFactory
         });
     }
     public function moduleView($view){
+
         if(is_mobile()){
             $paths = [
                 app()["module"].".wap",
-                app()["module"],
                 app()["module"].".pc",
+                app()["module"],
                 ""
             ];
         }else{
             $paths = [
-                app()["module"],
                 app()["module"].".pc",
                 app()["module"].".wap",
+                app()["module"],
                 ""
             ];
         }

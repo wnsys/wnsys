@@ -19,5 +19,14 @@ class AppModel extends Model
         else
             return $install = new static();
     }
-   
+   static function saveOrCreate($data){
+       if($id = $data["id"]){
+           $model = self::find($id);
+           $model->fill($data);
+           $model->save();
+       }else{
+           $model = self::firstOrCreate($data);
+       }
+       return $model;
+   }
 }

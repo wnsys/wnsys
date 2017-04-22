@@ -25,13 +25,7 @@ class BlogArticleModel extends AppModel
             $info["title"] = mb_substr(strip_tags($info["content"]),0,30);
         }
         $info["user_id"] = Auth::id();
-        if($id = $info["id"]){
-            $model = self::find($id);
-            $model->fill($info);
-            $model->save();
-        }else{
-            $model = self::firstOrCreate($info);
-        }
+        $model = self::saveOrCreate($info);
         return $model;
     }
 
