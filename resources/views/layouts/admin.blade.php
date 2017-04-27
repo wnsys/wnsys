@@ -7,6 +7,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
+    <meta name="description" content="{{ config('app.name', 'Laravel') }}">
+    <meta name="keywords" content="{{ config('app.name', 'Laravel') }}">
     <!-- Styles -->
     <link href="/statics/bootstrap/css/bootstrap.css" rel="stylesheet">
     @yield("css")
