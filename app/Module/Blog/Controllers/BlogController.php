@@ -49,8 +49,8 @@ class BlogController extends AdminController
     {
         $data = BlogArticleModel::where("id", $request["id"])->first();
         if ($request["dosubmit"] && $info = $request["info"]) {
-            $data->modelSave($info);
-            ImageModel::n()->modelSave($request["id"],$request["imgs"],"blog","article");
+            $data->mySave($info);
+            ImageModel::n()->mySave($request["id"],$request["imgs"],"blog","article");
             return redirect("/admin/blog");
         }
         $options = BlogCategoryModel::n()->options($data["catid"]);
@@ -64,9 +64,9 @@ class BlogController extends AdminController
     function add(Request $request)
     {
         if ($request["dosubmit"]) {
-            $blog = BlogArticleModel::n()->modelSave($request["info"]);
+            $blog = BlogArticleModel::n()->mySave($request["info"]);
             if ($add_ids = $request["imgs"]["add"]) {
-                ImageModel::n()->modelSave($blog["id"],$request["imgs"],"blog","article");
+                ImageModel::n()->mySave($blog["id"],$request["imgs"],"blog","article");
             }
             return redirect("/admin/blog");
         }

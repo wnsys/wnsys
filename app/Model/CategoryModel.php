@@ -30,7 +30,7 @@ class CategoryModel extends AppModel
         return static::create($data);
     }
 
-    public function modelSave($catid, $info)
+    public function mySave($catid, $info)
     {
         $cat = static::find($catid);
         $info["parentids"] = $this->createParentids($info["parentid"]);

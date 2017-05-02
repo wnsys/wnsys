@@ -16,19 +16,11 @@ class ShopProductModel extends AppModel
     protected $hidden = [
 
     ];
-    public function modelSave(Request $request){
+    public function mySave(Request $request){
         if(!$request["name"]){
             $request["name"] = mb_substr(strip_tags($request["content"]),0,30);
         }
-        if($id = $request["id"]){
-            $model = self::find($id);
-            $model->fill($request->all());
-            $model->save();
-        }else{
-            $model = new self;
-            $model->fill($request->all());
-            $model->save();
-        }
+        $model = self::saveOrCreate($request->all());
         return $model;
     }
     public function cat()

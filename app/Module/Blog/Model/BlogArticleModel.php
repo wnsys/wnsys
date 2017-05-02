@@ -19,7 +19,7 @@ class BlogArticleModel extends AppModel
     protected $hidden = [
 
     ];
-    public function modelSave($info)
+    public function mySave($info)
     {
         if(!$info["title"]){
             $info["title"] = mb_substr(strip_tags($info["content"]),0,30);

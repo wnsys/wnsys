@@ -49,7 +49,7 @@ class ImageModel extends AppModel
      * @param array $add_ids "1,2,3"
      * @param array $del_ids "1,2,4"
      */
-    function modelSave($pk_id,$data, $module, $pk_type)
+    function mySave($pk_id,$data, $module, $pk_type)
     {
         $add_ids =  $data["add"] ? explode(",",  $data["add"]) : [];
         $del_ids = $data["del"] ? explode(",", $data["del"]) : [];

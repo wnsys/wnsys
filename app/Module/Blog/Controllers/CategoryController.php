@@ -42,7 +42,7 @@ class CategoryController extends AdminController{
         $data = BlogCategoryModel::find($id);
         $templates = BlogCategoryBll::n()->templates("index","list");
         if($request["dosubmit"]){
-            $data->modelSave($id,$request["info"]);
+            $data->mySave($id,$request["info"]);
             return redirect("/admin/blog/category");
         }
         $options = BlogCategoryModel::n()->options($data["parentid"]);

@@ -12,5 +12,5 @@
 @endsection
 
 @section("css")
-    <link href="/css/blog/common.css" rel="stylesheet" type="text/css">
+    <link href="/statics/css/blog/common.css" rel="stylesheet" type="text/css">
 @append

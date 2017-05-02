@@ -39,7 +39,7 @@ class CategoryController extends AdminController{
         $data = ShopCategoryModel::find($id);
         $templates = ShopCategoryBll::n()->templates("index","list");
         if($request["dosubmit"]){
-            $data->modelSave($id,$request["info"]);
+            $data->mySave($id,$request["info"]);
             return redirect("/admin/shop/category");
         }
         $options = ShopCategoryModel::n()->options($data["parentid"]);
