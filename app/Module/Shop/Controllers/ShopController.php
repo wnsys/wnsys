@@ -43,7 +43,7 @@ class ShopController extends AdminController
         $data = ShopProductModel::where("id", $request["id"])->first();
         if ($request["dosubmit"]) {
             $data->modelSave($request);
-            ImageModel::n()->modelSave($request, "shop", "product");
+            ImageModel::n()->modelSave($request["id"],$request["imgs"], "shop", "product");
             return redirect("/admin/shop");
         }
         $options = ShopCategoryModel::n()->options($data["catid"]);
@@ -58,8 +58,7 @@ class ShopController extends AdminController
     {
         if ($request["dosubmit"]) {
             $rs = (new ShopProductModel())->modelSave($request);
-            $request["id"] = $rs->id;
-            ImageModel::n()->modelSave($request, "shop", "product");
+            ImageModel::n()->modelSave($rs->id,$request["imgs"], "shop", "product");
             return redirect("/admin/shop");
         }
         return view("shop.add");

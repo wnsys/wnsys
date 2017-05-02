@@ -11,6 +11,7 @@ use App\Model\ImageModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class BlogController extends AdminController
 {
@@ -49,7 +50,7 @@ class BlogController extends AdminController
         $data = BlogArticleModel::where("id", $request["id"])->first();
         if ($request["dosubmit"] && $info = $request["info"]) {
             $data->modelSave($info);
-            ImageModel::n()->modelSave($request,"blog","article");
+            ImageModel::n()->modelSave($request["id"],$request["imgs"],"blog","article");
             return redirect("/admin/blog");
         }
         $options = BlogCategoryModel::n()->options($data["catid"]);
@@ -64,9 +65,8 @@ class BlogController extends AdminController
     {
         if ($request["dosubmit"]) {
             $blog = BlogArticleModel::n()->modelSave($request["info"]);
-            $request["id"] = $blog["id"];
-            if ($add_ids = $request["attach_add"]) {
-                ImageModel::n()->modelSave($request,"blog","article");
+            if ($add_ids = $request["imgs"]["add"]) {
+                ImageModel::n()->modelSave($blog["id"],$request["imgs"],"blog","article");
             }
             return redirect("/admin/blog");
         }

@@ -3,8 +3,8 @@
 <script type="text/javascript" src="/statics/js/webuploader/webuploader.min.js"></script>
 <!--dom结构部分-->
 <div id="uploader">
-    <input type="hidden" name="attach_add" id="attach_add">
-    <input type="hidden" name="attach_del" id="attach_del">
+    <input type="hidden" name="imgs[add]" >
+    <input type="hidden" name="imgs[del]" >
     @if($data)
         <div class="uploader-list list">
             @foreach($data->image() as $img)

@@ -8,15 +8,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>wnsys系统</title>
     <link href="/statics/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="/statics/vue/mint-ui.css" rel="stylesheet">
     <link href="/statics/css/web.css" rel="stylesheet">
     @section("css")
     @show
-    <script src="/statics/vue/vue.js"></script>
-    <!-- import JavaScript -->
-    <script src="/statics/vue/mint-ui.js"></script>
-    <script src="/statics/js/jquery-3.1.1/jquery-3.1.1.min.js"></script>
-    <script src="/statics/bootstrap/js/bootstrap.min.js"></script>
 
     <script>
         window.Laravel = <?php echo json_encode([
@@ -36,6 +30,12 @@
 
     @section('modal')
     @show
+
+    <script src="/statics/vue/vue.js"></script>
+    <!-- import JavaScript -->
+    <script src="/statics/vue/mint-ui.js"></script>
+    <script src="/statics/js/jquery-3.1.1/jquery-3.1.1.min.js"></script>
+    <script src="/statics/bootstrap/js/bootstrap.min.js"></script>
     @section("js")
     @show
 </div>

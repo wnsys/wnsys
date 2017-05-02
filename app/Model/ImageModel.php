@@ -49,17 +49,15 @@ class ImageModel extends AppModel
      * @param array $add_ids "1,2,3"
      * @param array $del_ids "1,2,4"
      */
-    function modelSave(Request $request, $module, $pk_type)
+    function modelSave($pk_id,$data, $module, $pk_type)
     {
-        $add_ids = $request["attach_add"];
-        $del_ids = $request["attach_del"];
-        $add_ids = $add_ids ? explode(",", $add_ids) : [];
-        $del_ids = $del_ids ? explode(",", $del_ids) : [];
+        $add_ids =  $data["add"] ? explode(",",  $data["add"]) : [];
+        $del_ids = $data["del"] ? explode(",", $data["del"]) : [];
         if ($add_ids) {
             ImageModel::whereIn("id", $add_ids)->update(["user_id" => Auth::id(),
                 "module" => $module,
                 "pk_type" => $pk_type,
-                "pk_id" => $request["id"]]);
+                "pk_id" => $pk_id]);
         }
         if ($del_ids) {
             ImageModel::destroy($del_ids);

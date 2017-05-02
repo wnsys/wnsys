@@ -11,13 +11,12 @@
     <meta name="keywords" content="{{ config('app.name', 'Laravel') }}">
     <!-- Styles -->
     <link href="/statics/bootstrap/css/bootstrap.css" rel="stylesheet">
-    @yield("css")
+    @section("css")
+    @show
     <script src="/statics/js/jquery-3.1.1/jquery-3.1.1.min.js"></script>
     <!-- Scripts -->
     <script src="/statics/bootstrap/js/bootstrap.min.js"></script>
     <script src="/statics/vue/vue.js"></script>
-    @section("js")
-    @show
     <script>
 
         window.Laravel = <?php echo json_encode([
@@ -100,7 +99,8 @@
     @section('modal')
     @show
 </div>
-@yield("js")
 
+@section("js")
+@show
 </body>
 </html>

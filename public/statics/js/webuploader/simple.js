@@ -1,11 +1,9 @@
+var thumbnailWidth = 110,
+    thumbnailHeight = 110,
+    addAttch  = [],
+    delAttch = [];
 $().ready(function () {
-
-    var // 缩略图大小
-        thumbnailWidth = 110,
-        thumbnailHeight = 110,
-        addAttch  = new Array(),
-        delAttch = new Array(),
-        uploader = WebUploader.create({
+       var uploader = WebUploader.create({
             // 选完文件后，是否自动上传。
             auto: true,
             // swf文件路径
@@ -85,7 +83,7 @@ $().ready(function () {
 // 完成上传完了，成功或者失败，先删除进度条。
     uploader.on('uploadFinished', function (file, data) {
         var add = addAttch.join(",");
-        $("#attach_add").val(add);
+        $("input[name='imgs[add]']").val(add);
 
     });
     upload()
@@ -108,7 +106,7 @@ function upload() {
         var thumb = $(this).parent().parent();
         delAttch.push(thumb.attr("image_id"));
         var del = delAttch.join(",");
-        $("#attach_del").val(del)
+        $("input[name='imgs[del]']").val(del)
         $(this).parent().parent().remove();
     });
     $('#uploader').on('click','.edit', function () {
