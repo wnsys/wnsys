@@ -4,3 +4,9 @@
 .container-blog h3{
     margin-top:0;text-align: center;
 }
+.img-list{
+    padding-top:5px;
+}
+.img-list img{
+    padding-bottom: 5px;
+}

@@ -2,12 +2,17 @@
 @section("right")
     <ul class="list-group">
         @foreach($bloglist as $blog)
-            <li class="list-group-item list-group-item-1">
+            <li class="list-group-item">
                 @if($blog->created_at)
                     <span class="badge"> {{$blog->created_at->toDateString()}}</span>
                 @endif
                 <a href="/blog/{{$blog->id}}">{{$blog->title}}</a>
                 [{{$blog->cat->name}}]
+                    <div class="clearfix img-list">
+                    @foreach($blog->image() as $item)
+                        <a href="{{$item->url}}"><img class="" src="{{$item->thumb(90,90)}}"></a>
+                    @endforeach
+                    </div>
             </li>
         @endforeach
     </ul>

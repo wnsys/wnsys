@@ -1,6 +1,6 @@
 @extends('layouts.web')
 @section("content")
-    <div class="container center-block pad5 container-blog">
+    <div class="container center-block pad10  container-blog">
         @section("left")
             @include("web.left")
         @show
