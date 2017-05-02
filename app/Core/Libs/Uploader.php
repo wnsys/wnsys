@@ -121,13 +121,32 @@ class Uploader
             $this->stateInfo = $this->getStateInfo("ERROR_DIR_NOT_WRITEABLE");
             return;
         }
+        $image = imagecreatefromstring(file_get_contents($file['tmp_name']));
+        $exif = exif_read_data($file['tmp_name']);
+        if(!empty($exif['Orientation'])) {
+            switch($exif['Orientation']) {
+                case 8:
+                    $image = imagerotate($image,90,0);
+                    break;
+                case 3:
+                    $image = imagerotate($image,180,0);
+                    break;
+                case 6:
+                    $image = imagerotate($image,-90,0);
+                    break;
+            }
+            imagejpeg($image,$this->filePath);
 
-        //移动文件
-        if (!(move_uploaded_file($file["tmp_name"], $this->filePath) && file_exists($this->filePath))) { //移动失败
-            $this->stateInfo = $this->getStateInfo("ERROR_FILE_MOVE");
-        } else { //移动成功
             $this->stateInfo = $this->stateMap[0];
+        }else{
+            //移动文件
+            if (!(move_uploaded_file($file["tmp_name"], $this->filePath) && file_exists($this->filePath))) { //移动失败
+                $this->stateInfo = $this->getStateInfo("ERROR_FILE_MOVE");
+            } else { //移动成功
+                $this->stateInfo = $this->stateMap[0];
+            }
         }
+
     }
 
     /**
