@@ -9,8 +9,7 @@
         "laravel/framework": "5.4.*",
         "barryvdh/laravel-debugbar": "^2.3",
         "mobiledetect/mobiledetectlib": "^2.8",
-        "intervention/image": "^2.3",
-        "gloudemans/shoppingcart": "^2.3"
+        "intervention/image": "^2.3"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

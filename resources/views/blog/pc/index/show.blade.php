@@ -17,7 +17,7 @@
                 {!!$blog[content]!!}
                 <ul class="list-inline">
                     @foreach($blog->image() as $item)
-                        <li><a href="{{$item->url}}"><img class="img-thumbnail" src="{{$item->url}}"></a></li>
+                        <li><a href="{{$item->url}}"><img class="" src="{{$item->url}}"></a></li>
                     @endforeach
                 </ul>
             </div>
