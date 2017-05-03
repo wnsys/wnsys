@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use App\Model\Blog\BlogCategoryModel;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider

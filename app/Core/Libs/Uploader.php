@@ -100,55 +100,67 @@ class Uploader
         $this->filePath = $this->getFilePath();
         $this->fileName = $this->getFileName();
         $dirname = dirname($this->filePath);
-
+        $fileType = str_replace(".","",$this->fileType);
         //检查文件大小是否超出限制
         if (!$this->checkSize()) {
+            myLog("ERROR_SIZE_EXCEED");
             $this->stateInfo = $this->getStateInfo("ERROR_SIZE_EXCEED");
             return;
         }
-
         //检查是否不允许的文件格式
         if (!$this->checkType()) {
+            myLog("ERROR_TYPE_NOT_ALLOWED");
             $this->stateInfo = $this->getStateInfo("ERROR_TYPE_NOT_ALLOWED");
             return;
         }
-
         //创建目录失败
         if (!file_exists($dirname) && !mkdir($dirname, 0777, true)) {
+            myLog("ERROR_CREATE_DIR");
             $this->stateInfo = $this->getStateInfo("ERROR_CREATE_DIR");
             return;
         } else if (!is_writeable($dirname)) {
+            myLog("ERROR_DIR_NOT_WRITEABLE");
             $this->stateInfo = $this->getStateInfo("ERROR_DIR_NOT_WRITEABLE");
             return;
         }
-        $image = imagecreatefromstring(file_get_contents($file['tmp_name']));
-        $exif = exif_read_data($file['tmp_name']);
-        if(!empty($exif['Orientation'])) {
-            switch($exif['Orientation']) {
-                case 8:
-                    $image = imagerotate($image,90,0);
-                    break;
-                case 3:
-                    $image = imagerotate($image,180,0);
-                    break;
-                case 6:
-                    $image = imagerotate($image,-90,0);
-                    break;
-            }
-            imagejpeg($image,$this->filePath);
+        //exif_read_data — 从 JPEG 或 TIFF 文件中读取 EXIF 头信息,解决ios上传翻转问题
+        if($fileType == "jpg"){
+            try{
+                $image = imagecreatefromstring(file_get_contents($file['tmp_name']));
+                $exif = exif_read_data($file['tmp_name']);
+                if(!empty($exif['Orientation'])) {
+                    switch($exif['Orientation']) {
+                        case 8:
+                            $image = imagerotate($image,90,0);
+                            break;
+                        case 3:
+                            $image = imagerotate($image,180,0);
+                            break;
+                        case 6:
+                            $image = imagerotate($image,-90,0);
+                            break;
+                    }
+                    imagejpeg($image,$this->filePath);
+                    $this->stateInfo = $this->stateMap[0];
+                }else{
+                    $this->move($file);
+                }
 
-            $this->stateInfo = $this->stateMap[0];
-        }else{
-            //移动文件
-            if (!(move_uploaded_file($file["tmp_name"], $this->filePath) && file_exists($this->filePath))) { //移动失败
-                $this->stateInfo = $this->getStateInfo("ERROR_FILE_MOVE");
-            } else { //移动成功
-                $this->stateInfo = $this->stateMap[0];
+            }catch (\Exception $e){
+                myLog($e->getMessage());
             }
+        }else{
+           $this->move($file);
         }
 
     }
-
+    private function move($file){
+        if (!(move_uploaded_file($file["tmp_name"], $this->filePath) && file_exists($this->filePath))) {                        //移动失败
+            $this->stateInfo = $this->getStateInfo("ERROR_FILE_MOVE");
+        } else { //移动成功
+            $this->stateInfo = $this->stateMap[0];
+        }
+    }
     /**
      * 处理base64编码的图片上传
      * @return mixed
