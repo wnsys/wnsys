@@ -1,8 +1,11 @@
-@extends('layouts.web')
+@extends('layouts.leftRight1')
 @section("left")
-    韦宁的博客
+    <div class="col-md-3">
+                @include("left")
+    </div>
+
 @stop
-@section("content")
+@section("right")
 
     <ul class="list-group">
         @foreach($bloglist as $blog)

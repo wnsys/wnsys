@@ -1,3 +1,5 @@
- <ul class="list-group">
-        <li class="list-group-item"><a href="/admin/member/index">会员管理</a></li>
+
+<ul class="list-group">
+        <li class="list-group-item"><a href="/user/blog/add">新增博客</a></li>
+
 </ul>
