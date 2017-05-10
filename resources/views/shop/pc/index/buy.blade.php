@@ -1,4 +1,4 @@
-@extends('shop')
+@extends('index')
 @section("js")
     <script>
         var app = new Vue({
@@ -30,37 +30,35 @@
 
     </script>
 @stop
-@section("left")
-@stop
-@section("right")
-    <div class="col-md-9">
-        <form class="form-horizontal " method="post">
+@section("content-content")
+        <form class="form-horizontal " method="post" style="padding:15px;">
             <div class="form-group ">
                 <label class="col-md-3 control-label">姓名</label>
-                <div class="col-md-9 ">
+                <div class="col-md-6 ">
                     <input type="text" name="user_name" class="form-control input-lg " placeholder="请输入姓名">
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-md-3 control-label">手机号</label>
-                <div class="col-md-9">
+                <div class="col-md-6">
                     <input type="text" name="phone" class="form-control input-lg " placeholder="请输入手机号">
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-md-3 control-label">收货地址</label>
-                <div class="col-md-9">
+                <div class="col-md-6">
                     <input type="text" name="address" class="form-control input-lg" placeholder="请输入收货地址">
                 </div>
             </div>
             <div class="form-group text-center">
                 <label class="col-md-3 control-label hidden-xs"></label>
-                <div class="col-md-9">
+                <div class="col-md-6">
                     <input type="button" name="dosubmit" onclick="submit1()" class="btn btn-primary btn-lg" value="提交" style="width:40%;">
                 </div>
             </div>
         </form>
-        <div class="cart-list col-md-offset-3" id="cart1">
+    </div>
+        <div class="cart-list col-md-offset-3 col-md-6" id="cart1">
             <table class="table">
                 <tr>
                 <th>商品名称</th>
@@ -88,5 +86,4 @@
                 </tr>
             </table>
         </div>
-    </div>
 @endsection

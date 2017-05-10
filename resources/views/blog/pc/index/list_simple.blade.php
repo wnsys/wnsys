@@ -1,6 +1,6 @@
-@extends('blog')
+@extends('index')
 
-@section("blog")
+@section("right-content")
 @include("index.components.breadcrumb")
 simple
     <ul class="list-group">

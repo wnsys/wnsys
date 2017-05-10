@@ -20,7 +20,7 @@ class UserController extends AdminController
     {
         $users = UserModel::paginate(10);
         $roles = RoleModel::get();
-        return view("user.user.index", [
+        return view("user.admin.user.index", [
             "data" => $users,
             "roles" => $roles
         ]);

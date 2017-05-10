@@ -1,4 +1,4 @@
-@extends('shop')
+@extends('index')
 @section("js")
     <script>
         var price = {{$data[price]}};
@@ -42,7 +42,7 @@
     </script>
 @append
 @include("common.slider")
-@section("content")
+@section("content-content")
 
     <ul id="myTab" class="nav nav-tabs">
         <li class="active"><a href="#home" data-toggle="tab">商品</a>

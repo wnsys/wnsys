@@ -25,7 +25,7 @@
         })
     </script>
 @stop
-@section('content')
+@section('right-content')
     <div class="panel panel-default">
         <div class="panel-body">
             <div class="form-group">

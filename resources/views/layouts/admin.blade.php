@@ -1,32 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', 'Laravel') }}</title>
-    <meta name="description" content="{{ config('app.name', 'Laravel') }}">
-    <meta name="keywords" content="{{ config('app.name', 'Laravel') }}">
-    <!-- Styles -->
-    <link href="/statics/bootstrap/css/bootstrap.css" rel="stylesheet">
-    @section("css")
-    @show
-    <script src="/statics/js/jquery-3.1.1/jquery-3.1.1.min.js"></script>
-    <!-- Scripts -->
-    <script src="/statics/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/statics/vue/vue.js"></script>
-    <script>
-
-        window.Laravel = <?php echo json_encode([
-                'csrfToken' => csrf_token(),
-        ]); ?>;
-
-    </script>
-</head>
-<body>
-<div id="app">
+@extends('layouts.base')
+@section("nav")
     <nav class="navbar navbar-default navbar-static-top">
         <div class="container" style="width:90%">
             <div class="navbar-header">
@@ -87,20 +60,19 @@
             </div>
         </div>
     </nav>
+@stop
+@section("content")
+
+@section('left')
     <div class="col-md-2">
-        @section('left')
+        @section('left-content')
         @show
     </div>
-    <div class="col-md-10">
-        @section('content')
-        @show
-    </div>
-
-    @section('modal')
-    @show
-</div>
-
-@section("js")
 @show
-</body>
-</html>
+@section('right')
+    <div class="col-md-10">
+        @section('right-content')
+        @show
+    </div>
+@show
+@stop

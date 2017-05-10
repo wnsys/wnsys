@@ -1,12 +1,5 @@
-@extends('blog')
-@section("css")
-    <style>
-        img {
-            max-width: 100%;
-        }
-    </style>
-@stop
-@section("right")
+@extends('index')
+@section("right-content")
     @include("index.components.breadcrumb")
     <div class="panel panel-default">
         <div class="panel-body">
@@ -30,3 +23,10 @@
         </div>
     </div>
 @endsection
+@section("css")
+    <style>
+        img {
+            max-width: 100%;
+        }
+    </style>
+@stop

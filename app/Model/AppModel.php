@@ -22,11 +22,11 @@ class AppModel extends Model
    static function saveOrCreate($data){
        if($id = $data["id"]){
            $model = self::find($id);
-           $model->fill($data);
-           $model->save();
        }else{
-           $model = self::firstOrCreate($data);
+           $model = new static;
        }
+       $model = $model->fill($data);
+       $model->save();
        return $model;
    }
 }

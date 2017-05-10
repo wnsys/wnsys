@@ -1,6 +1,6 @@
-@extends('layouts.blog')
+@extends('index')
 
-@section("content")
+@section("content-content")
 @include("index.components.breadcrumb")
 simple
     <ul class="list-group">

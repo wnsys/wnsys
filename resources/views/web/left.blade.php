@@ -1,12 +1,6 @@
-<div class="col-md-3">
-    <div class="panel panel-default">
-        <div class="panel-body">
-            <div class="text-center">
-                <img class="img-circle" src="/statics/images/a1.jpg" style="width:100px;">
-                <div>一颗平常心</div>
+<div class="text-center">
+    <img class="img-circle" src="/statics/images/a1.jpg" style="width:100px;">
+    <div>一颗平常心</div>
 
-            </div>
-        </div>
-    </div>
 </div>
 
