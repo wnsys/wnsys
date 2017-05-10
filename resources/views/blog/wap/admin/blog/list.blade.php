@@ -1,6 +1,6 @@
 <!-- Stored in resources/views/child.blade.php -->
 
-@extends('layouts.admin')
+@extends('admin')
 
 @section('right-content')
     <div class="panel panel-default">

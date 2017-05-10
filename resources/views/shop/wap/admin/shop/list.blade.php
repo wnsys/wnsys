@@ -1,11 +1,8 @@
 <!-- Stored in resources/views/child.blade.php -->
 
-@extends('layouts.admin')
+@extends('admin')
 
-@section('left')
-    @include('left')
-@endsection
-@section('content')
+@section('right-content')
     <div class="panel panel-default">
         <div class="panel-body">
             <form class="form-inline">

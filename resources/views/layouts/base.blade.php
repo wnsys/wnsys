@@ -12,8 +12,6 @@
     @section("css")
     @show
     <script src="/statics/vue/vue.js"></script>
-    <!-- import JavaScript -->
-    <script src="/statics/vue/mint-ui.js"></script>
     <script src="/statics/js/jquery-3.1.1/jquery-3.1.1.min.js"></script>
     <script src="/statics/bootstrap/js/bootstrap.min.js"></script>
     <script>

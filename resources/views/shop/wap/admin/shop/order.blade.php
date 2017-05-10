@@ -1,9 +1,5 @@
-@extends('layouts.admin')
-
-@section('left')
-    @include('left')
-@endsection
-@section('content')
+@extends('admin')
+@section('right-content')
     <div class="panel panel-default">
         <div class="panel-body">
             <form class="form-inline">

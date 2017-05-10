@@ -1,5 +1,5 @@
-@extends('layouts.admin')
-@section('content')
+@extends('admin')
+@section('right-content')
 
     <div class="panel panel-default">
         <div class="panel-body">
