@@ -12,7 +12,7 @@ class CategoryController extends AdminController{
         $data = [];
 
         $lists = BlogCategoryBll::n()->treeLists();
-        return view("admin.category.list", [
+        return view("blog.admin.category.list", [
             "data" => $data,
             "lists" => $lists,
 
@@ -25,7 +25,7 @@ class CategoryController extends AdminController{
         }
         $templates = BlogCategoryBll::n()->templates("index","list");
         $options = BlogCategoryModel::n()->options();
-        return view("admin.category.add", [
+        return view("blog.admin.category.add", [
             "data" => $data,
             "options" => $options,
             "templates" => $templates
@@ -39,7 +39,7 @@ class CategoryController extends AdminController{
             return redirect("/admin/blog/category");
         }
         $options = BlogCategoryModel::n()->options($data["parentid"]);
-        return view("admin.category.add", [
+        return view("blog.admin.category.add", [
             "data" => $data,
             "options" => $options,
             "templates" => $templates

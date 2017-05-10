@@ -18,7 +18,7 @@ class IndexController extends WebController{
         $bloglist = BlogArticleModel::orderBy('id','desc')
             ->paginate(config("module.blog.page_size"));
         BlogArticleBll::stripDate($bloglist);
-        return view("index",[
+        return view("web.index",[
             "bloglist"=>$bloglist
         ]);
     }

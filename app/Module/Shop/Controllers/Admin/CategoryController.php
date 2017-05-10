@@ -17,7 +17,7 @@ class CategoryController extends AdminController{
     public function index(){
         $data = [];
         $lists = ShopCategoryBll::n()->treeLists();
-        return view("admin.category.list", [
+        return view("shop.admin.category.list", [
             "data" => $data,
             "lists" => $lists,
         ]);
@@ -43,7 +43,7 @@ class CategoryController extends AdminController{
             return redirect("/admin/shop/category");
         }
         $options = ShopCategoryModel::n()->options($data["parentid"]);
-        return view("admin.category.add", [
+        return view("shop.admin.category.add", [
             "data" => $data,
             "options" => $options,
             "templates" => $templates

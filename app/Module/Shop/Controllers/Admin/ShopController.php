@@ -32,7 +32,7 @@ class ShopController extends AdminController
         }
         $catlist = ShopCategoryBll::n()->formSelect("catid", $_GET["catid"]);
         $data = $query->orderBy('id', 'desc')->paginate(10);
-        return view("admin.shop.list", [
+        return view("shop.admin.shop.list", [
             "data" => $data,
             "catlist" => $catlist
         ]);
@@ -47,7 +47,7 @@ class ShopController extends AdminController
             return redirect("/admin/shop");
         }
         $options = ShopCategoryModel::n()->options($data["catid"]);
-        return view("admin.shop.add", [
+        return view("shop.admin.shop.add", [
             "data" => $data,
             'options' => $options
         ]);
@@ -61,7 +61,7 @@ class ShopController extends AdminController
             ImageModel::n()->mySave($rs->id,$request["imgs"], "shop", "product");
             return redirect("/admin/shop");
         }
-        return view("admin.shop.add");
+        return view("shop.admin.shop.add");
     }
 
     function delete(Request $request)
@@ -73,7 +73,7 @@ class ShopController extends AdminController
     function order(Request $request){
         $catlist = ShopCategoryBll::n()->formSelect("catid",$_GET["catid"]);
         $data = ShopOrderModel::orderBy('id', 'desc')->paginate(10);
-        return view("admin.shop.order",[
+        return view("shop.admin.shop.order",[
             "data" => $data,
             "catlist" => $catlist
         ]);

@@ -12,6 +12,7 @@ use Illuminate\Contracts\View\View as ViewContract;
 use Illuminate\Contracts\View\Factory as FactoryContract;
 use Illuminate\View\Factory as CoreFactory;
 use Illuminate\View\View;
+
 class Factory extends CoreFactory
 {
     public function make($view, $data = [], $mergeData = [])
@@ -30,30 +31,16 @@ class Factory extends CoreFactory
             $this->callCreator($view);
         });
     }
-    public function moduleView($view){
 
-        if(is_mobile()){
-            $paths = [
-                app()["module"].".wap",
-                app()["module"].".pc",
-                app()["module"],
-                ""
-            ];
-        }else{
-            $paths = [
-                app()["module"].".pc",
-                app()["module"].".wap",
-                app()["module"],
-                ""
-            ];
-        }
-        foreach ($paths as $path){
-            $filePath = $path.".$view";
-            if($this->exists($filePath)){
+    public function moduleView($view)
+    {
+        if (is_mobile()) {
+            $filePath = "{$view}Wap";
+            if ($this->exists($filePath)) {
                 $view = $filePath;
-                break;
             }
         }
+
         return $view;
     }
 }

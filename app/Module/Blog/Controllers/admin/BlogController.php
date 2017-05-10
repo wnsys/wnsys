@@ -39,7 +39,7 @@ class BlogController extends AdminController
         }
         $catlist = BlogCategoryBll::n()->formSelect("catid",$_GET["catid"]);
         $data = $query->orderBy('id', 'desc')->paginate(10);
-        return view("admin.blog.list", [
+        return view("blog.admin.blog.list", [
             "data" => $data,
             "catlist" => $catlist
         ]);
@@ -54,7 +54,7 @@ class BlogController extends AdminController
             return redirect("/admin/blog");
         }
         $options = BlogCategoryModel::n()->options($data["catid"]);
-        return view("admin.blog.add", [
+        return view("blog.admin.blog.add", [
             "data" => $data,
             'options' => $options
         ]);
@@ -70,7 +70,7 @@ class BlogController extends AdminController
             }
             return redirect("/admin/blog");
         }
-        return view("admin.blog.add");
+        return view("blog.admin.blog.add");
     }
 
     function delete(Request $request)

@@ -26,7 +26,7 @@ class IndexController extends WebController
     {
         $query = new ShopProductModel();
         $data = $query->orderBy('id', 'desc')->paginate(10);
-        return view("index.index", [
+        return view("shop.index.index", [
             "data" => $data,
         ]);
     }
@@ -35,7 +35,7 @@ class IndexController extends WebController
     {
         $data = ShopProductModel::find($id);
         $breadcrumb = ShopCategoryBll::n()->breadcrumb($id);
-        return view("index.show", [
+        return view("shop.index.show", [
             "data" => $data,
             "breadcrumb" => $breadcrumb,
         ]);
@@ -79,7 +79,7 @@ class IndexController extends WebController
             }
         }
         $ip = $request->getClientIp();
-        return view("index.buy",[
+        return view("shop.index.buy",[
             "ip"=>$ip
         ]);
     }
