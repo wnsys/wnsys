@@ -1,4 +1,4 @@
-@extends('modal.common')
+@extends('common.modal.common')
 @section("title")
     {{$title}}
 @overwrite
