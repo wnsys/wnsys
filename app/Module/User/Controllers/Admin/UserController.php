@@ -1,5 +1,5 @@
 <?php
-namespace App\Module\User\Controllers;
+namespace App\Module\User\Controllers\Admin;
 
 use App\Http\Controllers\AdminController;
 use App\Module\Admin\Model\RoleModel;

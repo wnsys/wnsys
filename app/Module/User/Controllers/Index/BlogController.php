@@ -1,5 +1,5 @@
 <?php
-namespace App\Module\User\Controllers;
+namespace App\Module\User\Controllers\Index;
 use App\Http\Controllers\AdminController;
 use App\Model\ImageModel;
 use App\Module\Blog\Bll\BlogArticleBll;
@@ -9,14 +9,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class BlogController extends WebController{
-    function __construct()
-    {
-        //todo 权限相关
-        $this->middleware('auth');
-        parent::__construct();
-    }
-
+class BlogController extends UserController{
     public function add(Request $request){
         if ($request["dosubmit"]) {
             $blog = BlogArticleModel::n()->mySave($request["info"]);

@@ -1,11 +1,6 @@
-@extends('layouts.leftRight1')
-@section("left")
-    <div class="col-md-3">
-                @include("left")
-    </div>
+@extends('user.index')
 
-@stop
-@section("right")
+@section("right-content")
 
     <ul class="list-group">
         @foreach($bloglist as $blog)
