@@ -1,7 +1,7 @@
 @extends('blog.index')
 
 @section("right-content")
-@include("index.components.breadcrumb")
+@include("blog.index.components.breadcrumb")
 simple
     <ul class="list-group">
         @foreach($bloglist as $blog)
