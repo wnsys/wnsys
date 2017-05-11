@@ -1,4 +1,4 @@
-@extends('admin')
+@extends('user.admin')
 @section('right-content')
 
     <div class="panel panel-default" >
