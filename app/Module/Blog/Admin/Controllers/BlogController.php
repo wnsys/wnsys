@@ -1,5 +1,5 @@
 <?php
-namespace App\Module\Blog\Controllers\Admin;
+namespace App\Module\Blog\Admin\Controllers;
 
 use App\Core\Libs\Uploader;
 use App\Http\Controllers\AdminController;

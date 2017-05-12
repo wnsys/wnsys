@@ -1,5 +1,5 @@
 <?php
-namespace App\Module\User\Controllers\Index;
+namespace App\Module\User\Index\Controllers;
 use App\Http\Controllers\AdminController;
 use App\Model\ImageModel;
 use App\Module\Blog\Bll\BlogArticleBll;

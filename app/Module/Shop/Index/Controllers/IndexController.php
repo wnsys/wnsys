@@ -1,5 +1,5 @@
 <?php
-namespace App\Module\Shop\Controllers;
+namespace App\Module\Shop\Index\Controllers;
 
 use App\Module\Shop\Bll\CartBll;
 use App\Module\Shop\Bll\ShopCategoryBll;

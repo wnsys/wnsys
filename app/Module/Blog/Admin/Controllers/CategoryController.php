@@ -1,5 +1,5 @@
 <?php
-namespace App\Module\Blog\Controllers\Admin;
+namespace App\Module\Blog\Admin\Controllers;
 use App\Http\Controllers\AdminController;
 use App\Module\Blog\Bll\BlogCategoryBll;
 use App\Module\Blog\Bll\CategoryBll;

@@ -1,5 +1,5 @@
 <?php
-namespace App\Module\Shop\Controllers\Admin;
+namespace App\Module\Shop\Admin\Controllers;
 class OrderController{
     function view(){
 

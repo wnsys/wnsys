@@ -24,7 +24,7 @@
                 </tr>
                 @foreach($data as $item)
                     <tr>
-                        <td><a href="/shop/{{$item["id"]}}" target="_blank">{{$item["name"]}}</a></td>
+                        <td><a href="/shop/show/{{$item["id"]}}" target="_blank">{{$item["name"]}}</a></td>
                         <td>{{$item["created_at"]}}</td>
                         <td><a href="/admin/shop/edit?id={{$item["id"]}}">编辑</a>
                             | <a href="/admin/shop/delete?id={{$item["id"]}}" onclick="return confirm('确定删除吗？')">删除</a></td>

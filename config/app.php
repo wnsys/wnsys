@@ -231,9 +231,9 @@ return [
     ],
     "modules"=>[
         "Admin"=>["namespace"=>"App\Module\Admin\Controllers","route"=>"admin"],
-        "Blog"=>["namespace"=>"App\Module\Blog\Controllers","route"=>"blog"],
+        "Blog"=>["namespace"=>"App\Module\Blog","route"=>"blog"],
         "Web"=>["namespace"=>"App\Module\Web\Controllers","route"=>"web"],
-        "User"=>["namespace"=>"App\Module\User\Controllers","route"=>"user"],
-        "Shop"=>["namespace"=>"App\Module\Shop\Controllers","route"=>"shop"],
+        "User"=>["namespace"=>"App\Module\User","route"=>"user"],
+        "Shop"=>["namespace"=>"App\Module\Shop","route"=>"shop"],
     ]
 ];

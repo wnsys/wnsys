@@ -6,7 +6,7 @@
  * Date: 2016/12/24
  * Time: 16:38
  */
-namespace App\Module\Shop\Controllers\Admin;
+namespace App\Module\Shop\Admin\Controllers;
 use App\Http\Controllers\AdminController;
 use App\Module\Shop\Bll\ShopCategoryBll;
 use App\Module\Shop\Model\ShopCategoryModel;
