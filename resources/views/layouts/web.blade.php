@@ -3,7 +3,7 @@
     @include("common.nav")
 @stop
 @section('content')
-    <div class="container center-block pad10  container-blog">
+    <div class="container center-block pad0  container-blog">
         @section("left")
             <div class="col-md-3">
                 <div class="panel panel-default">
