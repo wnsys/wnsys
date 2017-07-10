@@ -18,7 +18,7 @@ class BlogController extends AdminController
     function __construct()
     {
         parent::__construct();
-        view()->share("options", BlogCategoryModel::n()->options());
+        view()->share("options", BlogCategoryModel::n()->options(3));
     }
 
     function upload()
