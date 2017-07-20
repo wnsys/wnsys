@@ -36,3 +36,18 @@
         margin:0
     }
 }
+/*pc端样式*/
+@media screen and (min-width: 1024px){
+    #app{
+        min-height: 700px;
+        background: url(/statics/images/bg1.jpg) no-repeat fixed;
+        padding-bottom: 140px;
+    }
+    .footer{
+        position: fixed;
+        bottom: 0;
+        margin-bottom: 0;
+        background: rgba(248,248,248,0.6);
+    }
+}
+

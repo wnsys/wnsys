@@ -19,5 +19,5 @@
             </li>
         @endforeach
     </ul>
-  {{--  {{$bloglist->links()}}--}}
+
 @stop

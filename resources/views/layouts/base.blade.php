@@ -20,7 +20,7 @@
         ]); ?>
     </script>
 </head>
-<body style="background:{{config("style.bg_color")}}">
+<body  style="background:{{config("style.bg_color")}}">
 <div id="app">
     @section('nav')
     @show
