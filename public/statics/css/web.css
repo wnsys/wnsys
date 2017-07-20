@@ -1,3 +1,7 @@
+#app .container{
+    position: relative;
+    z-index: 2;
+}
 .footer {
     margin: 20px 0 0 ;
     padding: 10px;
