@@ -40,7 +40,7 @@
 @media screen and (min-width: 1024px){
     #app{
         min-height: 700px;
-        background: url(/statics/images/bg1.jpg) no-repeat fixed;
+        background: url(/statics/images/bg1.jpg) no-repeat fixed center bottom;
         padding-bottom: 140px;
     }
     .footer{
