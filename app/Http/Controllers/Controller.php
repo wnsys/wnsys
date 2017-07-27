@@ -13,6 +13,11 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    function __construct()
+    {
+        seo();
+    }
+
     public function message($message = "",$data = "",$status = 0,$error = ""){
         return $this->response($data,$status,$error,$message);
     }

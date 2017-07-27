@@ -12,9 +12,10 @@ use App\Module\Blog\Model\BlogCategoryModel;
 class WebController extends Controller{
     public function __construct()
     {
+        parent::__construct();
         $blog_category = BlogCategoryModel::where(["parentid"=>0])->get();
         view()->share('blog_category', $blog_category);
-        seo();
+       
     }
     
 }
