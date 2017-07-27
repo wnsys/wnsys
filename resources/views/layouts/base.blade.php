@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>wnsys系统</title>
+    <title>{{$seo["title"]}}</title>
+    <meta name="keywords" content="{{$seo["keywords"]}}" />
+    <meta name="description" content="{{$seo["description"]}}"  />
     <link href="/statics/bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="/statics/css/web.css" rel="stylesheet">
     @section("css")

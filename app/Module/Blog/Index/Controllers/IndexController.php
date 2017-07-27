@@ -13,7 +13,7 @@ class IndexController extends WebController
     {
         $blog = BlogArticleModel::find($id);
         $breadcrumb = BlogArticleBll::breadcrumb($id);
-
+        seo($blog->title);
         return view("blog.index.show", compact('blog','breadcrumb'));
     }
     function lists($id){

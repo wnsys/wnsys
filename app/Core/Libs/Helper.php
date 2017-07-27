@@ -1,4 +1,5 @@
 <?php
+
 function is_mobile(){
     return (new \Mobile_Detect())->isMobile();
 }
@@ -15,4 +16,10 @@ function myLog($content,$path = "wnsys.log"){
     $handler->setFormatter(new \Monolog\Formatter\LineFormatter($fomat));
     $log->pushHandler($handler);
     return $log->addInfo($content);
+}
+function seo($title = "",$keywords="",$description=""){
+    $seo["title"] = $title?$title." | ".config("app.name"):config("app.name");
+    $seo["keywords"] = $keywords?:$title;
+    $seo["description"] = $description?:$title;
+    view()->share('seo', $seo);
 }

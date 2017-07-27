@@ -14,6 +14,7 @@ class WebController extends Controller{
     {
         $blog_category = BlogCategoryModel::where(["parentid"=>0])->get();
         view()->share('blog_category', $blog_category);
+        seo();
     }
-
+    
 }
