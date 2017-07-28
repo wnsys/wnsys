@@ -11,6 +11,10 @@ class OrderController extends Controller{
     }
     function delete(Request $request){
         $rs = ShopOrderModel::n()->where("id",$request["id"])->delete();
-        return $this->response($rs);
+        return redirect("/admin/shop/order");
+    }
+    function detail(Request $request){
+        $rs = ShopOrderModel::n()->where("id",$request["id"])->with("detail.product")->first();
+        echo json_encode($rs);
     }
 }

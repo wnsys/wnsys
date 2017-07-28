@@ -15,6 +15,6 @@ class ShopOrderModel extends AppModel
 
     ];
     public function detail(){
-       return $this->hasOne(ShopOrderDetailModel::class,"order_id","id");
+       return $this->hasMany(ShopOrderDetailModel::class,"order_id","id");
     }
 }

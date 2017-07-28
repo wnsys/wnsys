@@ -2,7 +2,7 @@
 @section("css")
     <link href="/statics/js/artDialog4.1.7/skins/default.css" rel="stylesheet">
 @append
-@section("js")
+@section("includejs")
     <script src="/statics/js/artDialog4.1.7/artDialog.js"></script>
 @append
 @section("nav")

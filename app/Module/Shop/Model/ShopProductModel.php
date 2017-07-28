@@ -27,5 +27,7 @@ class ShopProductModel extends AppModel
     {
         return $this->hasOne(ShopCategoryModel::class, "id", "catid");
     }
-    
+    public function detail(){
+        return $this->belongsTo(ShopOrderDetailModel::class);
+    }
 }

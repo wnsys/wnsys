@@ -15,4 +15,7 @@ class ShopOrderDetailModel extends AppModel
     public function product(){
        return $this->hasOne(ShopProductModel::class,"id","product_id");
     }
+    public function order(){
+        return $this->belongsTo(ShopOrderModel::class);
+    }
 }

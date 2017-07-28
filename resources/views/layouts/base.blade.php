@@ -16,6 +16,8 @@
     <script src="/statics/vue/vue.js"></script>
     <script src="/statics/js/jquery-3.1.1/jquery-3.1.1.min.js"></script>
     <script src="/statics/bootstrap/js/bootstrap.min.js"></script>
+    @section("includejs")
+    @show
     <script>
         window.Laravel = <?php echo json_encode([
                 'csrfToken' => csrf_token(),

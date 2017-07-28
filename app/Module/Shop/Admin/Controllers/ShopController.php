@@ -66,7 +66,6 @@ class ShopController extends AdminController
 
     function delete(Request $request)
     {
-
         ShopProductModel::destroy($request["id"]);
         return redirect("/admin/shop");
     }
