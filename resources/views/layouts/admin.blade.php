@@ -1,4 +1,10 @@
 @extends('layouts.base')
+@section("css")
+    <link href="/statics/js/artDialog4.1.7/skins/default.css" rel="stylesheet">
+@append
+@section("js")
+    <script src="/statics/js/artDialog4.1.7/artDialog.js"></script>
+@append
 @section("nav")
     <nav class="navbar navbar-default navbar-static-top">
         <div class="container" style="width:90%">
@@ -21,7 +27,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="/admin/blog">博客管理</a></li>
                     <li><a href="/admin/user">会员管理</a></li>
-                    <li><a href="/admin/shop">商城</a></li>
+                    <li><a href="/admin/shop/order">商城</a></li>
                     <li><a href="/admin/setting">系统管理</a></li>
                 </ul>
 

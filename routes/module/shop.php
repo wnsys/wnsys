@@ -14,6 +14,7 @@ Route::group(["namespace"=>"Admin\Controllers"],function (){
     Route::get('/admin/shop/category/delete', "CategoryController@delete");
     Route::get('/admin/shop/order', "ShopController@order");
     Route::get('/admin/shop/order/view', "OrderController@view");
+    Route::get('/admin/shop/order/delete', "OrderController@delete");
 });
 
 /*web*/

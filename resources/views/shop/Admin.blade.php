@@ -1,4 +1,4 @@
 @extends("layouts.admin")
 @section("left-content")
-    @include("admin.left")
+    @include("shop.admin.left")
     @stop

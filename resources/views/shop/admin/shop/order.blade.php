@@ -16,7 +16,7 @@
 
     <div class="panel panel-default">
         <div class="panel-body">
-            <table class="table table-striped " >
+            <table class="table table-striped ">
                 <tr>
                     <th class="">订单号</th>
                     <th class="">商品名称</th>
@@ -32,12 +32,57 @@
                         <td>{{$item["amount"]}}</td>
                         <td>{{$item["user_name"]}}</td>
                         <td>{{$item["created_at"]}}</td>
-                        <td><a href="/admin/blog/edit?id={{$item["id"]}}">编辑</a>
-                            | <a href="/admin/blog/delete?id={{$item["id"]}}" onclick="return confirm('确定删除吗？')">删除</a></td>
+                        <td><a onclick="view({{$item['id']}})">查看</a>
+                            | <a href="/admin/shop/order/delete?id={{$item["id"]}}" onclick="return confirm('确定删除吗？')">删除</a>
+                        </td>
                     </tr>
                 @endforeach
             </table>
             {{$data->links()}}
         </div>
     </div>
-    @endsection
+@endsection
+@section('modal')
+
+    <div class="form-group">
+        <label class="control-label col-md-1">产品名称</label>
+        <div class="col-md-5">
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-1">分类</label>
+        <div class="col-md-2">
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-1">价格</label>
+        <div class="col-md-4">
+
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-1">描述</label>
+        <div class="col-md-11">
+            <
+        </div>
+
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-1">内容</label>
+        <div class="col-md-11">
+
+        </div>
+    </div>
+
+
+
+@append
+@section("js")
+    <script>
+
+    </script>
+@append

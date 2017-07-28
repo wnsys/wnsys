@@ -29,7 +29,7 @@ class CategoryController extends AdminController{
         }
         $templates = ShopCategoryBll::n()->templates("index","list");
         $options = ShopCategoryModel::n()->options();
-        return view("admin.category.add", [
+        return view("shop.admin.category.add", [
             "data" => $data,
             "options" => $options,
             "templates" => $templates

@@ -2,9 +2,11 @@
 namespace App\Module\Shop\Model;
 
 use App\Model\AppModel;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ShopOrderModel extends AppModel
 {
+    use SoftDeletes;
     protected $table = "shop_order";
     protected $fillable = [
         "user_id","user_name","phone","address","amount"
