@@ -1,3 +1,7 @@
+html,body,#app
+{
+    height: 100%;
+}
 #app .container{
     position: relative;
     z-index: 2;
@@ -43,9 +47,8 @@
 /*pc端样式*/
 @media screen and (min-width: 1024px){
     #app{
-        min-height: 700px;
         background: url(/statics/images/bg1.jpg) no-repeat fixed center top;
-        padding-bottom: 130px;
+        height:100% ;
     }
     .footer{
         position: fixed;
@@ -59,7 +62,9 @@
 @media screen and (min-width: 1440px){
     #app{
         background: url(/statics/images/bg3.jpg) no-repeat fixed center top;
-        box-sizing: content-box;
-    }
 
+    }
+    .footer{
+        background: rgba(248,248,248,1);
+    }
 }
