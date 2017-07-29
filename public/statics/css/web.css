@@ -44,8 +44,8 @@
 @media screen and (min-width: 1024px){
     #app{
         min-height: 700px;
-        background: url(/statics/images/bg1.jpg) no-repeat fixed center bottom;
-        padding-bottom: 140px;
+        background: url(/statics/images/bg1.jpg) no-repeat fixed center top;
+        padding-bottom: 130px;
     }
     .footer{
         position: fixed;
@@ -55,3 +55,11 @@
     }
 }
 
+/*pc端样式*/
+@media screen and (min-width: 1440px){
+    #app{
+        background: url(/statics/images/bg3.jpg) no-repeat fixed center top;
+        box-sizing: content-box;
+    }
+
+}
