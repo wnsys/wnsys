@@ -55,6 +55,7 @@ html,body,#app
         bottom: 0;
         margin-bottom: 0;
         background: rgba(248,248,248,0.6);
+        min-height: 800px;
     }
 }
 
