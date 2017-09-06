@@ -28,6 +28,12 @@ html,body,#app
 .pad0{
     padding:0px;
 }
+.pb0{
+    padding-bottom: 0;
+}
+.mb0{
+    margin-bottom: 0;
+}
 .content-theme1{
     background: url(/images/theme1.png);
     border-color:#fff;
@@ -47,15 +53,15 @@ html,body,#app
 /*pc端样式*/
 @media screen and (min-width: 1024px){
     #app{
-        background: url(/statics/images/bg1.jpg) no-repeat fixed center top;
         height:100% ;
+        min-height: 700px;
     }
     .footer{
-        position: fixed;
+
         bottom: 0;
         margin-bottom: 0;
         background: rgba(248,248,248,0.6);
-        min-height: 800px;
+
     }
 }
 
