@@ -1,7 +1,5 @@
 # Laravel 博客系统
 
-github地址已移动至 <a href="http://www.github.com/wnsys/wnsys">www.github.com/wnsys/wnsys</a>
-
 目前功能：
 
 1、简单的博客发布系统
