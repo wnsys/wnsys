@@ -3,7 +3,7 @@
     @include("web.left")
 @stop
 @section("right-content")
-    <ul class="list-group">
+    <ul class="list-group mb0">
         @foreach($bloglist as $blog)
             <li class="list-group-item">
                 @if($blog->created_at)
@@ -19,5 +19,5 @@
             </li>
         @endforeach
     </ul>
-
+    {{$bloglist->links()}}
 @stop

@@ -4,6 +4,7 @@
     z-index: 2;
 }
 .footer {
+    margin: 20px 0 0 ;
     padding: 10px;
     width: 100%;
     min-height: auto;
@@ -23,6 +24,12 @@
 }
 .pad0{
     padding:0px;
+}
+.pb0{
+    padding-bottom: 0;
+}
+.mb0{
+    margin-bottom: 0;
 }
 .content-theme1{
     background: url(/images/theme1.png);

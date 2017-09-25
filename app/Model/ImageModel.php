@@ -35,6 +35,9 @@ class ImageModel extends AppModel
         } else {
             $file = $this->url;
         }
+        if (!app("files")->exists($this->url)) {
+            return "";
+        }
         $arr_url = explode(".", $file);
         $thumb_file = $arr_url[0] . "_{$w}_{$h}." . $arr_url[1];
         if (!app("files")->exists($thumb_file)) {
