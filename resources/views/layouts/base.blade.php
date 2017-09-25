@@ -30,13 +30,14 @@
     @show
     @section('content')
     @show
-    @section("footer")
-        @include("common.footer")
-    @show
+
     @section('modal')
     @show
     @section("js")
     @show
 </div>
+@section("footer")
+    @include("common.footer")
+@show
 </body>
 </html>
