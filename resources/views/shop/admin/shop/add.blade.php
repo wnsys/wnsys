@@ -1,6 +1,11 @@
 @extends('shop.admin')
 @section("js")
 @include("common.editor")
+<script>
+    $(function () {
+        createUpload(1)
+    })
+</script>
 @endsection
 
 @section('right-content')
@@ -58,7 +63,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1">附件</label>
                     <div class="col-md-11">
-                        @include("common.webUploadSimple")
+                        @include("common.webUploadSimple",["list"=>1])
                     </div>
                 </div>
 

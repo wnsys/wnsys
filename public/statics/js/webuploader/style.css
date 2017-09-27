@@ -1,20 +1,20 @@
 
-#picker {
+.picker {
     display: inline-block;
     line-height: 1.42857;
     margin: 0 12px 0 0;
     vertical-align: middle;
 }
-#picker .webuploader-pick {
+.picker .webuploader-pick {
     display: block;
     padding: 6px 12px;
 }
-#uploader .thumbnail {
+.uploader .thumbnail {
     height: 110px;
     width: 110px;
     overflow: hidden;
 }
-#uploader .thumbnail img {
+.uploader .thumbnail img {
     width: 100%;
 }
 .uploader-list {
@@ -131,7 +131,7 @@ a.travis {
     right: 15px;
     top: -4px;
 }
-#uploader div.file-panel {
+.uploader div.file-panel {
     background: rgba(255, 255, 255, 0.75) none repeat scroll 0 0;
     height: 0;
     left: 0;
@@ -141,7 +141,7 @@ a.travis {
     width: 100%;
     z-index: 300;
 }
-#uploader div.file-panel span {
+.uploader div.file-panel span {
     width: 24px;
     height: 24px;
     display: inline;
@@ -150,23 +150,23 @@ a.travis {
     cursor: pointer;
 }
 
-#uploader div.file-panel span.rotateLeft {
+.uploader div.file-panel span.rotateLeft {
     background-position: 0 -24px;
 }
-#uploader div.file-panel span.rotateLeft:hover {
+.uploader div.file-panel span.rotateLeft:hover {
     background-position: 0 0;
 }
 
-#uploader div.file-panel span.rotateRight {
+.uploader div.file-panel span.rotateRight {
     background-position: -24px -24px;
 }
-#uploader div.file-panel span.rotateRight:hover {
+.uploader div.file-panel span.rotateRight:hover {
     background-position: -24px 0;
 }
 
-#uploader div.file-panel span.cancel {
+.uploader div.file-panel span.cancel {
     background-position: -48px -24px;
 }
-#uploader div.file-panel span.cancel:hover {
+.uploader div.file-panel span.cancel:hover {
     background-position: -48px 0;
 }
