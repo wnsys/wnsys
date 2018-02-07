@@ -1,5 +1,5 @@
 <?php
-
+namespace App\Server;
 class HttpServer
 {
     public static $instance;
@@ -8,25 +8,19 @@ class HttpServer
     public static $post;
     public static $header;
     public static $server;
-    public function __construct() {
-        $app = require_once __DIR__.'/../bootstrap/app.php';
-        $kernel = $app->make(\Illuminate\Contracts\Http\Kernel::class);
-
-        $http = new swoole_http_server("0.0.0.0", 9501); //侦听所有地址来的请求
+    public function __construct($port) {
+        $kernel = app()->make(\Illuminate\Contracts\Http\Kernel::class);
+        $http = new \swoole_http_server("0.0.0.0", $port); //侦听所有地址来的请求
         $http->set([
-            'document_root' => __DIR__,
             // like pm.start_servers in php-fpm, but there's no option like pm.max_children
             'worker_num' => 4,
-
             // max number of coroutines handled by a worker in the same time
             'max_coro_num' => 3000,
-
             // set it to false when debug, otherwise true
             'daemonize' => true,
-
             // like pm.max_requests in php-fpm
             'max_request' => 1000,
-            'pid_file' => app()->basePath()."/bootstrap/laravel-fly-9501.pid",
+            'pid_file' => app()->basePath()."/bootstrap/laravel-fly-$port.pid",
             'log_file' => app()->storagePath().'/logs/swoole.log',
             
         ]);
@@ -56,9 +50,9 @@ class HttpServer
         $http->start();
     }
 
-    public static function getInstance() {
+    public static function getInstance($port = 9501) {
         if (!self::$instance) {
-            self::$instance = new HttpServer;
+            self::$instance = new HttpServer($port);
         }
         return self::$instance;
     }
