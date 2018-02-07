@@ -28,7 +28,7 @@ class BlogController extends AdminController
         $info["user_id"] = Auth::id();
         $image = ImageModel::create($info);
         $info["image_id"] = $image->id;
-        echo json_encode($info);
+        return response()->json($info);
     }
 
     function index(Request $request)
