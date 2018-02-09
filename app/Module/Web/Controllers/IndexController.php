@@ -15,6 +15,7 @@ use Intervention\Image\ImageManagerStatic;
 class IndexController extends WebController{
 
     public function index(){
+      
         $bloglist = BlogArticleModel::orderBy('id','desc')
             ->paginate(config("module.blog.page_size"));
         BlogArticleBll::stripDate($bloglist);

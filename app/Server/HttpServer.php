@@ -8,9 +8,9 @@ class HttpServer
     public static $post;
     public static $header;
     public static $server;
-    public function __construct($port) {
+    public function __construct($options) {
         $kernel = app()->make(\Illuminate\Contracts\Http\Kernel::class);
-        $http = new \swoole_http_server("0.0.0.0", $port); //侦听所有地址来的请求
+        $http = new \swoole_http_server( $options["host"], $options["port"]); //侦听所有地址来的请求
         $http->set([
             // like pm.start_servers in php-fpm, but there's no option like pm.max_children
             'worker_num' => 4,
@@ -20,7 +20,7 @@ class HttpServer
             'daemonize' => true,
             // like pm.max_requests in php-fpm
             'max_request' => 1000,
-            'pid_file' => app()->basePath()."/bootstrap/laravel-fly-$port.pid",
+            'pid_file' => app()->basePath()."/bootstrap/laravel-fly-".$options["port"].".pid",
             'log_file' => app()->storagePath().'/logs/swoole.log',
             
         ]);
@@ -50,9 +50,9 @@ class HttpServer
         $http->start();
     }
 
-    public static function getInstance($port = 9501) {
+    public static function getInstance($options) {
         if (!self::$instance) {
-            self::$instance = new HttpServer($port);
+            self::$instance = new HttpServer($options);
         }
         return self::$instance;
     }

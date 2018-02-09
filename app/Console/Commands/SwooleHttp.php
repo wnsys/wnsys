@@ -40,33 +40,27 @@ class SwooleHttp extends Command
     {
         $operate = $this->argument('operate');
         $port = $this->argument('port');
+        $options = [
+            "port"=>$port??9501,
+            "host"=>"127.0.0.1"
+        ];
         switch ($operate) {
             case 'start':
-                HttpServer::getInstance($port);
+                HttpServer::getInstance($options);
                 break;
             case 'stop':
-                posix_kill($this->getPid($port), SIGTERM);
+                posix_kill(getPid($options["port"]), SIGTERM);
                 break;
             case 'reload':
-                posix_kill($this->getPid($port), SIGUSR1);
+                posix_kill(getPid($options["port"]), SIGUSR1);
                 break;
             case 'restart':
-                posix_kill($this->getPid($port), SIGTERM);
+                posix_kill(getPid($options["port"]), SIGTERM);
                 sleep(1);
-                HttpServer::getInstance($port);
+                HttpServer::getInstance($options);
                 break;
         }
 
     }
-    function getPid($listen_port = 9501){
-        $pid_file = app()->basePath() .'/bootstrap/laravel-fly-' . $listen_port . '.pid';
-        $pid = 0;
-        try {
-            if (is_file($pid_file))
-                $pid = (int)file_get_contents($pid_file);
-        } catch (\Throwable $e) {
-            print("pid can not be read from $pid_file \n");
-        }
-        return $pid;
-    }
+
 }

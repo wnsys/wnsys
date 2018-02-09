@@ -23,3 +23,14 @@ function seo($title = "",$keywords="",$description=""){
     $seo["description"] = $description?:$title;
     view()->share('seo', $seo);
 }
+function getPid($listen_port){
+    $pid_file = app()->basePath() .'/bootstrap/laravel-fly-' . $listen_port . '.pid';
+    $pid = 0;
+    try {
+        if (is_file($pid_file))
+            $pid = (int)file_get_contents($pid_file);
+    } catch (\Throwable $e) {
+        print("pid can not be read from $pid_file \n");
+    }
+    return $pid;
+}
