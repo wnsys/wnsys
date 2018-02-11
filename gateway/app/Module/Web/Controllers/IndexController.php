@@ -5,6 +5,7 @@ use App\Module\Blog\Model\BlogArticleModel;
 use App\Module\Web\Bll\IndexBll;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\ImageManagerStatic;
+use NInterface\BlogInterface;
 
 /**
  * Created by PhpStorm.
@@ -13,9 +14,12 @@ use Intervention\Image\ImageManagerStatic;
  * Time: 14:50
  */
 class IndexController extends WebController{
-
-    public function index(){
-      
+    /**
+     * @param BlogInterface $blogInterface
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function index(BlogInterface $blogInterface){
+        $bloglist = $blogInterface->getList([]);
         $bloglist = BlogArticleModel::orderBy('id','desc')
             ->paginate(config("module.blog.page_size"));
         BlogArticleBll::stripDate($bloglist);
