@@ -1,0 +1,7 @@
+
+/gateway/public/storage
+/vendor
+/.idea
+Homestead.json
+Homestead.yaml
+.env
