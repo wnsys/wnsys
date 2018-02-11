@@ -11,19 +11,7 @@ class HttpServer
     public function __construct($options) {
         $kernel = app()->make(\Illuminate\Contracts\Http\Kernel::class);
         $http = new \swoole_http_server( $options["host"], $options["port"]); //侦听所有地址来的请求
-        $http->set([
-            // like pm.start_servers in php-fpm, but there's no option like pm.max_children
-            'worker_num' => 4,
-            // max number of coroutines handled by a worker in the same time
-            'max_coro_num' => 3000,
-            // set it to false when debug, otherwise true
-            'daemonize' => true,
-            // like pm.max_requests in php-fpm
-            'max_request' => 1000,
-            'pid_file' => app()->basePath()."/bootstrap/laravel-fly-".$options["port"].".pid",
-            'log_file' => app()->storagePath().'/logs/swoole.log',
-            
-        ]);
+        $http->set($options);
         $http->on('request', function ($request, $response) use($kernel) {
             $this->setGlobal($request);
             $l_request = \Illuminate\Http\Request::capture();

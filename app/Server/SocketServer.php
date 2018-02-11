@@ -6,38 +6,23 @@ class SocketServer
     public static $instance;
     function __construct($options)
     {
-        $server = new \swoole_websocket_server($options["host"], $options["port"]);
-        $server->set([
-            // like pm.start_servers in php-fpm, but there's no option like pm.max_children
-            'worker_num' => 4,
-            // max number of coroutines handled by a worker in the same time
-            'max_coro_num' => 3000,
-            // set it to false when debug, otherwise true
-            'daemonize' => false,
-            // like pm.max_requests in php-fpm
-            'max_request' => 1000,
-            'pid_file' => app()->basePath()."/bootstrap/laravel-fly-".$options["port"].".pid",
-            'log_file' => app()->storagePath().'/logs/swoole.log',
-
-        ]);
-        $server->on('open', function (\swoole_websocket_server $server, $request) {
-            echo "server: handshake success with fd{$request->fd}\n";
+        $server = new \swoole_server($options["host"], $options["port"]);
+        $server->set($options);
+        $server->on('connect', function ($server, $fd){
+            echo "connection open: {$fd}\n";
         });
-
-        $server->on('message', function (\swoole_websocket_server $server, $frame) {
-            echo "receive from {$frame->fd}:{$frame->data},opcode:{$frame->opcode},fin:{$frame->finish}\n";
-            $server->push($frame->fd, "this is server");
+        $server->on('receive', function ($server, $fd, $reactor_id, $data) {
+            $server->send($fd,  $data);
+            $server->close($fd);
         });
-
-        $server->on('close', function ($ser, $fd) {
-            echo "client {$fd} closed\n";
+        $server->on('close', function ($server, $fd) {
+            echo "connection close: {$fd}\n";
         });
-
         $server->start();
     }
     public static function getInstance($options) {
         if (!self::$instance) {
-            self::$instance = new HttpServer($options);
+            self::$instance = new SocketServer($options);
         }
         return self::$instance;
     }

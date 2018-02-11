@@ -23,8 +23,7 @@ function seo($title = "",$keywords="",$description=""){
     $seo["description"] = $description?:$title;
     view()->share('seo', $seo);
 }
-function getPid($listen_port){
-    $pid_file = app()->basePath() .'/bootstrap/laravel-fly-' . $listen_port . '.pid';
+function getPid($listen_port,$pid_file){
     $pid = 0;
     try {
         if (is_file($pid_file))
