@@ -7,7 +7,9 @@
     "require": {
         "php": ">=5.6.4",
         "laravel/framework": "5.5.*",
-        "intervention/image": "^2.3"
+        "intervention/image": "^2.3",
+        "mobiledetect/mobiledetectlib": "^2.8"
+
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
