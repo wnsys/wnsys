@@ -1,6 +1,6 @@
 <?php
 namespace NInterface;
-interface FarmerInterface{
+interface BlogInterface{
     function getList($options);
     
 }

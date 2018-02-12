@@ -2,8 +2,9 @@
 
 namespace App\Console\Commands;
 
-use App\Server\HttpServer;
+
 use Illuminate\Console\Command;
+use Server\HttpServer;
 
 class SwooleHttp extends Command
 {

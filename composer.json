@@ -21,7 +21,8 @@
         "psr-4": {
             "App\\": "gateway/app/",
             "Service\\":"service/app/",
-            "NInterface\\":"ninterface/"
+            "NInterface\\":"ninterface/",
+            "Server\\":"server/"
         },
         "files":[
             "common/Helper.php"

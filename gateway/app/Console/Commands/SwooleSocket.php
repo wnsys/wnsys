@@ -2,8 +2,8 @@
 
 namespace App\Console\Commands;
 
-use App\Server\SocketServer;
 use Illuminate\Console\Command;
+use Server\SocketServer;
 
 class SwooleSocket extends Command
 {
