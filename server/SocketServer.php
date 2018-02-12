@@ -1,29 +1,48 @@
 <?php
 namespace Server;
-class SocketServer
-{
+use Server\Lib\SocketLib;
 
-    public static $instance;
-    function __construct($options)
+/**
+ * Created by PhpStorm.
+ * User: weining
+ * Date: 2018/2/12
+ * Time: 10:47
+ */
+class SocketServer{
+    private $options;
+    function __construct($port)
     {
-        $server = new \swoole_server($options["host"], $options["port"]);
-        $server->set($options);
-        $server->on('connect', function ($server, $fd){
-            echo "connection open: {$fd}\n";
-        });
-        $server->on('receive', function ($server, $fd, $reactor_id, $data) {
-            $server->send($fd,  $data);
-            $server->close($fd);
-        });
-        $server->on('close', function ($server, $fd) {
-            echo "connection close: {$fd}\n";
-        });
-        $server->start();
+        $this->options = [
+            // like pm.start_servers in php-fpm, but there's no option like pm.max_children
+            'worker_num' => 4,
+            // max number of coroutines handled by a worker in the same time
+            'max_coro_num' => 3000,
+            // set it to false when debug, otherwise true
+            'daemonize' => true,
+            // like pm.max_requests in php-fpm
+            'max_request' => 1000,
+            'pid_file' => app()->basePath()."/bootstrap/swoole-".$port.".pid",
+            'log_file' => app()->storagePath().'/logs/swoole.log',
+            "port" => $port?:9601,
+            "host" => "127.0.0.1"
+        ];
     }
-    public static function getInstance($options) {
-        if (!self::$instance) {
-            self::$instance = new SocketServer($options);
+    function handle($operate){
+        switch ($operate) {
+            case 'start':
+                SocketLib::getInstance($this->options);
+                break;
+            case 'stop':
+                posix_kill(getPid($this->options["port"],$this->options["pid_file"]), SIGTERM);
+                break;
+            case 'reload':
+                posix_kill(getPid($this->options["port"],$this->options["pid_file"]), SIGUSR1);
+                break;
+            case 'restart':
+                posix_kill(getPid($this->options["port"],$this->options["pid_file"]), SIGTERM);
+                sleep(1);
+                SocketLib::getInstance($this->options);
+                break;
         }
-        return self::$instance;
     }
 }
