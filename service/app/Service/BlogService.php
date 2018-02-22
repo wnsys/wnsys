@@ -11,6 +11,7 @@ use NInterface\BlogInterface;
 class BlogService implements BlogInterface{
     function getList($options)
     {
+        return "success";
         // TODO: Implement getList() method.
     }
 }

@@ -14,13 +14,9 @@ use NInterface\BlogInterface;
  * Time: 14:50
  */
 class IndexController extends WebController{
-    /**
-     * @var BlogInterface
-     * @phpring autoload
-     */
-    private $bloginterface;
+   
     public function index(){
-        
+        app()->make("bloginterface")->
         $bloglist = BlogArticleModel::orderBy('id','desc')
             ->paginate(config("module.blog.page_size"));
         BlogArticleBll::stripDate($bloglist);
