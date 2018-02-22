@@ -13,4 +13,21 @@ abstract  class RpcClient{
             "arguments"=>$this->rpc->getArguments()
         ]);
     }
+
+    /**
+     * @return Rpc
+     */
+    public function getRpc()
+    {
+        return $this->rpc;
+    }
+
+    /**
+     * @param Rpc $rpc
+     */
+    public function setRpc($rpc)
+    {
+        $this->rpc = $rpc;
+    }
+
 }

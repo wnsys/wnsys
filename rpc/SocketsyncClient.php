@@ -4,7 +4,6 @@ use Rpc\Ninterface\ClientInterface;
 
 class SocketSyncClient extends RpcClient implements ClientInterface{
     private $client;
-    private $msg;
     function __construct()
     {
         $this->client = new \swoole_client(SWOOLE_SOCK_TCP);
@@ -20,22 +19,6 @@ class SocketSyncClient extends RpcClient implements ClientInterface{
         $rs = $this->client->recv();
         $this->client->close();
         return $rs;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getMsg()
-    {
-        return $this->msg;
-    }
-
-    /**
-     * @param mixed $msg
-     */
-    public function setMsg($msg)
-    {
-        $this->msg = $msg;
     }
 
 }

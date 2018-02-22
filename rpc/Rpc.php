@@ -1,18 +1,18 @@
 <?php
 namespace Rpc;
-use Rpc\Ninterface\RpcInterface;
 
 class Rpc {
     /**
-     * @var RpcInterface
+     * @var RpcClient
      */
     private $client;
     private $interface;
     private $method;
     private $arguments;
-    function __construct()
+    function __construct(RpcClient $client)
     {
-        $this->client = new SocketSyncClient($this);
+        $this->client = $client;
+        $this->client->setRpc($this);
     }
 
 
@@ -20,7 +20,8 @@ class Rpc {
     {
         $this->method = $name;
         $this->arguments = $arguments;
-        return $this->client->send();
+        $rs =  $this->client->send();
+        return $rs;
         // TODO: Implement __call() method.
     }
 
