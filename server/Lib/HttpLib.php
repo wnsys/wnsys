@@ -1,6 +1,6 @@
 <?php
-namespace App\Server;
-class HttpServer
+namespace Server\Lib;
+class HttpLib
 {
     public static $instance;
     public $http;
@@ -40,7 +40,7 @@ class HttpServer
 
     public static function getInstance($options) {
         if (!self::$instance) {
-            self::$instance = new HttpServer($options);
+            self::$instance = new HttpLib($options);
         }
         return self::$instance;
     }

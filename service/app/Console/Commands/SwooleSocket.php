@@ -1,27 +1,25 @@
 <?php
 
-namespace App\Console\Commands;
-
+namespace Service\Console\Commands;
 
 use Illuminate\Console\Command;
-use Server\HttpServer;
-use Server\Lib\HttpLib;
+use Server\SocketServer;
 
-class SwooleHttp extends Command
+class SwooleSocket extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'swoole:http {operate} {port=9501}';
+    protected $signature = 'swoole:socket {operate} {port=9601}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'swoole http 服务器';
+    protected $description = 'swoole socket 服务器';
 
     /**
      * Create a new command instance.
@@ -33,19 +31,12 @@ class SwooleHttp extends Command
         parent::__construct();
     }
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
     public function handle()
     {
-
         $operate = $this->argument('operate');
         $port = $this->argument('port');
-        $server = new HttpServer($port);
+        $server = new SocketServer($port);
         $server->handle($operate);
 
     }
-
 }

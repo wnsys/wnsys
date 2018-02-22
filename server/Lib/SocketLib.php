@@ -1,6 +1,6 @@
 <?php
-namespace App\Server;
-class SocketServer
+namespace Server\Lib;
+class SocketLib
 {
 
     public static $instance;
@@ -22,7 +22,7 @@ class SocketServer
     }
     public static function getInstance($options) {
         if (!self::$instance) {
-            self::$instance = new SocketServer($options);
+            self::$instance = new SocketLib($options);
         }
         return self::$instance;
     }

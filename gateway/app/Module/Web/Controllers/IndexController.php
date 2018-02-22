@@ -15,11 +15,12 @@ use NInterface\BlogInterface;
  */
 class IndexController extends WebController{
     /**
-     * @param BlogInterface $blogInterface
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @var BlogInterface
+     * @phpring autoload
      */
-    public function index(BlogInterface $blogInterface){
-        $bloglist = $blogInterface->getList([]);
+    private $bloginterface;
+    public function index(){
+        
         $bloglist = BlogArticleModel::orderBy('id','desc')
             ->paginate(config("module.blog.page_size"));
         BlogArticleBll::stripDate($bloglist);
