@@ -25,7 +25,7 @@ abstract  class RpcClient{
     /**
      * @param Rpc $rpc
      */
-    public function setRpc($rpc)
+    public function setRpc(&$rpc)
     {
         $this->rpc = $rpc;
     }

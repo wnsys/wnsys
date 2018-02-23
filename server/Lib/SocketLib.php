@@ -11,8 +11,21 @@ class SocketLib
         $server->on('connect', function ($server, $fd){
             echo "connection open: {$fd}\n";
         });
+        /**
+         * $data["interface"];
+         * $data["method"];
+         * $data["arguments"];
+         */
         $server->on('receive', function ($server, $fd, $reactor_id, $data) {
-            $server->send($fd,  $data);
+            $data = \GuzzleHttp\json_decode($data,true);
+            print_r($data);
+            $concrete = config("remote")[$data["interface"]];
+            $class = new \ReflectionClass($concrete);
+            $instant = $class->newInstance();
+            $method = $class->getMethod($data["method"]);
+            $rs = $method->invoke($instant,$data["arguments"]);
+            echo "receive: {$rs}\n";
+            $server->send($fd,  $rs);
             $server->close($fd);
         });
         $server->on('close', function ($server, $fd) {

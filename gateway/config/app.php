@@ -178,7 +178,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\ViewServiceProvider::class,
         //Barryvdh\Debugbar\ServiceProvider::class,
-
+        \App\Providers\RemoteServiceProvider::class
     ],
 
     /*
@@ -226,7 +226,6 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
         //'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],
     "modules"=>[

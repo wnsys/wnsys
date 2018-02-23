@@ -7,7 +7,7 @@ class SocketSyncClient extends RpcClient implements ClientInterface{
     function __construct()
     {
         $this->client = new \swoole_client(SWOOLE_SOCK_TCP);
-        if (!$this->client->connect('127.0.0.1', 9501, -1))
+        if (!$this->client->connect('127.0.0.1', 9602, -1))
         {
             exit("connect failed. Error: {$this->client->errCode}\n");
         }

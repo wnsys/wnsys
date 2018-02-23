@@ -1,6 +1,6 @@
 <?php
 namespace NInterface;
 interface BlogInterface{
-    function getList($options);
+    function getList($options = "");
     
 }

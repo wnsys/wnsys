@@ -22,7 +22,7 @@
         "psr-4": {
             "App\\": "gateway/app/",
             "Service\\":"service/app/",
-            "NInterface\\":"ninterface/",
+            "NInterface\\":"interface/",
             "Server\\":"server/",
             "Rpc\\":"rpc/"
         },
