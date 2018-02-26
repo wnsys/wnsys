@@ -6,5 +6,8 @@
  * Time: 11:59
  */
 return [
-    \NInterface\BlogInterface::class => \Service\Service\BlogService::class
+    \NInterface\BlogInterface::class => [
+        "socket"=>\Service\Service\BlogService::class,
+        "http"=>"127.0.0.1:80/blog/"
+    ]
 ];

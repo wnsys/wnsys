@@ -5,12 +5,14 @@ abstract  class RpcClient{
      * @var Rpc
      */
     public $rpc;
+    public $rpcType;
     abstract function send();
     function getRpcData(){
         return \GuzzleHttp\json_encode([
             "interface"=>$this->rpc->getInterface(),
             "method"=>$this->rpc->getMethod(),
-            "arguments"=>$this->rpc->getArguments()
+            "arguments"=>$this->rpc->getArguments(),
+            "rpcType"=>$this->rpcType
         ]);
     }
 

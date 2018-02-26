@@ -19,7 +19,7 @@ class SocketLib
         $server->on('receive', function ($server, $fd, $reactor_id, $data) {
             $data = \GuzzleHttp\json_decode($data,true);
             print_r($data);
-            $concrete = config("remote")[$data["interface"]];
+            $concrete = config("remote")[$data["interface"]]["socket"];
             $class = new \ReflectionClass($concrete);
             $instant = $class->newInstance();
             $method = $class->getMethod($data["method"]);

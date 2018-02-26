@@ -9,7 +9,12 @@ use NInterface\BlogInterface;
  * Time: 12:01
  */
 class BlogService implements BlogInterface{
-    function getList($options = "")
+    /**
+     * @param string $id
+     * @param string $title
+     * @return string
+     */
+    function getList($id="",$title="")
     {
         return "success";
         // TODO: Implement getList() method.

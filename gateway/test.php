@@ -14,7 +14,7 @@ $client->on("close", function(swoole_client $cli){
     echo "Connection close\n";
 });
 $client->connect('127.0.0.1', 9601);*/
-$client = new \swoole_client(SWOOLE_SOCK_TCP);
+/*$client = new \swoole_client(SWOOLE_SOCK_TCP);
 if (!$client->connect('127.0.0.1', 9602, -1))
 {
     exit("connect failed. Error: {$client->errCode}\n");
@@ -26,5 +26,12 @@ $data = [
 ];
 $client->send(json_encode($data));
 $rs = $client->recv();
-$client->close();
+$client->close();*/
+class test{
+    function __call($mehtod,$args){
+        print_r($args);
+    }
+}
+$test = new test();
+$test->hello($a=1,$b=2);
 ?>

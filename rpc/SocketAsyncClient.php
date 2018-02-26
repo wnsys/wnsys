@@ -8,6 +8,7 @@ class SocketAsyncClient extends RpcClient  implements ClientInterface{
     private $receive,$error,$close;
     function __construct()
     {
+        $this->rpcType = "socketAsync";
         $this->client = new \swoole_client(SWOOLE_SOCK_TCP, SWOOLE_SOCK_ASYNC);
     }
 

@@ -6,12 +6,13 @@ use Rpc\Ninterface\ClientInterface;
 class HttpClient extends RpcClient implements ClientInterface{
     private $client;
     private $url;
-
+    private $host;
     function __construct()
     {
-      $this->client = new Client();
-
+        $this->client = new Client();
+        $this->rpcType = "http";
     }
+
     function send(){
         if(strtoupper($this->rpc->getMethod()) == "GET"){
             $res = $this->client->request('GET', $this->url, [

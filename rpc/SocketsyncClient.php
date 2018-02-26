@@ -6,6 +6,7 @@ class SocketSyncClient extends RpcClient implements ClientInterface{
     private $client;
     function __construct()
     {
+        $this->rpcType = "socketSync";
         $this->client = new \swoole_client(SWOOLE_SOCK_TCP);
         if (!$this->client->connect('127.0.0.1', 9602, -1))
         {
