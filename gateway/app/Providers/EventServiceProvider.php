@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use App\Listeners\QueryListener;
-use App\Module\Shop\Listeners\ShopLoginListener;
+use App\Http\Module\Shop\Listeners\ShopLoginListener;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Database\Events\QueryExecuted;
 use Illuminate\Support\Facades\Event;

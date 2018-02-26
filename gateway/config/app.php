@@ -229,10 +229,10 @@ return [
         //'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],
     "modules"=>[
-        "Admin"=>["namespace"=>"App\Module\Admin\Controllers","route"=>"admin"],
-        "Blog"=>["namespace"=>"App\Module\Blog","route"=>"blog"],
-        "Web"=>["namespace"=>"App\Module\Web\Controllers","route"=>"web"],
-        "User"=>["namespace"=>"App\Module\User","route"=>"user"],
-        "Shop"=>["namespace"=>"App\Module\Shop","route"=>"shop"],
+        "Admin"=>["namespace"=>"App\Http\Module\Admin\Controllers","route"=>"admin"],
+        "Blog"=>["namespace"=>"App\Http\Module\Blog","route"=>"blog"],
+        "Web"=>["namespace"=>"App\Http\Module\Web\Controllers","route"=>"web"],
+        "User"=>["namespace"=>"App\Http\Module\User","route"=>"user"],
+        "Shop"=>["namespace"=>"App\Http\Module\Shop","route"=>"shop"],
     ]
 ];

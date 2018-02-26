@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Model\UserModel;
-use App\Module\Web\Controllers\WebController;
+use App\Http\Module\Web\Controllers\WebController;
 use App\User;
 use Validator;
 use App\Http\Controllers\Controller;

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Model\UserModel;
-use App\Module\User\Bll\UserBll;
-use App\Module\Web\Controllers\WebController;
+use App\Http\Module\User\Bll\UserBll;
+use App\Http\Module\Web\Controllers\WebController;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;

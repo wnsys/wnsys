@@ -1,6 +1,6 @@
 <?php
 namespace App\Http\Middleware;
-use App\Module\User\Bll\UserBll;
+use App\Http\Module\User\Bll\UserBll;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
