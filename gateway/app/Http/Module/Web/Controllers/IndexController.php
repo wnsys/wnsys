@@ -2,6 +2,7 @@
 namespace App\Http\Module\Web\Controllers;
 use App\Http\Module\Blog\Bll\BlogArticleBll;
 use App\Http\Module\Blog\Model\BlogArticleModel;
+use NInterface\BlogInterface;
 
 /**
  * Created by PhpStorm.
@@ -12,6 +13,8 @@ use App\Http\Module\Blog\Model\BlogArticleModel;
 class IndexController extends WebController{
    
     public function index(){
+//        echo "rpc:";
+//        echo app()->make(BlogInterface::class)->getlist("a","b");
         $bloglist = BlogArticleModel::orderBy('id','desc')
             ->paginate(config("module.blog.page_size"));
         BlogArticleBll::stripDate($bloglist);

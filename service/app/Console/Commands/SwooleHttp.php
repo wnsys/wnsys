@@ -2,24 +2,26 @@
 
 namespace Service\Console\Commands;
 
-use Illuminate\Console\Command;
-use Server\SocketServer;
 
-class SwooleSocket extends Command
+use Illuminate\Console\Command;
+use Server\HttpServer;
+use Server\Lib\HttpLib;
+
+class SwooleHttp extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'swoole:socket {operate} {port=9501}';
+    protected $signature = 'swoole:http {operate} {port=9602}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'swoole socket 服务器';
+    protected $description = 'swoole http 服务器';
 
     /**
      * Create a new command instance.
@@ -31,10 +33,16 @@ class SwooleSocket extends Command
         parent::__construct();
     }
 
+    /**
+     * Execute the console command.
+     *
+     * @return mixed
+     */
     public function handle()
     {
+
         $operate = $this->argument('operate');
-        $port = $this->argument('port')?:9501;
+        $port = $this->argument('port')?:9602;
         $options = [
             // like pm.start_servers in php-fpm, but there's no option like pm.max_children
             'worker_num' => 4,
@@ -49,8 +57,9 @@ class SwooleSocket extends Command
             "port" => $port,
             "host" => "127.0.0.1"
         ];
-        $server = new SocketServer($options);
+        $server = new HttpServer($options);
         $server->handle($operate);
 
     }
+
 }

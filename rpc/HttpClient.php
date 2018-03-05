@@ -5,26 +5,22 @@ use Rpc\Ninterface\ClientInterface;
 
 class HttpClient extends RpcClient implements ClientInterface{
     private $client;
-    private $url;
-    private $host;
     function __construct()
     {
-        $this->client = new Client();
         $this->rpcType = "http";
+        $this->client = new \swoole_client(SWOOLE_SOCK_TCP);
+        if (!$this->client->connect('127.0.0.1', 9500, -1))
+        {
+            exit("connect failed. Error: {$this->client->errCode}\n");
+        }
+
     }
 
     function send(){
-        if(strtoupper($this->rpc->getMethod()) == "GET"){
-            $res = $this->client->request('GET', $this->url, [
-                'query' => $this->rpc->getArguments(),
-            ]);
-        }else if(strtoupper($this->rpc->getMethod()) == "POST"){
-            $res = $this->client->request('POST',  $this->url,[
-                'form_params'  => $this->rpc->getArguments()
-            ] );
-        }
-        $info = $res->getBody();
-        return $info;
+        $this->client->send($this->getRpcData());
+        $rs = $this->client->recv();
+        $this->client->close();
+        return $rs;
     }
 
 }

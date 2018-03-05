@@ -6,17 +6,24 @@
  * Time: 11:59
  */
 return [
-    \NInterface\BlogInterface::class => [
-        "socket"=>[
-            "host"=>"127.0.0.1",
-            "port"=>"9601",
-            "concrete"=>\Service\Service\BlogService::class,
-        ],
-        "http"=>[
-            "host"=>"127.0.0.1",
-            "port"=>"9602",
-            "method"=>"get",
-            "url"=>"/blog/list"
+    "socket"=>[
+        "host"=>"127.0.0.1",
+        "port"=>"9601",
+        "interface"=>[
+            \NInterface\BlogInterface::class =>[
+                "concrete"=>\Service\Service\BlogService::class,
+            ]
         ]
+    ],
+    "http"=>[
+        "host"=>"127.0.0.1",
+        "port"=>"9602",
+        "interface"=>[
+            \NInterface\BlogInterface::class => [
+                "method"=>"get",
+                "url"=>"/blog/list"
+            ],
+        ]
+
     ]
 ];

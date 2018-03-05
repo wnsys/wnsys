@@ -22,6 +22,7 @@ class GatewaySocketLib
          */
         $server->on('receive', function ($server, $fd, $reactor_id, $data) {
             $data = \GuzzleHttp\json_decode($data,true);
+            print_r($data);
             $class = new \ReflectionClass($data["interface"]);
             $method = $class->getMethod($data["method"]);
             $dependencies = $method->getParameters();
@@ -37,26 +38,32 @@ class GatewaySocketLib
                 }
             }
             if($data["rpcType"] == "socketSync"){
-                $concrete = config("remote")[$data["interface"]]["socket"]["concrete"];
-                $instant = $concrete->newInstance();
+                $concrete = config("remote")["socket"]["interface"][$data["interface"]]["concrete"];
+                $class = new \ReflectionClass($concrete);
+                $instant = $class->newInstance();
+                $method = $class->getMethod($data["method"]);
                 $rs = $method->invokeArgs($instant,$parameters);
                 echo "receive: {$rs}\n";
                 $server->send($fd,  $rs);
                 $server->close($fd);
             }else if($data["rpcType"] == "http"){
                 $client = new Client();
-                $http = config("remote")[$data["interface"]]["http"];
-                $url = $http["host"].":".$http["port"]."/".$data["url"];
-                if(strtoupper($http["mehtod"]) == "GET"){
-                    $res = $client->request('GET', $url, [
+                $http = config("remote")["http"];
+                $concrete = config("remote")["http"]["interface"][$data["interface"]];
+                print_r($concrete);
+                $url = $http["host"].":".$http["port"]."/".$concrete["url"];
+                echo $url;
+                if(strtoupper($concrete["method"]) == "GET"){
+                    $rs = $client->request('GET', $url, [
                         'query' => $parameters,
                     ]);
-                }else if(strtoupper($http["mehtod"]) == "POST"){
-                    $res = $client->request('POST',  $url,[
+                }else if(strtoupper($concrete["method"]) == "POST"){
+                    $rs = $client->request('POST',  $url,[
                         'form_params'  => $parameters
                     ] );
                 }
-                $server->send($fd,  $res);
+                echo "receive: {$rs}\n";
+                $server->send($fd,  $rs);
             }else if($data["rpcType"] == "socketAsync"){
 
             }

@@ -8,18 +8,19 @@ class Rpc {
     private $client;
     private $interface;
     private $method;
-    private $arguments;
-    function __construct(RpcClient $client)
+    private $args;
+    function __construct($interface,RpcClient $client)
     {
+        $this->interface = $interface;
         $this->client = $client;
         $this->client->setRpc($this);
     }
 
 
-    function __call($name, $arguments)
+    function __call($name, $args)
     {
         $this->method = $name;
-        $this->arguments = $arguments;
+        $this->args = $args;
         $rs =  $this->client->send();
         return $rs;
         // TODO: Implement __call() method.
@@ -60,17 +61,17 @@ class Rpc {
     /**
      * @return mixed
      */
-    public function getArguments()
+    public function getArgs()
     {
-        return $this->arguments;
+        return $this->args;
     }
 
     /**
      * @param mixed $arguments
      */
-    public function setArguments($arguments)
+    public function setArgs($args)
     {
-        $this->arguments = $arguments;
+        $this->args = $args;
     }
 
 

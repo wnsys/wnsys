@@ -11,7 +11,7 @@ abstract  class RpcClient{
         return \GuzzleHttp\json_encode([
             "interface"=>$this->rpc->getInterface(),
             "method"=>$this->rpc->getMethod(),
-            "arguments"=>$this->rpc->getArguments(),
+            "args"=>$this->rpc->getArgs(),
             "rpcType"=>$this->rpcType
         ]);
     }

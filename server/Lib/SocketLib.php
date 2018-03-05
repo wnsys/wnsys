@@ -23,7 +23,7 @@ class SocketLib
             $class = new \ReflectionClass($concrete);
             $instant = $class->newInstance();
             $method = $class->getMethod($data["method"]);
-            $rs = $method->invoke($instant,$data["arguments"]);
+            $rs = $method->invokeArgs($instant,$data["args"]);
             echo "receive: {$rs}\n";
             $server->send($fd,  $rs);
             $server->close($fd);

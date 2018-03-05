@@ -17,7 +17,6 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         SwooleHttp::class,
-        SwooleSocket::class,
         Test::class
     ];
 

@@ -5,12 +5,17 @@ use App\Http\Module\Blog\Bll\BlogCategoryBll;
 use App\Http\Module\Blog\Model\BlogArticleModel;
 use App\Http\Module\Blog\Model\BlogCategoryModel;
 use App\Http\Module\Web\Controllers\WebController;
-use Illuminate\Support\Facades\Response;
+use NInterface\BlogInterface;
 
 class IndexController extends WebController
 {
+    /**
+     * @var BlogInterface
+     */
+    public $blogInterface;
     function show($id)
     {
+        
         $blog = BlogArticleModel::find($id);
         $breadcrumb = BlogArticleBll::breadcrumb($id);
         seo($blog->title);

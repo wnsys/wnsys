@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Console\Commands;
+namespace Service\Console\Commands;
 
 use Illuminate\Console\Command;
-use Server\Lib\SocketLib;
+use Server\Lib\GatewaySocketLib;
 use Server\SocketServer;
 
-class SwooleSocket extends Command
+class SwooleGatewaySocket extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'swoole:socket {operate} {port=9601}';
+    protected $signature = 'swoole:gateway_socket {operate} {port=9500}';
 
     /**
      * The console command description.
@@ -42,17 +42,16 @@ class SwooleSocket extends Command
             // max number of coroutines handled by a worker in the same time
             'max_coro_num' => 3000,
             // set it to false when debug, otherwise true
-            'daemonize' => true,
+            'daemonize' => false,
             // like pm.max_requests in php-fpm
             'max_request' => 1000,
             'pid_file' => app()->basePath()."/bootstrap/swoole-".$port.".pid",
             'log_file' => app()->storagePath().'/logs/swoole.log',
-            "port" => $port?:9601,
+            "port" => $port?:9500,
             "host" => "127.0.0.1"
         ];
-        $server = new SocketServer($options);
+        $server = new GatewaySocketLib($options);
         $server->handle($operate);
 
     }
-
 }

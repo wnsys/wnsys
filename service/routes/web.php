@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::group(['namespace' => 'Module\Blog\Controllers'], function(){
+    /*web*/
+    Route::get("/blog/list","IndexController@getList");
+});
