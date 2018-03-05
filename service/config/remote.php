@@ -7,7 +7,16 @@
  */
 return [
     \NInterface\BlogInterface::class => [
-        "socket"=>\Service\Service\BlogService::class,
-        "http"=>"127.0.0.1:80/blog/"
+        "socket"=>[
+            "host"=>"127.0.0.1",
+            "port"=>"9601",
+            "concrete"=>\Service\Service\BlogService::class,
+        ],
+        "http"=>[
+            "host"=>"127.0.0.1",
+            "port"=>"9602",
+            "method"=>"get",
+            "url"=>"/blog/list"
+        ]
     ]
 ];

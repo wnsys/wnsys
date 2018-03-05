@@ -28,10 +28,29 @@ $client->send(json_encode($data));
 $rs = $client->recv();
 $client->close();*/
 class test{
+    /**
+     * @param $name
+     * @param string $word
+     * @wnRequestMapping method="get" value="/blog/list"
+     * @return string
+     */
+    function hello($name,$word=""){
+        return "hello $name,$word";
+    }
     function __call($mehtod,$args){
         print_r($args);
     }
 }
-$test = new test();
-$test->hello($a=1,$b=2);
+require "../common/Lib/ParseDocer/ParseDoc.php";
+require "../common/Lib/ParseDocer/Handler.php";
+$class = new ReflectionClass("test");
+$test = $class->newInstance();
+$method = $class->getMethod("hello");
+$pars1 = $method->getParameters();
+$doc = $method->getDocComment();
+$ins =  \Common\Lib\ParseDocer\ParseDoc::factory($doc);
+print_r($ins->getParams());
+$pars2 = ["name"=>"weining","word"=>"hahahaha"];
+$rs = $method->invokeArgs($test,$pars2);
+print_r($rs);
 ?>

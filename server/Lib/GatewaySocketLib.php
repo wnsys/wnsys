@@ -1,5 +1,6 @@
 <?php
 namespace Server\Lib;
+
 use GuzzleHttp\Client;
 
 class GatewaySocketLib
@@ -36,26 +37,26 @@ class GatewaySocketLib
                 }
             }
             if($data["rpcType"] == "socketSync"){
-                $concrete = config("remote")[$data["interface"]]["socket"];
+                $concrete = config("remote")[$data["interface"]]["socket"]["concrete"];
                 $instant = $concrete->newInstance();
-                $rs = $method->invoke($instant,$parameters);
+                $rs = $method->invokeArgs($instant,$parameters);
                 echo "receive: {$rs}\n";
                 $server->send($fd,  $rs);
                 $server->close($fd);
             }else if($data["rpcType"] == "http"){
-                $hostUrl = config("remote")[$data["interface"]]["http"];
-
-                $postType = $data["arguments"][0];
-                $url = $hostUrl."/".$data["method"]."/";
-                if(strtoupper($postType) == "GET"){
-                    $res = $this->client->request('GET', $url, [
-                        'query' => $data["arguments"],
+                $client = new Client();
+                $http = config("remote")[$data["interface"]]["http"];
+                $url = $http["host"].":".$http["port"]."/".$data["url"];
+                if(strtoupper($http["mehtod"]) == "GET"){
+                    $res = $client->request('GET', $url, [
+                        'query' => $parameters,
                     ]);
-                }else if(strtoupper($postType) == "POST"){
-                    $res = $this->client->request('POST',  $url,[
-                        'form_params'  => $data["arguments"]
+                }else if(strtoupper($http["mehtod"]) == "POST"){
+                    $res = $client->request('POST',  $url,[
+                        'form_params'  => $parameters
                     ] );
                 }
+                $server->send($fd,  $res);
             }else if($data["rpcType"] == "socketAsync"){
 
             }

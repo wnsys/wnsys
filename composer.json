@@ -24,7 +24,8 @@
             "Service\\":"service/app/",
             "NInterface\\":"interface/",
             "Server\\":"server/",
-            "Rpc\\":"rpc/"
+            "Rpc\\":"rpc/",
+            "Common\\":"common"
         },
         "files":[
             "common/Helper.php"
