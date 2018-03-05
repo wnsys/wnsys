@@ -22,7 +22,6 @@ class GatewaySocketLib
          */
         $server->on('receive', function ($server, $fd, $reactor_id, $data) {
             $data = \GuzzleHttp\json_decode($data,true);
-            print_r($data);
             $class = new \ReflectionClass($data["interface"]);
             $method = $class->getMethod($data["method"]);
             $dependencies = $method->getParameters();
@@ -50,7 +49,6 @@ class GatewaySocketLib
                 $client = new Client();
                 $http = config("remote")["http"];
                 $concrete = config("remote")["http"]["interface"][$data["interface"]];
-                print_r($concrete);
                 $url = $http["host"].":".$http["port"]."/".$concrete["url"];
                 echo $url;
                 if(strtoupper($concrete["method"]) == "GET"){
@@ -62,8 +60,8 @@ class GatewaySocketLib
                         'form_params'  => $parameters
                     ] );
                 }
-                echo "receive: {$rs}\n";
-                $server->send($fd,  $rs);
+                $res = $rs->getBody()->getContents();
+                $server->send($fd,  $res);
             }else if($data["rpcType"] == "socketAsync"){
 
             }
