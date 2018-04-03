@@ -10,8 +10,9 @@
 | to using a Closure or controller method. Build something great!
 |
 */
+Route::get("/","IndexController@index");
 Route::get("/index","IndexController@index");
-
+Route::get("/xiao","IndexController@xiao");
 
 
 

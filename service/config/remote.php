@@ -8,7 +8,7 @@
 return [
     "socket"=>[
         "host"=>"127.0.0.1",
-        "port"=>"9601",
+        "port"=>"9501",
         "interface"=>[
             \NInterface\BlogInterface::class =>[
                 "concrete"=>\Service\Service\BlogService::class,

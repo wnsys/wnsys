@@ -16,7 +16,7 @@ class BlogService implements BlogInterface{
      */
     function getList($id="",$title="")
     {
-        return "success";
+        return "socket id:$id,title:$title";
         // TODO: Implement getList() method.
     }
 }

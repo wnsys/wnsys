@@ -18,6 +18,7 @@ Route::group(['namespace' => 'Index\Controllers'], function(){
     /*web*/
     Route::get("/blog/{id}","IndexController@show");
     Route::get("/blog/cat/{id}","IndexController@lists");
+    
 });
 
 

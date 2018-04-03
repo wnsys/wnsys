@@ -13,14 +13,15 @@ use NInterface\BlogInterface;
 class IndexController extends WebController{
    
     public function index(){
-        echo "rpc:";
-        $rs =  app()->make(BlogInterface::class)->getlist("a","b");
-        print_r($rs);
         $bloglist = BlogArticleModel::orderBy('id','desc')
             ->paginate(config("module.blog.page_size"));
         BlogArticleBll::stripDate($bloglist);
         return view("web.index",[
             "bloglist"=>$bloglist
         ]);
+    }
+    function xiao(){
+
+        return view("web.xiao");
     }
 }
