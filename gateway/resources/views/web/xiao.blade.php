@@ -3,6 +3,12 @@
     @include("web.left")
 @stop
 @section("right-content")
+    <style>
+        .gongshi{
+            font-size:12px;
+            color:#ccc;
+        }
+    </style>
     <div class="panel panel-default">
         <div class="panel-heading">
             基本公式（陈正生）
@@ -27,13 +33,16 @@
                     <label class="control-label col-md-2">管长L</label>
                     <div class="col-md-7">
                         <input class="form-control" name="guanchang" id="guanchang" value="">
+                        <div class="gongshi">管长=波长-校正</div>
                     </div>
                     <div class="col-md-1">cm</div><div class="col-md-2"><input class="btn btn-primary" id="btnGuanchang" type="button" value="计算"></div>
+
                 </div>
                 <div class="form-group">
                     <label class="control-label col-md-2">某孔固定频率f</label>
                     <div class="col-md-7">
                         <input class="form-control" name="pinlv" id="pinlv" value="">
+
                     </div>
                     <div class="col-md-1">赫兹</div> <div class="col-md-2"><input class="btn btn-primary" id="btnPinlv" type="button" value="计算"></div>
                 </div>
@@ -41,6 +50,7 @@
                     <label class="control-label col-md-2">波长(入)</label>
                     <div class="col-md-7">
                         <input class="form-control" name="bochang"  id="bochang" value="">
+                        <div class="gongshi">波长=声速/固定频率</div>
                     </div>
                     <div class="col-md-1">cm</div> <div class="col-md-2"><input class="btn btn-primary" id="btnBochang" type="button" value="计算"></div>
                 </div>
@@ -48,30 +58,24 @@
                     <label class="control-label col-md-2">管口校正(Ａ整)</label>
                     <div class="col-md-7">
                         <input class="form-control" name="jiaozheng" id="jiaozheng" value="">
+                        <div class="gongshi">校正=波长-管长</div>
                     </div>
                     <div class="col-md-1">cm</div> <div class="col-md-2"><input class="btn btn-primary" id="btnJiaozheng" type="button" value="计算"></div>
                 </div>
-
-            </form>
-        </div>
-
-    </div>
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            二次调音
-        </div>
-        <div class="panel-body">
-            <form class="form-horizontal">
                 <div class="form-group">
                     <label class="control-label col-md-2">误差音分</label>
                     <div class="col-md-7">
                         <input class="form-control" name="wucha" id="wucha" value="">
+                        <div class="gongshi">每低10音分校正量加2mm估算 </div>
+
                     </div>
-                    <div class="col-md-1"></div> <div class="col-md-2"><input class="btn btn-primary" id="btnWucha" type="button" value="计算"></div>
+                    <div class="col-md-1"></div> <div class="col-md-2"><input class="btn btn-primary" id="btnWucha" type="button" value="修正校正"></div>
                 </div>
             </form>
         </div>
+
     </div>
+
     <div class="panel panel-default">
         <div class="panel-heading">
             备注
@@ -107,7 +111,12 @@
                 $("#guanchang").val(guanchang.toFixed(2));
             }
         });
-
+        $("#btnWucha").on("click",function () {
+            var wucha = parseFloat($("#wucha").val());
+            var jiaozheng = parseFloat($("#jiaozheng").val());
+            var rs = (wucha/10)*2/10
+            $("#jiaozheng").val((jiaozheng+(-rs)).toFixed(2));
+        })
     })
 </script>
 @stop
