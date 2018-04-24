@@ -30,16 +30,7 @@
                     <div class="col-md-1">℃</div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-2">管长L</label>
-                    <div class="col-md-7">
-                        <input class="form-control" name="guanchang" id="guanchang" value="">
-                        <div class="gongshi">管长=波长-校正</div>
-                    </div>
-                    <div class="col-md-1">cm</div><div class="col-md-2"><input class="btn btn-primary" id="btnGuanchang" type="button" value="计算"></div>
-
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-2">某孔固定频率f</label>
+                    <label class="control-label col-md-2">固定频率f</label>
                     <div class="col-md-7">
                         <input class="form-control" name="pinlv" id="pinlv" value="">
 
@@ -47,10 +38,19 @@
                     <div class="col-md-1">赫兹</div> <div class="col-md-2"><input class="btn btn-primary" id="btnPinlv" type="button" value="计算"></div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-2">波长(入)</label>
+                    <label class="control-label col-md-2">实际管长L</label>
+                    <div class="col-md-7">
+                        <input class="form-control" name="guanchang" id="guanchang" value="">
+                        <div class="gongshi">实际管长=波长-校正</div>
+                    </div>
+                    <div class="col-md-1">cm</div><div class="col-md-2"><input class="btn btn-primary" id="btnGuanchang" type="button" value="计算"></div>
+
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">理论管长(入)</label>
                     <div class="col-md-7">
                         <input class="form-control" name="bochang"  id="bochang" value="">
-                        <div class="gongshi">波长=声速/固定频率</div>
+                        <div class="gongshi">理论管长=声速/（2*固定频率）</div>
                     </div>
                     <div class="col-md-1">cm</div> <div class="col-md-2"><input class="btn btn-primary" id="btnBochang" type="button" value="计算"></div>
                 </div>
@@ -97,16 +97,16 @@
             var pinlv = parseFloat($("#pinlv").val())
             var guanchang = parseFloat($("#guanchang").val());
             if($(this).attr("id") == "btnBochang"){
-                var bochang = (shengsu+61*wendu)/pinlv;
+                var bochang = getbochang(shengsu,wendu,pinlv);
                 $("#bochang").val(bochang.toFixed(2));
             }
             if($(this).attr("id") == "btnJiaozheng"){
-                var bochang = (shengsu+61*wendu)/pinlv;
+                var bochang = getbochang(shengsu,wendu,pinlv);
                 var jiaozheng = bochang-guanchang;
                 $("#jiaozheng").val(jiaozheng.toFixed(2));
             }
             if($(this).attr("id") == "btnGuanchang"){
-                var bochang = (shengsu+61*wendu)/pinlv;
+                var bochang = getbochang(shengsu,wendu,pinlv);
                 var guanchang = bochang- $("#jiaozheng").val();
                 $("#guanchang").val(guanchang.toFixed(2));
             }
@@ -118,5 +118,8 @@
             $("#jiaozheng").val((jiaozheng+(-rs)).toFixed(2));
         })
     })
+    function getbochang(shengsu,wendu,pinlv) {
+         return  (shengsu+61*wendu)/(2*pinlv);
+    }
 </script>
 @stop

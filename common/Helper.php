@@ -33,3 +33,7 @@ function getPid($listen_port,$pid_file){
     }
     return $pid;
 }
+function domain(){
+   $host = $_SERVER['HTTP_HOST'];
+    return explode(".",$host);
+}
