@@ -1,0 +1,45 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+        body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
+    </style>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=0Ff79ad6e74191c78069e47fd63a523c"></script>
+    <title>浏览器定位</title>
+</head>
+<body>
+<div id="allmap"></div>
+</body>
+</html>
+
+
+<script type="text/javascript">
+    var map = new BMap.Map("allmap");
+    var longitude, latitude;
+    navigator.geolocation.getCurrentPosition(function (position) {
+        alert("1");
+        longitude = position.coords.longitude;
+        latitude = position.coords.latitude;
+    });
+    setTimeout(function () {
+        var gpsPoint = new BMap.Point(longitude, latitude);
+        BMap.Convertor.translate(gpsPoint, 0, function (point) {
+            var geoc = new BMap.Geocoder();
+            geoc.getLocation(point, function (rs) {
+
+                map.addControl(new BMap.NavigationControl());
+                map.addControl(new BMap.ScaleControl());
+                map.addControl(new BMap.OverviewMapControl());
+                map.centerAndZoom(point, 18);
+                map.addOverlay(new BMap.Marker(point)) ;
+
+                //alert("2");
+                var addComp = rs.addressComponents;
+                alert(addComp.province + ", " + addComp.city + ", " + addComp.district + ", " + addComp.street + ", " + addComp.streetNumber);
+                alert('您的位置：'+rs.point.lng+','+rs.point.lat);
+            });
+        });
+    }, 1000);
+
+</script>

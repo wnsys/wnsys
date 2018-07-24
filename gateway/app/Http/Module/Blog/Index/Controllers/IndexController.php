@@ -15,7 +15,7 @@ class IndexController extends WebController
     public $blogInterface;
     function show($id)
     {
-        
+        $this->blogInterface->getList();
         $blog = BlogArticleModel::find($id);
         $breadcrumb = BlogArticleBll::breadcrumb($id);
         seo($blog->title);
