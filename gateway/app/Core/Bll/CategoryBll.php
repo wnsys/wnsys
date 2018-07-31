@@ -13,12 +13,9 @@ class CategoryBll extends Object
     {
         $result = [];
         $path = config("view.paths")[0];
-        foreach (["pc", "", "wap"] as $device) {
-            $_path = $path . "/" . app()["module"] . "/$device/$controller";
-            $templates = app()["files"]->files($_path);
-            if ($templates)
-                break;
-        }
+        $_path = $path . "/" . app()["module"] . "/$controller";
+        $templates = app()["files"]->files($_path);
+
         $files = array_map("basename", $templates);
         foreach ($files as $file) {
             if (strpos($file, $contain) !== false) {

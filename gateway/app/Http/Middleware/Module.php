@@ -7,9 +7,9 @@ class Module{
         $route = $request->route();
         $action = $route->getAction();
         $paths = explode("\\",$action["controller"]);
-
+        // paths = Array ( [0] => App [1] => Http [2] => Module [3] => Blog [4] => Admin [5] => Controllers [6] => CategoryController@add )
         if(in_array("Module",$paths)){
-            app()["module"] = strtolower($paths[2]);
+            app()["module"] = strtolower($paths[3]);
         }else{
             app()["module"] = "";
         }

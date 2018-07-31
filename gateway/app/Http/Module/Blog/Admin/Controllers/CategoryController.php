@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Auth;
 class CategoryController extends AdminController{
     public function index(Request $request){
         $data = [];
-
         $lists = BlogCategoryBll::n()->treeLists();
         return view("blog.admin.category.list", [
             "data" => $data,
