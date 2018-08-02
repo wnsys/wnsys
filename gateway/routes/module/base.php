@@ -1,7 +1,8 @@
 <?php
-Route::get('login', "Auth\LoginController@showLoginForm");
-Route::post('login', "Auth\LoginController@login");
-Route::post('logout', "Auth\LoginController@logout");
+include "http.php";
+include "admin.php";
+include "blog.php";
+include "shop.php";
+include "user.php";
+include "web.php";
 
-Route::get('register', "Auth\RegisterController@showRegistrationForm");
-Route::post('register', "Auth\RegisterController@register");

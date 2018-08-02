@@ -14,11 +14,19 @@ class CategoryModel extends AppModel
 
     ];
 
-    public function subIds($catid){
+    /**
+     * @param $catid
+     * @param int $show 排除隐藏的栏目 0全部显示1只显示显示的
+     * @return array
+     */
+    public function subIds($catid = 0,$show = 0){
         $cats = static::all();
         $result = [$catid];
         foreach ($cats as $cat){
-            if(in_array($catid,explode(",",$cat["parentids"]))){
+            if($show == 1 && $cat["show"] == 0){
+                continue;
+            }
+            if(in_array($catid,explode(",",$cat["parentids"]))  ){
                 $result[] = $cat["id"];
             }
         }

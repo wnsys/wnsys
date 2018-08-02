@@ -9,17 +9,15 @@ use NInterface\BlogInterface;
 
 class IndexController extends WebController
 {
-    /**
-     * @var BlogInterface
-     */
-    public $blogInterface;
+
     function show($id)
     {
-        $this->blogInterface->getList();
         $blog = BlogArticleModel::find($id);
+        $cat = BlogCategoryModel::find($blog->catid);
         $breadcrumb = BlogArticleBll::breadcrumb($id);
+        $template = $cat["template_show"];
         seo($blog->title);
-        return view("blog.index.show", compact('blog','breadcrumb'));
+        return view("blog.index.$template", compact('blog','breadcrumb'));
     }
     function lists($id){
         $data = BlogArticleModel::lists($id);

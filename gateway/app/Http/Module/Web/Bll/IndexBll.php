@@ -7,6 +7,11 @@
  * Time: 20:27
  */
 namespace App\Http\Module\Web\Bll;
+use App\Http\Module\Blog\Model\BlogArticleModel;
+use Illuminate\Support\Facades\DB;
+
 class IndexBll{
-   
+  static public function getArticleList($show = 1){
+  
+  }
 }

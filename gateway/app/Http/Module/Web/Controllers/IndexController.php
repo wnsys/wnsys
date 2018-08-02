@@ -13,8 +13,7 @@ use NInterface\BlogInterface;
 class IndexController extends WebController{
    
     public function index(){
-        $bloglist = BlogArticleModel::orderBy('id','desc')
-            ->paginate(config("module.blog.page_size"));
+        $bloglist =    BlogArticleModel::lists(0);
         BlogArticleBll::stripDate($bloglist);
         return view("web.index",[
             "bloglist"=>$bloglist

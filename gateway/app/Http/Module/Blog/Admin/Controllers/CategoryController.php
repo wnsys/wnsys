@@ -23,16 +23,19 @@ class CategoryController extends AdminController{
             BlogCategoryModel::n()->modelCreate($request["info"]);
         }
         $templates = BlogCategoryBll::n()->templates("index","list");
+        $templates_show = BlogCategoryBll::n()->templates("index","show");
         $options = BlogCategoryModel::n()->options();
         return view("blog.admin.category.add", [
             "data" => $data,
             "options" => $options,
-            "templates" => $templates
+            "templates" => $templates,
+            "templates_show" => $templates_show
         ]);
     }
     public function edit($id,Request $request){
         $data = BlogCategoryModel::find($id);
         $templates = BlogCategoryBll::n()->templates("index","list");
+        $templates_show = BlogCategoryBll::n()->templates("index","show");
         if($request["dosubmit"]){
             $data->mySave($id,$request["info"]);
             return redirect("/admin/blog/category");
@@ -41,7 +44,8 @@ class CategoryController extends AdminController{
         return view("blog.admin.category.add", [
             "data" => $data,
             "options" => $options,
-            "templates" => $templates
+            "templates" => $templates,
+            "templates_show" => $templates_show
         ]);
     }
     function delete(Request $request)

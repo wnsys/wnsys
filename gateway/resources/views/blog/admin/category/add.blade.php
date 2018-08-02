@@ -19,13 +19,33 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-1">模板</label>
+                    <label class="control-label col-md-1">列表模板</label>
                     <div class="col-md-2">
                         <select class="form-control" name="info[template]">
                             @foreach($templates as $template)
                                 <option value="{{$template}}" @if($template == $data["template"]) selected @endif>{{$template}}</option>
                                 @endforeach
                         </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-1">内容模板</label>
+                    <div class="col-md-2">
+                        <select class="form-control" name="info[template_show]">
+                            @foreach($templates_show as $template)
+                                <option value="{{$template}}" @if($template == $data["template_show"]) selected @endif>{{$template}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-1"></label>
+                    <div class="col-md-2">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" value="1" name="info[show]">隐藏栏目
+                            </label>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-offset-1">

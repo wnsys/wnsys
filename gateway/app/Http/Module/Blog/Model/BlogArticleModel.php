@@ -29,9 +29,9 @@ class BlogArticleModel extends AppModel
         return $model;
     }
 
-    static public function lists($catid)
+    static public function lists($catid,$show = 0)
     {
-        $rs = static::whereIn("catid", BlogCategoryModel::n()->subIds($catid))
+        $rs = static::whereIn("catid", BlogCategoryModel::n()->subIds($catid,1))
             ->orderBy("id", "desc")
             ->paginate(config("module.blog.page_size"));
         return $rs;
