@@ -43,7 +43,7 @@
                     <div class="col-md-2">
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" value="1" name="info[show]">隐藏栏目
+                                <input type="checkbox" value="1" name="info[hidden]" <?php echo $data["hidden"] == 1?"checked":""?>>隐藏栏目
                             </label>
                         </div>
                     </div>

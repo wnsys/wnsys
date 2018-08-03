@@ -16,14 +16,14 @@ class CategoryModel extends AppModel
 
     /**
      * @param $catid
-     * @param int $show 排除隐藏的栏目 0全部显示1只显示显示的
+     * @param int $hidden 排除隐藏的栏目 0全部显示1隐藏栏目
      * @return array
      */
-    public function subIds($catid = 0,$show = 0){
+    public function subIds($catid = 0,$hidden = 0){
         $cats = static::all();
         $result = [$catid];
         foreach ($cats as $cat){
-            if($show == 1 && $cat["show"] == 0){
+            if($hidden == 1 && $cat["hidden"] == 1){
                 continue;
             }
             if(in_array($catid,explode(",",$cat["parentids"]))  ){
@@ -35,6 +35,7 @@ class CategoryModel extends AppModel
     public function modelCreate($data){
         $data["parentids"] = $this->createParentids($data["parentid"]);
         $data["module"] = $this->module;
+
         return static::create($data);
     }
 
@@ -43,6 +44,7 @@ class CategoryModel extends AppModel
         $cat = static::find($catid);
         $info["parentids"] = $this->createParentids($info["parentid"]);
         $cat->attributes = $info;
+        $cat->attributes[hidden] = $info["hidden"]?:0;
         return $cat->save();
     }
     public function parents($id,$self = true){

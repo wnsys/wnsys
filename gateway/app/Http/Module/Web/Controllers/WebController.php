@@ -13,7 +13,7 @@ class WebController extends Controller{
     public function __construct()
     {
         parent::__construct();
-        $blog_category = BlogCategoryModel::where(["parentid"=>0,"show"=>1])->get();
+        $blog_category = BlogCategoryModel::where(["parentid"=>0,"hidden"=>0])->get();
         view()->share('blog_category', $blog_category);
        
     }
