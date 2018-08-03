@@ -18,13 +18,15 @@
         <div class="panel-body">
             <table class="table table-striped " >
                 <tr>
-                    <th class="col-xs-8 col-md-7">标题</th>
+                    <th class="col-xs-4 col-md-5">标题</th>
+                    <th class="col-xs-4 col-md-2">栏目</th>
                     <th class="col-xs-4 col-md-3">创建时间</th>
                     <td class="col-xs-4 col-md-2">操作</td>
                 </tr>
                 @foreach($data as $item)
                     <tr>
                         <td><a href="/blog/{{$item["id"]}}" target="_blank">{{$item["title"]}}</a></td>
+                        <td>{{$item->cat->name}}</td>
                         <td>{{$item["created_at"]}}</td>
                         <td><a href="/admin/blog/edit?id={{$item["id"]}}">编辑</a>
                             | <a href="/admin/blog/delete?id={{$item["id"]}}" onclick="return confirm('确定删除吗？')">删除</a></td>
