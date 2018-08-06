@@ -8,7 +8,7 @@ class CategoryModel extends AppModel
     protected $table = "category";
     public $module = "blog";
     protected $fillable = [
-        'name', 'parentid', 'parentids',"template","module"
+        'name', 'parentid', 'parentids',"template","template_show","module"
     ];
     protected $hidden = [
 
@@ -35,7 +35,6 @@ class CategoryModel extends AppModel
     public function modelCreate($data){
         $data["parentids"] = $this->createParentids($data["parentid"]);
         $data["module"] = $this->module;
-
         return static::create($data);
     }
 
