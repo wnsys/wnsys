@@ -4,8 +4,8 @@ namespace Service\Console\Commands;
 
 
 use Illuminate\Console\Command;
-use Server\HttpServer;
-use Server\Lib\HttpLib;
+use Rpc\Server\HttpServer;
+use Rpc\Server\Lib\HttpLib;
 
 class SwooleHttp extends Command
 {
@@ -14,7 +14,7 @@ class SwooleHttp extends Command
      *
      * @var string
      */
-    protected $signature = 'swoole:http {operate} {port=9602}';
+    protected $signature = 'swoole:http {operate} {port=9600}';
 
     /**
      * The console command description.
@@ -42,17 +42,17 @@ class SwooleHttp extends Command
     {
 
         $operate = $this->argument('operate');
-        $port = $this->argument('port')?:9602;
+        $port = $this->argument('port')?:9600;
         $options = [
             // like pm.start_servers in php-fpm, but there's no option like pm.max_children
-            'worker_num' => 4,
+            'worker_num' => 1,
             // max number of coroutines handled by a worker in the same time
             'max_coro_num' => 3000,
             // set it to false when debug, otherwise true
             'daemonize' => false,
             // like pm.max_requests in php-fpm
             'max_request' => 1000,
-            'pid_file' => app()->basePath()."/bootstrap/swoole-".$port.".pid",
+            'pid_file' => app()->basePath()."/bootstrap/swoole-http-".$port.".pid",
             'log_file' => app()->storagePath().'/logs/swoole.log',
             "port" => $port,
             "host" => "127.0.0.1"

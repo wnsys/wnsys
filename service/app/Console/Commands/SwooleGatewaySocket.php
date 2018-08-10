@@ -3,8 +3,7 @@
 namespace Service\Console\Commands;
 
 use Illuminate\Console\Command;
-use Server\Lib\GatewaySocketLib;
-use Server\SocketServer;
+use Rpc\Server\GatewayServer;
 
 class SwooleGatewaySocket extends Command
 {
@@ -13,7 +12,7 @@ class SwooleGatewaySocket extends Command
      *
      * @var string
      */
-    protected $signature = 'swoole:gateway_socket {operate} {port=9500}';
+    protected $signature = 'swoole:gateway_socket {operate} {port=9800}';
 
     /**
      * The console command description.
@@ -38,19 +37,19 @@ class SwooleGatewaySocket extends Command
         $port = $this->argument('port');
         $options = [
             // like pm.start_servers in php-fpm, but there's no option like pm.max_children
-            'worker_num' => 4,
+            'worker_num' => 1,
             // max number of coroutines handled by a worker in the same time
             'max_coro_num' => 3000,
             // set it to false when debug, otherwise true
             'daemonize' => false,
             // like pm.max_requests in php-fpm
             'max_request' => 1000,
-            'pid_file' => app()->basePath()."/bootstrap/swoole-".$port.".pid",
+            'pid_file' => app()->basePath()."/bootstrap/swoole-gateway-".$port.".pid",
             'log_file' => app()->storagePath().'/logs/swoole.log',
-            "port" => $port?:9500,
+            "port" => $port?:9800,
             "host" => "127.0.0.1"
         ];
-        $server = new GatewaySocketLib($options);
+        $server = new GatewayServer($options);
         $server->handle($operate);
 
     }

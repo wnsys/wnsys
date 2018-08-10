@@ -1,6 +1,6 @@
 <?php
 namespace Service\Service;
-use NInterface\BlogInterface;
+use Interfaces\BlogInterface;
 
 /**
  * Created by PhpStorm.

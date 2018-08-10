@@ -3,10 +3,10 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use NInterface\BlogInterface;
-use Rpc\HttpClient;
+use Interfaces\BlogInterface;
+use Rpc\Client\HttpClient;
 use Rpc\Rpc;
-use Rpc\SocketSyncClient;
+use Rpc\Client\SocketSyncClient;
 
 class RemoteServiceProvider extends ServiceProvider
 {
@@ -28,8 +28,7 @@ class RemoteServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(BlogInterface::class,function (){
-            $rpc = new Rpc(BlogInterface::class,new HttpClient());
-            return $rpc;
+            return new Rpc(BlogInterface::class,new HttpClient());
         });
     }
 }

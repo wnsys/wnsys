@@ -21,9 +21,8 @@
         "classmap": [],
         "psr-4": {
             "App\\": "gateway/app/",
+            "Interfaces\\":"interfaces/",
             "Service\\":"service/app/",
-            "NInterface\\":"interface/",
-            "Server\\":"server/",
             "Rpc\\":"rpc/",
             "Common\\":"common"
         },
