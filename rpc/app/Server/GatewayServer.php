@@ -20,7 +20,7 @@ class GatewayServer{
     function handle($operate){
         switch ($operate) {
             case 'start':
-                GatewaySocketLib::getInstance($this->options);
+                new GatewaySocketLib($this->options);
                 break;
             case 'stop':
                 posix_kill(getPid($this->options["port"],$this->options["pid_file"]), SIGTERM);
@@ -31,7 +31,7 @@ class GatewayServer{
             case 'restart':
                 posix_kill(getPid($this->options["port"],$this->options["pid_file"]), SIGTERM);
                 sleep(1);
-                GatewaySocketLib::getInstance($this->options);
+                new GatewaySocketLib($this->options);
                 break;
         }
     }

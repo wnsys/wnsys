@@ -19,7 +19,7 @@ class HttpServer{
         
         switch ($operate) {
             case 'start':
-                HttpLib::getInstance($this->options);
+                new HttpLib($this->options);
                 break;
             case 'stop':
                 posix_kill(getPid($this->options["port"],$this->options["pid_file"]), SIGTERM);
@@ -30,7 +30,7 @@ class HttpServer{
             case 'restart':
                 posix_kill(getPid($this->options["port"],$this->options["pid_file"]), SIGTERM);
                 sleep(1);
-                HttpLib::getInstance($this->options);
+                new HttpLib($this->options);
                 break;
         }
     }

@@ -38,12 +38,7 @@ class HttpLib
         $http->start();
     }
 
-    public static function getInstance($options) {
-        if (!self::$instance) {
-            self::$instance = new HttpLib($options);
-        }
-        return self::$instance;
-    }
+   
     /**
      * convert swoole request info to php global vars
      *

@@ -17,7 +17,7 @@ class SocketServer{
     function handle($operate){
         switch ($operate) {
             case 'start':
-                SocketLib::getInstance($this->options);
+                new SocketLib($this->options);
                 break;
             case 'stop':
                 posix_kill(getPid($this->options["port"],$this->options["pid_file"]), SIGTERM);
@@ -28,7 +28,7 @@ class SocketServer{
             case 'restart':
                 posix_kill(getPid($this->options["port"],$this->options["pid_file"]), SIGTERM);
                 sleep(1);
-                SocketLib::getInstance($this->options);
+                new SocketLib($this->options);
                 break;
         }
     }
