@@ -1,6 +1,6 @@
 <?php
 
-namespace Rpc\Exceptions;
+namespace Server\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;

@@ -38,7 +38,7 @@ class GatewaySocketHandle
                     //随机取一台服务器
                     $host = $hosts[rand(0, count($hosts) - 1)];
                     $client = new \swoole_client(SWOOLE_SOCK_TCP);
-                    if (!$client->connect($host["ip"], $host["port"], -1)) {
+                    if (!$client->connect($host["host"], $host["port"], -1)) {
                         exit("connect failed. Error: {$client->errCode}\n");
                     }
                     $rs = $client->send($_data);

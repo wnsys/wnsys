@@ -4,9 +4,8 @@ namespace Service\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
-use Service\Console\Commands\SwooleGatewaySocket;
-use Service\Console\Commands\SwooleHttp;
 use Service\Console\Commands\SwooleSocket;
+use Service\Console\Commands\SwooleHttp;
 
 
 class Kernel extends ConsoleKernel
@@ -17,9 +16,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        SwooleSocket::class,
         SwooleHttp::class,
-        SwooleGatewaySocket::class
+        SwooleSocket::class
     ];
 
     /**
