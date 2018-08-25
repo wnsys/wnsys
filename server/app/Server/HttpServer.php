@@ -1,6 +1,6 @@
 <?php
 namespace Server\Server;
-use Server\Server\Lib\HttpLib;
+use Server\Server\Handle\HttpHandle;
 
 /**
  * Created by PhpStorm.
@@ -19,7 +19,7 @@ class HttpServer{
         
         switch ($operate) {
             case 'start':
-                new HttpLib($this->options);
+                new HttpHandle($this->options);
                 break;
             case 'stop':
                 posix_kill(getPid($this->options["port"],$this->options["pid_file"]), SIGTERM);
@@ -30,7 +30,7 @@ class HttpServer{
             case 'restart':
                 posix_kill(getPid($this->options["port"],$this->options["pid_file"]), SIGTERM);
                 sleep(1);
-                new HttpLib($this->options);
+                new HttpHandle($this->options);
                 break;
         }
     }

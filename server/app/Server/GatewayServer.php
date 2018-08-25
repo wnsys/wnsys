@@ -1,8 +1,8 @@
 <?php
 namespace Server\Server;
-use Server\Server\Lib\GatewaySocketLib;
-use Server\Server\Lib\HttpLib;
-use Server\Server\Lib\SocketLib;
+use Server\Server\Handle\GatewaySocketHandle;
+use Server\Server\Handle\HttpHandle;
+use Server\Server\Handle\SocketHandle;
 
 /**
  * Created by PhpStorm.
@@ -20,7 +20,7 @@ class GatewayServer{
     function handle($operate){
         switch ($operate) {
             case 'start':
-                new GatewaySocketLib($this->options);
+                new GatewaySocketHandle($this->options);
                 break;
             case 'stop':
                 posix_kill(getPid($this->options["port"],$this->options["pid_file"]), SIGTERM);
@@ -31,7 +31,7 @@ class GatewayServer{
             case 'restart':
                 posix_kill(getPid($this->options["port"],$this->options["pid_file"]), SIGTERM);
                 sleep(1);
-                new GatewaySocketLib($this->options);
+                new GatewaySocketHandle($this->options);
                 break;
         }
     }

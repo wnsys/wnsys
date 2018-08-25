@@ -1,6 +1,6 @@
 <?php
-namespace  Server\Server\Lib;
-class SocketLib
+namespace  Server\Server\Handle;
+class SocketHandle
 {
 
     public static $instance;

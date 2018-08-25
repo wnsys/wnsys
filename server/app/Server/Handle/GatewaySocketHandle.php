@@ -1,9 +1,9 @@
 <?php
-namespace Server\Server\Lib;
+namespace Server\Server\Handle;
 
 use GuzzleHttp\Client;
 
-class GatewaySocketLib
+class GatewaySocketHandle
 {
 
     public static $instance;

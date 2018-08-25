@@ -1,6 +1,6 @@
 <?php
 namespace  Server\Server;
-use Server\Server\Lib\SocketLib;
+use Server\Server\Handle\SocketHandle;
 
 /**
  * Created by PhpStorm.
@@ -17,7 +17,7 @@ class SocketServer{
     function handle($operate){
         switch ($operate) {
             case 'start':
-                new SocketLib($this->options);
+                new SocketHandle($this->options);
                 break;
             case 'stop':
                 posix_kill(getPid($this->options["port"],$this->options["pid_file"]), SIGTERM);
@@ -28,7 +28,7 @@ class SocketServer{
             case 'restart':
                 posix_kill(getPid($this->options["port"],$this->options["pid_file"]), SIGTERM);
                 sleep(1);
-                new SocketLib($this->options);
+                new SocketHandle($this->options);
                 break;
         }
     }

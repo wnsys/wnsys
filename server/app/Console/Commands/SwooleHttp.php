@@ -6,7 +6,7 @@ namespace Server\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Cache;
 use Server\Server\HttpServer;
-use Server\Server\Lib\HttpLib;
+use Server\Server\Handle\HttpHandle;
 
 class SwooleHttp extends Command
 {

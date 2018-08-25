@@ -1,6 +1,6 @@
 <?php
-namespace  Server\Server\Lib;
-class HttpLib
+namespace  Server\Server\Handle;
+class HttpHandle
 {
     public $http;
     public static $instance;
