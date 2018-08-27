@@ -51,7 +51,7 @@ class SwooleHttp extends Command
             foreach (config("hosts")["http"] as $index => $option) {
 
                 $process = new \swoole_process(function (\swoole_process $worker) use ($index, $option, $operate) {
-                    \swoole_set_process_name(sprintf('php-ps:%s', $index));
+                    \swoole_set_process_name(sprintf('php-socket-%s:%s', $option["port"],$index));
                     $server = new HttpServer($option);
                     $server->handle($operate);
                 }, false, false);

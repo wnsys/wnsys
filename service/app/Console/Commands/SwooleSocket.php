@@ -49,15 +49,14 @@ class SwooleSocket extends Command
     {
 
         $operate = $this->argument('operate');
+
         if (count(config("hosts")["socket"])) {
             foreach (config("hosts")["socket"] as $index => $option) {
-
                 $process = new \swoole_process(function (\swoole_process $worker) use ($index, $option, $operate) {
-                    \swoole_set_process_name(sprintf('php-ps:%s', $index));
+                    \swoole_set_process_name(sprintf('php-socket-%s:%s', $option["port"],$index));
                     $server = new SocketServer($option);
                     $server->handle($operate);
                 }, false, false);
-
                 $pid = $process->start();
                 $this->works[] = $pid;
 

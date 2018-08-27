@@ -41,7 +41,8 @@ class GatewaySocketHandle
                     if (!$client->connect($host["host"], $host["port"], -1)) {
                         exit("connect failed. Error: {$client->errCode}\n");
                     }
-                    $rs = $client->send($_data);
+                    $client->send($_data);
+                    $rs = $client->recv();
                     $server->send($fd, $rs);
                     $server->close($fd);
                     break;
