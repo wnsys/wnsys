@@ -26,7 +26,7 @@ class RemoteServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(BlogInterface::class,function (){
-            return new Rpc(BlogInterface::class,"socket");
+            return new Rpc(BlogInterface::class,"http");
         });
     }
 }
