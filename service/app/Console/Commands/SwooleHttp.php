@@ -5,9 +5,9 @@ namespace Service\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Cache;
-use Server\Process\Process;
-use Server\Server\HttpServer;
-use Server\Server\Handle\HttpHandle;
+use Rpc\Process\Process;
+use Rpc\Server\HttpServer;
+use Rpc\Server\Handle\HttpHandle;
 
 class SwooleHttp extends Command
 {

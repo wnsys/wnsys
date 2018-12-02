@@ -1,11 +1,11 @@
 <?php
-namespace Server\Client;
+namespace Rpc\Client;
 
-class SocketSyncClient extends Client {
+class HttpClient extends Client {
     private $client;
     function __construct()
     {
-        $this->rpcType = "socketSync";
+        $this->rpcType = "http";
         $this->client = new \swoole_client(SWOOLE_SOCK_TCP);
         $conf = config("hosts")["gateway"];
         if (!$this->client->connect($conf["host"], $conf["port"], -1))

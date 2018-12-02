@@ -1,8 +1,8 @@
 <?php
-namespace Server\Server;
-use Server\Server\Handle\GatewaySocketHandle;
-use Server\Server\Handle\HttpHandle;
-use Server\Server\Handle\SocketHandle;
+namespace Rpc\Server;
+use Rpc\Server\Handle\GatewaySocketHandle;
+use Rpc\Server\Handle\HttpHandle;
+use Rpc\Server\Handle\SocketHandle;
 
 /**
  * Created by PhpStorm.

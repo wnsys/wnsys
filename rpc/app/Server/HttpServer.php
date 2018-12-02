@@ -1,6 +1,6 @@
 <?php
-namespace  Server\Server;
-use Server\Server\Handle\SocketHandle;
+namespace Rpc\Server;
+use Rpc\Server\Handle\HttpHandle;
 
 /**
  * Created by PhpStorm.
@@ -8,16 +8,18 @@ use Server\Server\Handle\SocketHandle;
  * Date: 2018/2/12
  * Time: 10:47
  */
-class SocketServer{
+class HttpServer{
     private $options;
     function __construct($options)
     {
         $this->options = $options;
+
     }
     function handle($operate){
+        
         switch ($operate) {
             case 'start':
-                new SocketHandle($this->options);
+                new HttpHandle($this->options);
                 break;
             case 'stop':
                 posix_kill(getPid($this->options["port"],$this->options["pid_file"]), SIGTERM);
@@ -28,7 +30,7 @@ class SocketServer{
             case 'restart':
                 posix_kill(getPid($this->options["port"],$this->options["pid_file"]), SIGTERM);
                 sleep(1);
-                new SocketHandle($this->options);
+                new HttpHandle($this->options);
                 break;
         }
     }

@@ -1,10 +1,10 @@
 <?php
 
-namespace Server\Console;
+namespace Rpc\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
-use Server\Console\Commands\SwooleGatewaySocket;
+use Rpc\Console\Commands\SwooleGatewaySocket;
 
 
 class Kernel extends ConsoleKernel

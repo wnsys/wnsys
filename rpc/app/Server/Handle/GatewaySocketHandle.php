@@ -1,5 +1,5 @@
 <?php
-namespace Server\Server\Handle;
+namespace Rpc\Server\Handle;
 
 use GuzzleHttp\Client;
 

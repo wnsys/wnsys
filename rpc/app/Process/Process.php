@@ -1,5 +1,5 @@
 <?php
-namespace Server\Process;
+namespace Rpc\Process;
 class Process{
     public $mpid=0;
     public $works=[];

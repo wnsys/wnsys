@@ -1,11 +1,11 @@
 <?php
 
-namespace Server\Console\Commands;
+namespace Rpc\Console\Commands;
 
 use Illuminate\Console\Command;
-use Server\Server\GatewayServer;
-use Server\Server\SocketServer;
-use Server\Server\HttpServer;
+use Rpc\Server\GatewayServer;
+use Rpc\Server\SocketServer;
+use Rpc\Server\HttpServer;
 class SwooleGatewaySocket extends Command
 {
     /**

@@ -3,7 +3,7 @@
 namespace Service\Console\Commands;
 
 use Illuminate\Console\Command;
-use Server\Server\SocketServer;
+use Rpc\Server\SocketServer;
 
 class SwooleSocket extends Command
 {

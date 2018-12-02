@@ -1,5 +1,5 @@
 <?php
-namespace Server\Client;
+namespace Rpc\Client;
 
 class SocketAsyncClient extends Client  {
     private $client;

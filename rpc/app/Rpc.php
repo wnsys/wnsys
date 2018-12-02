@@ -1,9 +1,9 @@
 <?php
-namespace Server;
+namespace Rpc;
 
-use Server\Client\Client;
-use Server\Client\HttpClient;
-use Server\Client\SocketSyncClient;
+use Rpc\Client\Client;
+use Rpc\Client\HttpClient;
+use Rpc\Client\SocketSyncClient;
 
 class Rpc {
     /**
