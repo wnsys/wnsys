@@ -1,5 +1,5 @@
 <?php
-namespace  Server\Server\Handle;
+namespace  Rpc\Server\Handle;
 class SocketHandle
 {
 
@@ -23,8 +23,7 @@ class SocketHandle
             $instant = $class->newInstance();
             $method = $class->getMethod($data["method"]);
             $rs = $method->invokeArgs($instant,$data["args"]);
-            echo "receive: {$rs}\n";
-            $server->send($fd,  $rs);
+            $server->send($fd,$rs);
             $server->close($fd);
         });
         $server->on('close', function ($server, $fd) {

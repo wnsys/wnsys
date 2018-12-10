@@ -1,5 +1,5 @@
 <?php
-namespace Server\Client;
+namespace Rpc\Client;
 
 class SocketAsyncClient extends Client  {
     private $client;
@@ -32,7 +32,11 @@ class SocketAsyncClient extends Client  {
                 $this->close($cli);
             }
         });
-        $this->client->connect('127.0.0.1', 9601);
+        $conf = config("hosts")["gateway"];
+        if (!$this->client->connect($conf["host"], $conf["port"], -1))
+        {
+            exit("connect failed. Error: {$this->client->errCode}\n");
+        }
     }
 
     /**

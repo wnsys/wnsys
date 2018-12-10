@@ -13,7 +13,7 @@ use Interfaces\BlogInterface;
 class IndexController extends WebController{
    
     public function index(){
-        echo app()->make(BlogInterface::class)->getList(1,2);
+        //echo app()->make(BlogInterface::class)->getList(1,2);
         $bloglist =  BlogArticleModel::lists(0);
         BlogArticleBll::stripDate($bloglist);
         return view("web.index",[

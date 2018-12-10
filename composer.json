@@ -23,7 +23,7 @@
             "App\\": "http/app/",
             "Interfaces\\":"interfaces/",
             "Service\\":"service/app/",
-            "Server\\":"server/app/",
+            "Rpc\\":"rpc/app/",
             "Common\\":"common"
         },
         "files":[

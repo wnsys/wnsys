@@ -1,5 +1,5 @@
 <?php
-namespace Server\Client;
+namespace Rpc\Client;
 abstract  class Client{
     /**
      * @var Rpc

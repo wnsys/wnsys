@@ -5,9 +5,9 @@ namespace Service\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Cache;
-use Server\Process\Process;
-use Server\Server\HttpServer;
-use Server\Server\Handle\HttpHandle;
+use Rpc\Process\Process;
+use Rpc\Server\HttpServer;
+use Rpc\Server\Handle\HttpHandle;
 
 class SwooleHttp extends Command
 {
@@ -51,7 +51,7 @@ class SwooleHttp extends Command
             foreach (config("hosts")["http"] as $index => $option) {
 
                 $process = new \swoole_process(function (\swoole_process $worker) use ($index, $option, $operate) {
-                    \swoole_set_process_name(sprintf('php-ps:%s', $index));
+                    \swoole_set_process_name(sprintf('php-socket-%s:%s', $option["port"],$index));
                     $server = new HttpServer($option);
                     $server->handle($operate);
                 }, false, false);
