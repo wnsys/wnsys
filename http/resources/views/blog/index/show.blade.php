@@ -8,7 +8,13 @@
                 {!!$blog[content]!!}
                 <ul class="list-inline">
                     @foreach($blog->image() as $item)
-                        <li><a href="{{$item->url}}"><img class="" src="{{$item->url}}"></a></li>
+                        <li><a href="{{$item->url}}">
+                            @if ($item->isImage())
+                                <img class="" src="{{$item->url}}"></a>
+                            @else
+                                {{$item->original}}
+                            @endif
+                        </li>
                     @endforeach
                 </ul>
             </div>

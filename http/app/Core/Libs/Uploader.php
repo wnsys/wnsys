@@ -15,7 +15,7 @@ class Uploader
     private  $config = array(
         "pathFormat" => "/upload/image/{yyyy}{mm}{dd}/{time}{rand:6}",
         "maxSize" => 4048000,
-        "allowFiles" => [".png", ".jpg", ".jpeg", ".gif", ".bmp"]
+        "allowFiles" => [".png", ".jpg", ".jpeg", ".gif", ".bmp",".doc"]
     );
     private $oriName; //原始文件名
     private $fileName; //新文件名

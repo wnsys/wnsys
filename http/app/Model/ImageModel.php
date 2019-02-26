@@ -46,7 +46,12 @@ class ImageModel extends AppModel
         $result = "/" . $thumb_file;
         return $result;
     }
-
+    public function isImage(){
+        if(in_array($this->type,[".jpg",".jpeg",".gif",".png"])){
+            return true;
+        }
+        return false;
+    }
     /**
      * @param $blogid
      * @param array $add_ids "1,2,3"
